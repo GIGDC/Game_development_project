@@ -3192,10 +3192,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19e1c8921c55d544a97b00e7ddb621b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pursuitSpeed: 8
-  wanderSpeed: 4
+  pursuitSpeed: 4
+  wanderSpeed: 2
   currentSpeed: 0
-  directionChangeInterval: 1
+  directionChangeInterval: 0.5
 --- !u!95 &2077114376
 Animator:
   serializedVersion: 3
@@ -3249,6 +3249,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0051938184, y: -0.060574673}
-  m_Size: {x: 0.19788384, y: 0.5343412}
+  m_Offset: {x: -0.0012991778, y: -0.106064044}
+  m_Size: {x: 0.112201855, y: 0.12793934}
   m_Direction: 0

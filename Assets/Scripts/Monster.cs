@@ -55,6 +55,7 @@ public class Monster : MonoBehaviour
     {
         currenAngle += Random.Range(0, 360);
         currenAngle = Mathf.Repeat(currenAngle, 360);
+
         Vector3 direction = Vector3FromAngle(currenAngle);
         if (direction.x > 0 && -0.9 < direction.y && direction.y < 0.9)
         {
@@ -77,7 +78,6 @@ public class Monster : MonoBehaviour
             animator.SetFloat("DirY", 1);
         }
         endPosition += direction;
-        print(direction);
     }
 
     Vector3 Vector3FromAngle(float inputAngleDegrees)
