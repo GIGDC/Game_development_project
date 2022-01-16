@@ -4,6 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
+
 public class Monster : MonoBehaviour
 {
     public float pursuitSpeed;  // monster가 플레이어를 추적하는 속도
@@ -16,16 +17,25 @@ public class Monster : MonoBehaviour
     Rigidbody2D rigid;
     Animator animator;
 
-    Transform targetTransform = null;
+    
+    Transform target; //player
+
     Vector3 endPosition;
     float currenAngle = 0;
+    bool trackControl = false; //몬스터의 추적 공간내에 player가 위치할때 true/ 위치하지않으면 false
+    [Header("근접 거리")]
+    [SerializeField] [Range(0f, 3f)] float contactDistance = 1f; //유니티에서 간편하게 조절가능하도록함
 
     // Start is called before the first frame update
     private void Start()
     {
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
+        
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+       
         currentSpeed = wanderSpeed;
+        pursuitSpeed = wanderSpeed * 2f;
         StartCoroutine(WanderRoutine());
     }
 
@@ -33,6 +43,15 @@ public class Monster : MonoBehaviour
     void Update()
     {
         Debug.DrawLine(rigid.position, endPosition, Color.red);
+
+    }
+    private void OnTriggerEnter2D(Collider2D collision) //추격자의 zone영역의 접촉면에 닿으면 true
+    {
+        trackControl = true;
+    }
+    private void OnTriggerExit2D(Collider2D collision) //추격자의 zone 영역의 접촉면에서 떨어지면 false
+    {
+        trackControl = false;
     }
 
     public IEnumerator WanderRoutine()  // 플레이어를 추적하지 않고 배회하는 monster
@@ -55,20 +74,29 @@ public class Monster : MonoBehaviour
     {
         currenAngle += Random.Range(0, 360);
         currenAngle = Mathf.Repeat(currenAngle, 360);
-
         Vector3 direction = Vector3FromAngle(currenAngle);
+
+        if (trackControl)
+        {
+            Vector3 v = target.position - transform.position;
+            direction = Vector3FromAngle(Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg);
+        }
+
         if (direction.x > 0 && -0.9 < direction.y && direction.y < 0.9)
         {
+            
             animator.SetFloat("DirX", 1);
             animator.SetFloat("DirY", 0);
         }
         else if (direction.x < 0 && -0.9 < direction.y && direction.y < 0.9)
         {
+            
             animator.SetFloat("DirX", -1);
             animator.SetFloat("DirY", 0);
         }
-        else if (-0.9 < direction.x && direction.x <0.9 && direction.y > 0)
+        else if (-0.9 < direction.x && direction.x < 0.9 && direction.y > 0)
         {
+            
             animator.SetFloat("DirX", 0);
             animator.SetFloat("DirY", -1);
         }
@@ -93,16 +121,20 @@ public class Monster : MonoBehaviour
 
         while (remainingDistance > float.Epsilon)
         {
-            if (targetTransform != null)
+            if (target != null)
             {
-                endPosition = targetTransform.position;
+                if (Vector2.Distance(transform.position, target.position) > contactDistance && trackControl)
+                {
+                    endPosition = Vector3.MoveTowards(rigid.position, target.position, pursuitSpeed * Time.deltaTime);
+                    speed = pursuitSpeed;
+                }
             }
 
             if (rigidBodyToMove != null)
             {
                 animator.SetBool("isWalking", true);
                 Vector3 newPosition = Vector3.MoveTowards(rigidBodyToMove.position, endPosition, speed * Time.deltaTime);
-
+                speed = wanderSpeed;
                 rigid.MovePosition(newPosition);
                 remainingDistance = (transform.position - endPosition).sqrMagnitude;
             }
