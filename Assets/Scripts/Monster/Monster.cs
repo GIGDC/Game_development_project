@@ -143,7 +143,12 @@ public class Monster : MonoBehaviour
                 }
             }
 
-            if (rigidBodyToMove != null)
+            // 공격받고 있을 때 움직임 일시정지
+            if (GetComponent<MonsterStatus>().Attacked)
+            {
+                animator.SetBool("isWalking", false);
+            }
+            else if (rigidBodyToMove != null)
             {
                 animator.SetBool("isWalking", true);
                 Vector3 newPosition = Vector3.MoveTowards(rigidBodyToMove.position, endPosition, speed * Time.deltaTime);

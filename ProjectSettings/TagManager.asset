@@ -5,16 +5,17 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
+  - Amulet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Platform
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Monster
+  - Item
   - 
   - 
   - 
@@ -41,4 +42,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Platform
+    uniqueID: 1992656327
+    locked: 0
+  - name: Player
+    uniqueID: 3552147107
+    locked: 0
+  - name: Monster
+    uniqueID: 614014441
+    locked: 0
+  - name: Item
+    uniqueID: 396581049
     locked: 0
