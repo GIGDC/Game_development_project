@@ -21,8 +21,10 @@ public class Monster : MonoBehaviour
     Transform target; //player
 
     Vector3 endPosition;
+    Vector3 direction;
     float currenAngle = 0;
     bool trackControl = false; //몬스터의 추적 공간내에 player가 위치할때 true/ 위치하지않으면 false
+
     [Header("근접 거리")]
     [SerializeField] [Range(0f, 3f)] float contactDistance = 1f; //유니티에서 간편하게 조절가능하도록함
 
@@ -54,6 +56,17 @@ public class Monster : MonoBehaviour
         trackControl = false;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Wall"))
+        {
+            print("벽에 닿았음");
+            StopCoroutine(moveCoroutine);
+            endPosition += direction * (-1);
+            moveCoroutine = StartCoroutine(Move(rigid, currentSpeed));
+        }
+    }
+
     public IEnumerator WanderRoutine()  // 플레이어를 추적하지 않고 배회하는 monster
     {
         while (true)
@@ -74,7 +87,7 @@ public class Monster : MonoBehaviour
     {
         currenAngle += Random.Range(0, 360);
         currenAngle = Mathf.Repeat(currenAngle, 360);
-        Vector3 direction = Vector3FromAngle(currenAngle);
+        direction = Vector3FromAngle(currenAngle);
 
         if (trackControl)
         {
