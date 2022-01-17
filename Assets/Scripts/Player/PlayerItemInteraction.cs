@@ -9,7 +9,9 @@ public class PlayerItemInteraction : MonoBehaviour
     SpriteRenderer spriteRenderer;
 
     private int numOfAmulets ;
-    public float rangeOfItemUse;
+    [Header("辟立 芭府")]
+    [SerializeField] [Range(0f, 5f)] float rangeOfItemUse;
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -33,25 +35,13 @@ public class PlayerItemInteraction : MonoBehaviour
         numOfAmulets--;
         Debug.Log("巢篮 何利 俺荐: " + numOfAmulets);
 
-        float distanceToClosestMonster = Mathf.Infinity;
-        Monster cloestMonster = null;
-        Monster[] monsters = GameObject.FindObjectsOfType<Monster>();
+        Collider2D attackedMonster = Physics2D.OverlapCircle(transform.position, rangeOfItemUse, 1 << LayerMask.NameToLayer("Monster"));
 
-        foreach(Monster currentMonster in monsters)
+        if (attackedMonster != null && attackedMonster.GetComponent<MonsterStatus>().Attacked == false)
         {
-            float distanceToCurrentMonster = (currentMonster.transform.position - this.transform.position).sqrMagnitude;
-            if(distanceToCurrentMonster < distanceToClosestMonster)
-            {
-                distanceToClosestMonster = distanceToCurrentMonster;
-                cloestMonster = currentMonster;
-            }
+            attackedMonster.GetComponent<MonsterStatus>().Attacked = true;
+            Debug.Log("何利 荤侩 己傍");
         }
-
-        if (distanceToClosestMonster > rangeOfItemUse)
-            return;
-        
-        // 何利 荤侩 矫 农府贸(closestMonster) 胶畔 内靛 持扁
-        Debug.Log("何利 荤侩 己傍");
     }
 
     public void ObtainItem()
