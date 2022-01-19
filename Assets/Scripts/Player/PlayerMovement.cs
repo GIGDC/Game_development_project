@@ -24,14 +24,12 @@ public class PlayerMovement : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetButton("Horizontal"))
-            spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == 1;
-
-        // 이동에 따른 애니메이션
-        animator.SetInteger("WalkHorizontally", (int)movement.x);
-        animator.SetInteger("WalkVertically", (int)movement.y);
-
         ChangeMoveSpeed();
+        if(animator.GetFloat("MoveSpeed") > 0)
+        {
+            animator.SetFloat("MoveHorizontally", movement.x);
+            animator.SetFloat("MoveVertically", movement.y);
+        }
     }
 
     void FixedUpdate()
@@ -45,21 +43,15 @@ public class PlayerMovement : MonoBehaviour
     {
         // 기어가기
         if (Input.GetKey(KeyCode.C))
-        {
             speed = crawlSpeed;
-            animator.SetFloat("MoveSpeed", 0.5f);
-        }
         // 뛰기
         else if (Input.GetKey(KeyCode.LeftShift))
-        {
             speed = runSpeed;
-            animator.SetFloat("MoveSpeed", 2f);
-        }
         // 일반 속도
         else
-        {
             speed = normalSpeed;
-            animator.SetFloat("MoveSpeed", 1f);
-        }
+
+        animator.SetFloat("MoveSpeed", movement.sqrMagnitude * speed);
+        animator.speed = speed / 4; // 이동 속도의 4분의 1만큼의 빠르기로 애니메이션 재생
     }
 }
