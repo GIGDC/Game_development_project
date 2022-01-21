@@ -24,7 +24,7 @@ public class Item : MonoBehaviour
         Debug.Log("Item");
         Destroy(gameObject);
 
-        GameObject player = GameObject.Find("³Ê±¸¸®") as GameObject;
+        GameObject player = GameObject.Find("Player") as GameObject;
         player.GetComponent<PlayerItemInteraction>().ObtainItem();
     }
 

@@ -43,7 +43,7 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Platform
+  - name: School
     uniqueID: 1992656327
     locked: 0
   - name: Player
