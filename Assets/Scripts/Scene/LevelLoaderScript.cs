@@ -10,7 +10,7 @@ public class LevelLoaderScript : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             LoadNextLevel();
         }
@@ -19,6 +19,7 @@ public class LevelLoaderScript : MonoBehaviour
     // (현재 scene의 인덱스 + 1)의 인덱스에 해당하는 scene 불러오기
     public void LoadNextLevel()
     {
+        Debug.Log("Enter");
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     }
 

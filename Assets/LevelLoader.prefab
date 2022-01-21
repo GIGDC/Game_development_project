@@ -46,6 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 0}
   transitionTime: 1
+  doorAnim: {fileID: 0}
+  doorCnt: 0
+  direction: 
 --- !u!1 &1209780025124384749
 GameObject:
   m_ObjectHideFlags: 0
