@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float normalSpeed, crawlSpeed, runSpeed; 
     Vector2 movement;
+    Vector2 direction; // 플레이어가 현재 향하고 있는 방향
 
     private void Awake()
     {
@@ -24,6 +25,11 @@ public class PlayerMovement : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+        if(movement.sqrMagnitude > 0)
+        {
+            direction.x = Input.GetAxisRaw("Horizontal");
+            direction.y = Input.GetAxisRaw("Vertical");
+        }
 
         ChangeMoveSpeed();
         if(animator.GetFloat("MoveSpeed") > 0)
@@ -54,5 +60,10 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetFloat("MoveSpeed", movement.sqrMagnitude * speed);
         animator.speed = speed / 4; // 이동 속도의 4분의 1만큼의 빠르기로 애니메이션 재생
+    }
+
+    public Vector2 GetDirectionNormalized()
+    {
+        return direction.normalized;
     }
 }
