@@ -6,7 +6,7 @@ public class Up : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals("Wall"))
+        if (collision.gameObject.tag.Equals("Wall")&& !collision.gameObject.tag.Equals("Door"))
         {
             Debug.Log("À­ º®");
             Monster.Up_Collision = true;

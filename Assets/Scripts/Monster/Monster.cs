@@ -26,20 +26,23 @@ public class Monster : MonoBehaviour
     [Header("근접 거리")]
     [SerializeField] [Range(0f, 3f)] float contactDistance = 1f; //유니티에서 간편하게 조절가능하도록함
 
+    float time = 0;
+    bool door = false;
+
+    int count = -1;
     Coroutine moveCoroutine;
+    Coroutine startCoroutine;
     Rigidbody2D rigid;
     Animator animator;
     Transform target=null; //player
 
     Vector3 endPosition;
-    CircleCollider2D CircleCollider2D;
-
+    
     // Start is called before the first frame update
     private void Start()
     {
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
-        CircleCollider2D = GetComponent<CircleCollider2D>();
         init(); //변수 초기화 및 배열초기화
         StartCoroutine(WanderRoutine());
     }
@@ -57,67 +60,61 @@ public class Monster : MonoBehaviour
         Debug.DrawLine(rigid.position, endPosition, Color.red);
 
     }
-    void OnDrawGizmos()
-    {
-        if (CircleCollider2D != null)
-        {
-            Gizmos.DrawWireSphere(transform.position, CircleCollider2D.radius);
-        }
-    }
+  
     private void OnTriggerEnter2D(Collider2D collision) //추격자의 zone영역의 접촉면에 닿으면 true
     {
-
-        if (collision.gameObject.CompareTag("Player")&&trackControl)
-        {
-          //  currentSpeed = pursuitSpeed;
-          //  target = collision.gameObject.transform;
-          //  Vector3 v = target.position - transform.position;
-          //  direction = Vector3FromAngle(Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg);
-
-       //     Debug.Log(direction);
-         //   if (moveCoroutine != null)
-          //  {
-          //      StopCoroutine(moveCoroutine);
-           // }
-           // moveCoroutine = StartCoroutine(Move(rigid, currentSpeed));
-        }
-
+       
     }
 
     private void OnTriggerExit2D(Collider2D collision) //추격자의 zone 영역의 접촉면에서 떨어지면 false
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (count < 0)
         {
-            animator.SetBool("isWalking", false);
-            currentSpeed = wanderSpeed;
-
-            if (moveCoroutine != null)
+            if (collision.gameObject.CompareTag("Door"))
             {
-                StopCoroutine(moveCoroutine);
+                endPosition = transform.position;
+                direction = Monster.Vector3FromAngle(90, 90);
+                door = true;
+                count++;
             }
-            target = null;
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        endPosition = transform.position;
-        Stop = true;
+            endPosition = transform.position;
+            Stop = true;
+    }
+
+    void DisappearMonster()
+    {
+        if (time < 0.5f)
+        {
+            GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f-time / 1);
+        }
+        else
+        {
+            time = 0;
+            this.gameObject.SetActive(false);
+            door = false;
+            endPosition = transform.position;
+        }
+        time += Time.deltaTime;
     }
 
     public IEnumerator WanderRoutine()  // 플레이어를 추적하지 않고 배회하는 monster
     {
-        while (true)
-        {
-            ChooseNewEndPoint();  // 향할 목적지 선택
-            
-            if (moveCoroutine != null)
+            while (true)
             {
-                StopCoroutine(moveCoroutine);
+                ChooseNewEndPoint();  // 향할 목적지 선택
+                if (moveCoroutine != null)
+                {
+                    StopCoroutine(moveCoroutine);
+                }
+                moveCoroutine = StartCoroutine(Move(rigid, currentSpeed));
+
+                yield return new WaitForSeconds(directionChangeInterval);
             }
-            moveCoroutine = StartCoroutine(Move(rigid, currentSpeed));
-            yield return new WaitForSeconds(directionChangeInterval);
-        }
     }
 
     void Collision_false()
@@ -173,15 +170,16 @@ public class Monster : MonoBehaviour
         
         if (Left_Collision)
         {
-            if (endPosition.x > 0)
+            if (transform.position.x>-14f)
             {
+
                 Stop = false;
             }
         }
         if (Up_Collision)
         {
 
-            if (endPosition.y <-5)
+            if (transform.position.y <9.5f)
             {
                 Stop = false;
             }
@@ -191,7 +189,7 @@ public class Monster : MonoBehaviour
 
         if (Down_Collision)
         {
-            if(endPosition.y>5) //이에 대한 각도는 속도에 따라 달라질수 있음. 속도에 의해 각도가 영향을 받기때문 해당사항 : endPosition.y만 해당//
+            if(endPosition.y>-16f) //이에 대한 각도는 속도에 따라 달라질수 있음. 속도에 의해 각도가 영향을 받기때문 해당사항 : endPosition.y만 해당//
             {
                 Stop = false;
             }
@@ -201,8 +199,12 @@ public class Monster : MonoBehaviour
 
     void ChooseNewEndPoint()
     {
-        
-        Collision_false();
+        if(!door)
+            Collision_false();
+        else
+        {
+            DisappearMonster();
+        }
 
         if (direction.x > 0 && -0.9 < direction.y && direction.y < 0.9)
         {
@@ -228,7 +230,8 @@ public class Monster : MonoBehaviour
             animator.SetFloat("DirY", 1);
         }
 
-        if (Stop)
+        
+        if (Stop&&!door)
         {
             GoToTheCenter();
         }
@@ -254,7 +257,7 @@ public class Monster : MonoBehaviour
     public IEnumerator Move(Rigidbody2D rigidBodyToMove, float speed)
     {
         float remainingDistance = (transform.position - endPosition).sqrMagnitude;
-
+        
         while (remainingDistance > float.Epsilon)
         {
             if (target != null)
