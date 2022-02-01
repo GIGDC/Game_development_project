@@ -14,16 +14,7 @@ public class Monster : MonoBehaviour
     public float directionChangeInterval;
     public bool trackControl; //몬스터의 추적 공간내에 player가 위치할때 true/ 위치하지않으면 false
 
- /*ai 행동 패턴을 위한 bool 함수 */
-    static public bool Down_Collision = false;
-    static public bool Up_Collision = false;
-    static public bool Left_Collision = false;
-    static public bool Right_Collision = false;
-    static public Vector3 direction; //목표 방향
-    static public bool Stop = false;
-    static public bool check_pattern = false;
- /*********************************/
-    [Header("근접 거리")]
+ [Header("근접 거리")]
     [SerializeField] [Range(0f, 3f)] float contactDistance = 1f; //유니티에서 간편하게 조절가능하도록함
 
     Coroutine moveCoroutine;
@@ -31,15 +22,13 @@ public class Monster : MonoBehaviour
     Animator animator;
     Transform target=null; //player
 
-    Vector3 endPosition;
-    CircleCollider2D CircleCollider2D;
-
+    static public Vector3 endPosition;
+    static public Vector3 direction;
     // Start is called before the first frame update
     private void Start()
     {
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
-        CircleCollider2D = GetComponent<CircleCollider2D>();
         init(); //변수 초기화 및 배열초기화
         StartCoroutine(WanderRoutine());
     }
@@ -49,21 +38,8 @@ public class Monster : MonoBehaviour
         endPosition = transform.position;
         currentSpeed = wanderSpeed;
         pursuitSpeed = wanderSpeed * 2f;
-        direction = Vector3FromAngle(180, 0);
     }
-    // Update is called once per frame
-    void Update()
-    {
-        Debug.DrawLine(rigid.position, endPosition, Color.red);
 
-    }
-    void OnDrawGizmos()
-    {
-        if (CircleCollider2D != null)
-        {
-            Gizmos.DrawWireSphere(transform.position, CircleCollider2D.radius);
-        }
-    }
     private void OnTriggerEnter2D(Collider2D collision) //추격자의 zone영역의 접촉면에 닿으면 true
     {
 
@@ -99,12 +75,6 @@ public class Monster : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        endPosition = transform.position;
-        Stop = true;
-    }
-
     public IEnumerator WanderRoutine()  // 플레이어를 추적하지 않고 배회하는 monster
     {
         while (true)
@@ -120,90 +90,11 @@ public class Monster : MonoBehaviour
         }
     }
 
-    void Collision_false()
-    {
-        if (!Stop&&!check_pattern)
-        {
-            if (Left_Collision)
-            {
-                direction = Vector3FromAngle(90, 90);
-                Left_Collision = false;
-            }
-            if (Up_Collision)
-            {
-                direction = Vector3FromAngle(0, 180);
-                Up_Collision = false;
-            }
-            if (Down_Collision)
-            {
-                direction = Vector3FromAngle(90, 90);
-                Down_Collision = false;
-            }
-            if (Right_Collision)
-            {
-                direction = Vector3FromAngle(180, 0);
-                Right_Collision = false;
-                check_pattern = true;
-            }
-        }
-        else if(!Stop&&check_pattern)
-        {
-            if (Left_Collision)
-            {
-                direction = Vector3FromAngle(90, 270);
-                Left_Collision = false;
-            }
-            if (Down_Collision)
-            {
-                direction = Vector3FromAngle(0, 180);
-                Down_Collision = false;
-            }
-            if (Right_Collision)
-            {
-                direction = Vector3FromAngle(180, 0);
-                Right_Collision = false;
-                check_pattern = false;
-            }
-            
-        }
-    }
-
-    void GoToTheCenter()
-    {
-        
-        if (Left_Collision)
-        {
-            if (endPosition.x > 0)
-            {
-                Stop = false;
-            }
-        }
-        if (Up_Collision)
-        {
-
-            if (endPosition.y <-5)
-            {
-                Stop = false;
-            }
-        }
-        if (Right_Collision)
-            Stop = false;
-
-        if (Down_Collision)
-        {
-            if(endPosition.y>5) //이에 대한 각도는 속도에 따라 달라질수 있음. 속도에 의해 각도가 영향을 받기때문 해당사항 : endPosition.y만 해당//
-            {
-                Stop = false;
-            }
-        }
-
-    }
-
+    
     void ChooseNewEndPoint()
     {
         
-        Collision_false();
-
+        
         if (direction.x > 0 && -0.9 < direction.y && direction.y < 0.9)
         {
 
@@ -228,11 +119,7 @@ public class Monster : MonoBehaviour
             animator.SetFloat("DirY", 1);
         }
 
-        if (Stop)
-        {
-            GoToTheCenter();
-        }
-
+        
         endPosition += direction;
 
     }
@@ -242,13 +129,6 @@ public class Monster : MonoBehaviour
         float inputAngleRadians1 = x * Mathf.Deg2Rad;
         float inputAngleRadians2 = y * Mathf.Deg2Rad;
         return new Vector3(Mathf.Cos(inputAngleRadians1), Mathf.Sin(inputAngleRadians2), 0);
-    }
-
-    Vector3 Vector3FromAngle(float inputAngleDegrees) // Player 추적시 필요
-    {
-        float inputAngleRadians = inputAngleDegrees * Mathf.Deg2Rad;
-
-        return new Vector3(Mathf.Cos(inputAngleRadians), Mathf.Sin(inputAngleRadians), 0);
     }
 
     public IEnumerator Move(Rigidbody2D rigidBodyToMove, float speed)
