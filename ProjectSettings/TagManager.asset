@@ -58,3 +58,6 @@ TagManager:
   - name: Item
     uniqueID: 396581049
     locked: 0
+  - name: Light
+    uniqueID: 1204794557
+    locked: 0

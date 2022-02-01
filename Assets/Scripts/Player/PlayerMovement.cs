@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float normalSpeed, crawlSpeed, runSpeed; 
     Vector2 movement;
-    Vector2 direction; // 플레이어가 현재 향하고 있는 방향
+    public Vector2 direction; // 플레이어가 현재 향하고 있는 방향
 
     private void Awake()
     {
