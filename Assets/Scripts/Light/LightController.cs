@@ -42,14 +42,5 @@ public class LightController : MonoBehaviour
             rotation = Quaternion.Euler(0, 0, 0);
             this.transform.rotation = rotation;
         }
-
-        if (Input.GetKey(KeyCode.Space))
-        {
-            on.SetActive(true);
-        }
-        else if (Input.GetKey(KeyCode.Escape))
-        {
-            on.SetActive(false);
-        }
     }
 }
