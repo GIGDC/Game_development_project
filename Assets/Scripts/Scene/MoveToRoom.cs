@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TransferMap : MonoBehaviour
+public class MoveToRoom : MonoBehaviour
 {
     public Animator sceneTransition;
     public float transitionTime = 1f;
@@ -65,4 +65,3 @@ public class TransferMap : MonoBehaviour
         SceneManager.LoadScene(transferMapName);
     }
 }
-
