@@ -4,44 +4,27 @@ using UnityEngine;
 
 public class ManageStairMenu : MonoBehaviour
 {
-    public static bool stairMenuOpened = false;
-    public GameObject stairMenuUI;
+    GameObject stairMenu;
 
     private void Start()
     {
-        stairMenuUI.SetActive(false);
+        stairMenu = GameObject.Find("StairMenu");
+        stairMenu.SetActive(false);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            CloseMenu();
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name != "Player")
             return;
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            OpenMenu();
-        }
+        stairMenu.SetActive(true);
     }
 
-    public void OpenMenu()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        stairMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        stairMenuOpened = true;
-    }
+        if (collision.gameObject.name != "Player")
+            return;
 
-    public void CloseMenu()
-    {
-        stairMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        stairMenuOpened = false;
+        stairMenu.SetActive(false);
     }
 }

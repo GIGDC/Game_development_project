@@ -57,3 +57,6 @@ TagManager:
   - name: Item
     uniqueID: 396581049
     locked: 0
+  - name: Map
+    uniqueID: 2074521477
+    locked: 0
