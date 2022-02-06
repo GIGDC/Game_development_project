@@ -4061,6 +4061,7 @@ GameObject:
   - component: {fileID: 2077114379}
   - component: {fileID: 2077114380}
   - component: {fileID: 2077114378}
+  - component: {fileID: 2077114381}
   m_Layer: 7
   m_Name: Monster
   m_TagString: Untagged
@@ -4150,7 +4151,6 @@ MonoBehaviour:
   wanderSpeed: 7
   currentSpeed: 4
   directionChangeInterval: 0
-  trackControl: 0
   contactDistance: 1
 --- !u!95 &2077114376
 Animator:
@@ -4233,7 +4233,23 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 2
+--- !u!70 &2077114381
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077114372}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 2.0200002, y: 1.9}
+  m_Direction: 0
 --- !u!1001 &295843433624700466
 PrefabInstance:
   m_ObjectHideFlags: 0

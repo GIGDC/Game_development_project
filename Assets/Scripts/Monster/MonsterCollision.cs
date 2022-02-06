@@ -11,18 +11,34 @@ public class MonsterCollision : MonoBehaviour
     /*****************************************/
     float MaxDistance = 7f;
     // Update is called once per frame
-
+    float directionChangeInterval=0;
     Vector2 right;
     Vector2 left;
     Vector2 front;
     bool Xcol = false; //x좌표 부딪힘
     bool Irreversible = false; //ai는 위로 올라온 후 or 아래로 내려간 후 좌 우에 부딪힐때까지 뒤로 갈수 없게 하기 위한 변수
+    Coroutine monster;
+
     void Start()
     {
         Monster.direction = Vector3FromAngle(180, 0);
+        monster= StartCoroutine(ColliseRoutine());
     }
 
-    void Update()
+    public IEnumerator ColliseRoutine()
+    {
+        while (true)
+        {
+            if (!Monster.Stop)
+            {
+                MonsterDirection();
+                MonsterRaycast();
+            }
+                yield return new WaitForSeconds(directionChangeInterval);
+        }
+    }
+
+    void MonsterDirection()
     {
         if (Monster.direction.x == -1)
         {
@@ -52,14 +68,29 @@ public class MonsterCollision : MonoBehaviour
         }
     }
 
-    public Vector3 Vector3FromAngle(float x, float y) //AI 이동
+    static public Vector3 Vector3FromAngle(float x, float y) //Ai 이동
     {
         float inputAngleRadians1 = x * Mathf.Deg2Rad;
         float inputAngleRadians2 = y * Mathf.Deg2Rad;
         return new Vector3(Mathf.Cos(inputAngleRadians1), Mathf.Sin(inputAngleRadians2), 0);
     }
 
-    void FixedUpdate()
+    void IsDoor()
+    {
+        if (hitLeft)
+        {
+
+        }
+        if (hitRight)
+        {
+
+        }
+        if (hitUp)
+        {
+
+        }
+    }
+    void MonsterRaycast()
     {
 
         //레드 - 캐릭터 기준 오른쪽
