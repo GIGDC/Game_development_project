@@ -586,6 +586,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelLoader
       objectReference: {fileID: 0}
+    - target: {fileID: 2729807781307192195, guid: cb446590ff40e1a49a386a7a717e2330, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb446590ff40e1a49a386a7a717e2330, type: 3}
 --- !u!1001 &1470378821
@@ -661,6 +665,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3448675130069852517, guid: bd44f0240920fd54fbf73ed18e9bfc6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6523115381323796845, guid: bd44f0240920fd54fbf73ed18e9bfc6c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -778,6 +786,10 @@ PrefabInstance:
     - target: {fileID: 4603186686908934619, guid: 0caeeb18ec2dafd408618aef8a8edbd2, type: 3}
       propertyPath: sceneTransition
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452381191497033954, guid: 0caeeb18ec2dafd408618aef8a8edbd2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8639768527998212400, guid: 0caeeb18ec2dafd408618aef8a8edbd2, type: 3}
       propertyPath: m_Name
@@ -945,7 +957,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2080897128
 Transform:
   m_ObjectHideFlags: 0

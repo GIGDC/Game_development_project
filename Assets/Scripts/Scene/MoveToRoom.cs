@@ -51,9 +51,9 @@ public class MoveToRoom : MonoBehaviour
         }
     }
 
-    IEnumerator LoadMap(string transferMapName)
+    private IEnumerator LoadMap(string transferMapName)
     {
-        sceneTransition.SetTrigger("Start");
+        sceneTransition.SetTrigger("FadeOut");
         doorAnim.SetBool("DoorOpen", true);
         yield return new WaitForSeconds(0.5f);
 

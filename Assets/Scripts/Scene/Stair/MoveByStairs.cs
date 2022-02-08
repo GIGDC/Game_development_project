@@ -9,19 +9,21 @@ public class MoveByStairs : MonoBehaviour
     public float transitionTime = 1f;
     public string transferMapName; // 이동할 맵의 이름
 
-    public void ChangeScene()
+    public void LoadMap()
     {
-        Debug.Log("층 이동");
-        StartCoroutine(LoadMap(transferMapName));
+        StartCoroutine(FadeOut());
+    }
+    IEnumerator FadeOut()
+    {
+        sceneTransition.SetTrigger("FadeOut");
+        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(transitionTime);
+        StartCoroutine(AsyncLoadMap());
+        yield return null;
     }
 
-    IEnumerator LoadMap(string transferMapName)
+    IEnumerator AsyncLoadMap()
     {
-        sceneTransition.SetTrigger("Start");
-        yield return new WaitForSeconds(0.5f);
-
-        yield return new WaitForSeconds(transitionTime);
-
         AsyncOperation async = SceneManager.LoadSceneAsync(transferMapName);
         async.allowSceneActivation = false;
         while (!async.isDone)
@@ -31,7 +33,7 @@ public class MoveByStairs : MonoBehaviour
             if (async.progress >= 0.9f)
             {
                 async.allowSceneActivation = true;
-                transform.parent.gameObject.SetActive(false);
+                transform.parent.parent.parent.gameObject.SetActive(false); // UI 비활성화
             }
             yield return null;
         }

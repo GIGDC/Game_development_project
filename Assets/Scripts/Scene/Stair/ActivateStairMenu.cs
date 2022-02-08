@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ManageStairMenu : MonoBehaviour
+public class ActivateStairMenu : MonoBehaviour
 {
     GameObject stairMenu;
 
