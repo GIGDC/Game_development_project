@@ -14,7 +14,7 @@ public class Monster : MonoBehaviour
     public float directionChangeInterval;
     public bool trackControl; //몬스터의 추적 공간내에 player가 위치할때 true/ 위치하지않으면 false
 
- [Header("근접 거리")]
+    [Header("근접 거리")]
     [SerializeField] [Range(0f, 3f)] float contactDistance = 1f; //유니티에서 간편하게 조절가능하도록함
 
     Coroutine moveCoroutine;
@@ -24,6 +24,7 @@ public class Monster : MonoBehaviour
 
     static public Vector3 endPosition;
     static public Vector3 direction;
+
     // Start is called before the first frame update
     private void Start()
     {
