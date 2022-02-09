@@ -6,8 +6,7 @@ TagManager:
   tags:
   - Wall
   - Amulet
-  - Up
-  - Down
+  - Monster
   layers:
   - Default
   - TransparentFX
