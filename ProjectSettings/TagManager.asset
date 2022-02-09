@@ -9,6 +9,7 @@ TagManager:
   - Up
   - Down
   - Door
+  - Monster
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LightController : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class LightController : MonoBehaviour
     {
         Vector3 temp;
         temp.x = 0.0F;
-        temp.y = 0.8F;
+        temp.y = -0.5F;
         temp.z = 0.0F;
         this.transform.position = thePlayer.transform.position - temp;
 
@@ -30,8 +31,8 @@ public class LightController : MonoBehaviour
         {
             rotation = Quaternion.Euler(0, 0, 90);
             this.transform.rotation = rotation;
-            temp.x = -1.0F;
-            temp.y = -0.5F;
+            temp.x = -0.4F;
+            temp.y = -0.3F;
             temp.z = 0.0F;
             this.transform.position = thePlayer.transform.position - temp;
         }
@@ -39,7 +40,7 @@ public class LightController : MonoBehaviour
         {
             rotation = Quaternion.Euler(0, 0, -90);
             this.transform.rotation = rotation;
-            temp.x = 1.0F;
+            temp.x = 0.3F;
             temp.y = -0.5F;
             temp.z = 0.0F;
             this.transform.position = thePlayer.transform.position - temp;
@@ -49,7 +50,7 @@ public class LightController : MonoBehaviour
             rotation = Quaternion.Euler(0, 0, 180);
             this.transform.rotation = rotation;
             temp.x = 0.0F;
-            temp.y = -1.0F;
+            temp.y = 0.0F;
             temp.z = 0.0F;
             this.transform.position = thePlayer.transform.position - temp;
         }
@@ -58,5 +59,16 @@ public class LightController : MonoBehaviour
             rotation = Quaternion.Euler(0, 0, 0);
             this.transform.rotation = rotation;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //if(collision.tag == "Monster")
+        //{
+        //    Color color = collision.GetComponent<Image>.color;
+        //    color.a = 255f;
+        //    collision.GetComponent<Image>().color = color;
+        //    print("몬스터 등장");
+        //}
     }
 }
