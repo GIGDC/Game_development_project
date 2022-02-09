@@ -1496,6 +1496,14 @@ PrefabInstance:
       propertyPath: transferMapName
       value: 1F
       objectReference: {fileID: 0}
+    - target: {fileID: 3448675130069852517, guid: bd44f0240920fd54fbf73ed18e9bfc6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532060440874519188, guid: bd44f0240920fd54fbf73ed18e9bfc6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6523115381231163436, guid: bd44f0240920fd54fbf73ed18e9bfc6c, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -4356,6 +4364,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StairMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 2546973733016570467, guid: d61b743646a91d94aa092eb57eea34ae, type: 3}
+      propertyPath: m_OverridePixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4396170448861242872, guid: d61b743646a91d94aa092eb57eea34ae, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -4439,6 +4451,14 @@ PrefabInstance:
     - target: {fileID: 4396170448861242872, guid: d61b743646a91d94aa092eb57eea34ae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9090258431945580129, guid: d61b743646a91d94aa092eb57eea34ae, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9090258431945580129, guid: d61b743646a91d94aa092eb57eea34ae, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1280
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d61b743646a91d94aa092eb57eea34ae, type: 3}
