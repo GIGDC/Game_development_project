@@ -1158,6 +1158,7 @@ MonoBehaviour:
   normalSpeed: 4
   crawlSpeed: 2
   runSpeed: 8
+  transition: {fileID: 1868263063}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -4353,6 +4354,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0caeeb18ec2dafd408618aef8a8edbd2, type: 3}
+--- !u!1 &1868263063 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5225069568687680367, guid: d61b743646a91d94aa092eb57eea34ae, type: 3}
+  m_PrefabInstance: {fileID: 1927573750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1927573750
 PrefabInstance:
   m_ObjectHideFlags: 0
