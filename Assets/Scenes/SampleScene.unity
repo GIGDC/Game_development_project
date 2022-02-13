@@ -1158,7 +1158,6 @@ MonoBehaviour:
   normalSpeed: 4
   crawlSpeed: 2
   runSpeed: 8
-  transition: {fileID: 1868263063}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -4340,6 +4339,14 @@ PrefabInstance:
       propertyPath: transferMapName
       value: Classroom
       objectReference: {fileID: 0}
+    - target: {fileID: 4369956761780953661, guid: 0caeeb18ec2dafd408618aef8a8edbd2, type: 3}
+      propertyPath: m_Size.y
+      value: 3.9746342
+      objectReference: {fileID: 0}
+    - target: {fileID: 4369956761780953661, guid: 0caeeb18ec2dafd408618aef8a8edbd2, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.82688427
+      objectReference: {fileID: 0}
     - target: {fileID: 4603186686908934619, guid: 0caeeb18ec2dafd408618aef8a8edbd2, type: 3}
       propertyPath: sceneTransition
       value: 
@@ -4350,15 +4357,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8639768527998212400, guid: 0caeeb18ec2dafd408618aef8a8edbd2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0caeeb18ec2dafd408618aef8a8edbd2, type: 3}
---- !u!1 &1868263063 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5225069568687680367, guid: d61b743646a91d94aa092eb57eea34ae, type: 3}
-  m_PrefabInstance: {fileID: 1927573750}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1927573750
 PrefabInstance:
   m_ObjectHideFlags: 0

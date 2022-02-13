@@ -5,55 +5,51 @@ using UnityEngine.SceneManagement;
 
 public class MoveToRoom : MonoBehaviour
 {
-    public Animator sceneTransition;
     public float transitionTime = 1f;
+    public GameObject roomLoader;
 
     Animator doorAnim;
     public string transferMapName; // 이동할 맵의 이름
     [Tooltip("문의 방향 설정 (front, back, right, left)")]
     public string direction;
-    Vector2 playerDirection; // 플레이어가 향하고 있는 방향
+    bool playerNearDoor;
 
     private void Awake()
     {
         doorAnim = GetComponent<Animator>();
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         // Player에 대해서만 체크
-        if (other.gameObject.name != "Player")
+        if (collision.gameObject.name != "Player")
+            return;
+        playerNearDoor = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        // Player에 대해서만 체크
+        if (collision.gameObject.name != "Player")
+            return;
+        playerNearDoor = false;
+    }
+
+    private void Update()
+    {
+        if (playerNearDoor != true)
             return;
 
-        playerDirection = GameObject.Find("Player").GetComponent<PlayerMovement>().GetDirectionNormalized();
         if (Input.GetKeyDown(KeyCode.Z))
         {
             Debug.Log("Open");
-            switch (direction)
-            {
-                case "front":
-                    if (playerDirection.y > 0)
-                        StartCoroutine(LoadMap(transferMapName));
-                    break;
-                case "back":
-                    if (playerDirection.y < 0)
-                        StartCoroutine(LoadMap(transferMapName));
-                    break;
-                case "right":
-                    if (playerDirection.x > 0)
-                        StartCoroutine(LoadMap(transferMapName));
-                    break;
-                case "left":
-                    if (playerDirection.x < 0)
-                        StartCoroutine(LoadMap(transferMapName));
-                    break;
-            }
+            StartCoroutine(LoadMap(transferMapName));
         }
     }
 
     private IEnumerator LoadMap(string transferMapName)
     {
-        sceneTransition.SetTrigger("FadeOut");
+        roomLoader.GetComponent<Animator>().SetTrigger("FadeOut");
         doorAnim.SetBool("DoorOpen", true);
         yield return new WaitForSeconds(0.5f);
 

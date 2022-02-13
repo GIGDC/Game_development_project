@@ -130,7 +130,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1438517978182113980}
   - component: {fileID: 4725285538792272099}
-  - component: {fileID: 8297555000374810664}
   m_Layer: 0
   m_Name: RoomLoader
   m_TagString: Untagged
@@ -172,22 +171,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8297555000374810664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858251310637913448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83f8633fdf93d1f4bbc2614b1bac8dd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneTransition: {fileID: 4725285538792272099}
-  transitionTime: 1
-  transferMapName: 
-  direction: 
 --- !u!1 &8949762612530540465
 GameObject:
   m_ObjectHideFlags: 0
