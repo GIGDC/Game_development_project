@@ -8,26 +8,28 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    public float pursuitSpeed;  // monster°¡ ÇÃ·¹ÀÌ¾î¸¦ ÃßÀûÇÏ´Â ¼Óµµ
-    public float wanderSpeed;   // Æò»ó½Ã monsterÀÇ ¼Óµµ
-    public float currentSpeed;  // ÇöÀç ¼Óµµ
+    public float pursuitSpeed;  // monsterê°€ í”Œë ˆì´ì–´ë¥¼ ì¶”ì í•˜ëŠ” ì†ë„
+    public float wanderSpeed;   // í‰ìƒì‹œ monsterì˜ ì†ë„
+    public float currentSpeed;  // í˜„ì¬ ì†ë„
     public float directionChangeInterval;
     Transform target; //player
 
-    [Header("±ÙÁ¢ °Å¸®")]
+    [Header("ê·¼ì ‘ ê±°ë¦¬")]
     [SerializeField]
     [Range(0f, 3f)]
-    float contactDistance = 3f; //À¯´ÏÆ¼¿¡¼­ °£ÆíÇÏ°Ô Á¶Àı°¡´ÉÇÏµµ·ÏÇÔ
+    float contactDistance = 3f; //ìœ ë‹ˆí‹°ì—ì„œ ê°„í¸í•˜ê²Œ ì¡°ì ˆê°€ëŠ¥í•˜ë„ë¡í•¨
 
     Coroutine moveCoroutine;
     Coroutine wanderCoroutine;
     Rigidbody2D rigid;
     Animator animator;
-    bool trackControl = false; //¸ó½ºÅÍÀÇ ÃßÀû °ø°£³»¿¡ player°¡ À§Ä¡ÇÒ¶§ true/ À§Ä¡ÇÏÁö¾ÊÀ¸¸é false
+    bool trackControl = false; //ëª¬ìŠ¤í„°ì˜ ì¶”ì  ê³µê°„ë‚´ì— playerê°€ ìœ„ì¹˜í• ë•Œ true/ ìœ„ì¹˜í•˜ì§€ì•Šìœ¼ë©´ false
     static public Vector3 endPosition;
     static public Vector3 direction;
+    
     static public bool Stop = false;
     static public bool Bugfix = false;
+
     // Start is called before the first frame update
 
     private void Start()
@@ -35,7 +37,7 @@ public class Monster : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
-        init(); //º¯¼ö ÃÊ±âÈ­ ¹× ¹è¿­ÃÊ±âÈ­
+        init(); //ë³€ìˆ˜ ì´ˆê¸°í™” ë° ë°°ì—´ì´ˆê¸°í™”
         wanderCoroutine = StartCoroutine(WanderRoutine());
     }
 
@@ -57,7 +59,7 @@ public class Monster : MonoBehaviour
     {
         Bugfix = true;
     }
-    private void OnTriggerEnter2D(Collider2D collision) //Ãß°İÀÚÀÇ zone¿µ¿ªÀÇ Á¢ÃË¸é¿¡ ´êÀ¸¸é true
+    private void OnTriggerEnter2D(Collider2D collision) //ì¶”ê²©ìì˜ zoneì˜ì—­ì˜ ì ‘ì´‰ë©´ì— ë‹¿ìœ¼ë©´ true
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -65,13 +67,13 @@ public class Monster : MonoBehaviour
             trackControl = true;
         }
     }
-    private void OnTriggerExit2D(Collider2D collision) //Ãß°İÀÚÀÇ zone ¿µ¿ªÀÇ Á¢ÃË¸é¿¡¼­ ¶³¾îÁö¸é false
+    private void OnTriggerExit2D(Collider2D collision) //ì¶”ê²©ìì˜ zone ì˜ì—­ì˜ ì ‘ì´‰ë©´ì—ì„œ ë–¨ì–´ì§€ë©´ false
     {
         trackControl = false;
 
     }
 
-    public IEnumerator WanderRoutine()  // ÇÃ·¹ÀÌ¾î¸¦ ÃßÀûÇÏÁö ¾Ê°í ¹èÈ¸ÇÏ´Â monster
+    public IEnumerator WanderRoutine()  // í”Œë ˆì´ì–´ë¥¼ ì¶”ì í•˜ì§€ ì•Šê³  ë°°íšŒí•˜ëŠ” monster
     {
         while (true)
         {
@@ -80,7 +82,7 @@ public class Monster : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-                ChooseNewEndPoint();  // ÇâÇÒ ¸ñÀûÁö ¼±ÅÃ
+                ChooseNewEndPoint();  // í–¥í•  ëª©ì ì§€ ì„ íƒ
 
             if (moveCoroutine != null)
             {
@@ -160,7 +162,7 @@ public class Monster : MonoBehaviour
                 }
             }
 
-            // °ø°İ¹Ş°í ÀÖÀ» ¶§ ¿òÁ÷ÀÓ ÀÏ½ÃÁ¤Áö
+            // ê³µê²©ë°›ê³  ìˆì„ ë•Œ ì›€ì§ì„ ì¼ì‹œì •ì§€
             if (GetComponent<MonsterStatus>().Attacked || Stop)
             {
                 animator.SetBool("isWalking", false);

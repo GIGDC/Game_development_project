@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Wall
   - Amulet
+  - Up
+  - Down
+  - Door
   - Monster
   layers:
   - Default
@@ -17,7 +20,7 @@ TagManager:
   - Player
   - Monster
   - Item
-  - 
+  - PostProcessing
   - 
   - 
   - 
@@ -55,4 +58,7 @@ TagManager:
     locked: 0
   - name: Item
     uniqueID: 396581049
+    locked: 0
+  - name: Light
+    uniqueID: 1204794557
     locked: 0
