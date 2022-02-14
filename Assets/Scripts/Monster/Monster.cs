@@ -27,7 +27,9 @@ public class Monster : MonoBehaviour
     static public Vector3 endPosition;
     static public Vector3 direction;
     static public bool Stop = false;
+    static public bool Bugfix = false;
     // Start is called before the first frame update
+
     private void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -53,37 +55,43 @@ public class Monster : MonoBehaviour
     }
     void OnCollisionExit2D(Collision2D collision)
     {
-        Stop = false;
+        Bugfix = true;
     }
     private void OnTriggerEnter2D(Collider2D collision) //추격자의 zone영역의 접촉면에 닿으면 true
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+
             trackControl = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision) //추격자의 zone 영역의 접촉면에서 떨어지면 false
     {
         trackControl = false;
-        
+
     }
 
     public IEnumerator WanderRoutine()  // 플레이어를 추적하지 않고 배회하는 monster
     {
         while (true)
-                {
-                    ChooseNewEndPoint();  // 향할 목적지 선택
+        {
 
-                    if (moveCoroutine != null)
-                    {
-                        StopCoroutine(moveCoroutine);
-                    }
+            if (TransferMap.CheckMonster)
+            {
+                Destroy(gameObject);
+            }
+                ChooseNewEndPoint();  // 향할 목적지 선택
 
-                    moveCoroutine = StartCoroutine(Move(rigid, currentSpeed));
+            if (moveCoroutine != null)
+            {
+                StopCoroutine(moveCoroutine);
+            }
 
-                    yield return new WaitForSeconds(directionChangeInterval);
-           
-         }
+            moveCoroutine = StartCoroutine(Move(rigid, currentSpeed));
+
+            yield return new WaitForSeconds(directionChangeInterval);
+
+        }
     }
 
     Vector3 Vector3FromAngle(float inputAngleDegrees)
@@ -139,8 +147,21 @@ public class Monster : MonoBehaviour
                 }
             }
 
+            if (Bugfix)
+            {
+                if (endPosition.y > -12 && endPosition.y < 5)
+                {
+                    Monster.direction = MonsterCollision.Vector3FromAngle(90, 90);
+                }
+                else
+                {
+                    Bugfix = false;
+                    Stop = false;
+                }
+            }
+
             // 공격받고 있을 때 움직임 일시정지
-            if (GetComponent<MonsterStatus>().Attacked||Stop)
+            if (GetComponent<MonsterStatus>().Attacked || Stop)
             {
                 animator.SetBool("isWalking", false);
             }
