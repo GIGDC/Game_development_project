@@ -8,30 +8,37 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    public float pursuitSpeed;  // monster°¡ ÇÃ·¹ÀÌ¾î¸¦ ÃßÀûÇÏ´Â ¼Óµµ
-    public float wanderSpeed;   // Æò»ó½Ã monsterÀÇ ¼Óµµ
-    public float currentSpeed;  // ÇöÀç ¼Óµµ
+    public float pursuitSpeed;  // monsterê°€ í”Œë ˆì´ì–´ë¥¼ ì¶”ì í•˜ëŠ” ì†ë„
+    public float wanderSpeed;   // í‰ìƒì‹œ monsterì˜ ì†ë„
+    public float currentSpeed;  // í˜„ì¬ ì†ë„
     public float directionChangeInterval;
-    public bool trackControl; //¸ó½ºÅÍÀÇ ÃßÀû °ø°£³»¿¡ player°¡ À§Ä¡ÇÒ¶§ true/ À§Ä¡ÇÏÁö¾ÊÀ¸¸é false
+    Transform target; //player
 
-    [Header("±ÙÁ¢ °Å¸®")]
-    [SerializeField] [Range(0f, 3f)] float contactDistance = 1f; //À¯´ÏÆ¼¿¡¼­ °£ÆíÇÏ°Ô Á¶Àı°¡´ÉÇÏµµ·ÏÇÔ
+    [Header("ê·¼ì ‘ ê±°ë¦¬")]
+    [SerializeField]
+    [Range(0f, 3f)]
+    float contactDistance = 3f; //ìœ ë‹ˆí‹°ì—ì„œ ê°„í¸í•˜ê²Œ ì¡°ì ˆê°€ëŠ¥í•˜ë„ë¡í•¨
 
     Coroutine moveCoroutine;
+    Coroutine wanderCoroutine;
     Rigidbody2D rigid;
     Animator animator;
-    Transform target=null; //player
-
+    bool trackControl = false; //ëª¬ìŠ¤í„°ì˜ ì¶”ì  ê³µê°„ë‚´ì— playerê°€ ìœ„ì¹˜í• ë•Œ true/ ìœ„ì¹˜í•˜ì§€ì•Šìœ¼ë©´ false
     static public Vector3 endPosition;
     static public Vector3 direction;
+    
+    static public bool Stop = false;
+    static public bool Bugfix = false;
 
     // Start is called before the first frame update
+
     private void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
-        init(); //º¯¼ö ÃÊ±âÈ­ ¹× ¹è¿­ÃÊ±âÈ­
-        StartCoroutine(WanderRoutine());
+        init(); //ë³€ìˆ˜ ì´ˆê¸°í™” ë° ë°°ì—´ì´ˆê¸°í™”
+        wanderCoroutine = StartCoroutine(WanderRoutine());
     }
 
     void init()
@@ -40,77 +47,78 @@ public class Monster : MonoBehaviour
         currentSpeed = wanderSpeed;
         pursuitSpeed = wanderSpeed * 2f;
     }
-
-    private void OnTriggerEnter2D(Collider2D collision) //Ãß°İÀÚÀÇ zone¿µ¿ªÀÇ Á¢ÃË¸é¿¡ ´êÀ¸¸é true
-    {
-
-        if (collision.gameObject.CompareTag("Player")&&trackControl)
-        {
-          //  currentSpeed = pursuitSpeed;
-          //  target = collision.gameObject.transform;
-          //  Vector3 v = target.position - transform.position;
-          //  direction = Vector3FromAngle(Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg);
-
-       //     Debug.Log(direction);
-         //   if (moveCoroutine != null)
-          //  {
-          //      StopCoroutine(moveCoroutine);
-           // }
-           // moveCoroutine = StartCoroutine(Move(rigid, currentSpeed));
-        }
-
-    }
-
-    private void OnTriggerExit2D(Collider2D collision) //Ãß°İÀÚÀÇ zone ¿µ¿ªÀÇ Á¢ÃË¸é¿¡¼­ ¶³¾îÁö¸é false
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            animator.SetBool("isWalking", false);
-            currentSpeed = wanderSpeed;
-
-            if (moveCoroutine != null)
-            {
-                StopCoroutine(moveCoroutine);
-            }
-            target = null;
+            Stop = true;
+            trackControl = false;
         }
     }
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        Bugfix = true;
+    }
+    private void OnTriggerEnter2D(Collider2D collision) //ì¶”ê²©ìì˜ zoneì˜ì—­ì˜ ì ‘ì´‰ë©´ì— ë‹¿ìœ¼ë©´ true
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
 
-    public IEnumerator WanderRoutine()  // ÇÃ·¹ÀÌ¾î¸¦ ÃßÀûÇÏÁö ¾Ê°í ¹èÈ¸ÇÏ´Â monster
+            trackControl = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision) //ì¶”ê²©ìì˜ zone ì˜ì—­ì˜ ì ‘ì´‰ë©´ì—ì„œ ë–¨ì–´ì§€ë©´ false
+    {
+        trackControl = false;
+
+    }
+
+    public IEnumerator WanderRoutine()  // í”Œë ˆì´ì–´ë¥¼ ì¶”ì í•˜ì§€ ì•Šê³  ë°°íšŒí•˜ëŠ” monster
     {
         while (true)
         {
-            ChooseNewEndPoint();  // ÇâÇÒ ¸ñÀûÁö ¼±ÅÃ
-            
+
+            if (TransferMap.CheckMonster)
+            {
+                Destroy(gameObject);
+            }
+                ChooseNewEndPoint();  // í–¥í•  ëª©ì ì§€ ì„ íƒ
+
             if (moveCoroutine != null)
             {
                 StopCoroutine(moveCoroutine);
             }
+
             moveCoroutine = StartCoroutine(Move(rigid, currentSpeed));
+
             yield return new WaitForSeconds(directionChangeInterval);
+
         }
     }
 
-    
+    Vector3 Vector3FromAngle(float inputAngleDegrees)
+    {
+        float inputAngleRadians = inputAngleDegrees * Mathf.Deg2Rad;
+
+        return new Vector3(Mathf.Cos(inputAngleRadians), Mathf.Sin(inputAngleRadians), 0);
+    }
+
+
     void ChooseNewEndPoint()
     {
-        
-        
+
         if (direction.x > 0 && -0.9 < direction.y && direction.y < 0.9)
         {
-
             animator.SetFloat("DirX", 1);
             animator.SetFloat("DirY", 0);
         }
-        else if (direction.x <= 0 && -0.9 < direction.y && direction.y < 0.9)
+        else if (direction.x < 0 && -0.9 < direction.y && direction.y < 0.9)
         {
-
             animator.SetFloat("DirX", -1);
             animator.SetFloat("DirY", 0);
         }
-        else if (-0.9 < direction.x && direction.x < 0.9 && direction.y >= 0)
+        else if (-0.9 < direction.x && direction.x < 0.9 && direction.y > 0)
         {
-
             animator.SetFloat("DirX", 0);
             animator.SetFloat("DirY", -1);
         }
@@ -120,16 +128,8 @@ public class Monster : MonoBehaviour
             animator.SetFloat("DirY", 1);
         }
 
-        
         endPosition += direction;
 
-    }
-
-    static public Vector3 Vector3FromAngle(float x, float y) //AI ÀÌµ¿
-    {
-        float inputAngleRadians1 = x * Mathf.Deg2Rad;
-        float inputAngleRadians2 = y * Mathf.Deg2Rad;
-        return new Vector3(Mathf.Cos(inputAngleRadians1), Mathf.Sin(inputAngleRadians2), 0);
     }
 
     public IEnumerator Move(Rigidbody2D rigidBodyToMove, float speed)
@@ -142,15 +142,32 @@ public class Monster : MonoBehaviour
             {
                 if (Vector2.Distance(transform.position, target.position) > contactDistance && trackControl)
                 {
+                    Vector3 v = target.position - transform.position;
+                    direction = Vector3FromAngle(Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg);
+                    speed = pursuitSpeed;
                     endPosition = target.position;
                 }
             }
 
-            // °ø°İ¹Ş°í ÀÖÀ» ¶§ ¿òÁ÷ÀÓ ÀÏ½ÃÁ¤Áö
-            if (GetComponent<MonsterStatus>().Attacked)
+            if (Bugfix)
+            {
+                if (endPosition.y > -12 && endPosition.y < 5)
+                {
+                    Monster.direction = MonsterCollision.Vector3FromAngle(90, 90);
+                }
+                else
+                {
+                    Bugfix = false;
+                    Stop = false;
+                }
+            }
+
+            // ê³µê²©ë°›ê³  ìˆì„ ë•Œ ì›€ì§ì„ ì¼ì‹œì •ì§€
+            if (GetComponent<MonsterStatus>().Attacked || Stop)
             {
                 animator.SetBool("isWalking", false);
             }
+
             else if (rigidBodyToMove != null)
             {
                 animator.SetBool("isWalking", true);

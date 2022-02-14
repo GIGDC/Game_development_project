@@ -13,6 +13,29 @@ public class TransferMap : MonoBehaviour
     [Tooltip("문의 방향 설정 (front, back, right, left)")]
     public string direction;
     Vector2 playerDirection; // 플레이어가 향하고 있는 방향
+    RaycastHit2D MonsterCheck;
+
+    static public bool CheckMonster=false;
+    
+    private void FixedUpdate()
+    {
+        MonsterCheck = Physics2D.Raycast(transform.position, Vector2.down, 3f, LayerMask.GetMask("Monster"));
+        Debug.DrawRay(transform.position, Vector2.down * 3f, Color.red);
+
+        if (MonsterCheck&&!MonsterTimer.OutDoor)
+        {
+            Vector3 v = transform.position- (Vector3)MonsterCheck.rigidbody.position;
+            Monster.direction = Vector3FromAngle(Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg);
+            Debug.Log(Monster.direction);
+        }
+    }
+    //같은 함수는 하나의 클래스에 묶어서 관리하도록 정리할 예정.
+    Vector3 Vector3FromAngle(float inputAngleDegrees)
+    {
+        float inputAngleRadians = inputAngleDegrees * Mathf.Deg2Rad;
+
+        return new Vector3(Mathf.Cos(inputAngleRadians), Mathf.Sin(inputAngleRadians), 0);
+    }
 
     private void Awake()
     {
@@ -21,7 +44,12 @@ public class TransferMap : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        // Player에 대해서만 체크
+
+        if (other.gameObject.CompareTag("Monster")&&!MonsterTimer.OutDoor)
+        {
+            CheckMonster = true;
+        }
+
         if (other.gameObject.name != "Player")
             return;
 
@@ -65,4 +93,3 @@ public class TransferMap : MonoBehaviour
         SceneManager.LoadScene(transferMapName);
     }
 }
-

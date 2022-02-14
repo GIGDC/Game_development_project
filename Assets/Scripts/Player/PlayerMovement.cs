@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     SpriteRenderer spriteRenderer;
 
     public float speed;
-    public float normalSpeed, crawlSpeed, runSpeed; 
+    public float normalSpeed, crawlSpeed, runSpeed;
     Vector2 movement;
     public Vector2 direction; // 플레이어가 현재 향하고 있는 방향
 
@@ -25,14 +25,14 @@ public class PlayerMovement : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-        if(movement.sqrMagnitude > 0)
+        if (movement.sqrMagnitude > 0)
         {
             direction.x = Input.GetAxisRaw("Horizontal");
             direction.y = Input.GetAxisRaw("Vertical");
         }
 
         ChangeMoveSpeed();
-        if(animator.GetFloat("MoveSpeed") > 0)
+        if (animator.GetFloat("MoveSpeed") > 0)
         {
             animator.SetFloat("MoveHorizontally", movement.x);
             animator.SetFloat("MoveVertically", movement.y);
