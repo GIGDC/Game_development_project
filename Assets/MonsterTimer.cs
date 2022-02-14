@@ -12,7 +12,7 @@ public class MonsterTimer : MonoBehaviour
     void InvokeTest()
     {
         prefabs.SetActive(true);
-        TransferMap.CheckMonster = false;
+        MoveToRoom.CheckMonster = false;
         Debug.Log("»£√‚");
         OutDoor = true;
         monster = Instantiate(prefabs,new Vector3(-9f,8f,0), Quaternion.identity);
@@ -33,7 +33,7 @@ public class MonsterTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (TransferMap.CheckMonster)
+        if (MoveToRoom.CheckMonster)
         {
             Invoke("InvokeTest", 10f);
         }

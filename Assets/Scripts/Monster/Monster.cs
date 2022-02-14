@@ -78,7 +78,7 @@ public class Monster : MonoBehaviour
         while (true)
         {
 
-            if (TransferMap.CheckMonster)
+            if (MoveToRoom.CheckMonster)
             {
                 Destroy(gameObject);
             }

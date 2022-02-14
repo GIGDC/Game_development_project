@@ -9,7 +9,7 @@ public class MonsterSpwner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TransferMap.CheckMonster = false;
+        MoveToRoom.CheckMonster = false;
         prefabs.SetActive(true);
 
         int RandomX = UnityEngine.Random.Range(-24, 35);
