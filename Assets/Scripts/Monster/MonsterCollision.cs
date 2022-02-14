@@ -11,18 +11,33 @@ public class MonsterCollision : MonoBehaviour
     /*****************************************/
     float MaxDistance = 7f;
     // Update is called once per frame
-
+    float directionChangeInterval = 0;
     Vector2 right;
     Vector2 left;
     Vector2 front;
     bool Xcol = false; //x좌표 부딪힘
     bool Irreversible = false; //ai는 위로 올라온 후 or 아래로 내려간 후 좌 우에 부딪힐때까지 뒤로 갈수 없게 하기 위한 변수
+    static public Coroutine monster;
+
     void Start()
     {
         Monster.direction = Vector3FromAngle(180, 0);
+        monster = StartCoroutine(ColliseRoutine());
     }
 
-    void Update()
+    public IEnumerator ColliseRoutine()
+    {
+        while (true)
+        {
+            if (!Monster.Stop)
+            {
+                MonsterDirection();
+                MonsterRaycast();
+            }
+            yield return new WaitForSeconds(directionChangeInterval);
+        }
+    }
+    void MonsterDirection()
     {
         if (Monster.direction.x == -1)
         {
@@ -52,14 +67,14 @@ public class MonsterCollision : MonoBehaviour
         }
     }
 
-    public Vector3 Vector3FromAngle(float x, float y) //AI 이동
+    static public Vector3 Vector3FromAngle(float x, float y) //Ai 이동
     {
         float inputAngleRadians1 = x * Mathf.Deg2Rad;
         float inputAngleRadians2 = y * Mathf.Deg2Rad;
         return new Vector3(Mathf.Cos(inputAngleRadians1), Mathf.Sin(inputAngleRadians2), 0);
     }
 
-    void FixedUpdate()
+    void MonsterRaycast()
     {
 
         //레드 - 캐릭터 기준 오른쪽
@@ -77,8 +92,6 @@ public class MonsterCollision : MonoBehaviour
         Monster.endPosition = transform.position;
 
         bool op; //0이면 false, 1면 true 에따라 길을 고른다.
-
-
         if (hitUp) //앞이막힌경우 
         {
             if (hitLeft && hitRight) //좌 우 막힌경우 
@@ -119,7 +132,8 @@ public class MonsterCollision : MonoBehaviour
 
         else //앞이 막히지 않은 경우!
         {
-            if (!Irreversible) {
+            if (!Irreversible)
+            {
                 if (hitRight && !hitLeft) //앞-왼쪽이 막히지 않은 경우 
                 {
                     if (Monster.endPosition.x > -12f && Monster.endPosition.y < -13f)
@@ -187,7 +201,7 @@ public class MonsterCollision : MonoBehaviour
                     }
                 }
             }
-           // Debug.Log("Irreversible : " + Irreversible);
         }
+        // Debug.Log("Irreversible : " + Irreversible);
     }
 }
