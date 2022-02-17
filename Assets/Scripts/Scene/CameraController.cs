@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(this.gameObject); // memory leak
         player = GameObject.FindObjectOfType<PlayerMovement>();
     }
     // Update is called once per frame
