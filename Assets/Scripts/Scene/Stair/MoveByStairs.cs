@@ -20,6 +20,7 @@ public class MoveByStairs : MonoBehaviour
     {
         StartCoroutine(FadeOut());
     }
+
     IEnumerator FadeOut()
     {
         animator.SetBool("FadeOut", true);

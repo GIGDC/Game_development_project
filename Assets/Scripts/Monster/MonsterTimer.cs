@@ -5,21 +5,22 @@ using UnityEngine;
 public class MonsterTimer : MonoBehaviour
 {
     public GameObject prefabs;
-    GameObject monster;
+    Monster monster;
 
     static public bool OutDoor = false;
 
     void Start()
     {
-        monster = GameObject.FindWithTag("Monster");
+        monster = GameObject.FindObjectOfType<Monster>();
     }
     void InvokeTest()
     {
-        prefabs.SetActive(true);
+        monster.gameObject.SetActive(true);
         MoveToRoom.CheckMonster = false;
         Debug.Log("호출");
         OutDoor = true;
-        monster = Instantiate(prefabs,new Vector3(-9f,8f,0), Quaternion.identity);
+        monster.wanderCoroutine = StartCoroutine(monster.WanderRoutine());
+        //monster = Instantiate(prefabs,new Vector3(-9f,8f,0), Quaternion.identity);
         Vector3 tmp = new Vector3(-11f, 7f, 0); //이동할 임시 위치
         Vector3 v = tmp - (Vector3)monster.transform.position;
         Monster.direction = Vector3FromAngle(Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg); //이동후 원래대로 동작!

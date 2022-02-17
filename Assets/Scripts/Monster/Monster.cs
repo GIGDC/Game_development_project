@@ -20,7 +20,7 @@ public class Monster : MonoBehaviour
     float contactDistance = 3f; //유니티에서 간편하게 조절가능하도록함
 
     Coroutine moveCoroutine;
-    Coroutine wanderCoroutine;
+    public Coroutine wanderCoroutine;
     Rigidbody2D rigid;
     Animator animator;
     bool trackControl = false; //몬스터의 추적 공간내에 player가 위치할때 true/ 위치하지않으면 false
@@ -30,11 +30,15 @@ public class Monster : MonoBehaviour
     static public bool Stop = false;
     static public bool Bugfix = false;
 
+
+    private Timer_60 clock;
     // Start is called before the first frame update
 
     private void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        clock = GameObject.FindObjectOfType<Timer_60>(); // Timer_60에 대한 clock을 찾음
+
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         init(); //변수 초기화 및 배열초기화
@@ -46,6 +50,15 @@ public class Monster : MonoBehaviour
         endPosition = transform.position;
         currentSpeed = wanderSpeed;
         pursuitSpeed = wanderSpeed * 2f;
+    }
+    public void Hide()
+    {
+        if(wanderCoroutine!=null)
+            StopCoroutine(wanderCoroutine);
+        if (moveCoroutine != null)
+            StopCoroutine(moveCoroutine);
+
+        gameObject.SetActive(false);
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -77,10 +90,14 @@ public class Monster : MonoBehaviour
     {
         while (true)
         {
-
             if (MoveToRoom.CheckMonster)
             {
-                Destroy(gameObject);
+
+                if (moveCoroutine != null)
+                    StopCoroutine(moveCoroutine);
+
+                Hide();
+                //Destroy(gameObject); -> 게임 오브젝트 삭제 
             }
                 ChooseNewEndPoint();  // 향할 목적지 선택
 

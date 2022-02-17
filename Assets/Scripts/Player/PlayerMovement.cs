@@ -13,6 +13,10 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movement;
     public Vector2 direction; // 플레이어가 현재 향하고 있는 방향
 
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+    }
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject); // memory leak
