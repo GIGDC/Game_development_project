@@ -7,29 +7,19 @@ using UnityEngine.UI;
 public class MoveByStairs : GameManager
 {
     int cnt = 0;
+    private Button firstFloorBtn;
+
     private void Start()
     {
         animator = GetAnimator();
+        firstFloorBtn = GameObject.Find("1F").GetComponent<Button>();
+        firstFloorBtn.onClick.AddListener(SceneTransition);
     }
 
-    private void Update()
+    private void SceneTransition()
     {
-        if (GameObject.Find("1F").GetComponent<Button>().onClick != null && cnt == 0)
-        {
-            transferScene = "1F";
-            StartCoroutine(FadeOut());
-            cnt++;
-        }
-    }
-
-    protected IEnumerator FadeOut()
-    {
-        animator.SetBool("FadeOut", true);
-        animator.SetBool("FadeIn", false);
-        yield return new WaitForSeconds(0.5f);
-        yield return new WaitForSeconds(transitionTime);
-        StartCoroutine(AsyncLoadMap());
-        yield return null;
+        transferScene = "1F";
+        StartCoroutine(FadeOut());
     }
 }
 
