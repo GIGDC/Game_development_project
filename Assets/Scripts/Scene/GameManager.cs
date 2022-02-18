@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    protected IEnumerator FadeOut()
+    virtual protected IEnumerator FadeOut()
     {
         animator.SetBool("FadeOut", true);
         animator.SetBool("FadeIn", false);
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         yield return null;
     }
 
-    protected IEnumerator FadeIn()
+    virtual protected IEnumerator FadeIn()
     {
         animator.SetBool("FadeOut", false);
         animator.SetBool("FadeIn", true);
