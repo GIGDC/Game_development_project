@@ -11,9 +11,9 @@ public class GameManager : MonoBehaviour
 
     public float transitionTime = 1f;
     protected string transferScene; // 이동할 씬 이름 (protected: 계단 이동의 경우 1F, 2F, 3F 등이 있으므로 unity editor에서 수정하기 어려움)
-    protected static Animator animator;
+    protected Animator animator;
 
-    void Start()
+    private void Start()
     {
         DontDestroyOnLoad(this.gameObject); // memory leak
 
@@ -25,9 +25,9 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void Update()
+    private void Update()
     {   
-        if (clock.isStop)
+        if (clock.isStop) // 계단 메뉴가 활성화되었을 때 NullReferenceException이 뜨는 이유는?
         {
             monster.Hide();
             player.Hide();
@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         }   
     }
 
-    public IEnumerator LoadMap(string transferMapName)
+    protected IEnumerator LoadMap(string transferMapName)
     {
         clock.isStop = false;
         yield return new WaitForSeconds(0f);

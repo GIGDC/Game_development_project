@@ -16,7 +16,7 @@ public class MoveByStairs : GameManager
         firstFloorBtn.onClick.AddListener(SceneTransition);
     }
 
-    private void SceneTransition()
+    public void SceneTransition()
     {
         transferScene = "1F";
         StartCoroutine(FadeOut());
