@@ -59,8 +59,9 @@ public class MoveToRoom : GameManager
 
     override protected IEnumerator FadeOut()
     {
-        animator.SetBool("FadeOut", true);
-        animator.SetBool("FadeIn", false);
+        transitionAnimator = GetTransitionAnimator();
+        transitionAnimator.SetBool("FadeOut", true);
+        transitionAnimator.SetBool("FadeIn", false);
         doorAnim.SetBool("DoorOpen", true);
         yield return new WaitForSeconds(0.5f);
         yield return new WaitForSeconds(transitionTime);

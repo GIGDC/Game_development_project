@@ -11,18 +11,20 @@ public class GameManager : MonoBehaviour
 
     public float transitionTime = 1f;
     protected string transferScene; // 이동할 씬 이름 (protected: 계단 이동의 경우 1F, 2F, 3F 등이 있으므로 unity editor에서 수정하기 어려움)
-    protected Animator animator;
+    protected Animator transitionAnimator;
 
-    private void Start()
+    private void Awake()
     {
         DontDestroyOnLoad(this.gameObject); // memory leak
 
-        animator = GetComponent<Animator>();
+        transitionAnimator = GetComponent<Animator>();
+    }
 
+    private void Start()
+    {
         clock = GameObject.FindObjectOfType<Timer_60>(); // Timer_60에 대한 clock을 찾음
         monster = GameObject.FindObjectOfType<Monster>();
         player = GameObject.FindObjectOfType<PlayerMovement>();
-
     }
 
     private void Update()
@@ -47,8 +49,8 @@ public class GameManager : MonoBehaviour
 
     virtual protected IEnumerator FadeOut()
     {
-        animator.SetBool("FadeOut", true);
-        animator.SetBool("FadeIn", false);
+        transitionAnimator.SetBool("FadeOut", true);
+        transitionAnimator.SetBool("FadeIn", false);
         yield return new WaitForSeconds(0.5f);
         yield return new WaitForSeconds(transitionTime);
         StartCoroutine(AsyncLoadMap());
@@ -57,12 +59,12 @@ public class GameManager : MonoBehaviour
 
     virtual protected IEnumerator FadeIn()
     {
-        animator.SetBool("FadeOut", false);
-        animator.SetBool("FadeIn", true);
+        transitionAnimator.SetBool("FadeOut", false);
+        transitionAnimator.SetBool("FadeIn", true);
         yield return new WaitForSeconds(0.5f);
         yield return new WaitForSeconds(transitionTime);
-        animator.SetBool("FadeOut", false);
-        animator.SetBool("FadeIn", false);
+        transitionAnimator.SetBool("FadeOut", false);
+        transitionAnimator.SetBool("FadeIn", false);
         yield return null;
     }
 
@@ -85,8 +87,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    protected Animator GetAnimator()
+    protected Animator GetTransitionAnimator()
     {
-        return animator;
+        return GameObject.Find("GameManager").GetComponent<Animator>();
     }
 }

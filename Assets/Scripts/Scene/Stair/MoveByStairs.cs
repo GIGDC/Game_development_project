@@ -6,19 +6,10 @@ using UnityEngine.UI;
 
 public class MoveByStairs : GameManager
 {
-    int cnt = 0;
-    private Button firstFloorBtn;
-
-    private void Start()
+    public void SceneTransition(string sceneName)
     {
-        animator = GetAnimator();
-        firstFloorBtn = GameObject.Find("1F").GetComponent<Button>();
-        firstFloorBtn.onClick.AddListener(SceneTransition);
-    }
-
-    public void SceneTransition()
-    {
-        transferScene = "1F";
+        transitionAnimator = GetTransitionAnimator();
+        transferScene = sceneName;
         StartCoroutine(FadeOut());
     }
 }
