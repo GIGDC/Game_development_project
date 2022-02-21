@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
     private PlayerMovement player;
 
     void Start()
-    {
+    { 
+        DontDestroyOnLoad(this.gameObject); // memory leak
         clock = GameObject.FindObjectOfType<Timer_60>(); // Timer_60에 대한 clock을 찾음
         monster = GameObject.FindObjectOfType<Monster>();
         player = GameObject.FindObjectOfType<PlayerMovement>();
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour
             player.Hide();
 
             StartCoroutine(LoadMap("GameOver"));
-        }   
+        }
     }
 
     public IEnumerator LoadMap(string transferMapName)

@@ -26,7 +26,7 @@ public class Timer_60 : MonoBehaviour
     void DisplayTime()
     {
 
-        if (timer >= 60.0f)
+        if (timer >= 61.0f)
         {
             timer -= 60.0f;
             isStop = true;
