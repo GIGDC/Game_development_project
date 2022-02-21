@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {   
-        if (clock.isStop) // 계단 메뉴가 활성화되었을 때 NullReferenceException이 뜨는 이유는?
+        if (clock.isStop)
         {
             monster.Hide();
             player.Hide();
