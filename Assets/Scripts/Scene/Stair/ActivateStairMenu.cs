@@ -36,17 +36,23 @@ public class ActivateStairMenu : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 stairMenu.SetActive(true);
-                // Time.timeScale = 0f;
+                Pause();
             }
             else if (Input.GetKeyDown(KeyCode.Escape))
             {
                 stairMenu.SetActive(false);
-                // Time.timeScale = 1f;
+                Resume();
             }
         }
-        else
-        {
-            stairMenu.SetActive(false);
-        }
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1f;
     }
 }
