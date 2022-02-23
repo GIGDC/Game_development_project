@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MoveToRoom : MonoBehaviour
+public class MoveToRoom : GameManager
 {
-    public float transitionTime = 1f;
-    public GameObject roomLoader;
-
     Animator doorAnim;
-    public string transferMapName; // 이동할 맵의 이름
     [Tooltip("문의 방향 설정 (front, back, right, left)")]
     public string direction;
     RaycastHit2D MonsterCheck;
@@ -19,6 +15,7 @@ public class MoveToRoom : MonoBehaviour
     private void Awake()
     {
         doorAnim = GetComponent<Animator>();
+        transferScene = "Classroom";
     }
 
     private void FixedUpdate()
@@ -56,21 +53,21 @@ public class MoveToRoom : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             Debug.Log("Open");
-            StartCoroutine(LoadMap(transferMapName));
+            StartCoroutine(FadeOut());
         }
     }
 
-    private IEnumerator LoadMap(string transferMapName)
+    override protected IEnumerator FadeOut()
     {
-        roomLoader.GetComponent<Animator>().SetTrigger("FadeOut");
+        transitionAnimator = GetTransitionAnimator();
+        transitionAnimator.SetBool("FadeOut", true);
+        transitionAnimator.SetBool("FadeIn", false);
         doorAnim.SetBool("DoorOpen", true);
         yield return new WaitForSeconds(0.5f);
-
-        doorAnim.SetBool("DoorOpen", false);
-        yield return new WaitForSeconds(0.5f);
-
         yield return new WaitForSeconds(transitionTime);
-
-        SceneManager.LoadScene(transferMapName);
+        doorAnim.SetBool("DoorOpen", false);
+        doorAnim.SetBool("DoorClose", false);
+        StartCoroutine(AsyncLoadMap());
+        yield return null;
     }
 }
