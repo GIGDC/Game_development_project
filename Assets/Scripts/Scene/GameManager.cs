@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject); // memory leak
-
         transitionAnimator = GetComponent<Animator>();
     }
 
@@ -43,9 +42,19 @@ public class GameManager : MonoBehaviour
         clock.isStop = false;
         yield return new WaitForSeconds(0f);
 
+        player.CurrentMapName = transferMapName;
         SceneManager.LoadScene(transferMapName);
     }
+    protected IEnumerator LoadMap()
+    {
 
+        if (transferScene != null)
+        {
+            player.CurrentMapName = transferScene;
+            yield return new WaitForSeconds(0f);
+            SceneManager.LoadScene(transferScene);
+        }
+    }
 
     virtual protected IEnumerator FadeOut()
     {
@@ -70,6 +79,7 @@ public class GameManager : MonoBehaviour
 
     protected IEnumerator AsyncLoadMap()
     {
+        player.CurrentMapName = transferScene;
         AsyncOperation async = SceneManager.LoadSceneAsync(transferScene);
         async.allowSceneActivation = false;
         while (!async.isDone)

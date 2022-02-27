@@ -15,6 +15,6 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(player.transform.position.x,player.transform.position.y,-15f); //플레이어와 z축이 같으면 촬영 불가능
+        transform.position = new Vector3(player.transform.position.x,player.transform.position.y,-30f); //플레이어와 z축이 같으면 촬영 불가능
     }
 }
