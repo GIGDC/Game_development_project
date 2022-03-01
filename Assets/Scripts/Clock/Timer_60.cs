@@ -11,6 +11,7 @@ public class Timer_60 : MonoBehaviour
     private float timerSpeed = 1.0f; //타이머 스피드 
     private float timer;
     public bool isStop = false;
+
     // Update is called once per frame
     void Update()
     {

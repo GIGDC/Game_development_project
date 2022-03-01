@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private Timer_60 clock;
+    private PlayerAttacted attack;
     private Monster monster;
     private PlayerMovement player;
 
@@ -22,13 +23,14 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         clock = GameObject.FindObjectOfType<Timer_60>(); // Timer_60에 대한 clock을 찾음
+        attack = GameObject.FindObjectOfType<PlayerAttacted>(); // Timer_60에 대한 clock을 찾음
         monster = GameObject.FindObjectOfType<Monster>();
         player = GameObject.FindObjectOfType<PlayerMovement>();
     }
 
     private void Update()
     {   
-        if (clock.isStop)
+        if (clock.isStop || attack.zeroHP)
         {
             monster.Hide();
             player.Hide();
