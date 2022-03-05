@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    
+    private PlayerAttacted attack;
+
     private Monster monster;
     PlayerMovement player;
 
@@ -20,13 +21,14 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        attack = GameObject.FindObjectOfType<PlayerAttacted>(); // Timer_60에 대한 clock을 찾음
         monster = GameObject.FindObjectOfType<Monster>();
         player = GameObject.FindObjectOfType<PlayerMovement>();
     }
 
     private void Update()
     {   
-        if (Timer_60.isStop)
+        if (Timer_60.isStop || attack.zeroHP)
         {
             monster.Hide();
             player.Hide();
