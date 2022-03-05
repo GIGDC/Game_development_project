@@ -7,23 +7,23 @@ public class GameManager : MonoBehaviour
 {
     private Timer_60 clock;
     private PlayerAttacted attack;
+    
     private Monster monster;
-    private PlayerMovement player;
+    PlayerMovement player;
 
     public float transitionTime = 1f;
-    protected string transferScene; // ÀÌµ¿ÇÒ ¾À ÀÌ¸§ (protected: °è´Ü ÀÌµ¿ÀÇ °æ¿ì 1F, 2F, 3F µîÀÌ ÀÖÀ¸¹Ç·Î unity editor¿¡¼­ ¼öÁ¤ÇÏ±â ¾î·Á¿ò)
+    public string transferScene; // ì´ë™í•  ì”¬ ì´ë¦„ (protected: ê³„ë‹¨ ì´ë™ì˜ ê²½ìš° 1F, 2F, 3F ë“±ì´ ìˆìœ¼ë¯€ë¡œ unity editorì—ì„œ ìˆ˜ì •í•˜ê¸° ì–´ë ¤ì›€)
     protected Animator transitionAnimator;
 
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject); // memory leak
         transitionAnimator = GetComponent<Animator>();
     }
 
     private void Start()
     {
-        clock = GameObject.FindObjectOfType<Timer_60>(); // Timer_60¿¡ ´ëÇÑ clockÀ» Ã£À½
-        attack = GameObject.FindObjectOfType<PlayerAttacted>(); // Timer_60¿¡ ´ëÇÑ clockÀ» Ã£À½
+        clock = GameObject.FindObjectOfType<Timer_60>(); // Timer_60ì— ëŒ€í•œ clockì„ ì°¾ìŒ
+        attack = GameObject.FindObjectOfType<PlayerAttacted>(); // Timer_60ì— ëŒ€í•œ clockì„ ì°¾ìŒ
         monster = GameObject.FindObjectOfType<Monster>();
         player = GameObject.FindObjectOfType<PlayerMovement>();
     }
@@ -39,15 +39,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    protected IEnumerator LoadMap(string transferMapName)
+    public IEnumerator LoadMap(string transferMapName)
     {
-        clock.isStop = false;
+        Timer_60.isStop = false;
         yield return new WaitForSeconds(0f);
 
         player.CurrentMapName = transferMapName;
         SceneManager.LoadScene(transferMapName);
     }
-    protected IEnumerator LoadMap()
+    public IEnumerator LoadMap()
     {
 
         if (transferScene != null)
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
         while (!async.isDone)
         {
 
-            Debug.Log("ºñµ¿±âÈ­ ÁøÇàµµ: " + async.progress);
+            Debug.Log("ë¹„ë™ê¸°í™” ì§„í–‰ë„: " + async.progress);
 
             if (async.progress >= 0.9f)
             {
