@@ -6,12 +6,13 @@ using System;
 public class Timer_60 : MonoBehaviour
 {
 
-    private float min; //실제로 60분이지만, 현재 체크를 위해서 초단위로 구현
-    private float sec; //초 단위
     private float timerSpeed = 1.0f; //타이머 스피드 
-    private float timer;
-    public bool isStop = false;
+    private static float timer;
+    public static bool isStop = false;
     // Update is called once per frame
+    static int hours;
+    static int minutes;
+    static int seconds;
     void Update()
     {
         timer += Time.deltaTime * timerSpeed;
@@ -31,15 +32,15 @@ public class Timer_60 : MonoBehaviour
             timer -= 60.0f * 60.0f;
             isStop = true;
         }
-        int hours = Mathf.FloorToInt(timer / (60.0f * 60.0f));
-        int minutes = Mathf.FloorToInt(timer / 60.0f - hours * 60);
-        int seconds = Mathf.FloorToInt(timer - minutes * 60 - hours * 60.0f * 60.0f);
+        hours = Mathf.FloorToInt(timer / (60.0f * 60.0f));
+        minutes = Mathf.FloorToInt(timer / 60.0f - hours * 60);
+        seconds = Mathf.FloorToInt(timer - minutes * 60 - hours * 60.0f * 60.0f);
 
         if (hours > 12)
             hours -= 12;
 
         transform.localEulerAngles=new Vector3(0,0,minutes/60.0f*-360.0f);
-  
+        Debug.Log(minutes);
     }
 
     public void Reset()

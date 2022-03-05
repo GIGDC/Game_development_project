@@ -5,30 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private Timer_60 clock;
+    
     private Monster monster;
-    private PlayerMovement player;
+    PlayerMovement player;
 
     public float transitionTime = 1f;
-    protected string transferScene; // 이동할 씬 이름 (protected: 계단 이동의 경우 1F, 2F, 3F 등이 있으므로 unity editor에서 수정하기 어려움)
+    public string transferScene; // 이동할 씬 이름 (protected: 계단 이동의 경우 1F, 2F, 3F 등이 있으므로 unity editor에서 수정하기 어려움)
     protected Animator transitionAnimator;
 
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject); // memory leak
         transitionAnimator = GetComponent<Animator>();
     }
 
     private void Start()
     {
-        clock = GameObject.FindObjectOfType<Timer_60>(); // Timer_60에 대한 clock을 찾음
         monster = GameObject.FindObjectOfType<Monster>();
         player = GameObject.FindObjectOfType<PlayerMovement>();
     }
 
     private void Update()
     {   
-        if (clock.isStop)
+        if (Timer_60.isStop)
         {
             monster.Hide();
             player.Hide();
@@ -37,15 +35,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    protected IEnumerator LoadMap(string transferMapName)
+    public IEnumerator LoadMap(string transferMapName)
     {
-        clock.isStop = false;
+        Timer_60.isStop = false;
         yield return new WaitForSeconds(0f);
 
         player.CurrentMapName = transferMapName;
         SceneManager.LoadScene(transferMapName);
     }
-    protected IEnumerator LoadMap()
+    public IEnumerator LoadMap()
     {
 
         if (transferScene != null)

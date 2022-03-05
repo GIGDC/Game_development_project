@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    public static PlayerMovement player;
     public string CurrentMapName; //현재 맵은 무엇인가.
     Rigidbody2D rigid;
     Animator animator;
-    SpriteRenderer spriteRenderer;
     public float speed;
     public float normalSpeed, crawlSpeed, runSpeed;
     Vector2 movement;
@@ -19,10 +20,17 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject); // memory leak
-        rigid = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (player == null)
+        {
+            DontDestroyOnLoad(this.gameObject); // memory leak
+            rigid = GetComponent<Rigidbody2D>();
+            animator = GetComponent<Animator>();
+            player = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     void Update()

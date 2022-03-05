@@ -8,6 +8,7 @@ TagManager:
   - Amulet
   - Monster
   - Clock
+  - Text
   layers:
   - Default
   - TransparentFX
