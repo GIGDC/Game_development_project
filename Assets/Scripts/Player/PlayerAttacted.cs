@@ -9,69 +9,60 @@ public class PlayerAttacted : MonoBehaviour
     public int hp;
     public int maxHP;
 
-    public Sprite basic_img;
     public Sprite attack_img;
-    public Sprite pain1_img;
-    public Sprite pain2_img;
-    public Sprite pain3_img;
-    public Sprite pain4_img;
-
-    Image thisImg;  // 현재 이미지
 
     public bool zeroHP = false;
+    public Animator AttackAnimation;
 
     // Start is called before the first frame update
     void Start()
     {
         hp = 100;
         maxHP = 100;
-
-        thisImg = GameObject.FindGameObjectWithTag("Clock").GetComponent<Image>();
     }
 
     // Update is called once per frame
     void Update()
     {
         slider.value = (float)hp / maxHP;
+
+        if (hp == 0)
+        {
+            zeroHP = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Monster"))
         {
-            hp = hp - 20;
+            hp = hp - 10;
 
             print(hp);
-
-            if (hp == 80)
-            {
-                ImageChange(pain1_img);
-            }
-            if (hp == 60)
-            {
-                ImageChange(pain2_img);
-            }
-            if(hp == 40)
-            {
-                ImageChange(pain3_img);
-            }
-            if (hp == 20)
-            {
-                ImageChange(pain4_img);
-            }
-            if (hp == 0)
-            {
-                zeroHP = true;
-            }
-
-            //ImageChange(attack_img);
+            StartCoroutine(ChangeAttack());
         }
     }
 
-    private void ImageChange(Sprite change_img)
+    private IEnumerator ChangeAttack()
     {
-        thisImg.sprite = change_img;
-        //yield return new WaitForSeconds(1f);
-        //thisImg.sprite = basic_img;
+        AttackAnimation.SetInteger("isAttack", 1);   // 공격받은 모션
+        yield return new WaitForSeconds(0.5f);
+
+        if (hp < 100 & hp >= 70)  // hp 70~99 모션
+        {
+            AttackAnimation.SetInteger("isAttack", 2);
+        }
+        else if (hp >= 50)  // hp 50~69 모션
+        {
+            AttackAnimation.SetInteger("isAttack", 3);
+        }
+        else if (hp >= 20)  // hp 20~49 모션
+        {
+            AttackAnimation.SetInteger("isAttack", 4);
+        }
+        else if (hp >= 1)  // hp 1~19 모션
+        {
+            AttackAnimation.SetInteger("isAttack", 5);
+        }
     }
 }

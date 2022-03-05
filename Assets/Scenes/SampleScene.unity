@@ -829,6 +829,7 @@ MonoBehaviour:
   pain3_img: {fileID: 21300000, guid: 5b6f2093c88aaeb4b9ea18fc42916fba, type: 3}
   pain4_img: {fileID: 21300000, guid: 180090d7865477e478d26f3e8e045f02, type: 3}
   zeroHP: 0
+  AttackAnimation: {fileID: 787041622}
 --- !u!1001 &259153382
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1095,7 +1096,7 @@ RectTransform:
   - {fileID: 747674239}
   - {fileID: 1872793353}
   m_Father: {fileID: 1283495228}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1709,6 +1710,7 @@ GameObject:
   - component: {fileID: 787041618}
   - component: {fileID: 787041620}
   - component: {fileID: 787041619}
+  - component: {fileID: 787041622}
   m_Layer: 5
   m_Name: Clock
   m_TagString: Clock
@@ -1729,7 +1731,7 @@ RectTransform:
   m_Children:
   - {fileID: 1962174570}
   m_Father: {fileID: 1283495228}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1774,6 +1776,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 787041617}
   m_CullTransparentMesh: 1
+--- !u!95 &787041622
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787041617}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: de4a5e53533eb9f4ba31faed7d81a55e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &795759695
 GameObject:
   m_ObjectHideFlags: 0
@@ -2460,8 +2481,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 787041618}
   - {fileID: 390174989}
+  - {fileID: 787041618}
   - {fileID: 1358546821}
   m_Father: {fileID: 0}
   m_RootOrder: 5
