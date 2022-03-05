@@ -6,9 +6,10 @@ using System;
 public class Timer_60 : MonoBehaviour
 {
 
-    private float timerSpeed = 1.0f; //Ÿ�̸� ���ǵ� 
+    private float timerSpeed = 1.0f; //Å¸ÀÌ¸Ó ½ºÇÇµå 
     private static float timer;
     public static bool isStop = false;
+
     // Update is called once per frame
     static int hours;
     static int minutes;

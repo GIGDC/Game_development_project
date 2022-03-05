@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    private Timer_60 clock;
+    private PlayerAttacted attack;
     
     private Monster monster;
     PlayerMovement player;
 
     public float transitionTime = 1f;
-    public string transferScene; // ÀÌµ¿ÇÒ ¾À ÀÌ¸§ (protected: °è´Ü ÀÌµ¿ÀÇ °æ¿ì 1F, 2F, 3F µîÀÌ ÀÖÀ¸¹Ç·Î unity editor¿¡¼­ ¼öÁ¤ÇÏ±â ¾î·Á¿ò)
+    public string transferScene; // ì´ë™í•  ì”¬ ì´ë¦„ (protected: ê³„ë‹¨ ì´ë™ì˜ ê²½ìš° 1F, 2F, 3F ë“±ì´ ìˆìœ¼ë¯€ë¡œ unity editorì—ì„œ ìˆ˜ì •í•˜ê¸° ì–´ë ¤ì›€)
     protected Animator transitionAnimator;
 
     private void Awake()
@@ -20,13 +22,15 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        clock = GameObject.FindObjectOfType<Timer_60>(); // Timer_60ì— ëŒ€í•œ clockì„ ì°¾ìŒ
+        attack = GameObject.FindObjectOfType<PlayerAttacted>(); // Timer_60ì— ëŒ€í•œ clockì„ ì°¾ìŒ
         monster = GameObject.FindObjectOfType<Monster>();
         player = GameObject.FindObjectOfType<PlayerMovement>();
     }
 
     private void Update()
     {   
-        if (Timer_60.isStop)
+        if (clock.isStop || attack.zeroHP)
         {
             monster.Hide();
             player.Hide();
@@ -83,7 +87,7 @@ public class GameManager : MonoBehaviour
         while (!async.isDone)
         {
 
-            Debug.Log("ºñµ¿±âÈ­ ÁøÇàµµ: " + async.progress);
+            Debug.Log("ë¹„ë™ê¸°í™” ì§„í–‰ë„: " + async.progress);
 
             if (async.progress >= 0.9f)
             {
