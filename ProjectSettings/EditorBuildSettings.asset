@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FirstAnnex.unity
     guid: cea9f009034b5ce49829c1ff926540b8
+  - enabled: 1
+    path: Assets/Scenes/3F.unity
+    guid: 39ccb52353c2f744b9327101c78f8cc4
   m_configObjects: {}

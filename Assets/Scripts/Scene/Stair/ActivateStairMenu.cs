@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ActivateStairMenu : MonoBehaviour
 {
+    //GameObject UI;
     GameObject stairMenu;
     private bool stairMenuReady;
+    private string currentSceneName;
 
     private void Start()
     {
-        stairMenu = GameObject.Find("Floor UI").transform.Find("StairMenu").gameObject;
         stairMenuReady = false;
+        stairMenu = GameObject.Find("Floor UI").transform.Find("StairMenu").gameObject;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -31,28 +35,18 @@ public class ActivateStairMenu : MonoBehaviour
 
     private void Update()
     {
-        if(stairMenuReady)
+        if (stairMenuReady)
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 stairMenu.SetActive(true);
-                Pause();
             }
             else if (Input.GetKeyDown(KeyCode.Escape))
             {
                 stairMenu.SetActive(false);
-                Resume();
             }
         }
     }
 
-    public void Pause()
-    {
-        Time.timeScale = 0f;
-    }
 
-    public void Resume()
-    {
-        Time.timeScale = 1f;
-    }
 }

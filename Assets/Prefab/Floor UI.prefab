@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2151788743858978952}
   - component: {fileID: 1931143449998533454}
   - component: {fileID: 284179746638888569}
-  - component: {fileID: 7696853497985919496}
+  - component: {fileID: 4852528062067772733}
   m_Layer: 5
   m_Name: Floor UI
   m_TagString: Untagged
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7696853497985919496
+--- !u!114 &4852528062067772733
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,9 +111,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 316705528108628378}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aed48482de8a98409593af25a903ee9, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d17bbf40ad8c614a9c156cd30374b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transitionTime: 1
 --- !u!1 &877925940316146410
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,7 +283,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 131124740265333907}
-  - component: {fileID: 7447799001215323102}
   m_Layer: 5
   m_Name: StairMenu
   m_TagString: Untagged
@@ -310,19 +310,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7447799001215323102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1920904742244698038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3ef6768a2d1e0145bfd2d822616a6b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transitionTime: 1
 --- !u!1 &5010252432260182283
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,10 +817,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7447799001215323102}
-        m_TargetAssemblyTypeName: MoveByStairs, Assembly-CSharp
-        m_MethodName: SceneTransition
-        m_Mode: 5
+      - m_Target: {fileID: 4852528062067772733}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ActivateStairMenu
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -842,16 +829,16 @@ MonoBehaviour:
           m_StringArgument: 2F
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7696853497985919496}
-        m_TargetAssemblyTypeName: ActivateStairMenu, Assembly-CSharp
-        m_MethodName: Resume
-        m_Mode: 1
+      - m_Target: {fileID: 4852528062067772733}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: SceneTransition
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 2F
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &7882870292693776646
@@ -987,7 +974,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7696853497985919496}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ActivateStairMenu, Assembly-CSharp
         m_MethodName: Resume
         m_Mode: 1
@@ -1120,10 +1107,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7447799001215323102}
-        m_TargetAssemblyTypeName: MoveByStairs, Assembly-CSharp
-        m_MethodName: SceneTransition
-        m_Mode: 5
+      - m_Target: {fileID: 4852528062067772733}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ActivateStairMenu
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1132,16 +1119,16 @@ MonoBehaviour:
           m_StringArgument: 3F
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7696853497985919496}
-        m_TargetAssemblyTypeName: ActivateStairMenu, Assembly-CSharp
-        m_MethodName: Resume
-        m_Mode: 1
+      - m_Target: {fileID: 4852528062067772733}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: SceneTransition
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 3F
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &8670575086727540383
@@ -1265,10 +1252,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7447799001215323102}
-        m_TargetAssemblyTypeName: MoveByStairs, Assembly-CSharp
-        m_MethodName: SceneTransition
-        m_Mode: 5
+      - m_Target: {fileID: 4852528062067772733}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ActivateStairMenu
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1277,15 +1264,15 @@ MonoBehaviour:
           m_StringArgument: 1F
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7696853497985919496}
-        m_TargetAssemblyTypeName: ActivateStairMenu, Assembly-CSharp
-        m_MethodName: Resume
-        m_Mode: 1
+      - m_Target: {fileID: 4852528062067772733}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: SceneTransition
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: SampleScene
           m_BoolArgument: 0
         m_CallState: 2

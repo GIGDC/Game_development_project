@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     PlayerMovement player;
 
     public float transitionTime = 1f;
-    public string transferScene; // 이동할 씬 이름 (protected: 계단 이동의 경우 1F, 2F, 3F 등이 있으므로 unity editor에서 수정하기 어려움)
+    protected string transferScene; // 이동할 씬 이름 (protected: 계단 이동의 경우 1F, 2F, 3F 등이 있으므로 unity editor에서 수정하기 어려움)
     protected Animator transitionAnimator;
 
     private void Awake()
@@ -47,7 +47,6 @@ public class GameManager : MonoBehaviour
     }
     public IEnumerator LoadMap()
     {
-
         if (transferScene != null)
         {
             player.CurrentMapName = transferScene;
@@ -55,6 +54,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(transferScene);
         }
     }
+
 
     virtual protected IEnumerator FadeOut()
     {
@@ -77,9 +77,8 @@ public class GameManager : MonoBehaviour
         yield return null;
     }
 
-    protected IEnumerator AsyncLoadMap()
+    virtual protected IEnumerator AsyncLoadMap()
     {
-        player.CurrentMapName = transferScene;
         AsyncOperation async = SceneManager.LoadSceneAsync(transferScene);
         async.allowSceneActivation = false;
         while (!async.isDone)
