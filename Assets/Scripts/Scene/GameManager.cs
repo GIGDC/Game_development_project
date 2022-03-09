@@ -65,7 +65,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     virtual public IEnumerator FadeOut()
     {
         transitionAnimator.SetBool("FadeOut", true);

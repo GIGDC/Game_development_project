@@ -1561,7 +1561,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb85c4de8c5218b408f5e3a336fa4614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionTime: 1
 --- !u!224 &1022808322 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2622496012071773673, guid: d88abb77cea89664b987fed8b9e4c03b, type: 3}
@@ -8948,7 +8947,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.525
---- !u!1001 &1897200786
+--- !u!1001 &1785528900
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8958,6 +8957,14 @@ PrefabInstance:
     - target: {fileID: 316705528108628378, guid: d61b743646a91d94aa092eb57eea34ae, type: 3}
       propertyPath: m_Name
       value: Floor UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 316705528108628378, guid: d61b743646a91d94aa092eb57eea34ae, type: 3}
+      propertyPath: m_TagString
+      value: floorUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1920904742244698038, guid: d61b743646a91d94aa092eb57eea34ae, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4396170448861242872, guid: d61b743646a91d94aa092eb57eea34ae, type: 3}
       propertyPath: m_Pivot.x
@@ -9220,12 +9227,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 531710303195556705, guid: 92e89d38ca3ebc9429ba384aa1710bb6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 531710303195556705, guid: 92e89d38ca3ebc9429ba384aa1710bb6, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 531710303593123361, guid: 92e89d38ca3ebc9429ba384aa1710bb6, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 531710303593123361, guid: 92e89d38ca3ebc9429ba384aa1710bb6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 531710303593123361, guid: 92e89d38ca3ebc9429ba384aa1710bb6, type: 3}
       propertyPath: m_StaticEditorFlags
