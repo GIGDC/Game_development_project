@@ -16,6 +16,16 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        GameObject[] gameManagers = GameObject.FindGameObjectsWithTag("GameManager");
+        if (gameManagers.Length == 1) 
+        { 
+            DontDestroyOnLoad(gameObject); 
+        } 
+        else 
+        { 
+            Destroy(gameObject);
+        } // 중복된 GameMangager 오브젝트가 있을 경우 오브젝트 파괴
+
         transitionAnimator = GetComponent<Animator>();
     }
 
@@ -56,7 +66,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    virtual protected IEnumerator FadeOut()
+    virtual public IEnumerator FadeOut()
     {
         transitionAnimator.SetBool("FadeOut", true);
         transitionAnimator.SetBool("FadeIn", false);
@@ -66,7 +76,7 @@ public class GameManager : MonoBehaviour
         yield return null;
     }
 
-    virtual protected IEnumerator FadeIn()
+    virtual public IEnumerator FadeIn()
     {
         transitionAnimator.SetBool("FadeOut", false);
         transitionAnimator.SetBool("FadeIn", true);
@@ -77,7 +87,7 @@ public class GameManager : MonoBehaviour
         yield return null;
     }
 
-    virtual protected IEnumerator AsyncLoadMap()
+    virtual public IEnumerator AsyncLoadMap()
     {
         AsyncOperation async = SceneManager.LoadSceneAsync(transferScene);
         async.allowSceneActivation = false;
@@ -96,7 +106,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    protected Animator GetTransitionAnimator()
+    public Animator GetTransitionAnimator()
     {
         return GameObject.Find("GameManager").GetComponent<Animator>();
     }
