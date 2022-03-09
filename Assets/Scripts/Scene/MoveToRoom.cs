@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MoveToRoom : GameManager
+public class MoveToRoom : MonoBehaviour
 {
-    Animator doorAnim;
+    GameManager gameManager;
+    Animator doorAnimator;
     [Tooltip("문의 방향 설정 (front, back, right, left)")]
     public string direction;
     RaycastHit2D MonsterCheck;
+    Animator transitionAnimator;
 
     static public bool CheckMonster = false;
 
     private void Awake()
     {
-        doorAnim = GetComponent<Animator>();
-        transferScene = "Classroom";
+        gameManager = GetComponent<GameManager>();
+        doorAnimator = GetComponent<Animator>();
+        gameManager.transferScene = "Classroom";
     }
 
     private void FixedUpdate()
@@ -57,17 +60,17 @@ public class MoveToRoom : GameManager
         }
     }
 
-    override protected IEnumerator FadeOut()
+    IEnumerator FadeOut()
     {
-        transitionAnimator = GetTransitionAnimator();
+        transitionAnimator=gameManager.GetTransitionAnimator();
         transitionAnimator.SetBool("FadeOut", true);
         transitionAnimator.SetBool("FadeIn", false);
-        doorAnim.SetBool("DoorOpen", true);
+        doorAnimator.SetBool("DoorOpen", true);
         yield return new WaitForSeconds(0.5f);
-        yield return new WaitForSeconds(transitionTime);
-        doorAnim.SetBool("DoorOpen", false);
-        doorAnim.SetBool("DoorClose", false);
-        StartCoroutine(AsyncLoadMap());
+        yield return new WaitForSeconds(gameManager.transitionTime);
+        doorAnimator.SetBool("DoorOpen", false);
+        doorAnimator.SetBool("DoorClose", false);
+        StartCoroutine(gameManager.AsyncLoadMap());
         yield return null;
     }
 }

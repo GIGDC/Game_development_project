@@ -9,6 +9,8 @@ TagManager:
   - Monster
   - Clock
   - Text
+  - GameManager
+  - floorUI
   layers:
   - Default
   - TransparentFX
