@@ -12,6 +12,19 @@ public class ActiveConversation : MonoBehaviour
     public Text chatText;  // 실제 채팅이 나오는 텍스트
     public Text CharacterName;  // 캐릭터 이름이 나오는 텍스트
 
+    Image clock;
+    Image secondHand;
+    //Image sr;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        messageReady = false;
+        clock = GameObject.Find("Clock").GetComponent<Image>();
+        secondHand = GameObject.Find("theMinuteHand").GetComponent<Image>();
+        //sr = clock.GetComponent<Image>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name != "Player")
@@ -30,12 +43,9 @@ public class ActiveConversation : MonoBehaviour
 
         messageReady = false;
         message.SetActive(false);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        messageReady = false;
+        //sr.material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        clock.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        secondHand.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
     }
 
     // Update is called once per frame
@@ -47,6 +57,10 @@ public class ActiveConversation : MonoBehaviour
             {
                 print("대화 시작");
                 message.SetActive(true);
+                //sr.material.color = Color.clear;
+                clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+                secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+
                 StartCoroutine(TextPractice());
             }
         }

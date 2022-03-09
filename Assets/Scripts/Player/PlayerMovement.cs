@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     public static PlayerMovement player;
     public string CurrentMapName; //현재 맵은 무엇인가.
     Rigidbody2D rigid;
@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
     private void Awake()
     {
         if (player == null)

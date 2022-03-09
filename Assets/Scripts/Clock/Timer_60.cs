@@ -40,7 +40,7 @@ public class Timer_60 : MonoBehaviour
             hours -= 12;
 
         transform.localEulerAngles=new Vector3(0,0,minutes/60.0f*-360.0f);
-        //Debug.Log(minutes);
+        Debug.Log(seconds);
     }
 
     public void Reset()

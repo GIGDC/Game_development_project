@@ -24,6 +24,6 @@ public class Transfer : MonoBehaviour
     }
     public void SceneTransition()
     {
-        StartCoroutine(manager.LoadMap("SampleScene"));
+        StartCoroutine(manager.LoadMap("1F"));
     }
 }

@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public string transferScene; // 이동할 씬 이름 (protected: 계단 이동의 경우 1F, 2F, 3F 등이 있으므로 unity editor에서 수정하기 어려움)
     protected Animator transitionAnimator;
 
+    static string previousMapName;
+
     private void Awake()
     {
         transitionAnimator = GetComponent<Animator>();

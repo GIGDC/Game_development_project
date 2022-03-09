@@ -5,17 +5,71 @@ using UnityEngine.SceneManagement;
 
 public class MoveToRoom : GameManager
 {
-    Animator doorAnim;
-    [Tooltip("문의 방향 설정 (front, back, right, left)")]
-    public string direction;
-    RaycastHit2D MonsterCheck;
+    //Animator doorAnim;
+    //[Tooltip("문의 방향 설정 (front, back, right, left)")]
+    //public string direction;
 
+    RaycastHit2D MonsterCheck;
     static public bool CheckMonster = false;
+
+    private bool enterReady;
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.gameObject.CompareTag("Monster") && !MonsterTimer.OutDoor)
+        {
+            CheckMonster = true;
+        }
+
+        print("교실 닿음");
+
+        if (other.gameObject.name != "Player")
+            return;
+        enterReady = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.name != "Player")
+            return;
+        enterReady = false;
+    }
+
+    override protected IEnumerator FadeOut()
+    {
+        //transitionAnimator = GetTransitionAnimator();
+        //transitionAnimator.SetBool("FadeOut", true);
+        //transitionAnimator.SetBool("FadeIn", false);
+        //doorAnim.SetBool("DoorOpen", true);
+
+        //yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(transitionTime);
+
+        //doorAnim.SetBool("DoorOpen", false);
+        //doorAnim.SetBool("DoorClose", false);
+
+        StartCoroutine(AsyncLoadMap());
+        yield return null;
+    }
+
+    private void Update()
+    {
+        if (enterReady)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                print("Open");
+                //StartCoroutine(FadeOut());
+                StartCoroutine(LoadMap());
+            }
+        }
+    }
 
     private void Awake()
     {
-        doorAnim = GetComponent<Animator>();
-        transferScene = "Classroom";
+        //doorAnim = GetComponent<Animator>();
+        transferScene = "Special Ed";
     }
 
     private void FixedUpdate()
@@ -27,7 +81,7 @@ public class MoveToRoom : GameManager
         {
             Vector3 v = transform.position - (Vector3)MonsterCheck.rigidbody.position;
             Monster.direction = Vector3FromAngle(Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg);
-            Debug.Log(Monster.direction);
+            //Debug.Log(Monster.direction);
         }
     }
 
@@ -37,37 +91,5 @@ public class MoveToRoom : GameManager
         float inputAngleRadians = inputAngleDegrees * Mathf.Deg2Rad;
 
         return new Vector3(Mathf.Cos(inputAngleRadians), Mathf.Sin(inputAngleRadians), 0);
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-
-        if (other.gameObject.CompareTag("Monster") && !MonsterTimer.OutDoor)
-        {
-            CheckMonster = true;
-        }
-
-        if (other.gameObject.name != "Player")
-            return;
-
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Debug.Log("Open");
-            StartCoroutine(FadeOut());
-        }
-    }
-
-    override protected IEnumerator FadeOut()
-    {
-        transitionAnimator = GetTransitionAnimator();
-        transitionAnimator.SetBool("FadeOut", true);
-        transitionAnimator.SetBool("FadeIn", false);
-        doorAnim.SetBool("DoorOpen", true);
-        yield return new WaitForSeconds(0.5f);
-        yield return new WaitForSeconds(transitionTime);
-        doorAnim.SetBool("DoorOpen", false);
-        doorAnim.SetBool("DoorClose", false);
-        StartCoroutine(AsyncLoadMap());
-        yield return null;
     }
 }
