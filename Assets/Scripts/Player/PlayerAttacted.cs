@@ -6,17 +6,20 @@ using UnityEngine.UI;
 public class PlayerAttacted : MonoBehaviour
 {
     public Slider slider;
-    public int hp;
-    public int maxHP;
+    static public int hp;
+    static public int maxHP;
 
     public Sprite attack_img;
 
     public bool zeroHP = false;
     public Animator AttackAnimation;
+    PlayerMovement player;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindObjectOfType<PlayerMovement>();
+ 
         hp = 100;
         maxHP = 100;
     }
@@ -45,6 +48,8 @@ public class PlayerAttacted : MonoBehaviour
 
     private IEnumerator ChangeAttack()
     {
+
+        player.animator.SetBool("BeAttacked", true);
         AttackAnimation.SetInteger("isAttack", 1);   // 공격받은 모션
         yield return new WaitForSeconds(0.5f);
 

@@ -132,7 +132,7 @@ public class MonsterCollision : MonoBehaviour
             {
                 if (hitRight && !hitLeft) //앞-왼쪽이 막히지 않은 경우 
                 {
-                    if (Monster.endPosition.x > -10f && Monster.endPosition.y < -13f)
+                    if (Monster.endPosition.x > -9f && Monster.endPosition.y < -13f)
                     {
                         op = ((Random.Range(0, 2) % 2) != 0);
                         if (op) //아랫층
@@ -146,7 +146,7 @@ public class MonsterCollision : MonoBehaviour
                             Monster.direction = Vector3FromAngle(90, 90);
                         }
                     }
-                    if (Monster.endPosition.x < -10f && Monster.endPosition.y > 5f)
+                    if (Monster.endPosition.x < -9f && Monster.endPosition.y > 5f)
                     {
                         op = ((Random.Range(0, 2) % 2) != 0);
                         if (op) //앞-왼쪽이 막히지 않은경우, 윗층) 인경우
@@ -166,7 +166,7 @@ public class MonsterCollision : MonoBehaviour
             {
                 if (!Irreversible)
                 {
-                    if (Monster.endPosition.x < -10f && Monster.endPosition.y < -13f)
+                    if (Monster.endPosition.x < -9f && Monster.endPosition.y < -13f)
                     {
                         op = ((Random.Range(0, 2) % 2) != 0);
                         if (op)
@@ -181,7 +181,7 @@ public class MonsterCollision : MonoBehaviour
                         }
                     }
 
-                    if (Monster.endPosition.x > -10f && Monster.endPosition.y > 5f)
+                    if (Monster.endPosition.x > -9f && Monster.endPosition.y > 5f)
                     {
                         op = ((Random.Range(0, 2) % 2) != 0);
                         if (op)

@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public static PlayerMovement player;
     public string CurrentMapName; //현재 맵은 무엇인가.
     Rigidbody2D rigid;
-    Animator animator;
+    public Animator animator;
     public float speed;
     public float normalSpeed, crawlSpeed, runSpeed;
     Vector2 movement;
