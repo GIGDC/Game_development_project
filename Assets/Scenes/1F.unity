@@ -1970,8 +1970,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f8633fdf93d1f4bbc2614b1bac8dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionTime: 1
-  transferScene: Special Ed
   direction: front
 --- !u!1001 &1285147759
 PrefabInstance:
@@ -3229,8 +3227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f8633fdf93d1f4bbc2614b1bac8dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionTime: 1
-  transferScene: Special Ed
   direction: front
 --- !u!212 &2012069511
 SpriteRenderer:
@@ -3376,6 +3372,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 531710303593123367, guid: 92e89d38ca3ebc9429ba384aa1710bb6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 531710304667910102, guid: 92e89d38ca3ebc9429ba384aa1710bb6, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 531710304667910102, guid: 92e89d38ca3ebc9429ba384aa1710bb6, type: 3}

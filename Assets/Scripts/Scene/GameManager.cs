@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
         } // 중복된 GameMangager 오브젝트가 있을 경우 오브젝트 파괴
 
         transitionAnimator = GetComponent<Animator>();
+
+        GameObject transition = transform.Find("UI").Find("Transition").gameObject;
+        transition.SetActive(true);
     }
 
     private void Start()

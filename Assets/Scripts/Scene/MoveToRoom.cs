@@ -14,10 +14,12 @@ public class MoveToRoom : MonoBehaviour
 
     static public bool CheckMonster = false;
 
-    private void Awake()
+    private void Start()
     {
-        gameManager = GetComponent<GameManager>();
+        gameManager = GameObject.FindObjectOfType<GameManager>();
         doorAnimator = GetComponent<Animator>();
+        if (gameManager == null) 
+            Debug.Log("GameManager Error");    
         gameManager.transferScene = "Classroom";
     }
 
