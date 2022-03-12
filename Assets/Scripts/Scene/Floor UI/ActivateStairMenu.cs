@@ -37,7 +37,7 @@ public class ActivateStairMenu : MonoBehaviour
     {
         if (stairMenuReady)
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 stairMenu.SetActive(true);
             }
