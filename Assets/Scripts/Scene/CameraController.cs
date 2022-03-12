@@ -7,10 +7,6 @@ public class CameraController : MonoBehaviour
 
     public PlayerMovement player;
 
-    void Start()
-    {
-        player = GameObject.FindObjectOfType<PlayerMovement>();
-    }
     // Update is called once per frame
     void Update()
     {

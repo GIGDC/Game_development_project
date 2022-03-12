@@ -40,7 +40,11 @@ public class GameManager : MonoBehaviour
     }
 
     private void Update()
-    {   
+    {
+        if (transferScene != null)
+        {
+            PlayerMovement.CurrentMapName = transferScene;
+        }
         if (Timer_60.isStop || attack.zeroHP)
         {
             monster.Hide();
@@ -54,15 +58,17 @@ public class GameManager : MonoBehaviour
     {
         Timer_60.isStop = false;
         yield return new WaitForSeconds(0f);
-
-        player.CurrentMapName = transferMapName;
-        SceneManager.LoadScene(transferMapName);
+        if (transferMapName != null)
+        {
+            PlayerMovement.CurrentMapName = transferMapName;
+            SceneManager.LoadScene(transferMapName);
+        }
     }
     public IEnumerator LoadMap()
     {
         if (transferScene != null)
         {
-            player.CurrentMapName = transferScene;
+           
             yield return new WaitForSeconds(0f);
             SceneManager.LoadScene(transferScene);
         }

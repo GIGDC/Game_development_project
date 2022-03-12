@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
 
     public static PlayerMovement player;
-    public string CurrentMapName; //현재 맵은 무엇인가.
+    public static string CurrentMapName; //현재 맵은 무엇인가.
     Rigidbody2D rigid;
     public Animator animator;
     public float speed;
     public float normalSpeed, crawlSpeed, runSpeed;
     Vector2 movement;
     public Vector2 direction; // 플레이어가 현재 향하고 있는 방향
+
+    //카메라 만들기
+    public GameObject MainCamera;
 
     public void Hide()
     {
@@ -22,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (player == null)
         {
+            DontDestroyOnLoad(MainCamera);
             DontDestroyOnLoad(this.gameObject); // memory leak
             rigid = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
@@ -29,12 +33,14 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            Destroy(MainCamera);
             Destroy(this.gameObject);
         }
     }
 
     void Update()
     {
+        MainCamera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -30f);
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         if (movement.sqrMagnitude > 0)
@@ -49,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("MoveHorizontally", movement.x);
             animator.SetFloat("MoveVertically", movement.y);
         }
+
     }
 
     void FixedUpdate()
