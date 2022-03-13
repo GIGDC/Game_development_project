@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/FirstAnnex.unity
     guid: cea9f009034b5ce49829c1ff926540b8
   - enabled: 1
-    path: Assets/Scenes/2F.unity
+    path: Assets/Scenes/2F/2F.unity
     guid: c9d1ffda5b942a14bab0028ee513945e
   - enabled: 1
     path: Assets/Scenes/3F.unity
@@ -41,4 +41,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Storage.unity
     guid: fd2a5b59cc9c7064aa572fbb485b1b38
+  - enabled: 1
+    path: Assets/Scenes/1F Annex/Computer Lap.unity
+    guid: 4e9beeb0586f20c488b9d70c9b00947b
+  - enabled: 1
+    path: Assets/Scenes/1F Annex/Multimedia Room.unity
+    guid: 381c128c5144e9d4693412cc976350a1
+  - enabled: 1
+    path: Assets/Scenes/1F Annex/Cooking&Technology.unity
+    guid: a824f7bd50cca6f49ac238e3ea61f2ff
+  - enabled: 1
+    path: Assets/Scenes/1F Annex/Club Room.unity
+    guid: c36d088ff3ca24d438901fd86ee75a81
   m_configObjects: {}

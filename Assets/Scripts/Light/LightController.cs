@@ -20,8 +20,12 @@ public class LightController : MonoBehaviour
         thePlayer = FindObjectOfType<PlayerMovement>();
 
         monster = GameObject.Find("Monster");
-        sr = monster.GetComponent<SpriteRenderer>();
-        sr.material.color = Color.clear;
+
+        if (monster != null)
+        {
+            sr = monster.GetComponent<SpriteRenderer>();
+            sr.material.color = Color.clear;
+        }
     }
 
     // Update is called once per frame

@@ -17,9 +17,47 @@ public class StartPoint : MonoBehaviour
 
         if (startPoint == PlayerMovement.CurrentMapName)
         {
+
+            CurMapNum = SceneManager.GetActiveScene().buildIndex;
             if (MapNum == 1)
             {
-                player.transform.position = new Vector2(-37f, -33.54106f);
+                if(CurMapNum==0) //별관 -> 1F
+                    player.transform.position = new Vector2(-37f, -33.54106f);
+                else if (CurMapNum == 12)
+                    if (direction == "front")
+                    {
+                        player.transform.position = new Vector2(3.1f, -1.524785f);
+                    }
+                    else
+                    {
+                        player.transform.position = new Vector2(-35.19863f, -1.524785f);
+                    }
+                else if (CurMapNum == 13)
+                {
+                    if (direction == "front")
+                    {
+                        player.transform.position = new Vector2(4.7f, 1.5f);
+                    }
+                    else
+                    {
+                        player.transform.position = new Vector2(-33.69657f, -1.5f);
+                    }
+                }
+                else if (CurMapNum == 14)
+                {
+                    if (direction == "front")
+                    {
+                        player.transform.position = new Vector2(-40.82134f, 4.1f);
+                    }
+                    else
+                    {
+                        player.transform.position = new Vector2(-88.1f, 4.1f);
+                    }
+                }
+                else if (CurMapNum == 15)
+                {
+                    player.transform.position = new Vector2(-33.64838f, -1.302389f);
+                }
             }
             else if (MapNum == 4)
             {
@@ -27,7 +65,6 @@ public class StartPoint : MonoBehaviour
             }
             else if (MapNum == 0) // 1F에서 다른 교실로 이동할때 필요한 로직 (이전 씬이 0번(즉 1F이라면) 현재씬은 ?)
             {
-                CurMapNum = SceneManager.GetActiveScene().buildIndex;
 
                 if (CurMapNum == 1) //별관
                 {
@@ -144,6 +181,41 @@ public class StartPoint : MonoBehaviour
             }else if (MapNum == 11)
             {
                 player.transform.position = new Vector2(-20.37747f, 8.410156f);
+            }else if (MapNum == 12)
+            {
+                if (direction == "front")
+                {
+                    player.transform.position = new Vector2(102.18f, 1.2f);
+                }
+                else
+                {
+                    player.transform.position = new Vector2(83.6f, 1.12f);
+                }
+            }else if (MapNum == 13)
+            {
+                if (direction == "front")
+                {
+                    player.transform.position = new Vector2(71.31f, 1.12f);
+                }
+                else
+                {
+                    player.transform.position = new Vector2(56.24f, 1.12f);
+                }
+            }
+            else if (MapNum == 14)
+            {
+                if (direction == "front")
+                {
+                    player.transform.position = new Vector2(43f, 1.12f);
+                }
+                else
+                {
+                    player.transform.position = new Vector2(27.83f, 1.12f);
+                }
+            }
+            else if (MapNum == 15)
+            {
+                player.transform.position = new Vector2(14.9f, 1.12f);
             }
         }
 
