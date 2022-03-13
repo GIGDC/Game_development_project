@@ -41,7 +41,7 @@ public class PlayerAttacted : MonoBehaviour
             print(hp);
 
             player.animator.SetBool("BeAttacked", true);
-            //StartCoroutine(ClockController.ChangeAttack());
+            StartCoroutine(ClockController.ChangeAttack());
         }
     }
 

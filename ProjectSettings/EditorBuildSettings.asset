@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/1F.unity
+    path: Assets/Scenes/1F/1F.unity
     guid: edcda6a727eba544287013f03a39015a
   - enabled: 1
-    path: Assets/Scenes/FirstAnnex.unity
+    path: Assets/Scenes/1F Annex/FirstAnnex.unity
     guid: cea9f009034b5ce49829c1ff926540b8
   - enabled: 1
     path: Assets/Scenes/2F/2F.unity
@@ -18,28 +18,28 @@ EditorBuildSettings:
     path: Assets/Scenes/3F.unity
     guid: 39ccb52353c2f744b9327101c78f8cc4
   - enabled: 1
-    path: Assets/Scenes/Start Room.unity
+    path: Assets/Scenes/1F/Start Room.unity
     guid: 56aaee1c742c56e42bcc46ba2be4adbc
   - enabled: 1
-    path: Assets/Scenes/Library.unity
+    path: Assets/Scenes/1F/Library.unity
     guid: 581a8906c58d6924a96945e3dd8c8111
   - enabled: 1
-    path: Assets/Scenes/Broadcasting.unity
+    path: Assets/Scenes/1F/Broadcasting.unity
     guid: 4279307537d83f44b81ae6f826b6f03c
   - enabled: 1
-    path: Assets/Scenes/Special Ed.unity
+    path: Assets/Scenes/1F/Special Ed.unity
     guid: 4391d25277eadc948bed85cf6bc09551
   - enabled: 1
-    path: Assets/Scenes/Admin office.unity
+    path: Assets/Scenes/1F/Admin office.unity
     guid: 31872792bd0229d40afe1584cd034cad
   - enabled: 1
-    path: Assets/Scenes/Principal's office.unity
+    path: Assets/Scenes/1F/Principal's office.unity
     guid: 79bd994f44901d6459e75c0fc4c5becb
   - enabled: 1
-    path: Assets/Scenes/infirmary.unity
+    path: Assets/Scenes/1F/infirmary.unity
     guid: 6f17c67b05ff02349b46515d947bdc14
   - enabled: 1
-    path: Assets/Scenes/Storage.unity
+    path: Assets/Scenes/1F/Storage.unity
     guid: fd2a5b59cc9c7064aa572fbb485b1b38
   - enabled: 1
     path: Assets/Scenes/1F Annex/Computer Lap.unity
