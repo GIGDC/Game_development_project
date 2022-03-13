@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GoTo: 1F
+  direction: 
 --- !u!1 &584328920
 GameObject:
   m_ObjectHideFlags: 0

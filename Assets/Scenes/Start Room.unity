@@ -950,7 +950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5907160724356182266, guid: 3a43bcbfef0eb284e82170afaa31101c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5907160724908097996, guid: 3a43bcbfef0eb284e82170afaa31101c, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1076,6 +1076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GoTo: 1F
+  direction: 
 --- !u!61 &1266168849
 BoxCollider2D:
   m_ObjectHideFlags: 0

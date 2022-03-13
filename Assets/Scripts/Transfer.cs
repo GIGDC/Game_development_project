@@ -8,9 +8,12 @@ public class Transfer : MonoBehaviour
 {
     GameManager manager;
     public string GoTo;
+    public string direction;
+    StartPoint start;
     // Start is called before the first frame update
     void Start()
     {
+        start = GameObject.FindObjectOfType<StartPoint>();
         manager = GameObject.FindObjectOfType<GameManager>();
     }
 
@@ -21,6 +24,11 @@ public class Transfer : MonoBehaviour
                     // manager.transferScene = "SampleScene";
 
         StartPoint.MapNum = SceneManager.GetActiveScene().buildIndex;
+
+        if (direction != "")
+        {
+            StartPoint.direction = direction;
+        }
         SceneTransition();
 
     }
