@@ -56,7 +56,7 @@ public class StartPoint : MonoBehaviour
                 }
                 else if (CurMapNum == 15)
                 {
-                    player.transform.position = new Vector2(-33.64838f, -1.302389f);
+                    player.transform.position = new Vector2(-33.24031f, -1.425902f);
                 }
             }
             else if (MapNum == 4)
