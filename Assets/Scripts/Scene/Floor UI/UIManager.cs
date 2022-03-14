@@ -11,7 +11,6 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        gameManager = GameObject.FindObjectOfType<GameManager>();
         GameObject[] floorUIs = GameObject.FindGameObjectsWithTag("floorUI");
         if (floorUIs.Length == 1)
         {
@@ -92,8 +91,7 @@ public class UIManager : MonoBehaviour
 
     public void SceneTransition(string sceneName)
     {
-        if (gameManager == null) Debug.Log("False");
-        else Debug.Log("True");
+        gameManager = GameObject.FindObjectOfType<GameManager>();
         transitionAnimator = gameManager.GetTransitionAnimator();
         gameManager.transferScene = sceneName;
         StartCoroutine(gameManager.FadeOut());
