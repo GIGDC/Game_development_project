@@ -19,9 +19,11 @@ public class ChangeText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "SampleScene")
+        string SceneName = SceneManager.GetActiveScene().name;
+        
+        if (SceneName == "1F" || SceneName == "2F" || SceneName == "3F")
         {
-            if (player.transform.position.y < -28 || !first)
+            if (player.transform.position.y < -28 && !first)
             {
                 StartCoroutine(FadeInCoroutine());
                 text.text = "후관";
@@ -34,7 +36,6 @@ public class ChangeText : MonoBehaviour
                 text.text = "";
 
             }
-
             if (player.transform.position.y > 0.5f)
             {
                 StartCoroutine(FadeInCoroutine());
@@ -42,11 +43,51 @@ public class ChangeText : MonoBehaviour
                 first = true;
             }
         }
-        else if(SceneManager.GetActiveScene().name == "Auditorium")
+        else if (SceneName == "Auditorium")
         {
             StartCoroutine(FadeInCoroutine());
             text.text = "강당";
-            first = true;
+            //  first = true;
+        }
+        else if (SceneName == "Start Room")
+        {
+            StartCoroutine(FadeInCoroutine());
+            text.text = "튜토리얼";
+            // first = true;
+        }
+        else if (SceneName == "Admin office")
+        {
+            StartCoroutine(FadeInCoroutine());
+            text.text = "행정실";
+            // first = true;
+        }
+        else if (SceneName == "Broadcasting")
+        {
+            StartCoroutine(FadeInCoroutine());
+            text.text = "방송실";
+            // first = true;
+        }
+        else if (SceneName == "Library")
+        {
+            StartCoroutine(FadeInCoroutine());
+            text.text = "도서실";
+            // first = true;
+        }
+        else if (SceneName == "Principals' office")
+        {
+            StartCoroutine(FadeInCoroutine());
+            text.text = "교장실";        }
+        else if (SceneName == "Special Ed")
+        {
+            StartCoroutine(FadeInCoroutine());
+            text.text = "도움반";
+            // first = true;
+        }
+        else if (SceneName == "Storage")
+        {
+            StartCoroutine(FadeInCoroutine());
+            text.text = "경비실";
+            // first = true;
         }
     }
 

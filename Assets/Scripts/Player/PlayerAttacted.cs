@@ -12,7 +12,7 @@ public class PlayerAttacted : MonoBehaviour
     public Sprite attack_img;
 
     public bool zeroHP = false;
-   
+    static int Attackedcount = 0; //당할때마다 모션 1번만 행동
     PlayerMovement player;
 
     // Start is called before the first frame update
@@ -40,14 +40,22 @@ public class PlayerAttacted : MonoBehaviour
 
             print(hp);
 
-            player.animator.SetBool("BeAttacked", true);
+            if (Attackedcount == 0)
+            {
+                player.animator.SetBool("BeAttacked", true);
+                Attackedcount++;
+            }
+            else
+            {
+                player.animator.SetBool("BeAttacked", false);
+            }
             StartCoroutine(ClockController.ChangeAttack());
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        player.animator.SetBool("BeAttacked", false);
+        Attackedcount = 0;
     }
 
 }
