@@ -21,26 +21,24 @@ public class PlayerMovement : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
     private void Awake()
     {
-        if (player == null)
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        if (players.Length == 1)
         {
-            DontDestroyOnLoad(MainCamera);
-            DontDestroyOnLoad(this.gameObject); // memory leak
-            rigid = GetComponent<Rigidbody2D>();
-            animator = GetComponent<Animator>();
-            player = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(MainCamera);
-            Destroy(this.gameObject);
-        }
+            Destroy(gameObject);
+        } // 중복된 Player 오브젝트가 있을 경우 오브젝트 파괴
+        
+        rigid = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        MainCamera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -30f);
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         if (movement.sqrMagnitude > 0)

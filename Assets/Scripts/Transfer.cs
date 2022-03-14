@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class Transfer : MonoBehaviour
 {
-    GameManager manager;
+    GameManager gameManager;
+    Animator doorAnimator;
     public string GoTo;
     public string direction;
     StartPoint start;
@@ -14,7 +15,7 @@ public class Transfer : MonoBehaviour
     void Start()
     {
         start = GameObject.FindObjectOfType<StartPoint>();
-        manager = GameObject.FindObjectOfType<GameManager>();
+        doorAnimator = GetComponent<Animator>();
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -34,6 +35,20 @@ public class Transfer : MonoBehaviour
     }
     public void SceneTransition()
     {
-        StartCoroutine(manager.LoadMap(GoTo));
+        StartCoroutine(FadeOut());
+    }
+
+    IEnumerator FadeOut()
+    {
+        gameManager = GameObject.FindObjectOfType<GameManager>();
+        gameManager.transferScene = GoTo;
+        Debug.Log(gameManager.transferScene);
+        gameManager.GetTransitionAnimator().SetBool("FadeOut", true);
+        gameManager.GetTransitionAnimator().SetBool("FadeIn", false);
+        //doorAnimator.SetTrigger("OpenDoor");
+        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(gameManager.transitionTime);
+        StartCoroutine(gameManager.AsyncLoadMap());
+        yield return null;
     }
 }

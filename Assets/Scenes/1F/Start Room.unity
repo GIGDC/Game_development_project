@@ -703,6 +703,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9b2b9fcc3aaa54e9541c380115695e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &904947498 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6116867844890509101, guid: eacf79cc8370bb242bbaee0bc5f7b1ff, type: 3}
+  m_PrefabInstance: {fileID: 2124840591}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &979405670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1031,8 +1036,7 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 847690017}
-    m_RemovedComponents:
-    - {fileID: 4270451543074281887, guid: 539eea010fe6f9a4cb2834e46949fa4c, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 539eea010fe6f9a4cb2834e46949fa4c, type: 3}
 --- !u!1001 &1057052354
 PrefabInstance:
@@ -1424,6 +1428,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6116867844890509102, guid: eacf79cc8370bb242bbaee0bc5f7b1ff, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 904947498}
     - target: {fileID: 6116867844890509102, guid: eacf79cc8370bb242bbaee0bc5f7b1ff, type: 3}
       propertyPath: MainCamera
       value: 
