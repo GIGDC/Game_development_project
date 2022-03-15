@@ -31,7 +31,6 @@ public class Transfer : MonoBehaviour
             StartPoint.direction = direction;
         }
         SceneTransition();
-
     }
     public void SceneTransition()
     {

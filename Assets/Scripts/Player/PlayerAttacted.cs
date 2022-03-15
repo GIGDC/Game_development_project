@@ -29,6 +29,7 @@ public class PlayerAttacted : MonoBehaviour
         if (hp == 0)
         {
             zeroHP = true;
+           // player.animator.SetBool("BeAttacked", false);
         }
     }
 
@@ -39,23 +40,23 @@ public class PlayerAttacted : MonoBehaviour
             hp = hp - 10;
 
             print(hp);
-
+            Attackedcount = 0;
             if (Attackedcount == 0)
             {
                 player.animator.SetBool("BeAttacked", true);
-                Attackedcount++;
             }
-            else
-            {
-                player.animator.SetBool("BeAttacked", false);
-            }
+           // player.animator.SetBool("BeAttacked", false);
+                
             StartCoroutine(ClockController.ChangeAttack());
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Attackedcount = 0;
+        player.animator.SetBool("BeAttacked", false);
+        Attackedcount++;
     }
+
+    
 
 }
