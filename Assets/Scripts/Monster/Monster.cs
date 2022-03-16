@@ -78,14 +78,12 @@ public class Monster : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-
             trackControl = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision) //추격자의 zone 영역의 접촉면에서 떨어지면 false
     {
         trackControl = false;
-
     }
 
     public IEnumerator WanderRoutine()  // 플레이어를 추적하지 않고 배회하는 monster

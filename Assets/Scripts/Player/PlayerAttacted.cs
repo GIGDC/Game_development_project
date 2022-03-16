@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class PlayerAttacted : MonoBehaviour
 {
     
-    static public int hp;
-    static public int maxHP;
+    static public float hp;
+    static public float maxHP;
 
     public bool zeroHP = false;
    
@@ -34,12 +34,16 @@ public class PlayerAttacted : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Monster"))
         {
-            hp = hp - 10;
-
-            print(hp);
-
             player.animator.SetBool("BeAttacked", true);
             StartCoroutine(ClockController.ChangeAttack());
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Monster"))
+        {
+            hp = hp - (float)0.1;
         }
     }
 
