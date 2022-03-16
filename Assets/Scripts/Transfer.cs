@@ -34,14 +34,11 @@ public class Transfer : MonoBehaviour
 
         StartPoint.MapNum = SceneManager.GetActiveScene().buildIndex;
 
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            shake.Shake();
-        }
-       
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (key.isLock && key.SceneNum == StartPoint.MapNum)
+
+            if (KeyController.isLock)
             {
                 if (direction != "")
                 {
@@ -49,18 +46,16 @@ public class Transfer : MonoBehaviour
                 }
                 doorAnimator.SetTrigger("OpenDoor");
                 SceneTransition();
-
             }
-            else
-            {
-                if (WarningUI != null)
-                {
-                    WarningUI.gameObject.SetActive(true);
-                   
-                }
+         else if(WarningUI != null)
+        {
+                WarningUI.gameObject.SetActive(true);
+                shake.Shake();
             }
         }
+
     }
+
     /*
     public void OnTriggerEnter2D(Collider2D collision)
     {

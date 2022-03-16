@@ -5,7 +5,7 @@ using UnityEngine;
 public class KeyController : MonoBehaviour
 {
     public int SceneNum;
-    public bool isLock;
+    static public bool isLock;
 
     void Start()
     {
