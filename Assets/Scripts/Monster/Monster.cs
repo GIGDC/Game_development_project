@@ -66,11 +66,13 @@ public class Monster : MonoBehaviour
         {
             Stop = true;
             trackControl = false;
+            animator.SetBool("isAttack", true);
         }
     }
     void OnCollisionExit2D(Collision2D collision)
     {
         Bugfix = true;
+        animator.SetBool("isAttack", false);
     }
     private void OnTriggerEnter2D(Collider2D collision) //추격자의 zone영역의 접촉면에 닿으면 true
     {

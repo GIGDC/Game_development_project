@@ -9,8 +9,6 @@ public class PlayerAttacted : MonoBehaviour
     static public int hp;
     static public int maxHP;
 
-    public Sprite attack_img;
-
     public bool zeroHP = false;
    
     PlayerMovement player;
@@ -47,7 +45,7 @@ public class PlayerAttacted : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        player.animator.SetBool("BeAttacked", false);
+        player.animator.SetBool("BeAttacked", false); 
     }
 
 }
