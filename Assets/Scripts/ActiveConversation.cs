@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ActiveConversation : MonoBehaviour
 {
-
     public GameObject message;
     private bool messageReady;
 
@@ -14,12 +13,15 @@ public class ActiveConversation : MonoBehaviour
 
     Image clock;
     Image secondHand;
+
+    public bool ThrowKey;
     //Image sr;
 
     // Start is called before the first frame update
     void Start()
     {
-        messageReady = false;
+        //messageReady = false;
+        ThrowKey = false;
         clock = GameObject.Find("Clock").GetComponent<Image>();
         secondHand = GameObject.Find("theMinuteHand").GetComponent<Image>();
         //sr = clock.GetComponent<Image>();
@@ -31,39 +33,42 @@ public class ActiveConversation : MonoBehaviour
             return;
 
         print("npc 만남");
-        messageReady = true;
+        //messageReady = true;
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.name != "Player")
             return;
 
         print("npc 빠져나감");
 
-        messageReady = false;
-        message.SetActive(false);
-        //sr.material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-        clock.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-        secondHand.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ThrowKey = true;
+            messageReady = false;
+            message.SetActive(false);
+            //sr.material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            clock.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            secondHand.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (messageReady)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                print("대화 시작");
-                message.SetActive(true);
-                //sr.material.color = Color.clear;
-                clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-                secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 
-                StartCoroutine(TextPractice());
-            }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            print("대화 시작");
+            message.SetActive(true);
+            //sr.material.color = Color.clear;
+            clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+            secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+
+            StartCoroutine(TextPractice());
         }
+
     }
 
     IEnumerator NormalChat(string narrator, string narration)

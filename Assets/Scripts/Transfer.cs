@@ -37,6 +37,7 @@ public class Transfer : MonoBehaviour
                 {
                     StartPoint.direction = direction;
                 }
+                doorAnimator.SetTrigger("OpenDoor");
                 SceneTransition();
 
             }
