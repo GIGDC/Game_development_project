@@ -13,6 +13,7 @@ public class Door : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        animator.SetTrigger("OpenDoor");
+        if (Input.GetKeyDown(KeyCode.Space))
+            animator.SetTrigger("OpenDoor");
     }
 }

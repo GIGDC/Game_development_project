@@ -11,14 +11,17 @@ public class Transfer : MonoBehaviour
     public string GoTo;
     public string direction;
     StartPoint start;
+    KeyController key;
+    public Image WarningUI;
     // Start is called before the first frame update
     void Start()
     {
         start = GameObject.FindObjectOfType<StartPoint>();
+        key = GameObject.FindObjectOfType<KeyController>();
         doorAnimator = GetComponent<Animator>();
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.name != "Player")
             return; //여기에 objcet 숨겨진 후 몇초 뒤에 등장하도록 구현 (ex: 몹)
@@ -26,17 +29,55 @@ public class Transfer : MonoBehaviour
 
         StartPoint.MapNum = SceneManager.GetActiveScene().buildIndex;
 
-        if (direction != "")
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartPoint.direction = direction;
+            if (key.isLock && key.SceneNum == StartPoint.MapNum)
+            {
+                if (direction != "")
+                {
+                    StartPoint.direction = direction;
+                }
+                SceneTransition();
+
+            }
+            else
+            {
+                if (WarningUI != null)
+                {
+                    WarningUI.gameObject.SetActive(true);
+                }
+            }
         }
-        SceneTransition();
     }
+    /*
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name != "Player")
+            return; //여기에 objcet 숨겨진 후 몇초 뒤에 등장하도록 구현 (ex: 몹)
+                    // manager.transferScene = "SampleScene";
+
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartPoint.MapNum = SceneManager.GetActiveScene().buildIndex;
+
+            if (direction != "")
+            {
+                StartPoint.direction = direction;
+            }
+            SceneTransition();
+        }
+    }
+    */
     public void SceneTransition()
     {
         StartCoroutine(FadeOut());
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        WarningUI.gameObject.SetActive(false);
+    }
     IEnumerator FadeOut()
     {
         gameManager = GameObject.FindObjectOfType<GameManager>();
