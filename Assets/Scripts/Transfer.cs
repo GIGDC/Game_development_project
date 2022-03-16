@@ -14,11 +14,16 @@ public class Transfer : MonoBehaviour
     KeyController key;
     public Image WarningUI;
     // Start is called before the first frame update
+
+    CameraShake shake;
+
     void Start()
     {
         start = GameObject.FindObjectOfType<StartPoint>();
         key = GameObject.FindObjectOfType<KeyController>();
         doorAnimator = GetComponent<Animator>();
+
+        shake = GameObject.FindObjectOfType<CameraShake>();
     }
 
     public void OnTriggerStay2D(Collider2D collision)
@@ -29,6 +34,11 @@ public class Transfer : MonoBehaviour
 
         StartPoint.MapNum = SceneManager.GetActiveScene().buildIndex;
 
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            shake.Shake();
+        }
+       
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (key.isLock && key.SceneNum == StartPoint.MapNum)
@@ -46,6 +56,7 @@ public class Transfer : MonoBehaviour
                 if (WarningUI != null)
                 {
                     WarningUI.gameObject.SetActive(true);
+                   
                 }
             }
         }
