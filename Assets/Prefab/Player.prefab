@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 6116867844890509097}
   - component: {fileID: 6116867844890509101}
   - component: {fileID: 6116867844890509102}
-  - component: {fileID: 6116867844890509096}
   - component: {fileID: 6116867844890509103}
+  - component: {fileID: 1966043072632035111}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -156,25 +156,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9b2b9fcc3aaa54e9541c380115695e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentMapName: SampleScene
+  animator: {fileID: 0}
   speed: 4
   normalSpeed: 4
   crawlSpeed: 2
   runSpeed: 8
   direction: {x: 0, y: 0}
---- !u!114 &6116867844890509096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6116867844890509095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3435b6d698df5b046b0201ae1b10a23c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rangeOfItemUse: 4
+  numOfAmulets: 0
+  MainCamera: {fileID: 0}
 --- !u!114 &6116867844890509103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,9 +176,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0310012479ca6449f1b672f02ce1d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 0}
-  hp: 100
-  maxHP: 100
   attack_img: {fileID: 21300000, guid: 925dfeb237e404442b186e4e913aa76d, type: 3}
   zeroHP: 0
-  AttackAnimation: {fileID: 0}
+--- !u!114 &1966043072632035111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6116867844890509095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3435b6d698df5b046b0201ae1b10a23c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangeOfItemUse: 5

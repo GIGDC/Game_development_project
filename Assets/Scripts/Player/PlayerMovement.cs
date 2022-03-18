@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movement;
     public Vector2 direction; // 플레이어가 현재 향하고 있는 방향
 
+    public int numOfAmulets; // 플레이어가 가지고 있는 부적 개수
+
     //카메라 만들기
     public GameObject MainCamera;
 
@@ -35,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         } // 중복된 Player 오브젝트가 있을 경우 오브젝트 파괴
         
         rigid = GetComponent<Rigidbody2D>();
+        numOfAmulets = 3;
     }
 
     void Update()
@@ -54,6 +57,16 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("MoveVertically", movement.y);
         }
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (numOfAmulets > 0)
+            {
+                animator.SetTrigger("UseAmulet");
+                if (Vector3.Distance(transform.position, GameObject.Find("Monster").transform.position) < 50f)
+                    GameObject.Find("Monster").GetComponent<MonsterStatus>().attacked = true;
+                //numOfAmulets--;
+            }
+        }
     }
 
     void FixedUpdate()

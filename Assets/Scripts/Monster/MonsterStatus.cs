@@ -10,7 +10,7 @@ public class MonsterStatus : MonoBehaviour
 
     public int stamina;
     public float stunnedTime;
-    private bool attacked;
+    public bool attacked;
     private bool attacking;
     private float toggleAttackedTimer; // attacked가 true에서 false로 바뀔 때까지 시간이 누적되는 타이머 
 
