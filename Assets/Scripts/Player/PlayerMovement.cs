@@ -58,26 +58,6 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("MoveHorizontally", movement.x);
             animator.SetFloat("MoveVertically", movement.y);
         }
-<<<<<<< HEAD
-
-        
-        if (isReady && !isDoor)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (numOfAmulets > 0)
-                {
-                    isAttacking = true;
-                    animator.SetTrigger("UseAmulet");
-                    if (Vector3.Distance(transform.position, GameObject.Find("Monster").transform.position) < 50f)
-                        GameObject.Find("Monster").GetComponent<MonsterStatus>().attacked = true;
-
-                    //numOfAmulets--;
-                }
-            }
-        }
-=======
->>>>>>> 2e74e8a66e7b8e2cceb711caed72ba6316e33558
     }
 
     void FixedUpdate()
