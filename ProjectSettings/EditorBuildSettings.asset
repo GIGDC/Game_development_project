@@ -53,4 +53,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/1F Annex/Club Room.unity
     guid: c36d088ff3ca24d438901fd86ee75a81
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 55c30a106f069504091ac8e7b697db13
   m_configObjects: {}
