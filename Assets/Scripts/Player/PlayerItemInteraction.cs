@@ -20,18 +20,23 @@ public class PlayerItemInteraction : MonoBehaviour
 
     void Update()
     {
+<<<<<<< HEAD
         if (monster != null) {
             player.isReady = Vector3.Distance(transform.position, monster.transform.position) < rangeOfItemUse * 10f;
 
             if (player.isReady && !player.isDoor) {
                 if (Input.GetKeyDown(KeyCode.Space))
+=======
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (numOfAmulets > 0)
+            {
+                if (Vector3.Distance(transform.position, GameObject.Find("Monster").transform.position) < rangeOfItemUse)
+>>>>>>> 2e74e8a66e7b8e2cceb711caed72ba6316e33558
                 {
-                    if (numOfAmulets > 0)
-                    {
-                        animator.SetTrigger("UseAmulet");
-                        monster.GetComponent<MonsterStatus>().attacked = true;
-                        //numOfAmulets--;
-                    }
+                    animator.SetTrigger("UseAmulet");
+                    GameObject.Find("Monster").GetComponent<MonsterStatus>().attacked = true;
+                    //numOfAmulets--;
                 }
             }
         }

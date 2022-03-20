@@ -58,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("MoveHorizontally", movement.x);
             animator.SetFloat("MoveVertically", movement.y);
         }
+<<<<<<< HEAD
 
         
         if (isReady && !isDoor)
@@ -75,6 +76,8 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+=======
+>>>>>>> 2e74e8a66e7b8e2cceb711caed72ba6316e33558
     }
 
     void FixedUpdate()
