@@ -25,7 +25,7 @@ public class CameraShake : MonoBehaviour
         {
             Destroy(gameObject);
         } // 중복된 MainCamera 오브젝트가 있을 경우 오브젝트 파괴
-
+        
         cameraPos = mainCameras[0].transform.position;
         mainCamera = mainCameras[0];
         InvokeRepeating("StartShake", 0f, 0.005f);

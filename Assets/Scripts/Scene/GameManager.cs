@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         }
         if (Timer_60.isStop || attack.zeroHP)
         {
-
+            Debug.Log("Attack.Zero");
             if(monster!=null)
                 monster.Hide();
             player.Hide();

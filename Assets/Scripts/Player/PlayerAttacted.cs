@@ -24,8 +24,9 @@ public class PlayerAttacted : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hp == 0)
+        if (hp < 0)
         {
+            Debug.Log(zeroHP+" ZeroHP");
             zeroHP = true;
            // player.animator.SetBool("BeAttacked", false);
         }
