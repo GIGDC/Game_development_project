@@ -35,12 +35,12 @@ public class ActiveConversation : MonoBehaviour
         //messageReady = true;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.name != "Player")
             return;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+         if (Input.GetKeyDown(KeyCode.Space))
         {
             message.SetActive(true);
             //sr.material.color = Color.clear;
@@ -57,28 +57,31 @@ public class ActiveConversation : MonoBehaviour
             //sr.material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             clock.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             secondHand.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+            this.gameObject.SetActive(false);
         }
     }
-
+    /**/
     IEnumerator NormalChat(string narrator, string narration)
     {
-        int a = 0;
-        CharacterName.text = narrator;
-        string writerText = "";
+         int a = 0;
+            CharacterName.text = narrator;
+            string writerText = "";
 
-        // 텍스트 타이핑 효과
-        for (a = 0; a < narration.Length; a++)
-        {
-            writerText += narration[a];
-            chatText.text = writerText;
-            yield return null;
-        }
+            // 텍스트 타이핑 효과
+            for (a = 0; a < narration.Length; a++)
+            {
+                writerText += narration[a];
+                chatText.text = writerText;
+                yield return null;
+           }
+        
     }
 
     IEnumerator TextPractice()
     {
         yield return StartCoroutine(NormalChat("학생1", "이것은 타이핑 효과를 통해 대사창을 구현하는 연습"));
         yield return new WaitForSeconds(1f);
-            yield return StartCoroutine(NormalChat("학생2", "안녕하세요, 반갑습니다."));
+        yield return StartCoroutine(NormalChat("학생2", "안녕하세요, 반갑습니다."));
     }
 }

@@ -14,7 +14,17 @@ public class CameraShake : MonoBehaviour
 
     public void Shake()
     {
-        cameraPos = mainCamera.transform.position;
+        GameObject[] mainCameras = GameObject.FindGameObjectsWithTag("MainCamera");
+        if (mainCameras.Length == 1)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        } // 중복된 MainCamera 오브젝트가 있을 경우 오브젝트 파괴
+
+        cameraPos = mainCameras[0].transform.position;
         InvokeRepeating("StartShake", 0f, 0.005f);
         Invoke("StopShake", duration);
     }

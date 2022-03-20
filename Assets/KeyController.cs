@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class KeyController : MonoBehaviour
 {
     public int SceneNum;
     static public bool isLock;
+    public Image OpenDoorUI;
 
     void Start()
     {
@@ -19,6 +20,7 @@ public class KeyController : MonoBehaviour
             Debug.Log("¿­¼è¾ø¾îÁü");
             isLock = true;
             this.gameObject.SetActive(false);
+            OpenDoorUI.gameObject.SetActive(true);
         }
     }
 }
