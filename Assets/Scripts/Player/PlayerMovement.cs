@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float normalSpeed, crawlSpeed, runSpeed;
     Vector2 movement;
     public Vector2 direction; // 플레이어가 현재 향하고 있는 방향
-
+    public bool isReady; // 플레이어가 부적을 사용할 범위에 들어올때 true
     public int numOfAmulets; // 플레이어가 가지고 있는 부적 개수
 
     //카메라 만들기
@@ -56,15 +56,17 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("MoveHorizontally", movement.x);
             animator.SetFloat("MoveVertically", movement.y);
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (isReady)
         {
-            if (numOfAmulets > 0)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                animator.SetTrigger("UseAmulet");
-                if (Vector3.Distance(transform.position, GameObject.Find("Monster").transform.position) < 50f)
-                    GameObject.Find("Monster").GetComponent<MonsterStatus>().attacked = true;
-                //numOfAmulets--;
+                if (numOfAmulets > 0)
+                {
+                    animator.SetTrigger("UseAmulet");
+                    if (Vector3.Distance(transform.position, GameObject.Find("Monster").transform.position) < 50f)
+                        GameObject.Find("Monster").GetComponent<MonsterStatus>().attacked = true;
+                    //numOfAmulets--;
+                }
             }
         }
     }

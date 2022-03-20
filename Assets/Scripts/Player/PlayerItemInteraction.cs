@@ -5,28 +5,35 @@ using UnityEngine;
 public class PlayerItemInteraction : MonoBehaviour
 {
     Animator animator;
-
+    GameObject monster;
     private int numOfAmulets ;
     [Header("근접 거리")]
     [SerializeField] [Range(0f, 50f)] float rangeOfItemUse;
-
+    PlayerMovement player;
     private void Awake()
     {
         animator = GetComponent<Animator>();
-
+        player= FindObjectOfType<PlayerMovement>();
+        monster = GameObject.Find("Monster");
         numOfAmulets = 3;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (numOfAmulets > 0)
-            {
-                animator.SetTrigger("UseAmulet");
-                if (Vector3.Distance(transform.position, GameObject.Find("Monster").transform.position) < rangeOfItemUse * 10f)
-                    GameObject.Find("Monster").GetComponent<MonsterStatus>().attacked = true;
-                //numOfAmulets--;
+        if (monster != null) {
+            player.isReady = Vector3.Distance(transform.position, monster.transform.position) < rangeOfItemUse * 10f;
+
+            Debug.Log(player.isReady + " " + "범위에 몬스터 등장");
+            if (player.isReady) {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    if (numOfAmulets > 0)
+                    {
+                        animator.SetTrigger("UseAmulet");
+                        monster.GetComponent<MonsterStatus>().attacked = true;
+                        //numOfAmulets--;
+                    }
+                }
             }
         }
     }
