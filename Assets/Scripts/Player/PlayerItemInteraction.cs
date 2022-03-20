@@ -20,19 +20,15 @@ public class PlayerItemInteraction : MonoBehaviour
 
     void Update()
     {
-        if (monster != null) {
-            player.isReady = Vector3.Distance(transform.position, monster.transform.position) < rangeOfItemUse * 10f;
-
-            Debug.Log(player.isReady + " " + "범위에 몬스터 등장");
-            if (player.isReady) {
-                if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (numOfAmulets > 0)
+            {
+                if (Vector3.Distance(transform.position, GameObject.Find("Monster").transform.position) < rangeOfItemUse)
                 {
-                    if (numOfAmulets > 0)
-                    {
-                        animator.SetTrigger("UseAmulet");
-                        monster.GetComponent<MonsterStatus>().attacked = true;
-                        //numOfAmulets--;
-                    }
+                    animator.SetTrigger("UseAmulet");
+                    GameObject.Find("Monster").GetComponent<MonsterStatus>().attacked = true;
+                    //numOfAmulets--;
                 }
             }
         }
