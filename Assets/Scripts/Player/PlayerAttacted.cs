@@ -6,13 +6,11 @@ using UnityEngine.UI;
 public class PlayerAttacted : MonoBehaviour
 {
     
-    static public int hp;
-    static public int maxHP;
-
-    public Sprite attack_img;
+    static public float hp;
+    static public float maxHP;
 
     public bool zeroHP = false;
-    static int Attackedcount = 0; //´çÇÒ¶§¸¶´Ù ¸ð¼Ç 1¹ø¸¸ Çàµ¿
+    static int Attackedcount = 0; //ï¿½ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ ï¿½àµ¿
     PlayerMovement player;
 
     // Start is called before the first frame update
@@ -37,9 +35,6 @@ public class PlayerAttacted : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Monster")&&!player.isAttacking)
         {
-            hp = hp - 10;
-
-            print(hp);
             Attackedcount = 0;
             if (Attackedcount == 0)
             {
@@ -48,6 +43,14 @@ public class PlayerAttacted : MonoBehaviour
            // player.animator.SetBool("BeAttacked", false);
                 
             StartCoroutine(ClockController.ChangeAttack());
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Monster"))
+        {
+            hp = hp - (float)0.1;
         }
     }
 

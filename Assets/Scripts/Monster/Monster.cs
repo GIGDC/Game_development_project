@@ -66,24 +66,24 @@ public class Monster : MonoBehaviour
         {
             Stop = true;
             trackControl = false;
+            animator.SetBool("isAttack", true);
         }
     }
     void OnCollisionExit2D(Collision2D collision)
     {
         Bugfix = true;
+        animator.SetBool("isAttack", false);
     }
     private void OnTriggerEnter2D(Collider2D collision) //추격자의 zone영역의 접촉면에 닿으면 true
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-
             trackControl = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision) //추격자의 zone 영역의 접촉면에서 떨어지면 false
     {
         trackControl = false;
-
     }
 
     public IEnumerator WanderRoutine()  // 플레이어를 추적하지 않고 배회하는 monster
