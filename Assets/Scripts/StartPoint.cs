@@ -16,6 +16,7 @@ public class StartPoint : MonoBehaviour
         KeyController.isLock = false;
         player = GameObject.FindObjectOfType<PlayerMovement>();
 
+        
         if (startPoint == PlayerMovement.CurrentMapName)
         {
 
@@ -219,8 +220,6 @@ public class StartPoint : MonoBehaviour
                 player.transform.position = new Vector2(14.9f, 1.12f);
             }
         }
-
-        Debug.Log(PlayerMovement.CurrentMapName);
 
     }
 }

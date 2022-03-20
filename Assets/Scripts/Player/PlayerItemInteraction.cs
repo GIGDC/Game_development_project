@@ -23,8 +23,7 @@ public class PlayerItemInteraction : MonoBehaviour
         if (monster != null) {
             player.isReady = Vector3.Distance(transform.position, monster.transform.position) < rangeOfItemUse * 10f;
 
-            Debug.Log(player.isReady + " " + "범위에 몬스터 등장");
-            if (player.isReady) {
+            if (player.isReady && !player.isDoor) {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     if (numOfAmulets > 0)

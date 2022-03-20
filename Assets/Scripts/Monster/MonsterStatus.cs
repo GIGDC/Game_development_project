@@ -8,6 +8,7 @@ public class MonsterStatus : MonoBehaviour
     Animator animator;
     SpriteRenderer spriteRenderer;
 
+    PlayerMovement player;
     public int stamina;
     public float stunnedTime;
     public bool attacked;
@@ -19,7 +20,7 @@ public class MonsterStatus : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
+        player=GameObject.FindObjectOfType<PlayerMovement>();
         attacked = false;
         attacking = false;
         toggleAttackedTimer = 0;
@@ -32,10 +33,12 @@ public class MonsterStatus : MonoBehaviour
         {
             if (toggleAttackedTimer < stunnedTime)
                 toggleAttackedTimer += Time.deltaTime;
+                
             else
             {
                 toggleAttackedTimer = 0;
                 attacked = false;
+                player.isAttacking = false;
             }
         }
     }

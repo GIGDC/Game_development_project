@@ -1,19 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class CameraShake : MonoBehaviour
 {
 
     public Camera mainCamera;
     Vector3 cameraPos;
-
+    PlayerMovement player;
+    public Image WarningUI;
     [SerializeField] [Range(0.01f, 0.5f)] float shakeRange = 0.5f;
     [SerializeField] [Range(0.1f, 1f)] float duration = 1f;
 
 
     public void Shake()
     {
+        player = GameObject.FindObjectOfType<PlayerMovement>();
         GameObject[] mainCameras = GameObject.FindGameObjectsWithTag("MainCamera");
         if (mainCameras.Length == 1)
         {
@@ -41,6 +43,8 @@ public class CameraShake : MonoBehaviour
 
     void StopShake()
     {
+        player.isDoor = false;
+        WarningUI.gameObject.SetActive(false);
         CancelInvoke("StartShake");
         mainCamera.transform.position = cameraPos;
     }

@@ -35,7 +35,7 @@ public class PlayerAttacted : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Monster"))
+        if (collision.gameObject.CompareTag("Monster")&&!player.isAttacking)
         {
             hp = hp - 10;
 
