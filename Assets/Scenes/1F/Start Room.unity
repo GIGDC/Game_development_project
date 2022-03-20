@@ -5997,6 +5997,14 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[167].second.m_TileObjectToInstantiateIndex
       value: 65535
       objectReference: {fileID: 0}
+    - target: {fileID: 5846244887023438160, guid: 6a54be325c4af97478cc9b1afd633946, type: 3}
+      propertyPath: GoTo
+      value: 1F
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846244887023438160, guid: 6a54be325c4af97478cc9b1afd633946, type: 3}
+      propertyPath: WarningUI
+      value: 
+      objectReference: {fileID: 1057496460}
     - target: {fileID: 6413562415273204465, guid: 6a54be325c4af97478cc9b1afd633946, type: 3}
       propertyPath: m_TagString
       value: Door

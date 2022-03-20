@@ -28,21 +28,21 @@ public class PlayerAttacted : MonoBehaviour
         {
             Debug.Log(zeroHP+" ZeroHP");
             zeroHP = true;
-           // player.animator.SetBool("BeAttacked", false);
         }
+    }
+
+    public IEnumerator Attacked()
+    {
+        player.animator.SetBool("BeAttacked", true);
+        yield return new WaitForSeconds(0.5f);
+        player.animator.SetBool("BeAttacked", false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Monster")&&!player.isAttacking)
+        if (collision.gameObject.CompareTag("Monster") && !player.isAttacking)
         {
-            Attackedcount = 0;
-            if (Attackedcount == 0)
-            {
-                player.animator.SetBool("BeAttacked", true);
-            }
-           // player.animator.SetBool("BeAttacked", false);
-                
+            StartCoroutine(Attacked());
             StartCoroutine(ClockController.ChangeAttack());
         }
     }
@@ -54,13 +54,4 @@ public class PlayerAttacted : MonoBehaviour
             hp = hp - (float)0.1;
         }
     }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        player.animator.SetBool("BeAttacked", false);
-        Attackedcount++;
-    }
-
-    
-
 }
