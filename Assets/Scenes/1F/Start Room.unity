@@ -9538,9 +9538,13 @@ PrefabInstance:
       value: ShakeCamera
       objectReference: {fileID: 0}
     - target: {fileID: 8474919693781825258, guid: 3f34092fa4cbf614a87519f8571f3a67, type: 3}
+      propertyPath: WarningUI
+      value: 
+      objectReference: {fileID: 1057496460}
+    - target: {fileID: 8474919693781825258, guid: 3f34092fa4cbf614a87519f8571f3a67, type: 3}
       propertyPath: mainCamera
       value: 
-      objectReference: {fileID: 1562963680}
+      objectReference: {fileID: 1562963675}
     - target: {fileID: 8474919693781825260, guid: 3f34092fa4cbf614a87519f8571f3a67, type: 3}
       propertyPath: m_Camera
       value: 
