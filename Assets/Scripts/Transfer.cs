@@ -17,6 +17,8 @@ public class Transfer : MonoBehaviour
     PlayerMovement player;
     CameraShake shake;
 
+    static public bool CheckMonster = false;
+
     void Start()
     {
         start = GameObject.FindObjectOfType<StartPoint>();
@@ -28,8 +30,13 @@ public class Transfer : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Monster") && !MonsterTimer.OutDoor)
+        {
+            CheckMonster = true;
+        }
+
         if (collision.gameObject.name != "Player")
-            return; //여기에 objcet 숨겨진 후 몇초 뒤에 등장하도록 구현 (ex: 몹)
+            return; //여기에 object 숨겨진 후 몇초 뒤에 등장하도록 구현 (ex: 몹)
                     // manager.transferScene = "SampleScene";
 
         StartPoint.MapNum = SceneManager.GetActiveScene().buildIndex;
