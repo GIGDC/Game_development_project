@@ -6,6 +6,7 @@ public class PlayerItemInteraction : MonoBehaviour
 {
     Animator animator;
     GameObject monster;
+    
     private int numOfAmulets ;
     [Header("근접 거리")]
     [SerializeField] [Range(0f, 50f)] float rangeOfItemUse;
@@ -29,9 +30,15 @@ public class PlayerItemInteraction : MonoBehaviour
                 {
                     animator.SetTrigger("UseAmulet");
                     GameObject.Find("Monster").GetComponent<MonsterStatus>().attacked = true;
+                    GameObject.Find("Monster").GetComponent<Monster>().animator.SetBool("isAttacked", true);
+                    GameObject.Find("Monster").GetComponent<Monster>().animator.SetBool("isWalking", false);
+                    GameObject.Find("Monster").GetComponent<Monster>().animator.SetBool("isAttacking", false);
                     //numOfAmulets--;
                 }
             }
-        }       
+        }
+        GameObject.Find("Monster").GetComponent<Monster>().animator.SetBool("isAttacked", false);
+        GameObject.Find("Monster").GetComponent<Monster>().animator.SetBool("isWalking", true);
+        GameObject.Find("Monster").GetComponent<Monster>().animator.SetBool("isAttacking", false);
     }
 }

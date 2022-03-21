@@ -22,15 +22,15 @@ public class Monster : MonoBehaviour
     Coroutine moveCoroutine;
     public Coroutine wanderCoroutine;
     Rigidbody2D rigid;
-    Animator animator;
+    public Animator animator; //플레이어에게 공격받았을때 스텐딩으로 서있기 위해서 public으로 변경
     bool trackControl = false; //몬스터의 추적 공간내에 player가 위치할때 true/ 위치하지않으면 false
     static public Vector3 endPosition;
     static public Vector3 direction;
-    
+
     static public bool Stop = false;
     static public bool Bugfix = false;
-
-
+    bool isCollide = false;
+    PlayerMovement player;
     private Timer_60 clock;
     // Start is called before the first frame update
 
@@ -38,7 +38,7 @@ public class Monster : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         clock = GameObject.FindObjectOfType<Timer_60>(); // Timer_60에 대한 clock을 찾음
-
+        player = GameObject.FindObjectOfType<PlayerMovement>();
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         init(); //변수 초기화 및 배열초기화
@@ -53,7 +53,7 @@ public class Monster : MonoBehaviour
     }
     public void Hide()
     {
-        if(wanderCoroutine!=null)
+        if (wanderCoroutine != null)
             StopCoroutine(wanderCoroutine);
         if (moveCoroutine != null)
             StopCoroutine(moveCoroutine);
@@ -66,12 +66,17 @@ public class Monster : MonoBehaviour
         {
             Stop = true;
             trackControl = false;
-            animator.SetBool("isAttack", true);
+            isCollide = true;
+
         }
     }
     void OnCollisionExit2D(Collision2D collision)
     {
         Bugfix = true;
+        isCollide = false;
+        Debug.Log("부딪혔다가 나감.");
+        animator.SetBool("isWalking", true);
+        animator.SetBool("isAttacked", false);
         animator.SetBool("isAttack", false);
     }
     private void OnTriggerEnter2D(Collider2D collision) //추격자의 zone영역의 접촉면에 닿으면 true
@@ -99,7 +104,7 @@ public class Monster : MonoBehaviour
                 Hide();
                 //Destroy(gameObject); -> 게임 오브젝트 삭제 
             }
-                ChooseNewEndPoint();  // 향할 목적지 선택
+            ChooseNewEndPoint();  // 향할 목적지 선택
 
             if (moveCoroutine != null)
             {
@@ -179,22 +184,35 @@ public class Monster : MonoBehaviour
                 }
             }
 
-            // 공격받고 있을 때 움직임 일시정지
-            if (GetComponent<MonsterStatus>().Attacked || Stop)
+
+            if (isCollide)
             {
                 animator.SetBool("isWalking", false);
+                animator.SetBool("isAttacked", false);
+                animator.SetBool("isAttack", true);
             }
-
-            else if (rigidBodyToMove != null)
+            else if (GetComponent<MonsterStatus>().Attacked)
             {
+                animator.SetBool("isWalking", false);
+                animator.SetBool("isAttacked", true);
+                animator.SetBool("isAttack", false);
+            }
+            else if (rigidBodyToMove != null&&!isCollide)
+            {
+
                 animator.SetBool("isWalking", true);
+                animator.SetBool("isAttacked", false);
+                animator.SetBool("isAttack", false);
                 Vector3 newPosition = Vector3.MoveTowards(rigidBodyToMove.position, endPosition, speed * Time.deltaTime);
                 speed = wanderSpeed;
                 rigid.MovePosition(newPosition);
                 remainingDistance = (transform.position - endPosition).sqrMagnitude;
+
             }
             yield return new WaitForFixedUpdate();
         }
         animator.SetBool("isWalking", false);
+        animator.SetBool("isAttacked", true);
+        animator.SetBool("isAttack", false);
     }
 }

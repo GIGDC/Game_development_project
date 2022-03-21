@@ -113,7 +113,6 @@ GameObject:
   - component: {fileID: 5165234520126250312}
   - component: {fileID: 5165234520126250311}
   - component: {fileID: 5165234520126250315}
-  - component: {fileID: 5165234520126250316}
   - component: {fileID: 5165234520126250314}
   - component: {fileID: 5165234520126250317}
   m_Layer: 0
@@ -246,6 +245,7 @@ MonoBehaviour:
   currentSpeed: 4
   directionChangeInterval: 0
   contactDistance: 1
+  animator: {fileID: 0}
 --- !u!114 &5165234520126250315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,22 +260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stamina: 10
   stunnedTime: 2
---- !u!58 &5165234520126250316
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5165234520126250308}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 2
+  attacked: 0
 --- !u!114 &5165234520126250314
 MonoBehaviour:
   m_ObjectHideFlags: 0

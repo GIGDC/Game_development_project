@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Transfer : MonoBehaviour
 {
     GameManager gameManager;
-    Animator doorAnimator;
+    public static Animator doorAnimator;
     public string GoTo;
     public string direction;
     StartPoint start;
@@ -15,6 +15,7 @@ public class Transfer : MonoBehaviour
     public Image WarningUI;
     // Start is called before the first frame update
     PlayerMovement player;
+    
     CameraShake shake;
 
     void Start()
@@ -22,7 +23,8 @@ public class Transfer : MonoBehaviour
         start = GameObject.FindObjectOfType<StartPoint>();
         key = GameObject.FindObjectOfType<KeyController>();
         doorAnimator = GetComponent<Animator>();
-        player= GameObject.FindObjectOfType<PlayerMovement>();
+        
+        player = GameObject.FindObjectOfType<PlayerMovement>();
         shake = GameObject.FindObjectOfType<CameraShake>();
     }
 
@@ -43,12 +45,11 @@ public class Transfer : MonoBehaviour
                 if (direction != "")
                 {
                     StartPoint.direction = direction;
-                }
-                doorAnimator.SetTrigger("OpenDoor");
+                }        
                 SceneTransition();
             }
-         else if(WarningUI != null)
-        {
+            else if (WarningUI != null)
+            {
                 WarningUI.gameObject.SetActive(true);
                 shake.Shake();
             }

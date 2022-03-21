@@ -6,13 +6,10 @@ public class KeyController : MonoBehaviour
 {
     public int SceneNum;
     static public bool isLock;
-    public Image OpenDoorUI;
-
     void Start()
     {
         isLock = false;
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Player")
@@ -20,7 +17,8 @@ public class KeyController : MonoBehaviour
             Debug.Log("¿­¼è¾ø¾îÁü");
             isLock = true;
             this.gameObject.SetActive(false);
-            OpenDoorUI.gameObject.SetActive(true);
+            Transfer.doorAnimator.SetTrigger("OpenDoor");
+
         }
     }
 }
