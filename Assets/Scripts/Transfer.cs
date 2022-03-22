@@ -8,7 +8,9 @@ public class Transfer : MonoBehaviour
 {
     GameManager gameManager;
     Animator doorAnimator;
+    [Tooltip("이동하려는 Scene 이름")]
     public string GoTo;
+    [Tooltip("문의 위치 front / back")]
     public string direction;
     StartPoint start;
     KeyController key;
@@ -18,6 +20,9 @@ public class Transfer : MonoBehaviour
     CameraShake shake;
 
     static public bool CheckMonster = false;
+
+    [Tooltip("개발용 변수 (열쇠가 없어도 문을 열 수 있음)")]
+    public bool dontCheckKeyController = false; // 개발할 때 열쇠 없어도 문으로 쉽게 이동 가능하도록
 
     void Start()
     {
@@ -45,7 +50,7 @@ public class Transfer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             player.isDoor = true;
-            if (KeyController.isLock)
+            if (KeyController.isLock || dontCheckKeyController) // 추후 dontCheckKeyController만 조건에서 삭제
             {
                 if (direction != "")
                 {
