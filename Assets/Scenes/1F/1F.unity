@@ -2260,6 +2260,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5165234520126250311, guid: bdce10800a25a7c47be554f11559114a, type: 3}
+      propertyPath: stunnedTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5165234520126250314, guid: bdce10800a25a7c47be554f11559114a, type: 3}
       propertyPath: m_Enabled
       value: 1

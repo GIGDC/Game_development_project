@@ -26,32 +26,50 @@ public class PlayerAttacted : MonoBehaviour
     {
         if (hp < 0)
         {
-            Debug.Log(zeroHP+" ZeroHP");
+            //Debug.Log(zeroHP+" ZeroHP");
             zeroHP = true;
         }
+        if (Monster.isStunned)
+        {
+            StartCoroutine(Stunned());
+        }
+    }
+
+    public IEnumerator Stunned()
+    {
+        int countTime = 0;
+
+        while (countTime < 10)
+        {
+            if (countTime % 2 == 0)
+                GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 90);
+            else
+                GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 180);
+
+            yield return new WaitForSeconds(0.2f);
+
+            countTime++;
+        }
+        GetComponent<SpriteRenderer>().color = new Color32(255, 255,255, 255);
+        Monster.isStunned = false;
+        yield return null;
     }
 
     public IEnumerator Attacked()
     {
         player.animator.SetBool("BeAttacked", true);
-        yield return new WaitForSeconds(0.5f);
+        yield return null;
         player.animator.SetBool("BeAttacked", false);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Monster") && !player.isAttacking)
-        {
-            StartCoroutine(Attacked());
-            StartCoroutine(ClockController.ChangeAttack());
-        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Monster"))
+        if (collision.gameObject.CompareTag("Monster")&&Monster.isCollide&&!player.isAttacking)
         {
-            hp = hp - (float)0.1;
+            StartCoroutine(Attacked());
+            StartCoroutine(ClockController.ChangeAttack());
+            hp = hp - (float)10f;
+            player.transform.position = new Vector3(player.transform.position.x - 2f, player.transform.position.y, 0);
         }
     }
 }

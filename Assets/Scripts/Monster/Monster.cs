@@ -29,7 +29,10 @@ public class Monster : MonoBehaviour
 
     static public bool Stop = false;
     static public bool Bugfix = false;
-    bool isCollide = false;
+    static public bool isCollide = false; //충돌했을때 실행을 위햇
+    static public bool isStunned;
+    private float toggleAttackedTimer; // attacked가 true에서 false로 바뀔 때까지 시간이 누적되는 타이머
+    public float stunnedTime;
     PlayerMovement player;
     private Timer_60 clock;
     // Start is called before the first frame update
@@ -60,6 +63,30 @@ public class Monster : MonoBehaviour
 
         gameObject.SetActive(false);
     }
+    private void Update()
+    {
+        // 일정 시간(stunnedTime)동안 몬스터가 공격 받는 것으로 간주
+        if (isCollide)
+        {
+            //Debug.Log(1);
+            if (toggleAttackedTimer < stunnedTime)
+            {
+                //Debug.Log(2);
+                animator.SetBool("isWalking", false);
+                animator.SetBool("isAttacked", true);
+                animator.SetBool("isAttack", false);
+                toggleAttackedTimer += Time.deltaTime;
+            }
+            else
+            {
+                toggleAttackedTimer = 0;
+                isCollide = false;
+                Debug.Log("공격 후 스턴중");
+            }
+
+            Debug.Log(toggleAttackedTimer);
+        }
+    }
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -68,27 +95,30 @@ public class Monster : MonoBehaviour
             trackControl = false;
             isCollide = true;
 
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isAttacked", false);
+            animator.SetBool("isAttack", true);
+
+
         }
     }
     void OnCollisionExit2D(Collision2D collision)
     {
-        Bugfix = true;
-        isCollide = false;
-        Debug.Log("부딪혔다가 나감.");
-        animator.SetBool("isWalking", true);
-        animator.SetBool("isAttacked", false);
-        animator.SetBool("isAttack", false);
+        Bugfix = true;  isCollide = false;
+        isStunned = true;
+
     }
     private void OnTriggerEnter2D(Collider2D collision) //추격자의 zone영역의 접촉면에 닿으면 true
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+
             trackControl = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision) //추격자의 zone 영역의 접촉면에서 떨어지면 false
     {
-        trackControl = false;
+        trackControl = false; 
     }
 
     public IEnumerator WanderRoutine()  // 플레이어를 추적하지 않고 배회하는 monster
@@ -185,11 +215,30 @@ public class Monster : MonoBehaviour
             }
 
 
-            if (isCollide)
+            if (isStunned)
             {
+                isCollide = false;
+                if (toggleAttackedTimer < stunnedTime)
+                {
+                    //Debug.Log(2);
+                    animator.SetBool("isWalking", false);
+                    animator.SetBool("isAttacked", true);
+                    animator.SetBool("isAttack", false);
+                    toggleAttackedTimer += Time.deltaTime;
+                }
+                else
+                {
+                    toggleAttackedTimer = 0;
+
+                }
+            }
+            if (isCollide && !GetComponent<MonsterStatus>().Attacked)
+            {
+
                 animator.SetBool("isWalking", false);
                 animator.SetBool("isAttacked", false);
                 animator.SetBool("isAttack", true);
+                
             }
             else if (GetComponent<MonsterStatus>().Attacked)
             {
@@ -197,7 +246,7 @@ public class Monster : MonoBehaviour
                 animator.SetBool("isAttacked", true);
                 animator.SetBool("isAttack", false);
             }
-            else if (rigidBodyToMove != null&&!isCollide)
+            else if (rigidBodyToMove != null && !isCollide&&!isStunned)
             {
 
                 animator.SetBool("isWalking", true);

@@ -10,11 +10,10 @@ public class MonsterStatus : MonoBehaviour
 
     PlayerMovement player;
     public int stamina;
-    public float stunnedTime;
     public bool attacked;
     private bool attacking;
-    private float toggleAttackedTimer; // attacked가 true에서 false로 바뀔 때까지 시간이 누적되는 타이머 
-
+    private float toggleAttackedTimer; // attacked가 true에서 false로 바뀔 때까지 시간이 누적되는 타이머
+    public float stunnedTime;
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();

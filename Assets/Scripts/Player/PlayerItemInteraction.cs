@@ -6,27 +6,27 @@ public class PlayerItemInteraction : MonoBehaviour
 {
     Animator animator;
     GameObject monster;
-    
-    private int numOfAmulets ;
+
+    private int numOfAmulets;
     [Header("근접 거리")]
     [SerializeField] [Range(0f, 50f)] float rangeOfItemUse;
     PlayerMovement player;
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        player= FindObjectOfType<PlayerMovement>();
+        player = FindObjectOfType<PlayerMovement>();
         monster = GameObject.Find("Monster");
         numOfAmulets = 3;
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && numOfAmulets > 0 && !player.isDoor)
+        if (Input.GetKeyDown(KeyCode.Space) && numOfAmulets > 0 && !player.isDoor)
         {
-            if(monster != null)
+            if (monster != null)
             {
                 player.isReady = Vector3.Distance(transform.position, monster.transform.position) < rangeOfItemUse;
-                if(player.isReady)
+                if (player.isReady)
                 {
                     animator.SetTrigger("UseAmulet");
                     GameObject.Find("Monster").GetComponent<MonsterStatus>().attacked = true;
@@ -37,8 +37,11 @@ public class PlayerItemInteraction : MonoBehaviour
                 }
             }
         }
-        GameObject.Find("Monster").GetComponent<Monster>().animator.SetBool("isAttacked", false);
-        GameObject.Find("Monster").GetComponent<Monster>().animator.SetBool("isWalking", true);
-        GameObject.Find("Monster").GetComponent<Monster>().animator.SetBool("isAttacking", false);
+        if (monster != null)
+        {
+            GameObject.Find("Monster").GetComponent<Monster>().animator.SetBool("isAttacked", false);
+            GameObject.Find("Monster").GetComponent<Monster>().animator.SetBool("isWalking", true);
+            GameObject.Find("Monster").GetComponent<Monster>().animator.SetBool("isAttacking", false);
+        }
     }
 }
