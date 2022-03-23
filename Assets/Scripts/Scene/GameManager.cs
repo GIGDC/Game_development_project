@@ -86,10 +86,31 @@ public class GameManager : MonoBehaviour
         yield return null;
     }
 
-    virtual public IEnumerator FadeIn()
+    virtual public IEnumerator FadeIn(bool isDoorBelowPlayer = false, string currentScene = "", string direction = "")
     {
+        yield return new WaitForSeconds(0.5f); // 맵이 완전히 로딩되어 원하는 door을 찾을 수 있도록 0.5초 대기
+
+        Vector3 teleportLocation = player.transform.position; // 초기화
+        if (currentScene != "") // 현재 Scene의 이름 == 새로운 Scene에서 player가 들어오는 door 이름
+        {
+            if (direction != "") // 문의 위치 (back/front)
+                teleportLocation = GameObject.Find("Door").transform.Find(currentScene + " Door (" + direction + ")").transform.position;
+            else
+                teleportLocation = GameObject.Find("Door").transform.Find(currentScene).transform.position;
+        }
+        if (isDoorBelowPlayer) // door과 player의 상대적인 위치
+        {
+            // 새로운 scene에서 player과 door의 상대적인 위치 설정
+            player.transform.position = new Vector3(teleportLocation.x, teleportLocation.y - 3, teleportLocation.z);
+        }
+        else
+        {
+            player.transform.position = new Vector3(teleportLocation.x, teleportLocation.y + 3, teleportLocation.z);
+        }
+
         transitionAnimator.SetBool("FadeOut", false);
         transitionAnimator.SetBool("FadeIn", true);
+
         yield return new WaitForSeconds(0.5f);
         yield return new WaitForSeconds(transitionTime);
         transitionAnimator.SetBool("FadeOut", false);
@@ -97,7 +118,7 @@ public class GameManager : MonoBehaviour
         yield return null;
     }
 
-    virtual public IEnumerator AsyncLoadMap()
+    virtual public IEnumerator AsyncLoadMap(bool isDoorBelowPlayer = false, string currentScene = "", string direction = "")
     {
         AsyncOperation async = SceneManager.LoadSceneAsync(transferScene);
         async.allowSceneActivation = false;
@@ -108,9 +129,16 @@ public class GameManager : MonoBehaviour
 
             if (async.progress >= 0.9f)
             {
-                StartCoroutine(FadeIn());
                 async.allowSceneActivation = true;
+                
+                /* 
+                이 사이에 player의 position을 조정하고 싶은데 맵이 완전히 로딩되어 door을
+                찾기 위해 yield return new WaitForSeconds(0.5f)를 넣었으나, 해당 코드가 실행되고
+                그 아래의 코드가 실행이 안 되어 player의 position도 못 잡을 뿐더러 FadeIn도 실행되지 않음.
+                코루틴의 동작 방식을 내가 완전히 이해하고 있는 게 아닌가 싶음...
+                 */
 
+                StartCoroutine(FadeIn(isDoorBelowPlayer, currentScene, direction));
             }
             yield return null;
         }

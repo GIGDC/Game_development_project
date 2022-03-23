@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Transfer : MonoBehaviour
+public class DoorTransfer : MonoBehaviour
 {
     GameManager gameManager;
     Animator doorAnimator;
@@ -16,8 +16,10 @@ public class Transfer : MonoBehaviour
     KeyController key;
     public Image WarningUI;
     // Start is called before the first frame update
-    PlayerMovement player;
+    //PlayerMovement player;
     CameraShake shake;
+
+    public bool isOpeningDoor; // 문과 부딪혔을때에는 부적이 아닌 문을 열수 있도록 하기 위함.
 
     static public bool CheckMonster = false;
 
@@ -29,7 +31,7 @@ public class Transfer : MonoBehaviour
         start = GameObject.FindObjectOfType<StartPoint>();
         key = GameObject.FindObjectOfType<KeyController>();
         doorAnimator = GetComponent<Animator>();
-        player= GameObject.FindObjectOfType<PlayerMovement>();
+        //player= GameObject.FindObjectOfType<PlayerMovement>();
         shake = GameObject.FindObjectOfType<CameraShake>();
     }
 
@@ -49,18 +51,18 @@ public class Transfer : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            player.isDoor = true;
+            isOpeningDoor = true;
             if (KeyController.isLock || dontCheckKeyController) // 추후 dontCheckKeyController만 조건에서 삭제
             {
-                if (direction != "")
-                {
-                    StartPoint.direction = direction;
-                }
+                //if (direction != "")
+                //{
+                //    StartPoint.direction = direction;
+                //}
                 doorAnimator.SetTrigger("OpenDoor");
                 SceneTransition();
             }
-         else if(WarningUI != null)
-        {
+            else if(WarningUI != null)
+            { 
                 WarningUI.gameObject.SetActive(true);
                 shake.Shake();
             }
@@ -83,7 +85,12 @@ public class Transfer : MonoBehaviour
         //doorAnimator.SetTrigger("OpenDoor");
         yield return new WaitForSeconds(0.5f);
         yield return new WaitForSeconds(gameManager.transitionTime);
-        StartCoroutine(gameManager.AsyncLoadMap());
+
+        bool isDoorBelowPlayer = GameObject.Find("Player").transform.position.y > transform.position.y;
+        StartCoroutine(gameManager.AsyncLoadMap(
+            isDoorBelowPlayer,
+            SceneManager.GetActiveScene().name,
+            direction));
         yield return null;
     }
 }

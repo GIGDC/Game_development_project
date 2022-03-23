@@ -90,7 +90,7 @@ public class Monster : MonoBehaviour
     {
         while (true)
         {
-            if (Transfer.CheckMonster)
+            if (DoorTransfer.CheckMonster)
             {
 
                 if (moveCoroutine != null)

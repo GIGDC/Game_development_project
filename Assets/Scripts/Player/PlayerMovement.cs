@@ -13,9 +13,8 @@ public class PlayerMovement : MonoBehaviour
     public float normalSpeed, crawlSpeed, runSpeed;
     Vector2 movement;
     public Vector2 direction; // 플레이어가 현재 향하고 있는 방향
-    public bool isReady; // 플레이어가 부적을 사용할 범위에 들어올때 true
     public bool isAttacking; //플레이어가 공격할때 당하는 모션을 끄기 위해서
-    public bool isDoor; //문과 부딪혔을때에는 부적이 아닌 문을 열수 있도록 하기 위함.
+    
     public int numOfAmulets; // 플레이어가 가지고 있는 부적 개수
 
     //카메라 만들기

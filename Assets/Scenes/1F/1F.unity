@@ -394,7 +394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1933976915064812975, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: m_Name
-      value: Library Door(back)
+      value: Library Door (back)
       objectReference: {fileID: 0}
     - target: {fileID: 6320016483130551195, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: direction
@@ -1063,29 +1063,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPoint: infirmary
---- !u!1 &365329006 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4270451543074281825, guid: 539eea010fe6f9a4cb2834e46949fa4c, type: 3}
-  m_PrefabInstance: {fileID: 777630933}
-  m_PrefabAsset: {fileID: 0}
 --- !u!20 &365329010 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 4270451543074281826, guid: 539eea010fe6f9a4cb2834e46949fa4c, type: 3}
   m_PrefabInstance: {fileID: 777630933}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &365329012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 365329006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80827099a7641a945bf6c8da198292ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 476319637}
 --- !u!4 &434453287 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1933976915064812973, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
@@ -1285,6 +1267,10 @@ PrefabInstance:
       propertyPath: direction
       value: back
       objectReference: {fileID: 0}
+    - target: {fileID: 1130589704470959417, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
+      propertyPath: dontCheckKeyController
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1933976915064812972, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -1335,7 +1321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1933976915064812975, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: m_Name
-      value: Admin Door(back)
+      value: Admin office Door (back)
       objectReference: {fileID: 0}
     - target: {fileID: 5557082155452619646, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: m_Size.y
@@ -1810,7 +1796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1933976915064812975, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: m_Name
-      value: Broadcasting Door(front)
+      value: Broadcasting Door (front)
       objectReference: {fileID: 0}
     - target: {fileID: 6320016483130551195, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: direction
@@ -1887,7 +1873,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1933976915064812975, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: m_Name
-      value: Broadcasting Door(back)
+      value: Broadcasting Door (back)
       objectReference: {fileID: 0}
     - target: {fileID: 6320016483130551195, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: direction
@@ -1976,6 +1962,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2823585089890734471, guid: 539eea010fe6f9a4cb2834e46949fa4c, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 476319637}
     - target: {fileID: 4270451543074281825, guid: 539eea010fe6f9a4cb2834e46949fa4c, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -2173,7 +2163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1933976915064812975, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: m_Name
-      value: Infirmary Door(back)
+      value: infirmary Door (back)
       objectReference: {fileID: 0}
     - target: {fileID: 6320016483130551195, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: direction
@@ -2195,6 +2185,10 @@ PrefabInstance:
     - target: {fileID: 1130589704470959417, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: GoTo
       value: Principal's office
+      objectReference: {fileID: 0}
+    - target: {fileID: 1130589704470959417, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
+      propertyPath: direction
+      value: front
       objectReference: {fileID: 0}
     - target: {fileID: 1933976915064812972, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: m_SortingOrder
@@ -2246,7 +2240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1933976915064812975, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: m_Name
-      value: Principal Door(front)
+      value: Principal's office Door (front)
       objectReference: {fileID: 0}
     - target: {fileID: 6320016483130551195, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: transferScene
@@ -2566,7 +2560,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1933976915064812975, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: m_Name
-      value: Library Door(front)
+      value: Library Door (front)
       objectReference: {fileID: 0}
     - target: {fileID: 1933976915064812975, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: m_IsActive
@@ -3281,6 +3275,8 @@ MonoBehaviour:
   GoTo: FirstAnnex
   direction: 
   WarningUI: {fileID: 1514948144}
+  isOpeningDoor: 0
+  dontCheckKeyController: 0
 --- !u!1 &999922727
 GameObject:
   m_ObjectHideFlags: 0
@@ -4127,6 +4123,8 @@ MonoBehaviour:
   GoTo: Storage
   direction: 
   WarningUI: {fileID: 1514948144}
+  isOpeningDoor: 0
+  dontCheckKeyController: 0
 --- !u!61 &1212263292
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4210,7 +4208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1933976915064812975, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: m_Name
-      value: Impair Door
+      value: Special Ed Door (front)
       objectReference: {fileID: 0}
     - target: {fileID: 1933976915064812975, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: m_IsActive
@@ -4240,6 +4238,10 @@ PrefabInstance:
     - target: {fileID: 1130589704470959417, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: direction
       value: front
+      objectReference: {fileID: 0}
+    - target: {fileID: 1130589704470959417, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
+      propertyPath: dontCheckKeyController
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1933976915064812972, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: m_SortingOrder
@@ -4291,7 +4293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1933976915064812975, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: m_Name
-      value: Admin Door(front)
+      value: Admin office Door (front)
       objectReference: {fileID: 0}
     - target: {fileID: 5557082155452619646, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: m_Size.y
@@ -5413,7 +5415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1933976915064812975, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: m_Name
-      value: Infirmary Door(front)
+      value: infirmary Door (front)
       objectReference: {fileID: 0}
     - target: {fileID: 6320016483130551195, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: direction

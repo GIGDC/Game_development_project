@@ -16,7 +16,7 @@ public class MonsterTimer : MonoBehaviour
     void InvokeTest()
     {
         monster.gameObject.SetActive(true);
-        Transfer.CheckMonster = false;
+        DoorTransfer.CheckMonster = false;
         Debug.Log("»£√‚");
         OutDoor = true;
         monster.wanderCoroutine = StartCoroutine(monster.WanderRoutine());
@@ -38,7 +38,7 @@ public class MonsterTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Transfer.CheckMonster)
+        if (DoorTransfer.CheckMonster)
         {
             Invoke("InvokeTest", 10f);
         }
