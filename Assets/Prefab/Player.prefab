@@ -74,9 +74,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -742820189
-  m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingLayerID: 371074617
+  m_SortingLayer: 3
+  m_SortingOrder: 0
   m_Sprite: {fileID: -2311659948842064771, guid: 55dbf3bb72119f148b7be66e2c453e61, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -162,6 +162,9 @@ MonoBehaviour:
   crawlSpeed: 2
   runSpeed: 8
   direction: {x: 0, y: 0}
+  isReady: 0
+  isAttacking: 0
+  isDoor: 0
   numOfAmulets: 0
   MainCamera: {fileID: 0}
 --- !u!114 &6116867844890509103

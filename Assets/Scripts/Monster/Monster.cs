@@ -125,7 +125,7 @@ public class Monster : MonoBehaviour
     {
         while (true)
         {
-            if (MoveToRoom.CheckMonster)
+            if (DoorTransfer.CheckMonster)
             {
 
                 if (moveCoroutine != null)
