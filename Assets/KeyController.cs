@@ -17,7 +17,7 @@ public class KeyController : MonoBehaviour
             Debug.Log("¿­¼è¾ø¾îÁü");
             isLock = true;
             this.gameObject.SetActive(false);
-            Transfer.doorAnimator.SetTrigger("OpenDoor");
+            //DoorTransfer.doorAnimator.SetTrigger("OpenDoor");
 
         }
     }

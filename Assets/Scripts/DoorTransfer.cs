@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class DoorTransfer : MonoBehaviour
 {
     GameManager gameManager;
-    Animator doorAnimator;
+    public Animator doorAnimator;
+    static int doorAnimCnt;
     [Tooltip("이동하려는 Scene 이름")]
     public string GoTo;
     [Tooltip("문의 위치 front / back")]
@@ -47,7 +48,6 @@ public class DoorTransfer : MonoBehaviour
                     // manager.transferScene = "SampleScene";
 
         StartPoint.MapNum = SceneManager.GetActiveScene().buildIndex;
-
 
         if (Input.GetKeyDown(KeyCode.Space))
         {

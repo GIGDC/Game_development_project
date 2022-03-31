@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8462369979338347818}
   - component: {fileID: 8462369979338347817}
   - component: {fileID: 1637719067267978766}
+  - component: {fileID: 6288141077711273091}
   - component: {fileID: 2584701934113409840}
   m_Layer: 0
   m_Name: RoomDoor
@@ -110,6 +111,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.63, y: 1.729666}
   m_EdgeRadius: 0
+--- !u!95 &6288141077711273091
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8462369979338347816}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 97d9850ebe0c3f346a438acbf1c47c30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &2584701934113409840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9615d13f8d496bc4297512404e211546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorAnimator: {fileID: 6288141077711273091}
   GoTo: 
   direction: 
   WarningUI: {fileID: 0}
