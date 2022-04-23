@@ -76,7 +76,8 @@ public class ChangeText : MonoBehaviour
         else if (SceneName == "Principals' office")
         {
             StartCoroutine(FadeInCoroutine());
-            text.text = "교장실";        }
+            text.text = "교장실";
+        }
         else if (SceneName == "Special Ed")
         {
             StartCoroutine(FadeInCoroutine());

@@ -6,9 +6,11 @@ public class KeyController : MonoBehaviour
 {
     public int SceneNum;
     static public bool isLock;
+
     void Start()
     {
         isLock = false;
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,8 +18,9 @@ public class KeyController : MonoBehaviour
         {
             Debug.Log("¿­¼è¾ø¾îÁü");
             isLock = true;
+            DoorTransfer.doorAnimator.SetTrigger("OpenDoor");
             this.gameObject.SetActive(false);
-            //DoorTransfer.doorAnimator.SetTrigger("OpenDoor");
+           
 
         }
     }

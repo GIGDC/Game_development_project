@@ -52,7 +52,8 @@ public class ActiveConversation : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Key.SetActive(true);
+            if(Key!=null)
+                Key.SetActive(true);
             message.SetActive(false);
             //sr.material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             clock.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);

@@ -17,9 +17,6 @@ public class PlayerMovement : MonoBehaviour
     
     public int numOfAmulets; // 플레이어가 가지고 있는 부적 개수
 
-    //카메라 만들기
-    public GameObject MainCamera;
-
     public void Hide()
     {
         gameObject.SetActive(false);

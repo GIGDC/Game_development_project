@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class DoorTransfer : MonoBehaviour
 {
     GameManager gameManager;
-    public Animator doorAnimator;
+    static public Animator doorAnimator;
     static int doorAnimCnt;
     [Tooltip("이동하려는 Scene 이름")]
     public string GoTo;
@@ -54,11 +54,6 @@ public class DoorTransfer : MonoBehaviour
             isOpeningDoor = true;
             if (KeyController.isLock || dontCheckKeyController) // 추후 dontCheckKeyController만 조건에서 삭제
             {
-                //if (direction != "")
-                //{
-                //    StartPoint.direction = direction;
-                //}
-                doorAnimator.SetTrigger("OpenDoor");
                 SceneTransition();
             }
             else if(WarningUI != null)
