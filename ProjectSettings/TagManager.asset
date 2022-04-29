@@ -12,6 +12,7 @@ TagManager:
   - GameManager
   - floorUI
   - Door
+  - hint
   layers:
   - Default
   - TransparentFX

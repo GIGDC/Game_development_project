@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 531710303593123367, guid: 92e89d38ca3ebc9429ba384aa1710bb6, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 531710303593123367, guid: 92e89d38ca3ebc9429ba384aa1710bb6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -184,6 +184,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92e89d38ca3ebc9429ba384aa1710bb6, type: 3}
+--- !u!114 &100644401 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6116867844890509102, guid: eacf79cc8370bb242bbaee0bc5f7b1ff, type: 3}
+  m_PrefabInstance: {fileID: 1372394017}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a9b2b9fcc3aaa54e9541c380115695e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &100644402 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6116867844890509101, guid: eacf79cc8370bb242bbaee0bc5f7b1ff, type: 3}
+  m_PrefabInstance: {fileID: 1372394017}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &128530364
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,7 +293,7 @@ GameObject:
   - component: {fileID: 189608861}
   - component: {fileID: 189608862}
   m_Layer: 0
-  m_Name: pngwing.com (11)
+  m_Name: soccerball2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -292,7 +308,7 @@ Transform:
   m_GameObject: {fileID: 189608860}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -19.125174, y: 10.084914, z: 15.19254}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1376262659}
   m_RootOrder: 8
@@ -362,7 +378,7 @@ GameObject:
   - component: {fileID: 227192351}
   m_Layer: 6
   m_Name: sec_hint1
-  m_TagString: Untagged
+  m_TagString: hint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -446,6 +462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   child: {fileID: 1495163796}
   ImgNum: 7
+  glass: {fileID: 1050078653}
 --- !u!61 &227192351
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -514,7 +531,7 @@ GameObject:
   - component: {fileID: 352829747}
   - component: {fileID: 352829748}
   m_Layer: 0
-  m_Name: pngwing.com (6)
+  m_Name: volleyball2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -529,7 +546,7 @@ Transform:
   m_GameObject: {fileID: 352829746}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 21.709162, y: 11.093165, z: 15.19254}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1376262659}
   m_RootOrder: 1
@@ -697,7 +714,7 @@ GameObject:
   - component: {fileID: 542673142}
   - component: {fileID: 542673141}
   m_Layer: 0
-  m_Name: pngwing.com (8)
+  m_Name: dodgeball6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -763,7 +780,7 @@ Transform:
   m_GameObject: {fileID: 542673140}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 55.93952, y: 4.9222755, z: 15.19254}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 1376262659}
   m_RootOrder: 12
@@ -779,7 +796,7 @@ GameObject:
   - component: {fileID: 557755559}
   - component: {fileID: 557755560}
   m_Layer: 0
-  m_Name: pngwing.com (7)
+  m_Name: dodgeball1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -794,7 +811,7 @@ Transform:
   m_GameObject: {fileID: 557755558}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 39.35363, y: 3.0271235, z: 15.19254}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 1376262659}
   m_RootOrder: 2
@@ -864,7 +881,7 @@ GameObject:
   - component: {fileID: 586617979}
   m_Layer: 6
   m_Name: sec_hint(dodgeball)
-  m_TagString: Untagged
+  m_TagString: hint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -948,6 +965,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   child: {fileID: 1806258401}
   ImgNum: 3
+  glass: {fileID: 1050078653}
 --- !u!61 &586617979
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -985,7 +1003,7 @@ GameObject:
   - component: {fileID: 812217498}
   - component: {fileID: 812217499}
   m_Layer: 0
-  m_Name: pngwing.com (5)
+  m_Name: basketball1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1000,7 +1018,7 @@ Transform:
   m_GameObject: {fileID: 812217497}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 23.725672, y: 33.77891, z: 15.19254}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 1376262659}
   m_RootOrder: 6
@@ -1067,7 +1085,7 @@ GameObject:
   - component: {fileID: 830504338}
   - component: {fileID: 830504337}
   m_Layer: 0
-  m_Name: pngwing.com (5)
+  m_Name: soccerball4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1133,7 +1151,7 @@ Transform:
   m_GameObject: {fileID: 830504336}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.6070652, y: 13.766985, z: 15.19254}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1376262659}
   m_RootOrder: 15
@@ -1149,7 +1167,7 @@ GameObject:
   - component: {fileID: 864019272}
   - component: {fileID: 864019271}
   m_Layer: 0
-  m_Name: pngwing.com (4)
+  m_Name: soccerball3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1215,7 +1233,7 @@ Transform:
   m_GameObject: {fileID: 864019270}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 7.3014565, y: 11.423718, z: 15.19254}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1376262659}
   m_RootOrder: 14
@@ -1231,7 +1249,7 @@ GameObject:
   - component: {fileID: 903418492}
   - component: {fileID: 903418491}
   m_Layer: 0
-  m_Name: pngwing.com (10)
+  m_Name: volleyball5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1297,7 +1315,7 @@ Transform:
   m_GameObject: {fileID: 903418490}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.907833, y: 24.311684, z: 15.19254}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1376262659}
   m_RootOrder: 17
@@ -1313,7 +1331,7 @@ GameObject:
   - component: {fileID: 911702999}
   - component: {fileID: 911703000}
   m_Layer: 0
-  m_Name: pngwing.com (4)
+  m_Name: soccerball1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1328,7 +1346,7 @@ Transform:
   m_GameObject: {fileID: 911702998}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8.601843, y: 17.646828, z: 15.19254}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1376262659}
   m_RootOrder: 7
@@ -1395,7 +1413,7 @@ GameObject:
   - component: {fileID: 917938845}
   - component: {fileID: 917938846}
   m_Layer: 0
-  m_Name: pngwing.com (5)
+  m_Name: basketball2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1410,7 +1428,7 @@ Transform:
   m_GameObject: {fileID: 917938844}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 38.23668, y: 22.088669, z: 15.19254}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 1376262659}
   m_RootOrder: 9
@@ -1478,9 +1496,10 @@ GameObject:
   - component: {fileID: 996604428}
   - component: {fileID: 996604430}
   - component: {fileID: 996604431}
+  - component: {fileID: 996604432}
   m_Layer: 6
   m_Name: sec_hint(basketball)
-  m_TagString: Untagged
+  m_TagString: hint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1564,6 +1583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   child: {fileID: 1806258401}
   ImgNum: 1
+  glass: {fileID: 1050078653}
 --- !u!61 &996604431
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1590,6 +1610,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.94, y: 9.1}
   m_EdgeRadius: 0
+--- !u!114 &996604432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996604427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 277577395e65bc8418a5e05072328852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1022824620
 GameObject:
   m_ObjectHideFlags: 0
@@ -1601,7 +1633,7 @@ GameObject:
   - component: {fileID: 1022824621}
   - component: {fileID: 1022824622}
   m_Layer: 0
-  m_Name: pngwing.com (10)
+  m_Name: volleyball3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1616,7 +1648,7 @@ Transform:
   m_GameObject: {fileID: 1022824620}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -11.563261, y: 22.688103, z: 15.19254}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1376262659}
   m_RootOrder: 5
@@ -1689,7 +1721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5165234520126250310, guid: bdce10800a25a7c47be554f11559114a, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5165234520126250310, guid: bdce10800a25a7c47be554f11559114a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1733,6 +1765,81 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdce10800a25a7c47be554f11559114a, type: 3}
+--- !u!1 &1050078653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1050078654}
+  - component: {fileID: 1050078656}
+  - component: {fileID: 1050078655}
+  m_Layer: 5
+  m_Name: glass
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1050078654
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050078653}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1450883856}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -371.91144, y: -61.658325}
+  m_SizeDelta: {x: 56.1801, y: 57.3168}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1050078655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050078653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: c1bef18c049966542a68d8b2b4050fe2, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1050078656
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050078653}
+  m_CullTransparentMesh: 1
 --- !u!1 &1064560506
 GameObject:
   m_ObjectHideFlags: 0
@@ -1784,7 +1891,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5f2a9e72fdffa3e4fbe5d8500781fef1, type: 2}
+  - {fileID: 2100000, guid: 9c1a614088928d4488f1b44891b4bb36, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113856,7 +113963,7 @@ GameObject:
   - component: {fileID: 1191074728}
   - component: {fileID: 1191074729}
   m_Layer: 0
-  m_Name: pngwing.com (9)
+  m_Name: dodgeball3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113871,7 +113978,7 @@ Transform:
   m_GameObject: {fileID: 1191074727}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -5.513729, y: -9.57607, z: 15.19254}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 1376262659}
   m_RootOrder: 4
@@ -113938,7 +114045,7 @@ GameObject:
   - component: {fileID: 1340486074}
   - component: {fileID: 1340486073}
   m_Layer: 0
-  m_Name: pngwing.com (6)
+  m_Name: volleyball4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114004,7 +114111,7 @@ Transform:
   m_GameObject: {fileID: 1340486072}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 17.260336, y: 24.311684, z: 15.19254}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1376262659}
   m_RootOrder: 16
@@ -114026,7 +114133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6116867844890509100, guid: eacf79cc8370bb242bbaee0bc5f7b1ff, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6116867844890509100, guid: eacf79cc8370bb242bbaee0bc5f7b1ff, type: 3}
       propertyPath: m_LocalPosition.x
@@ -114068,6 +114175,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6116867844890509102, guid: eacf79cc8370bb242bbaee0bc5f7b1ff, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 100644402}
     - target: {fileID: 6116867844890509102, guid: eacf79cc8370bb242bbaee0bc5f7b1ff, type: 3}
       propertyPath: MainCamera
       value: 
@@ -114133,6 +114244,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 974612226398292944, guid: 3a43bcbfef0eb284e82170afaa31101c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2130743940649976762, guid: 3a43bcbfef0eb284e82170afaa31101c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5907160723954611232, guid: 3a43bcbfef0eb284e82170afaa31101c, type: 3}
       propertyPath: m_Text
       value: "\uAC15\uB2F9"
@@ -114253,9 +114372,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6423183567372240367, guid: 3a43bcbfef0eb284e82170afaa31101c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 594
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423183567372240367, guid: 3a43bcbfef0eb284e82170afaa31101c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 910
+      objectReference: {fileID: 0}
     - target: {fileID: 6649810355590985909, guid: 3a43bcbfef0eb284e82170afaa31101c, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6649810355590985909, guid: 3a43bcbfef0eb284e82170afaa31101c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a43bcbfef0eb284e82170afaa31101c, type: 3}
@@ -114305,6 +114436,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1450883853}
+--- !u!224 &1450883856 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5907160725927389335, guid: 3a43bcbfef0eb284e82170afaa31101c, type: 3}
+  m_PrefabInstance: {fileID: 1450883850}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1495163795 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6224464053892591293, guid: 3a43bcbfef0eb284e82170afaa31101c, type: 3}
@@ -114364,6 +114500,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4270451543074281825, guid: 539eea010fe6f9a4cb2834e46949fa4c, type: 3}
   m_PrefabInstance: {fileID: 2097434670}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1603463185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603463184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80827099a7641a945bf6c8da198292ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 100644401}
 --- !u!1 &1706863080
 GameObject:
   m_ObjectHideFlags: 0
@@ -114378,7 +114527,7 @@ GameObject:
   - component: {fileID: 1706863081}
   m_Layer: 6
   m_Name: sec_hint(soccer)
-  m_TagString: Untagged
+  m_TagString: hint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114423,6 +114572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   child: {fileID: 1806258401}
   ImgNum: 0
+  glass: {fileID: 1050078653}
 --- !u!212 &1706863083
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -114499,7 +114649,7 @@ GameObject:
   - component: {fileID: 1720427039}
   - component: {fileID: 1720427038}
   m_Layer: 0
-  m_Name: pngwing.com (7)
+  m_Name: dodgeball5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114565,7 +114715,7 @@ Transform:
   m_GameObject: {fileID: 1720427037}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 45.74698, y: -9.293642, z: 15.19254}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 1376262659}
   m_RootOrder: 11
@@ -114581,7 +114731,7 @@ GameObject:
   - component: {fileID: 1736125509}
   - component: {fileID: 1736125510}
   m_Layer: 0
-  m_Name: pngwing.com (7)
+  m_Name: dodgeball4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114596,7 +114746,7 @@ Transform:
   m_GameObject: {fileID: 1736125508}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 25.898336, y: -9.025419, z: 15.19254}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 1376262659}
   m_RootOrder: 10
@@ -114663,7 +114813,7 @@ GameObject:
   - component: {fileID: 1769223976}
   - component: {fileID: 1769223977}
   m_Layer: 0
-  m_Name: pngwing.com (8)
+  m_Name: dodgeball2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114678,7 +114828,7 @@ Transform:
   m_GameObject: {fileID: 1769223975}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 10.618353, y: -2.518281, z: 15.19254}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 1376262659}
   m_RootOrder: 3
@@ -114848,7 +114998,7 @@ GameObject:
   - component: {fileID: 1821480383}
   - component: {fileID: 1821480382}
   m_Layer: 0
-  m_Name: pngwing.com (11)
+  m_Name: volleyball1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114914,7 +115064,7 @@ Transform:
   m_GameObject: {fileID: 1821480381}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -14.373753, y: 31.34148, z: 15.19254}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1376262659}
   m_RootOrder: 0
@@ -114930,7 +115080,7 @@ GameObject:
   - component: {fileID: 1921004271}
   - component: {fileID: 1921004270}
   m_Layer: 0
-  m_Name: pngwing.com (9)
+  m_Name: dodgeball7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114996,7 +115146,7 @@ Transform:
   m_GameObject: {fileID: 1921004269}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -7.093321, y: 3.581152, z: 15.19254}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 1376262659}
   m_RootOrder: 13
@@ -115030,8 +115180,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1941106360}
   m_LocalRotation: {x: -0, y: -0, z: -0.001794075, w: 0.9999984}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 17.3267, y: 0.7783, z: 0}
+  m_LocalScale: {x: 0.71833104, y: 0.51368755, z: 1}
   m_Children: []
   m_Father: {fileID: 1805313108}
   m_RootOrder: 0
@@ -115056,76 +115206,20 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 1941106363}
     m_ColliderPaths:
-    - - X: 870000100
-        Y: 375714263
-      - X: 870000100
-        Y: 380000041
-      - X: 870000041
-        Y: 380000100
-      - X: 799999959
-        Y: 380000100
-      - X: 799999900
-        Y: 380000041
-      - X: 799999900
-        Y: 380000000
-      - X: 140000100
-        Y: 380000000
-      - X: 140000100
-        Y: 380000041
-      - X: 140000041
-        Y: 380000100
-      - X: 129999959
-        Y: 380000100
-      - X: 129999900
-        Y: 380000041
-      - X: 129999900
-        Y: 380000000
-      - X: -59999900
-        Y: 380000000
-      - X: -59999900
-        Y: 380000041
-      - X: -59999959
-        Y: 380000100
-      - X: -280000041
-        Y: 380000100
-      - X: -280000100
-        Y: 380000041
-      - X: -280000100
-        Y: 375714263
-      - X: -280000041
-        Y: 375714204
-      - X: -59999959
-        Y: 375714204
-      - X: -59999900
-        Y: 375714263
-      - X: -59999900
-        Y: 375714304
-      - X: 129999900
-        Y: 375714304
-      - X: 129999900
-        Y: 375714263
-      - X: 129999959
-        Y: 375714204
-      - X: 140000041
-        Y: 375714204
-      - X: 140000100
-        Y: 375714263
-      - X: 140000100
-        Y: 375714304
-      - X: 799999900
-        Y: 375714304
-      - X: 799999900
-        Y: 375714263
-      - X: 799999959
-        Y: 375714204
-      - X: 870000041
-        Y: 375714204
+    - - X: -201132672
+        Y: 192999776
+      - X: 624947968
+        Y: 192999776
+      - X: 624947968
+        Y: 195201296
+      - X: -201132672
+        Y: 195201296
   m_CompositePaths:
     m_Paths:
-    - - {x: 86.999985, y: 37.571426}
-      - {x: 86.99998, y: 38.00001}
-      - {x: -28.00001, y: 37.999973}
-      - {x: -27.99998, y: 37.571426}
+    - - {x: 62.494766, y: 19.299978}
+      - {x: 62.494766, y: 19.52013}
+      - {x: -20.113268, y: 19.520102}
+      - {x: -20.11324, y: 19.299978}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!19719996 &1941106363
@@ -116485,7 +116579,7 @@ GameObject:
   - component: {fileID: 2054268624}
   m_Layer: 6
   m_Name: sec_hint(volleyball)
-  m_TagString: Untagged
+  m_TagString: hint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116569,6 +116663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   child: {fileID: 1806258401}
   ImgNum: 2
+  glass: {fileID: 1050078653}
 --- !u!61 &2054268624
 BoxCollider2D:
   m_ObjectHideFlags: 0
