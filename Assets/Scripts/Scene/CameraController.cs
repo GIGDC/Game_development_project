@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public PlayerMovement player;
+    public GameObject player;
 
+    private void Start()
+    {
+        player= GameObject.FindGameObjectWithTag("Player");
+    }
     void Awake()
     {
         GameObject[] mainCameras = GameObject.FindGameObjectsWithTag("MainCamera");

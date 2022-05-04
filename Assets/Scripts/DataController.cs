@@ -2,34 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
+using LitJson;
+using System.IO;
 
 public class DataController : MonoBehaviour
 {
-    Dictionary<string,string> Text; //배열로 고스트 마다의 text 정리
-    string id;
-    string text;
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        Text = new Dictionary<string, string>(); //ghost 3명
-        /*
-        var json = Resources.Load("Text/talk") as TextAsset;
-
-        //var jlist = JsonConvert.DeserializeObject<List<DataController>>(json.text);
-
-        //foreach (var data in jlist)
+        
+        string JsonString = File.ReadAllText(Application.dataPath + "/Text/talk.json");
+        JsonData jsonData = JsonMapper.ToObject(JsonString);
+        if (ActiveConversation.ghost == null)
         {
-            this.Text.Add(data.id, data.text);
-        }*/
-    }
-
-    // Update is called once per frame
-    void Update()
-    {/*
-        foreach (var data in Text.Keys)
-        {
-            Debug.Log(data);
+            Debug.Log(">>>>>>>>>>>>>");
         }
-        */
+        ParsingJsonQuest(jsonData);
+    }
+    private void ParsingJsonQuest(JsonData talks)
+    {
+        int i = 0;
+        foreach(JsonData talk in talks["Ghost"])
+        {
+            Ghost ghost = new Ghost(talk["Talk"].ToString(), talk["NegatTalk"].ToString(), talk["PositTalk"].ToString(), talk["Select1"].ToString(), talk["Select2"].ToString(), talk["Select3"].ToString());
+            //ActiveConversation.ghost.Add(i,ghost); //ghost를 0번부터 시작
+            i++;
+        }
     }
 }

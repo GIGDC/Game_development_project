@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class DoorTransfer : MonoBehaviour
 {
     GameManager gameManager;
-    static public Animator doorAnimator;
+
+    public Animator DoorAni;
     static int doorAnimCnt;
     [Tooltip("이동하려는 Scene 이름")]
     public string GoTo;
@@ -31,7 +32,8 @@ public class DoorTransfer : MonoBehaviour
     {
         start = GameObject.FindObjectOfType<StartPoint>();
         key = GameObject.FindObjectOfType<KeyController>();
-        doorAnimator = GetComponent<Animator>();
+        DoorAni = this.GetComponent<Animator>();
+        
         //player= GameObject.FindObjectOfType<PlayerMovement>();
         shake = GameObject.FindObjectOfType<CameraShake>();
     }
@@ -54,6 +56,7 @@ public class DoorTransfer : MonoBehaviour
             isOpeningDoor = true;
             if (KeyController.isLock || dontCheckKeyController) // 추후 dontCheckKeyController만 조건에서 삭제
             {
+                
                 SceneTransition();
             }
             else if(WarningUI != null)
@@ -77,7 +80,7 @@ public class DoorTransfer : MonoBehaviour
         Debug.Log(gameManager.transferScene);
         gameManager.GetTransitionAnimator().SetBool("FadeOut", true);
         gameManager.GetTransitionAnimator().SetBool("FadeIn", false);
-        //doorAnimator.SetTrigger("OpenDoor");
+        
         yield return new WaitForSeconds(0.5f);
         yield return new WaitForSeconds(gameManager.transitionTime);
 

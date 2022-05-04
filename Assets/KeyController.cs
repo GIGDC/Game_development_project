@@ -6,22 +6,25 @@ public class KeyController : MonoBehaviour
 {
     public int SceneNum;
     static public bool isLock;
-
+    DoorTransfer door;
+    AudioSource Openaudio;
     void Start()
     {
         isLock = false;
-
+        door = GameObject.FindObjectOfType<DoorTransfer>();
+        Openaudio = door.GetComponent<AudioSource>();
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Player")
         {
             Debug.Log("¿­¼è¾ø¾îÁü");
+            door.GetComponent<Animator>().SetBool("isOpening",true);
+            Openaudio.Play();
             isLock = true;
-            DoorTransfer.doorAnimator.SetTrigger("OpenDoor");
             this.gameObject.SetActive(false);
-           
-
         }
+        
     }
 }
