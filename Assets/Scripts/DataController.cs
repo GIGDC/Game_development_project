@@ -7,27 +7,26 @@ using System.IO;
 
 public class DataController : MonoBehaviour
 {
+    public string dataTitle;
+    public int ghostNum;
     private void Start()
     {
         
-        string JsonString = File.ReadAllText(Application.dataPath + "/Text/talk.json");
+        string JsonString = File.ReadAllText(Application.dataPath + dataTitle);
         JsonData jsonData = JsonMapper.ToObject(JsonString);
         
         ParsingJsonQuest(jsonData);
     }
     private void ParsingJsonQuest(JsonData talks)
     {
-        int i = 0;
-        ActiveConversation.ghost = new Dictionary<string, Ghost>();
+        Ghost ghost = new Ghost(talks["Talk"].ToString(), talks["NegatTalk"].ToString(), talks["PositTalk"].ToString(), talks["Select1"].ToString(), talks["Select2"].ToString(), talks["Select3"].ToString());
+        ActiveConversation.ghost.Add("유령 "+ghostNum, ghost); //ghost를 0번부터 시작
 
-        foreach (JsonData talk in talks)
+
+        foreach(Ghost g in ActiveConversation.ghost.Values)
         {
-            Debug.Log(talk["Talk"].ToString()+" ** ");
-            Ghost ghost = new Ghost(talk["Talk"].ToString(), talk["NegatTalk"].ToString(), talk["PositTalk"].ToString(), talk["Select1"].ToString(), talk["Select2"].ToString(), talk["Select3"].ToString());
-            ActiveConversation.ghost.Add("유령 "+i, ghost); //ghost를 0번부터 시작
-            Debug.Log(i);
-            i++;
+            Debug.Log(g.Talk);
         }
-
+      
     }
 }

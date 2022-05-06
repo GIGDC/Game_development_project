@@ -5,13 +5,11 @@ using UnityEngine.UI;
 
 public class ActiveConversation : MonoBehaviour
 {
-    public int ghost_num;
     public GameObject message;
     public GameObject Key;
-
     public Text chatText;  // 실제 채팅이 나오는 텍스트
     public Text CharacterName;  // 캐릭터 이름이 나오는 텍스트
-
+    
     Image clock;
     Image secondHand;
 
@@ -21,7 +19,9 @@ public class ActiveConversation : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {   ThrowKey = false;
+    {
+        ActiveConversation.ghost = new Dictionary<string, Ghost>();
+        ThrowKey = false;
         clock = GameObject.Find("Clock").GetComponent<Image>();
         secondHand = GameObject.Find("theMinuteHand").GetComponent<Image>();
     }
@@ -47,7 +47,7 @@ public class ActiveConversation : MonoBehaviour
             clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
             secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 
-            StartCoroutine(TextPractice());
+            StartCoroutine(Talk());
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -78,27 +78,25 @@ public class ActiveConversation : MonoBehaviour
            }
         
     }
-    IEnumerator Chat(string narrator)
-    {/*
-        CharacterName.text = narrator;
+    IEnumerator Chat(string narrator, string narration)
+    {
         string writerText = "";
-
-        Ghost test = ghost[0];
+        CharacterName.text = narrator;
+        
         // 텍스트 타이핑 효과
-        for (int a = 0; a < test.Talk.Length; a++)
-        {
-            writerText += test.Talk[a];
+        for (int a=0; a < narration.Length; a++)
+        {   writerText += narration[a];
             chatText.text = writerText;
             yield return null;
         }
-        */
-        yield return null;
 
     }
     IEnumerator Talk() {
-        yield return StartCoroutine(Chat("학생"+ghost_num));
-        yield return new WaitForSeconds(1f);
-        yield return StartCoroutine(NormalChat("학생2", "안녕하세요, 반갑습니다."));
+        string[] narrators = ghost["유령 0"].Talk.Split('$');
+        foreach (string narrator in narrators) {
+            yield return StartCoroutine(Chat("유령 0",narrator));
+            yield return new WaitForSeconds(1f);
+        }
     }
 
     IEnumerator TextPractice()
