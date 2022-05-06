@@ -125,6 +125,7 @@ public class Monster : MonoBehaviour
     {
         while (true)
         {
+            /* 이부분 충돌해서 바꼈을 수도 있음. 이거 수정 예정.. 원래 코드에선 MoveToRoom으로, Monster가 Door로 이동했을때 사용하는 것.
             if (DoorTransfer.CheckMonster)
             {
 
@@ -134,6 +135,7 @@ public class Monster : MonoBehaviour
                 Hide();
                 //Destroy(gameObject); -> 게임 오브젝트 삭제 
             }
+            */
             ChooseNewEndPoint();  // 향할 목적지 선택
 
             if (moveCoroutine != null)

@@ -12,6 +12,10 @@ TagManager:
   - GameManager
   - floorUI
   - Door
+  - Hourglass
+  - Drink
+  - Lunch
+  - Inventory
   layers:
   - Default
   - TransparentFX
@@ -57,4 +61,10 @@ TagManager:
     locked: 0
   - name: Character
     uniqueID: 371074617
+    locked: 0
+  - name: Door
+    uniqueID: 608578905
+    locked: 0
+  - name: Light
+    uniqueID: 1590846969
     locked: 0

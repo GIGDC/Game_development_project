@@ -7,23 +7,23 @@ public class ActiveConversation : MonoBehaviour
 {
     public GameObject message;
     public GameObject Key;
-
     public Text chatText;  // 실제 채팅이 나오는 텍스트
     public Text CharacterName;  // 캐릭터 이름이 나오는 텍스트
-
+    
     Image clock;
     Image secondHand;
 
+    public static Dictionary<string, Ghost> ghost;
     public bool ThrowKey;
     //Image sr;
 
     // Start is called before the first frame update
     void Start()
     {
+        ActiveConversation.ghost = new Dictionary<string, Ghost>();
         ThrowKey = false;
         clock = GameObject.Find("Clock").GetComponent<Image>();
         secondHand = GameObject.Find("theMinuteHand").GetComponent<Image>();
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -47,12 +47,13 @@ public class ActiveConversation : MonoBehaviour
             clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
             secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 
-            StartCoroutine(TextPractice());
+            StartCoroutine(Talk());
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Key.SetActive(true);
+            if(Key!=null)
+                Key.SetActive(true);
             message.SetActive(false);
             //sr.material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             clock.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
@@ -76,6 +77,26 @@ public class ActiveConversation : MonoBehaviour
                 yield return null;
            }
         
+    }
+    IEnumerator Chat(string narrator, string narration)
+    {
+        string writerText = "";
+        CharacterName.text = narrator;
+        
+        // 텍스트 타이핑 효과
+        for (int a=0; a < narration.Length; a++)
+        {   writerText += narration[a];
+            chatText.text = writerText;
+            yield return null;
+        }
+
+    }
+    IEnumerator Talk() {
+        string[] narrators = ghost["유령 0"].Talk.Split('$');
+        foreach (string narrator in narrators) {
+            yield return StartCoroutine(Chat("유령 0",narrator));
+            yield return new WaitForSeconds(1f);
+        }
     }
 
     IEnumerator TextPractice()

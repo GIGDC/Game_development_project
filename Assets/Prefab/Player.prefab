@@ -156,17 +156,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9b2b9fcc3aaa54e9541c380115695e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 6116867844890509101}
   speed: 4
   normalSpeed: 4
   crawlSpeed: 2
   runSpeed: 8
   direction: {x: 0, y: 0}
-  isReady: 0
   isAttacking: 0
-  isDoor: 0
   numOfAmulets: 0
-  MainCamera: {fileID: 0}
 --- !u!114 &6116867844890509103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0310012479ca6449f1b672f02ce1d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack_img: {fileID: 21300000, guid: 925dfeb237e404442b186e4e913aa76d, type: 3}
   zeroHP: 0
 --- !u!114 &1545746435434384165
 MonoBehaviour:

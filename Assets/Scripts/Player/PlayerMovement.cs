@@ -15,11 +15,6 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 direction; // 플레이어가 현재 향하고 있는 방향
     public bool isAttacking; //플레이어가 공격할때 당하는 모션을 끄기 위해서
     
-    public int numOfAmulets; // 플레이어가 가지고 있는 부적 개수
-
-    //카메라 만들기
-    public GameObject MainCamera;
-
     public void Hide()
     {
         gameObject.SetActive(false);
@@ -27,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+       
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         if (players.Length == 1)
         {
@@ -38,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
         } // 중복된 Player 오브젝트가 있을 경우 오브젝트 파괴
         
         rigid = GetComponent<Rigidbody2D>();
-        numOfAmulets = 3;
+       
     }
 
     void Update()

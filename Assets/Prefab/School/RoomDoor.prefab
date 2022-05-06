@@ -121,7 +121,7 @@ Animator:
   m_GameObject: {fileID: 8462369979338347816}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 97d9850ebe0c3f346a438acbf1c47c30, type: 2}
+  m_Controller: {fileID: 9100000, guid: e9ce68da70558714fa1ff044bdc9e120, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9615d13f8d496bc4297512404e211546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorAnimator: {fileID: 6288141077711273091}
+  DoorAni: {fileID: 0}
   GoTo: 
   direction: 
   WarningUI: {fileID: 0}

@@ -17,8 +17,10 @@ public class PlayerAttacted : MonoBehaviour
     void Start()
     {
         player = GameObject.FindObjectOfType<PlayerMovement>();
-        hp = 100;
+        hp = 80;
         maxHP = 100;
+
+        Debug.Log(hp);
     }
 
     // Update is called once per frame

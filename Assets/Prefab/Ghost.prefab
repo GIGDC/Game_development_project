@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: -742820189
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -2311659948842064771, guid: 55dbf3bb72119f148b7be66e2c453e61, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3a498ce1c78aac4d81585def642b2dc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.62352943}
   m_FlipX: 0
   m_FlipY: 0
@@ -135,5 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: {fileID: 0}
+  Key: {fileID: 0}
   chatText: {fileID: 0}
   CharacterName: {fileID: 0}
+  ThrowKey: 0
