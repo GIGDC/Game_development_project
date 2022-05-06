@@ -15,14 +15,13 @@ public class ActiveConversation : MonoBehaviour
     Image clock;
     Image secondHand;
 
-    public static Dictionary<int, Ghost> ghost;
+    public static Dictionary<string, Ghost> ghost;
     public bool ThrowKey;
     //Image sr;
 
     // Start is called before the first frame update
     void Start()
-    {   ghost = new Dictionary<int, Ghost>();
-        ThrowKey = false;
+    {   ThrowKey = false;
         clock = GameObject.Find("Clock").GetComponent<Image>();
         secondHand = GameObject.Find("theMinuteHand").GetComponent<Image>();
     }
@@ -80,7 +79,7 @@ public class ActiveConversation : MonoBehaviour
         
     }
     IEnumerator Chat(string narrator)
-    {
+    {/*
         CharacterName.text = narrator;
         string writerText = "";
 
@@ -92,6 +91,8 @@ public class ActiveConversation : MonoBehaviour
             chatText.text = writerText;
             yield return null;
         }
+        */
+        yield return null;
 
     }
     IEnumerator Talk() {

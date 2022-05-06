@@ -12,20 +12,22 @@ public class DataController : MonoBehaviour
         
         string JsonString = File.ReadAllText(Application.dataPath + "/Text/talk.json");
         JsonData jsonData = JsonMapper.ToObject(JsonString);
-        if (ActiveConversation.ghost == null)
-        {
-            Debug.Log(">>>>>>>>>>>>>");
-        }
+        
         ParsingJsonQuest(jsonData);
     }
     private void ParsingJsonQuest(JsonData talks)
     {
         int i = 0;
-        foreach(JsonData talk in talks["Ghost"])
+        ActiveConversation.ghost = new Dictionary<string, Ghost>();
+
+        foreach (JsonData talk in talks)
         {
+            Debug.Log(talk["Talk"].ToString()+" ** ");
             Ghost ghost = new Ghost(talk["Talk"].ToString(), talk["NegatTalk"].ToString(), talk["PositTalk"].ToString(), talk["Select1"].ToString(), talk["Select2"].ToString(), talk["Select3"].ToString());
-            //ActiveConversation.ghost.Add(i,ghost); //ghost를 0번부터 시작
+            ActiveConversation.ghost.Add("유령 "+i, ghost); //ghost를 0번부터 시작
+            Debug.Log(i);
             i++;
         }
+
     }
 }
