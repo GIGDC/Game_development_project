@@ -9,18 +9,18 @@ public class ActiveConversation : MonoBehaviour
     public GameObject Key;
     public Text chatText;  // 실제 채팅이 나오는 텍스트
     public Text CharacterName;  // 캐릭터 이름이 나오는 텍스트
-    
+    public int id;
     Image clock;
     Image secondHand;
 
-    public static Dictionary<string, Ghost> ghost;
+    public static Dictionary<int, Ghost> ghost;
     public bool ThrowKey;
     //Image sr;
 
     // Start is called before the first frame update
     void Start()
     {
-        ActiveConversation.ghost = new Dictionary<string, Ghost>();
+        ghost = new Dictionary<int, Ghost>();
         ThrowKey = false;
         clock = GameObject.Find("Clock").GetComponent<Image>();
         secondHand = GameObject.Find("theMinuteHand").GetComponent<Image>();
@@ -30,13 +30,14 @@ public class ActiveConversation : MonoBehaviour
     {
         if (collision.gameObject.name != "Player")
             return;
-
         print("npc 만남");
         //messageReady = true;
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
+
+        Debug.Log("npc 만남 22");
         if (collision.gameObject.name != "Player")
             return;
 
@@ -92,9 +93,10 @@ public class ActiveConversation : MonoBehaviour
 
     }
     IEnumerator Talk() {
-        string[] narrators = ghost["유령 0"].Talk.Split('$');
+
+        string[] narrators = ghost[id].Talk.Split('$');
         foreach (string narrator in narrators) {
-            yield return StartCoroutine(Chat("유령 0",narrator));
+            yield return StartCoroutine(Chat("유령 "+id,narrator));
             yield return new WaitForSeconds(1f);
         }
     }

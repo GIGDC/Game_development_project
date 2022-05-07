@@ -12,6 +12,7 @@ public class CameraController : MonoBehaviour
     }
     void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         GameObject[] mainCameras = GameObject.FindGameObjectsWithTag("MainCamera");
         if (mainCameras.Length == 1)
         {
