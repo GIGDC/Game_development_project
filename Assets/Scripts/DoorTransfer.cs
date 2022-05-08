@@ -14,6 +14,7 @@ public class DoorTransfer : MonoBehaviour
     public string GoTo;
     [Tooltip("문의 위치 front / back")]
     public string direction;
+    public Vector3 teleportPosition = new Vector3(0, 0, 0); // 플레이어가 씬 이동하고나서의 위치
     StartPoint start;
     KeyController key;
     public Image WarningUI;
@@ -78,6 +79,7 @@ public class DoorTransfer : MonoBehaviour
         DoorAni.SetBool("isOpening", true);
         gameManager = GameObject.FindObjectOfType<GameManager>();
         gameManager.transferScene = GoTo;
+        gameManager.teleportPosition = teleportPosition;
         Debug.Log(gameManager.transferScene);
         gameManager.GetTransitionAnimator().SetBool("FadeOut", true);
         gameManager.GetTransitionAnimator().SetBool("FadeIn", false);
@@ -85,11 +87,7 @@ public class DoorTransfer : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         yield return new WaitForSeconds(gameManager.transitionTime);
 
-        bool isDoorBelowPlayer = GameObject.Find("Player").transform.position.y > transform.position.y;
-        StartCoroutine(gameManager.AsyncLoadMap(
-            isDoorBelowPlayer,
-            SceneManager.GetActiveScene().name,
-            direction));
+        StartCoroutine(gameManager.AsyncLoadMap());
         yield return null;
     }
 }

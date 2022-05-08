@@ -146,6 +146,14 @@ PrefabInstance:
       propertyPath: doorAnimator
       value: 
       objectReference: {fileID: 63598222}
+    - target: {fileID: 1130589704470959417, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
+      propertyPath: teleportPosition.x
+      value: -24.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 1130589704470959417, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
+      propertyPath: teleportPosition.y
+      value: 1.95
+      objectReference: {fileID: 0}
     - target: {fileID: 1933976915064812972, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: m_SpriteSortPoint
       value: 0
@@ -770,7 +778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1238940215007795952, guid: a9446977a49253947839fe4151f3ca9b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -38.51
+      value: -38.84
       objectReference: {fileID: 0}
     - target: {fileID: 1238940215007795952, guid: a9446977a49253947839fe4151f3ca9b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3479,6 +3487,7 @@ MonoBehaviour:
   DoorAni: {fileID: 0}
   GoTo: Storage
   direction: front
+  teleportPosition: {x: 0, y: 0, z: 0}
   WarningUI: {fileID: 647055283}
   isOpeningDoor: 1
   dontCheckKeyController: 1
@@ -4489,11 +4498,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6116867844890509100, guid: eacf79cc8370bb242bbaee0bc5f7b1ff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -45.89
+      value: -13.44
       objectReference: {fileID: 0}
     - target: {fileID: 6116867844890509100, guid: eacf79cc8370bb242bbaee0bc5f7b1ff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -34.1
+      value: -33.72
       objectReference: {fileID: 0}
     - target: {fileID: 6116867844890509100, guid: eacf79cc8370bb242bbaee0bc5f7b1ff, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26740,23 +26749,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &2134703634 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1238940215007795958, guid: a9446977a49253947839fe4151f3ca9b, type: 3}
-  m_PrefabInstance: {fileID: 259153382}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2134703635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2134703634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aed48482de8a98409593af25a903ee9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2134703638 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1238940215007795952, guid: a9446977a49253947839fe4151f3ca9b, type: 3}
