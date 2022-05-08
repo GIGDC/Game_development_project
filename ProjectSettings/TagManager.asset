@@ -16,6 +16,7 @@ TagManager:
   - Drink
   - Lunch
   - Inventory
+  - magnifiedObj
   layers:
   - Default
   - TransparentFX

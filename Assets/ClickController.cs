@@ -13,7 +13,7 @@ public class ClickController : MonoBehaviour
     private void FixedUpdate()
     {
         CastRay();
-        if (isCollider)
+        if (isCollider && target.CompareTag("magnifiedObj"))
         {
             glass.SetActive(true);
             glass.transform.position = Input.mousePosition;
@@ -32,6 +32,7 @@ public class ClickController : MonoBehaviour
             {
                 EventImage.gameObject.SetActive(true);
                 GameObject.Find("GameObject").GetComponentInChildren<Transform>().gameObject.SetActive(false);
+                glass.SetActive(false);
             }
         }
     }
