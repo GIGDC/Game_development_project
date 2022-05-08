@@ -117,9 +117,6 @@ MonoBehaviour:
   Key: {fileID: 0}
   chatText: {fileID: 0}
   CharacterName: {fileID: 0}
-<<<<<<< HEAD:Assets/Prefab/Ghost.prefab
-  ThrowKey: 0
-=======
   id: 0
   ThrowKey: 0
 --- !u!61 &1946713858800573295
@@ -148,4 +145,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.17, y: 2.97}
   m_EdgeRadius: 0
->>>>>>> feature/#53-Inventory:Assets/Prefab/Ghost 1.prefab
