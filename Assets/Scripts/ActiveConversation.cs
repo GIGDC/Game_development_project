@@ -9,18 +9,30 @@ public class ActiveConversation : MonoBehaviour
     public GameObject Key;
     public Text chatText;  // 실제 채팅이 나오는 텍스트
     public Text CharacterName;  // 캐릭터 이름이 나오는 텍스트
+<<<<<<< HEAD
     
     Image clock;
     Image secondHand;
 
     public static Dictionary<string, Ghost> ghost;
+=======
+    public int id;
+    Image clock;
+    Image secondHand;
+
+    public static Dictionary<int, Ghost> ghost;
+>>>>>>> feature/#53-Inventory
     public bool ThrowKey;
     //Image sr;
 
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< HEAD
         ActiveConversation.ghost = new Dictionary<string, Ghost>();
+=======
+        ghost = new Dictionary<int, Ghost>();
+>>>>>>> feature/#53-Inventory
         ThrowKey = false;
         clock = GameObject.Find("Clock").GetComponent<Image>();
         secondHand = GameObject.Find("theMinuteHand").GetComponent<Image>();
@@ -30,13 +42,14 @@ public class ActiveConversation : MonoBehaviour
     {
         if (collision.gameObject.name != "Player")
             return;
-
         print("npc 만남");
         //messageReady = true;
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
+
+        Debug.Log("npc 만남 22");
         if (collision.gameObject.name != "Player")
             return;
 
@@ -92,9 +105,16 @@ public class ActiveConversation : MonoBehaviour
 
     }
     IEnumerator Talk() {
+<<<<<<< HEAD
         string[] narrators = ghost["유령 0"].Talk.Split('$');
         foreach (string narrator in narrators) {
             yield return StartCoroutine(Chat("유령 0",narrator));
+=======
+
+        string[] narrators = ghost[id].Talk.Split('$');
+        foreach (string narrator in narrators) {
+            yield return StartCoroutine(Chat("유령 "+id,narrator));
+>>>>>>> feature/#53-Inventory
             yield return new WaitForSeconds(1f);
         }
     }
