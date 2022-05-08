@@ -75,6 +75,7 @@ public class DoorTransfer : MonoBehaviour
 
     IEnumerator FadeOut()
     {
+        DoorAni.SetBool("isOpening", true);
         gameManager = GameObject.FindObjectOfType<GameManager>();
         gameManager.transferScene = GoTo;
         Debug.Log(gameManager.transferScene);
