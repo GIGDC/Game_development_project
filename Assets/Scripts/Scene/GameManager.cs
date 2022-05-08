@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public float transitionTime = 1f;
     public string transferScene; // 이동할 씬 이름 (protected: 계단 이동의 경우 1F, 2F, 3F 등이 있으므로 unity editor에서 수정하기 어려움)
     protected Animator transitionAnimator;
+    public Vector3 teleportPosition = new Vector3(0, 0, 0); // 플레이어가 씬 이동하고나서의 위치
 
     private void Awake()
     {
@@ -90,23 +91,26 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f); // 맵이 완전히 로딩되어 원하는 door을 찾을 수 있도록 0.5초 대기
 
-        Vector3 teleportLocation = player.transform.position; // 초기화
-        if (currentScene != "") // 현재 Scene의 이름 == 새로운 Scene에서 player가 들어오는 door 이름
-        {
-            if (direction != "") // 문의 위치 (back/front)
-                teleportLocation = GameObject.Find("Door").transform.Find(currentScene + " Door (" + direction + ")").transform.position;
-            else
-                teleportLocation = GameObject.Find("Door").transform.Find(currentScene).transform.position;
-        }
-        if (isDoorBelowPlayer) // door과 player의 상대적인 위치
-        {
-            // 새로운 scene에서 player과 door의 상대적인 위치 설정
-            player.transform.position = new Vector3(teleportLocation.x, teleportLocation.y - 3, teleportLocation.z);
-        }
-        else
-        {
-            player.transform.position = new Vector3(teleportLocation.x, teleportLocation.y + 3, teleportLocation.z);
-        }
+        //Vector3 teleportLocation = player.transform.position; // 초기화
+        //if (currentScene != "") // 현재 Scene의 이름 == 새로운 Scene에서 player가 들어오는 door 이름
+        //{
+        //    if (direction != "") // 문의 위치 (back/front)
+        //        teleportLocation = GameObject.Find("Door").transform.Find(currentScene + " Door (" + direction + ")").transform.position;
+        //    else
+        //        teleportLocation = GameObject.Find("Door").transform.Find(currentScene).transform.position;
+        //}
+        //if (isDoorBelowPlayer) // door과 player의 상대적인 위치
+        //{
+        //    // 새로운 scene에서 player과 door의 상대적인 위치 설정
+        //    player.transform.position = new Vector3(teleportLocation.x, teleportLocation.y - 3, teleportLocation.z);
+        //}
+        //else
+        //{
+        //    player.transform.position = new Vector3(teleportLocation.x, teleportLocation.y + 3, teleportLocation.z);
+        //}
+
+        if (teleportPosition != new Vector3(0, 0, 0))
+            player.transform.position = teleportPosition;
 
         transitionAnimator.SetBool("FadeOut", false);
         transitionAnimator.SetBool("FadeIn", true);
