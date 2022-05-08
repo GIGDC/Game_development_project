@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class ActiveConversation : MonoBehaviour
 {
@@ -95,12 +96,11 @@ public class ActiveConversation : MonoBehaviour
     }
     IEnumerator Talk()
     {
-
         string[] narrators = ghost[id].Talk.Split('$');
-        foreach (string narrator in narrators)
+        foreach(string narrator in narrators)
         {
             yield return StartCoroutine(Chat("À¯·É " + id, narrator));
-            yield return new WaitForSeconds(1f);
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Tab));
         }
     }
 
