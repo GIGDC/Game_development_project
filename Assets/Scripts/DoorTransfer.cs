@@ -31,6 +31,7 @@ public class DoorTransfer : MonoBehaviour
 
     void Start()
     {
+
         start = GameObject.FindObjectOfType<StartPoint>();
         key = GameObject.FindObjectOfType<KeyController>();
         DoorAni = this.GetComponent<Animator>();

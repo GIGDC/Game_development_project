@@ -13,7 +13,7 @@ public class ActiveConversation : MonoBehaviour
     public int id;
     Image clock;
     Image secondHand;
-
+    bool isChating;
     public static Dictionary<int, Ghost> ghost;
     public bool ThrowKey;
     //Image sr;
@@ -27,14 +27,34 @@ public class ActiveConversation : MonoBehaviour
         secondHand = GameObject.Find("theMinuteHand").GetComponent<Image>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.name != "Player")
             return;
-        print("npc ¸¸³²");
+        Debug.Log("Escape");
+        
         //messageReady = true;
     }
 
+    void Update()
+    {
+        Debug.Log(isChating);
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isChating)
+            {
+                if (Key != null)
+                    Key.SetActive(true);
+                message.SetActive(false);
+                //sr.material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                clock.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                secondHand.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                isChating = false;
+                this.gameObject.SetActive(false);
+            }
+        }
+        
+    }
     private void OnCollisionStay2D(Collision2D collision)
     {
 
@@ -48,21 +68,10 @@ public class ActiveConversation : MonoBehaviour
             //sr.material.color = Color.clear;
             clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
             secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-
+            isChating = true;
             StartCoroutine(Talk());
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (Key != null)
-                Key.SetActive(true);
-            message.SetActive(false);
-            //sr.material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-            clock.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-            secondHand.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-
-            this.gameObject.SetActive(false);
-        }
     }
     /**/
     IEnumerator NormalChat(string narrator, string narration)

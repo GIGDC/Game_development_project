@@ -14,7 +14,17 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movement;
     public Vector2 direction; // 플레이어가 현재 향하고 있는 방향
     public bool isAttacking; //플레이어가 공격할때 당하는 모션을 끄기 위해서
-    
+
+    public AudioClip[] walkPlayer;
+    AudioSource walkSource;
+    private void Start()
+    {
+
+        //사운드 조절
+        walkSource = GetComponent<AudioSource>();
+        walkSource.volume = 0.2f;
+
+    }
     public void Hide()
     {
         gameObject.SetActive(false);
@@ -22,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-       
+
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         if (players.Length == 1)
         {
@@ -32,13 +42,16 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(gameObject);
         } // 중복된 Player 오브젝트가 있을 경우 오브젝트 파괴
-        
+
         rigid = GetComponent<Rigidbody2D>();
-       
+
     }
 
     void Update()
     {
+        if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+            StartCoroutine("WalkSound");
+
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         if (movement.sqrMagnitude > 0)
@@ -50,6 +63,8 @@ public class PlayerMovement : MonoBehaviour
         ChangeMoveSpeed();
         if (animator.GetFloat("MoveSpeed") > 0)
         {
+            // 이동
+           
             animator.SetFloat("MoveHorizontally", movement.x);
             animator.SetFloat("MoveVertically", movement.y);
         }
@@ -57,8 +72,21 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        // 이동
+
         rigid.MovePosition(rigid.position + movement * speed * Time.deltaTime);
+    }
+    IEnumerator WalkSound()
+    {
+        walkSource.clip = walkPlayer[0];
+        walkSource.Play();
+        yield return new WaitForSeconds(0.5f);
+        if (!walkSource.isPlaying)
+        {
+            walkSource.clip = walkPlayer[1];
+            walkSource.Play();
+            yield return new WaitForSeconds(2.0f);
+        }
+
     }
 
     // 키 입력에 따른 이동 속도 변경
