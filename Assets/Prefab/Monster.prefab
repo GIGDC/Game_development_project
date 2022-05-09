@@ -245,7 +245,8 @@ MonoBehaviour:
   currentSpeed: 4
   directionChangeInterval: 0
   contactDistance: 1
-  animator: {fileID: 0}
+  animator: {fileID: 5165234520126250312}
+  stunnedTime: 0
 --- !u!114 &5165234520126250315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,8 +260,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stamina: 10
-  stunnedTime: 2
   attacked: 0
+  stunnedTime: 2
 --- !u!114 &5165234520126250314
 MonoBehaviour:
   m_ObjectHideFlags: 0

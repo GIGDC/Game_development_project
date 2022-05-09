@@ -3,20 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MissionController : MonoBehaviour, IPointerClickHandler
+public class MissionController : MonoBehaviour
 {
     GameObject target;
-    public void OnPointerClick(PointerEventData eventData)
+    Transform[] childList;
+    void start()
     {
-       target = eventData.pointerEnter;
+        childList = GameObject.Find("GameObject").GetComponentsInChildren<Transform>();
     }
+   
     void Update()
     {
-        if (target)
+        if (Input.GetMouseButtonDown(0))
         {
-            GameObject.Find("GameObject").GetComponentInChildren<Transform>().gameObject.SetActive(true);
-            this.gameObject.SetActive(false);
+            Debug.Log(EventSystem.current.IsPointerOverGameObject());
+            if (EventSystem.current.IsPointerOverGameObject()==this.gameObject)
+            {
+                Debug.Log("UI클릭");
+                if (childList != null)
+                {
+                   // this.transform.gameObject.SetActive(false);
+                    //부모 오브젝트가 0번째
+                    for (int i = 1; i < childList.Length; i++)
+                    {
+                        childList[i].gameObject.SetActive(true);
+                        Debug.Log(childList[i].name);
+                    }
+                }
+            }
+          
         }
-
     }
 }

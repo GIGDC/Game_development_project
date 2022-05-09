@@ -9,7 +9,12 @@ public class ClickController : MonoBehaviour
     GameObject target;
     public GameObject glass;
     bool isCollider = false;
+    Transform[] childList;
 
+    private void Start()
+    {
+        childList = GameObject.Find("GameObject").GetComponentsInChildren<Transform>();
+    }
     private void FixedUpdate()
     {
         CastRay();
@@ -28,11 +33,21 @@ public class ClickController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+           
             if (target == this.gameObject)
             {
                 EventImage.gameObject.SetActive(true);
-                GameObject.Find("GameObject").GetComponentInChildren<Transform>().gameObject.SetActive(false);
                 glass.SetActive(false);
+                if (childList != null)
+                {
+                    //부모 오브젝트가 0번째
+                    for (int i = 1; i < childList.Length; i++)
+                    {
+                        childList[i].gameObject.SetActive(false);
+                        Debug.Log(childList[i].name);
+                    }
+                }
+               
             }
         }
     }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
@@ -62,6 +62,43 @@ public class Monster : MonoBehaviour
             StopCoroutine(moveCoroutine);
 
         gameObject.SetActive(false);
+    }
+
+
+    //몇초에 한번씩 이동하는 몹 random 1분~5분
+    void RandomTime()
+    {
+        if (SceneSelect())
+            Debug.Log("등장");
+    }
+
+    bool SceneSelect()
+    {
+        List<int> selectScene = new List<int>();
+        int Scene=Random.Range(0, 17);
+
+        for(int i = 0; i < 5;) //5개의 씬중 플레이어가 있는 씬이 있으면 등장
+        {
+            if (selectScene.Contains(Scene))
+            {
+                Scene = Random.Range(0, 17); //씬의 개수
+            }
+            else
+            {
+                selectScene.Add(Scene);
+                i++;
+            }
+        }
+
+        foreach(int i in selectScene)
+        {
+            if(i== SceneManager.GetActiveScene().buildIndex)
+            {
+                return true;
+            }
+        }
+        return false;
+
     }
     private void Update()
     {
@@ -125,6 +162,7 @@ public class Monster : MonoBehaviour
     {
         while (true)
         {
+            Invoke("RandomTime", Random.Range(60f, 300f));
             /* 이부분 충돌해서 바꼈을 수도 있음. 이거 수정 예정.. 원래 코드에선 MoveToRoom으로, Monster가 Door로 이동했을때 사용하는 것.
             if (DoorTransfer.CheckMonster)
             {
