@@ -38,7 +38,6 @@ public class ActiveConversation : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(isChating);
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isChating)
@@ -50,7 +49,9 @@ public class ActiveConversation : MonoBehaviour
                 clock.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 secondHand.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 isChating = false;
+               
                 this.gameObject.SetActive(false);
+               
             }
         }
         

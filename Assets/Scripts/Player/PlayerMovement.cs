@@ -49,8 +49,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
-            StartCoroutine("WalkSound");
+        //if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+            //StartCoroutine("WalkSound");
 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
