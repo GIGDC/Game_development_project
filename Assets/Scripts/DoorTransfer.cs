@@ -8,12 +8,9 @@ public class DoorTransfer : MonoBehaviour
 {
     GameManager gameManager;
 
-    public Animator DoorAni;
-    static int doorAnimCnt;
+    Animator DoorAni;
     [Tooltip("이동하려는 Scene 이름")]
     public string GoTo;
-    [Tooltip("문의 위치 front / back")]
-    public string direction;
     public Vector3 teleportPosition = new Vector3(0, 0, 0); // 플레이어가 씬 이동하고나서의 위치
     StartPoint start;
     KeyController key;

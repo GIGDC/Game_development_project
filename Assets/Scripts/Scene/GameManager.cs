@@ -87,27 +87,9 @@ public class GameManager : MonoBehaviour
         yield return null;
     }
 
-    virtual public IEnumerator FadeIn(bool isDoorBelowPlayer = false, string currentScene = "", string direction = "")
+    virtual public IEnumerator FadeIn()
     {
         yield return new WaitForSeconds(0.5f); // 맵이 완전히 로딩되어 원하는 door을 찾을 수 있도록 0.5초 대기
-
-        //Vector3 teleportLocation = player.transform.position; // 초기화
-        //if (currentScene != "") // 현재 Scene의 이름 == 새로운 Scene에서 player가 들어오는 door 이름
-        //{
-        //    if (direction != "") // 문의 위치 (back/front)
-        //        teleportLocation = GameObject.Find("Door").transform.Find(currentScene + " Door (" + direction + ")").transform.position;
-        //    else
-        //        teleportLocation = GameObject.Find("Door").transform.Find(currentScene).transform.position;
-        //}
-        //if (isDoorBelowPlayer) // door과 player의 상대적인 위치
-        //{
-        //    // 새로운 scene에서 player과 door의 상대적인 위치 설정
-        //    player.transform.position = new Vector3(teleportLocation.x, teleportLocation.y - 3, teleportLocation.z);
-        //}
-        //else
-        //{
-        //    player.transform.position = new Vector3(teleportLocation.x, teleportLocation.y + 3, teleportLocation.z);
-        //}
 
         if (teleportPosition != new Vector3(0, 0, 0))
             player.transform.position = teleportPosition;
@@ -122,7 +104,7 @@ public class GameManager : MonoBehaviour
         yield return null;
     }
 
-    virtual public IEnumerator AsyncLoadMap(bool isDoorBelowPlayer = false, string currentScene = "", string direction = "")
+    virtual public IEnumerator AsyncLoadMap()
     {
         AsyncOperation async = SceneManager.LoadSceneAsync(transferScene);
         async.allowSceneActivation = false;
@@ -142,7 +124,7 @@ public class GameManager : MonoBehaviour
                 코루틴의 동작 방식을 내가 완전히 이해하고 있는 게 아닌가 싶음...
                  */
 
-                StartCoroutine(FadeIn(isDoorBelowPlayer, currentScene, direction));
+                StartCoroutine(FadeIn());
             }
             yield return null;
         }
