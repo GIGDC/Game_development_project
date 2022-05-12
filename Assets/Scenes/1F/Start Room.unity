@@ -952,7 +952,7 @@ GameObject:
   - component: {fileID: 179912287}
   m_Layer: 0
   m_Name: hourglass
-  m_TagString: Hourglass
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1204,7 +1204,7 @@ GameObject:
   - component: {fileID: 241193241}
   m_Layer: 0
   m_Name: Talisman (1)
-  m_TagString: Amulet
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2211,6 +2211,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 4
+--- !u!114 &453784830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453784828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c519d3c8c9e67a242bfd8d1c049291b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: {fileID: 7786870591651667907}
+  Key: {fileID: 544643604}
+  chatText: {fileID: 7786870591464545360}
+  CharacterName: {fileID: 7786870590017099988}
+  id: 0
+  ThrowKey: 0
 --- !u!1 &505738862
 GameObject:
   m_ObjectHideFlags: 0
@@ -3264,7 +3282,7 @@ GameObject:
   - component: {fileID: 727506142}
   m_Layer: 0
   m_Name: "\uB3C4\uC2DC\uB77D (1)"
-  m_TagString: Lunch
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4274,7 +4292,7 @@ GameObject:
   - component: {fileID: 926057664}
   m_Layer: 0
   m_Name: "\uB3C4\uC2DC\uB77D"
-  m_TagString: Lunch
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14835,6 +14853,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7384491777644396520, guid: 6a54be325c4af97478cc9b1afd633946, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7384491777644396520, guid: 6a54be325c4af97478cc9b1afd633946, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 7575721715886986124, guid: 6a54be325c4af97478cc9b1afd633946, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.6578645
@@ -17918,7 +17944,7 @@ GameObject:
   - component: {fileID: 1766574780}
   m_Layer: 0
   m_Name: Talisman
-  m_TagString: Amulet
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18153,10 +18179,14 @@ PrefabInstance:
     - target: {fileID: 2823585089890734471, guid: 539eea010fe6f9a4cb2834e46949fa4c, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2007079707}
     - target: {fileID: 4270451543074281825, guid: 539eea010fe6f9a4cb2834e46949fa4c, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 4270451543074281825, guid: 539eea010fe6f9a4cb2834e46949fa4c, type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
       objectReference: {fileID: 0}
     - target: {fileID: 8148219658639739881, guid: 539eea010fe6f9a4cb2834e46949fa4c, type: 3}
       propertyPath: m_RootOrder
@@ -19231,7 +19261,7 @@ GameObject:
   - component: {fileID: 2052501592}
   m_Layer: 0
   m_Name: Talisman
-  m_TagString: Amulet
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19904,7 +19934,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1946713858800573289, guid: a77153bd5b07f3c4b9f4be1761305f27, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a77153bd5b07f3c4b9f4be1761305f27, type: 3}
 --- !u!1001 &6015798836515740567
 PrefabInstance:

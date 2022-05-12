@@ -30,7 +30,7 @@ public class PlayerItemInteraction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Amulet")|| collision.CompareTag("Hourglass")|| collision.CompareTag("Lunch"))
+        if (collision.CompareTag("Item"))
         {
             if (Item.Count == 0)
                 Item.Add(KeyCode.Alpha1, collision.gameObject.GetComponent<ItemInfo>());

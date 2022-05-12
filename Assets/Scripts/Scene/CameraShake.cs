@@ -8,6 +8,7 @@ public class CameraShake : MonoBehaviour
     public GameObject mainCamera;
     Vector3 cameraPos;
     DoorTransfer player;
+    public bool DontWarning;
     public Image WarningUI;
     [SerializeField] [Range(0.01f, 0.5f)] float shakeRange = 0.5f;
     [SerializeField] [Range(0.1f, 1f)] float duration = 1f;
@@ -44,8 +45,11 @@ public class CameraShake : MonoBehaviour
 
     void StopShake()
     {
-        player.isOpeningDoor = false;
-        WarningUI.gameObject.SetActive(false);
+        if (!DontWarning)
+        {
+            player.isOpeningDoor = false;
+            WarningUI.gameObject.SetActive(false);
+        }
         CancelInvoke("StartShake");
         mainCamera.transform.position = cameraPos;
     }

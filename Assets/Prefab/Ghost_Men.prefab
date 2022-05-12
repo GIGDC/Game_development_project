@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4976898251558972645}
   - component: {fileID: 4976898251837461197}
   - component: {fileID: 4976898251837461195}
-  - component: {fileID: 4976898251837461194}
   - component: {fileID: 4976898251837461196}
   m_Layer: 7
   m_Name: Ghost_Men
@@ -101,24 +100,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.011689663, y: 0.024163246}
   m_Size: {x: 0.7629814, y: 2.901175}
   m_Direction: 0
---- !u!114 &4976898251837461194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4976898251837461193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bcd5ad89304f0a4f86fcbb3b82752dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: {fileID: 0}
-  Key: {fileID: 0}
-  chatText: {fileID: 0}
-  CharacterName: {fileID: 0}
-  id: 0
-  ThrowKey: 0
 --- !u!61 &4976898251837461196
 BoxCollider2D:
   m_ObjectHideFlags: 0

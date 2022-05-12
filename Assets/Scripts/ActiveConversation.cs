@@ -4,36 +4,35 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-public class ActiveConversation : MonoBehaviour
+abstract public class ActiveConversation : MonoBehaviour
 {
     public GameObject message;
     public GameObject Key;
     public Text chatText;  // 실제 채팅이 나오는 텍스트
     public Text CharacterName;  // 캐릭터 이름이 나오는 텍스트
-    public int id;
-    Image clock;
-    Image secondHand;
-    bool isChating;
+    int id;
+    protected Image clock;
+    protected Image secondHand;
+    protected bool isChating;
     public static Dictionary<int, Ghost> ghost;
     public bool ThrowKey;
+
+    protected InputField ThreeMission; //3번째미션용, 없으면 null을 반납함
     //Image sr;
 
+    //start부분을 메소드 오버라이딩 되면, 다 다시 할당해줘야하기때문에, 최상위 클래스에 배치
     // Start is called before the first frame update
+    public int Id
+    {
+        set { id = value; }
+    }
     void Start()
     {
         ghost = new Dictionary<int, Ghost>();
         ThrowKey = false;
         clock = GameObject.Find("Clock").GetComponent<Image>();
         secondHand = GameObject.Find("theMinuteHand").GetComponent<Image>();
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.name != "Player")
-            return;
-        Debug.Log("Escape");
-        
-        //messageReady = true;
+        ThreeMission = GameObject.Find("UI").transform.Find("InputField").gameObject.transform.GetComponent<InputField>(); //InputField겨져오기
     }
 
     void Update()
@@ -49,8 +48,8 @@ public class ActiveConversation : MonoBehaviour
                 clock.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 secondHand.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 isChating = false;
-               
-                this.gameObject.SetActive(false);
+                //ThreeMission.gameObject.SetActive(true);
+                //this.gameObject.SetActive(false);
                
             }
         }
@@ -63,34 +62,18 @@ public class ActiveConversation : MonoBehaviour
         if (collision.gameObject.name != "Player")
             return;
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            message.SetActive(true);
-            //sr.material.color = Color.clear;
-            clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-            secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-            isChating = true;
-            StartCoroutine(Talk());
-        }
+        if(ThreeMission.gameObject.activeSelf==false)
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                message.SetActive(true);
+                clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+                secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+                isChating = true;
+                StartCoroutine(Talk());
+            }
 
     }
-    /**/
-    IEnumerator NormalChat(string narrator, string narration)
-    {
-        int a = 0;
-        CharacterName.text = narrator;
-        string writerText = "";
-
-        // 텍스트 타이핑 효과
-        for (a = 0; a < narration.Length; a++)
-        {
-            writerText += narration[a];
-            chatText.text = writerText;
-            yield return null;
-        }
-
-    }
-    IEnumerator Chat(string narrator, string narration)
+    protected IEnumerator Chat(string narrator, string narration)
     {
         string writerText = "";
         CharacterName.text = narrator;
@@ -104,7 +87,7 @@ public class ActiveConversation : MonoBehaviour
         }
 
     }
-    IEnumerator Talk()
+    protected IEnumerator Talk()
     {
         string[] narrators = ghost[id].Talk.Split('$');
         foreach(string narrator in narrators)
@@ -114,10 +97,10 @@ public class ActiveConversation : MonoBehaviour
         }
     }
 
-    IEnumerator TextPractice()
+    protected IEnumerator TextPractice()
     {
-        yield return StartCoroutine(NormalChat("학생1", "이것은 타이핑 효과를 통해 대사창을 구현하는 연습"));
+        yield return StartCoroutine(Chat("학생1", "이것은 타이핑 효과를 통해 대사창을 구현하는 연습"));
         yield return new WaitForSeconds(1f);
-        yield return StartCoroutine(NormalChat("학생2", "안녕하세요, 반갑습니다."));
+        yield return StartCoroutine(Chat("학생2", "안녕하세요, 반갑습니다."));
     }
 }
