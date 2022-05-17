@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         //사운드 조절
-       // walkSource = GetComponent<AudioSource>();
+       //d walkSource = GetComponent<AudioSource>();
        // walkSource.volume = 0.2f;
 
     }

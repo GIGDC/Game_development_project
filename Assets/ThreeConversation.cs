@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ThreeConversation : ActiveConversation
 {
-    public int id;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -24,7 +23,7 @@ public class ThreeConversation : ActiveConversation
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
-        Id = id;
+       
         if (collision.gameObject.name != "Player")
             return;
 

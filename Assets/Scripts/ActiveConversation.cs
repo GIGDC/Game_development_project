@@ -10,7 +10,7 @@ abstract public class ActiveConversation : MonoBehaviour
     public GameObject Key;
     public Text chatText;  // 실제 채팅이 나오는 텍스트
     public Text CharacterName;  // 캐릭터 이름이 나오는 텍스트
-    int id;
+    public int id;
     protected Image clock;
     protected Image secondHand;
     protected bool isChating;
@@ -62,15 +62,14 @@ abstract public class ActiveConversation : MonoBehaviour
         if (collision.gameObject.name != "Player")
             return;
 
-        if(ThreeMission.gameObject.activeSelf==false)
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                message.SetActive(true);
-                clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-                secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-                isChating = true;
-                StartCoroutine(Talk());
-            }
+         if (Input.GetKeyDown(KeyCode.Space))
+         {
+             message.SetActive(true);
+             clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+             secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+             isChating = true;
+             StartCoroutine(Talk());
+         }
 
     }
     protected IEnumerator Chat(string narrator, string narration)
