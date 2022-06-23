@@ -15,8 +15,8 @@ public class Selector : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             select.gameObject.SetActive(true);
-            GameObject.Find("Select01").transform.FindChild("Text").GetComponent<Text>().text=text[0];
-            GameObject.Find("Select02").transform.FindChild("Text").GetComponent<Text>().text=text[1];
+            GameObject.Find("Select01").transform.Find("Text").GetComponent<Text>().text=text[0];
+            GameObject.Find("Select02").transform.Find("Text").GetComponent<Text>().text=text[1];
         }
     }
 }

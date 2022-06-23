@@ -33,7 +33,6 @@ public class ClickController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-           
             if (target == this.gameObject)
             {
                 EventImage.gameObject.SetActive(true);
@@ -44,7 +43,6 @@ public class ClickController : MonoBehaviour
                     for (int i = 1; i < childList.Length; i++)
                     {
                         childList[i].gameObject.SetActive(false);
-                        Debug.Log(childList[i].name);
                     }
                 }
                
@@ -61,7 +59,6 @@ public class ClickController : MonoBehaviour
         {
             target = hit.collider.gameObject;
             isCollider = true;
-              
         }
     }
 }
