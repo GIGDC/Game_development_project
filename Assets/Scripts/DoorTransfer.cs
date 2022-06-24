@@ -23,18 +23,19 @@ public class DoorTransfer : MonoBehaviour
 
     static public bool CheckMonster = false;
 
-    [Tooltip("개발용 변수 (열쇠가 없어도 문을 열 수 있음)")]
-    public bool dontCheckKeyController = false; // 개발할 때 열쇠 없어도 문으로 쉽게 이동 가능하도록
+    [Tooltip("원래 열려있는 문임")]
+    public bool isOpen = false;
 
     void Start()
     {
-
         start = GameObject.FindObjectOfType<StartPoint>();
         key = GameObject.FindObjectOfType<KeyController>();
         DoorAni = this.GetComponent<Animator>();
-        
+
         //player= GameObject.FindObjectOfType<PlayerMovement>();
         shake = GameObject.FindObjectOfType<CameraShake>();
+
+        gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
     public void OnTriggerStay2D(Collider2D collision)
@@ -53,13 +54,21 @@ public class DoorTransfer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isOpeningDoor = true;
-            if (KeyController.isLock || dontCheckKeyController) // 추후 dontCheckKeyController만 조건에서 삭제
+            string sceneName = this.gameObject.name.Split(' ')[0];
+            Debug.Log("sceneName: " + sceneName + ", list: " + GameManager.openDoorList[0]);
+            if (GameManager.openDoorList.Contains(sceneName))
             {
-                
+                isOpen = true;
+                isOpeningDoor = true;
+            }
+
+            if (KeyController.isLock || isOpen)
+            {
+
                 SceneTransition();
             }
-            else if(WarningUI != null)
-            { 
+            else if (WarningUI != null)
+            {
                 WarningUI.gameObject.SetActive(true);
                 shake.Shake();
             }
@@ -75,13 +84,12 @@ public class DoorTransfer : MonoBehaviour
     IEnumerator FadeOut()
     {
         DoorAni.SetBool("isOpening", true);
-        gameManager = GameObject.FindObjectOfType<GameManager>();
         gameManager.transferScene = GoTo;
         gameManager.teleportPosition = teleportPosition;
         Debug.Log(gameManager.transferScene);
         gameManager.GetTransitionAnimator().SetBool("FadeOut", true);
         gameManager.GetTransitionAnimator().SetBool("FadeIn", false);
-        
+
         yield return new WaitForSeconds(0.5f);
         yield return new WaitForSeconds(gameManager.transitionTime);
 

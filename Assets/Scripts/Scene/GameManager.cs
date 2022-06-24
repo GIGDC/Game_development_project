@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public int test;
+
     private PlayerAttacted attack;
 
     private Monster monster;
     PlayerMovement player;
+
+    static public List<string> openDoorList;
 
     public float transitionTime = 1f;
     public string transferScene; // 이동할 씬 이름 (protected: 계단 이동의 경우 1F, 2F, 3F 등이 있으므로 unity editor에서 수정하기 어려움)
@@ -23,7 +27,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject); 
         } 
         else 
-        { 
+        {
             Destroy(gameObject);
         } // 중복된 GameMangager 오브젝트가 있을 경우 오브젝트 파괴
 
@@ -31,6 +35,9 @@ public class GameManager : MonoBehaviour
 
         GameObject transition = transform.Find("UI").Find("Transition").gameObject;
         transition.SetActive(true);
+
+        if (openDoorList == null)
+            openDoorList = new List<string>();
     }
 
     private void Start()
@@ -71,7 +78,6 @@ public class GameManager : MonoBehaviour
     {
         if (transferScene != null)
         {
-           
             yield return new WaitForSeconds(0f);
             SceneManager.LoadScene(transferScene);
         }
