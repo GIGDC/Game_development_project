@@ -55,12 +55,17 @@ public class ClickController : MonoBehaviour
     public void CastRay()
     {
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
+        RaycastHit2D hit;
 
+        RaycastHit2D[] tmphit;
+        int layerMask = 1 << LayerMask.NameToLayer("ItemLayer");
+        hit = Physics2D.Raycast(pos, Vector2.zero, 0f,layerMask);
+        tmphit = Physics2D.RaycastAll(pos, Vector2.zero, 0f);
         if (hit.collider != null)
         {
             target = hit.collider.gameObject;
             isCollider = true;
+            Debug.Log(target.name);
               
         }
     }

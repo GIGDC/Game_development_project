@@ -57,10 +57,10 @@ EditorBuildSettings:
     path: Assets/Scenes/2F/Teacher Room.unity
     guid: e8c66840d29bf2a4fa8ec7ef05793c0a
   - enabled: 1
-    path: Assets/Scenes/1F/Men Toilet-1.unity
+    path: Assets/Scenes/1F Annex/Annex Men Toilet.unity
     guid: ab7bf0d22df5c7543a09e3a3ff369e95
   - enabled: 1
-    path: Assets/Scenes/1F/Women Toilet-1.unity
+    path: Assets/Scenes/1F Annex/Women Toilet-1.unity
     guid: b88a55e958fc40a45b2406fb9ba3cad4
   - enabled: 1
     path: Assets/Scenes/1F/Men Toilet-2.unity

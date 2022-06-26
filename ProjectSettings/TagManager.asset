@@ -18,6 +18,7 @@ TagManager:
   - Inventory
   - magnifiedObj
   - Item
+  - InputField
   layers:
   - Default
   - TransparentFX
@@ -26,8 +27,8 @@ TagManager:
   - Water
   - UI
   - Hint
-  - 
-  - 
+  - Light
+  - ItemLayout
   - 
   - Camera
   - 
@@ -61,11 +62,14 @@ TagManager:
   - name: Background
     uniqueID: 212594243
     locked: 0
+  - name: Door
+    uniqueID: 608578905
+    locked: 0
   - name: Character
     uniqueID: 371074617
     locked: 0
-  - name: Door
-    uniqueID: 608578905
+  - name: CharDoor
+    uniqueID: 1998850231
     locked: 0
   - name: Light
     uniqueID: 1590846969

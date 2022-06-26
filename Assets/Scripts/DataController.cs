@@ -8,8 +8,10 @@ using System.IO;
 //미리 Setting
 public class DataController : MonoBehaviour
 {
+    public static Dictionary<int, Ghost> ghosts;
     private void Start()
     {
+        ghosts = new Dictionary<int, Ghost>();
         string JsonString1 = File.ReadAllText(Application.dataPath + "/Text/Ghost1.json");
         string JsonString2 = File.ReadAllText(Application.dataPath + "/Text/Ghost2.json");
         string JsonString3 = File.ReadAllText(Application.dataPath + "/Text/Ghost3.json");
@@ -24,17 +26,12 @@ public class DataController : MonoBehaviour
     {
         Ghost ghost = new Ghost(talks["Talk"].ToString(), talks["NegatTalk"].ToString(), talks["PositTalk"].ToString(), talks["Select1"].ToString(), talks["Select2"].ToString(), talks["Select3"].ToString());
 
-        if (ActiveConversation.ghost != null)
-            ActiveConversation.ghost.Add(ghostNum, ghost); //ghost를 0번부터 시작
+        if (ghosts != null)
+            ghosts.Add(ghostNum, ghost); //ghost를 0번부터 시작
         else
         {
-            ActiveConversation.ghost = new Dictionary<int, Ghost>();
-            ActiveConversation.ghost.Add(ghostNum, ghost); //ghost를 0번부터 시작
-        }
-
-        foreach (Ghost g in ActiveConversation.ghost.Values)
-        {
-            Debug.Log(g.Talk);
+            ghosts = new Dictionary<int, Ghost>();
+            ghosts.Add(ghostNum, ghost); //ghost를 0번부터 시작
         }
 
     }

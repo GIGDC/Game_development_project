@@ -5,39 +5,54 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 public class SelectController : MonoBehaviour
 {
-
     CameraShake shake;
     Selector[] select;
-    public static int GhostSelect;
+    public GameObject audio;
+    public GameObject Btn;
+    public bool click = false;
     // Start is called before the first frame update
     private void Start()
     {
         select= FindObjectsOfType<Selector>();
         shake = FindObjectOfType<CameraShake>();
+       
     }
-    public void SelectBtn()
+
+    public void PointerDown()
     {
-        GameObject Btn = EventSystem.current.currentSelectedGameObject;
-        string text=Btn.GetComponentInChildren<Text>().text;
-        if (text.Contains("π–∂±") || text.Contains("æÓπ¨X") || text.Contains("±√¡ﬂ∂±∫∫¿Ã"))
+        Btn = null;
+        click = true;
+    }
+    public void Update()
+    {
+        if (click)
         {
-            this.gameObject.SetActive(false);
-            if (select[0].num==GhostSelect)
+            Btn = EventSystem.current.currentSelectedGameObject;
+            string text = Btn.GetComponentInChildren<Text>().text;
+            Debug.Log(text);
+            if (text.Contains("π–") || text.Contains("X") || text.Contains("±√¡ﬂ∂±∫∫¿Ã"))
             {
-                select[0].gameObject.SetActive(false);
-            }else if(select[1].num == GhostSelect)
-            {
-                select[1].gameObject.SetActive(false);
+                foreach (Selector s in select)
+                {
+                    if (s.getCheck())
+                    {
+                        ThreeConversation.GhostNum++;
+                        Debug.Log("¡¯«‡¡ﬂ");
+                        audio.GetComponent<AudioSource>().Play();
+                        s.setCheck(false);
+                        this.gameObject.SetActive(false);
+                        s.gameObject.SetActive(false);
+                        s.but1.SetActive(false);
+                        s.but2.SetActive(false);
+                    }
+                }
             }
             else
             {
-                select[2].gameObject.SetActive(false);
+                shake.Shake();
+                PlayerAttacted.hp -= 15;
             }
-        }
-        else
-        {
-            shake.Shake();
-            PlayerAttacted.hp -= 15;
+            click = false;
         }
     }
 }
