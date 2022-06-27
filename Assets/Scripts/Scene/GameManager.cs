@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
 
     virtual public IEnumerator FadeIn()
     {
-        yield return new WaitForSeconds(0.5f); // 맵이 완전히 로딩되어 원하는 door을 찾을 수 있도록 0.5초 대기
+        yield return new WaitForSeconds(0.5f);
 
         if (teleportPosition != new Vector3(0, 0, 0))
             player.transform.position = teleportPosition;

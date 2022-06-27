@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
-
+    bool canPlayerMove; // 아이템 보기나 ui 상호작용 시 플레이어 움직임 멈춤
     public static PlayerMovement player;
     public static string CurrentMapName; //현재 맵은 무엇인가.
     Rigidbody2D rigid;
@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     AudioSource walkSource;
     private void Start()
     {
-
+        canPlayerMove = true;
         //사운드 조절
        //d walkSource = GetComponent<AudioSource>();
        // walkSource.volume = 0.2f;
@@ -51,6 +51,12 @@ public class PlayerMovement : MonoBehaviour
     {
         //if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
             //StartCoroutine("WalkSound");
+
+        if(!canPlayerMove)
+        {
+            movement = new Vector2(0, 0);
+            return;
+        }
 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -109,5 +115,11 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 GetDirectionNormalized()
     {
         return direction.normalized;
+    }
+
+    public bool CanPlayerMove
+    {
+        get { return canPlayerMove; }
+        set { canPlayerMove = value; }
     }
 }

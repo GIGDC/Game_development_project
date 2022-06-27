@@ -31,7 +31,9 @@ public class LightController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = thePlayer.transform.position;
+        if(thePlayer == null)
+            thePlayer = FindObjectOfType<PlayerMovement>();
+        this.transform.position = FindObjectOfType<PlayerMovement>().transform.position;
         vector.Set(thePlayer.direction.x, thePlayer.direction.y);
     }
 

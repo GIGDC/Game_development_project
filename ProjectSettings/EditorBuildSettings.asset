@@ -68,4 +68,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/1F/Women Toilet-2.unity
     guid: 24e07c400ddc3054eaf28c043c6474b8
+  - enabled: 1
+    path: Assets/Scenes/1F/Library.unity
+    guid: 991d39dd2b3246b42b80da332c83ced0
   m_configObjects: {}

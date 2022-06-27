@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6116867844890509101}
   - component: {fileID: 6116867844890509102}
   - component: {fileID: 6116867844890509103}
+  - component: {fileID: 8768818403241325788}
   - component: {fileID: 1545746435434384165}
   m_Layer: 0
   m_Name: Player
@@ -163,7 +164,7 @@ MonoBehaviour:
   runSpeed: 8
   direction: {x: 0, y: 0}
   isAttacking: 0
-  numOfAmulets: 0
+  walkPlayer: []
 --- !u!114 &6116867844890509103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,6 +178,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zeroHP: 0
+--- !u!114 &8768818403241325788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6116867844890509095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56924970ebc17e34196f40d5c808b1d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1545746435434384165
 MonoBehaviour:
   m_ObjectHideFlags: 0
