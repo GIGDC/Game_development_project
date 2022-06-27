@@ -53,21 +53,19 @@ public class DoorTransfer : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            isOpeningDoor = true;
-            string sceneName = this.gameObject.name.Split(' ')[0];
-            Debug.Log("sceneName: " + sceneName + ", list: " + GameManager.openDoorList[0]);
-            if (GameManager.openDoorList.Contains(sceneName))
+            string sceneName = this.gameObject.name.Split(' ')[0]; // 문과 연결된 씬 이름
+            if (GameManager.openDoorList.Contains(sceneName)) // 해당 문이 열려있는지 체크
             {
+                Debug.Log(sceneName + " 문 열림");
                 isOpen = true;
-                isOpeningDoor = true;
             }
 
-            if (KeyController.isLock || isOpen)
+            if (KeyController.isLock || isOpen) // 열려있을 시 트랜지션
             {
-
+                isOpeningDoor = true;
                 SceneTransition();
             }
-            else if (WarningUI != null)
+            else if (WarningUI != null) // 닫혀있을 시 경고 ui
             {
                 WarningUI.gameObject.SetActive(true);
                 shake.Shake();
@@ -76,24 +74,19 @@ public class DoorTransfer : MonoBehaviour
 
     }
 
-    public void SceneTransition()
+    private void Update()
     {
-        StartCoroutine(FadeOut());
+        if (isOpeningDoor)
+            DoorAni.SetBool("isOpening", true);
+        if (isOpen)
+            DoorAni.SetBool("isOpen", true);
     }
 
-    IEnumerator FadeOut()
+    public void SceneTransition()
     {
-        DoorAni.SetBool("isOpening", true);
+        gameManager = GameObject.FindObjectOfType<GameManager>();
         gameManager.transferScene = GoTo;
         gameManager.teleportPosition = teleportPosition;
-        Debug.Log(gameManager.transferScene);
-        gameManager.GetTransitionAnimator().SetBool("FadeOut", true);
-        gameManager.GetTransitionAnimator().SetBool("FadeIn", false);
-
-        yield return new WaitForSeconds(0.5f);
-        yield return new WaitForSeconds(gameManager.transitionTime);
-
-        StartCoroutine(gameManager.AsyncLoadMap());
-        yield return null;
+        StartCoroutine(gameManager.FadeOut());
     }
 }
