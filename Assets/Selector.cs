@@ -6,17 +6,30 @@ public class Selector : MonoBehaviour
 {
     public GameObject select;
     public string[] text;
-    public int num;
+    bool check = false;
+    public GameObject but1;
+    public GameObject but2;
+
+    public bool getCheck()
+    {
+        return check;
+    }
+    public void setCheck(bool b)
+    {
+        this.check = b;
+    }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-
-        SelectController.GhostSelect = num;
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            check = true;
             select.gameObject.SetActive(true);
-            GameObject.Find("Select01").transform.FindChild("Text").GetComponent<Text>().text=text[0];
-            GameObject.Find("Select02").transform.FindChild("Text").GetComponent<Text>().text=text[1];
+            but1.gameObject.SetActive(true);
+            but2.gameObject.SetActive(true);
+            but1.transform.Find("Text").GetComponent<Text>().text = text[0];
+            but2.transform.Find("Text").GetComponent<Text>().text = text[1];
+
         }
     }
 }

@@ -18,6 +18,7 @@ TagManager:
   - Inventory
   - magnifiedObj
   - Item
+  - openKey
   layers:
   - Default
   - TransparentFX
