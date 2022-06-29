@@ -8,9 +8,9 @@ public class InputController : MonoBehaviour
     AudioSource audioP;
     CameraShake shake;
     ActiveConversation ghost;
-    Text textfield;
-    Image clap;
-    Image ele1;
+    public Text textfield;
+    public Image clap;
+    public Image ele1;
     float scaleSpeed = 1f;
     bool check = false;
     public GameObject audio;
@@ -22,9 +22,6 @@ public class InputController : MonoBehaviour
         audioP = audio.GetComponent<AudioSource>();
         ghost = GameObject.FindObjectOfType<ActiveConversation>();
         shake = GameObject.FindObjectOfType<CameraShake>();
-        textfield = GameObject.Find("UI").transform.FindChild("InputField").transform.Find("Text").gameObject.GetComponent<Text>();
-        clap= GameObject.Find("UI").transform.FindChild("Clap").gameObject.GetComponent<Image>();
-        ele1 = GameObject.Find("UI").transform.FindChild("ele1").gameObject.GetComponent<Image>();
     }
 
     void ScaleUP()

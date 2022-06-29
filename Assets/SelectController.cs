@@ -15,7 +15,6 @@ public class SelectController : MonoBehaviour
     {
         select= FindObjectsOfType<Selector>();
         shake = FindObjectOfType<CameraShake>();
-       
     }
 
     public void PointerDown()
@@ -25,6 +24,7 @@ public class SelectController : MonoBehaviour
     }
     public void Update()
     {
+        
         if (click)
         {
             Btn = EventSystem.current.currentSelectedGameObject;

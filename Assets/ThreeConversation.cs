@@ -12,7 +12,6 @@ public class ThreeConversation : ActiveConversation
         ThrowKey = false;
         clock = GameObject.Find("Clock").GetComponent<Image>();
         secondHand = GameObject.Find("theMinuteHand").GetComponent<Image>();
-        ThreeMission = GameObject.FindWithTag("InputField").transform.GetComponent<InputField>();
         Debug.Log(ThreeMission);
     }
     void Update()
@@ -45,6 +44,13 @@ public class ThreeConversation : ActiveConversation
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Tab));
 
     }
+    
+    public IEnumerator PlayerTalk()
+    {
+        string narrator = "재료가 있다. \n이건... 무슨 재료일까?";
+        yield return StartCoroutine(Chat("Player", narrator));
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Tab));
+    }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -52,9 +58,6 @@ public class ThreeConversation : ActiveConversation
         if (collision.gameObject.name != "Player")
             return;
 
-        if (ThreeMission == null)
-            GameObject.FindWithTag("InputField").transform.GetComponent<InputField>();
-        else
         if (ThreeMission.GetComponent<InputField>().gameObject.activeSelf == false)
         {
             if (Input.GetKeyDown(KeyCode.Space))

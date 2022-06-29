@@ -7,6 +7,7 @@ public class InventoryController : MonoBehaviour
 {
     private bool is_ActiveInven;
     Transform Inventory_E;
+
     void Start()
     {
         Inventory_E = GameObject.Find("UI").transform.Find("Inventory_E");
@@ -31,6 +32,7 @@ public class InventoryController : MonoBehaviour
         {
             foreach (KeyCode key in PlayerItemInteraction.Item.Keys)
             {
+                
                 if (key <= KeyCode.Alpha5)
                 {
                     transform.GetChild((int)key - 49).GetChild(0).gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerItemInteraction.Item[key].Width);

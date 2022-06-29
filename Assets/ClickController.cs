@@ -10,10 +10,11 @@ public class ClickController : MonoBehaviour
     public GameObject glass;
     bool isCollider = false;
     Transform[] childList;
-
+    Animator Frige;
     private void Start()
     {
         childList = GameObject.Find("GameObject").GetComponentsInChildren<Transform>();
+        Frige = EventImage.gameObject.GetComponent<Animator>();
     }
     private void FixedUpdate()
     {
@@ -36,10 +37,12 @@ public class ClickController : MonoBehaviour
            
             if (target == this.gameObject)
             {
-                EventImage.gameObject.SetActive(true);
-                glass.SetActive(false);
-                if (childList != null)
-                {
+                if (EventImage != null)
+                 {
+                    EventImage.gameObject.SetActive(true);
+                    glass.SetActive(false);
+                    if (childList != null)
+                    {
                     //부모 오브젝트가 0번째
                     for (int i = 1; i < childList.Length; i++)
                     {
@@ -47,26 +50,23 @@ public class ClickController : MonoBehaviour
                         Debug.Log(childList[i].name);
                     }
                 }
-               
+            }
             }
         }
     }
-
     public void CastRay()
     {
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit;
 
         RaycastHit2D[] tmphit;
-        int layerMask = 1 << LayerMask.NameToLayer("ItemLayer");
-        hit = Physics2D.Raycast(pos, Vector2.zero, 0f,layerMask);
-        tmphit = Physics2D.RaycastAll(pos, Vector2.zero, 0f);
+        hit = Physics2D.Raycast(pos, Vector2.zero, 0f,1<<LayerMask.NameToLayer("ItemLayout"));
         if (hit.collider != null)
         {
             target = hit.collider.gameObject;
             isCollider = true;
             Debug.Log(target.name);
-              
+           
         }
     }
 }

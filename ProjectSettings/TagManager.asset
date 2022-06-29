@@ -65,6 +65,9 @@ TagManager:
   - name: Door
     uniqueID: 608578905
     locked: 0
+  - name: ItemLayer
+    uniqueID: 284066487
+    locked: 0
   - name: Character
     uniqueID: 371074617
     locked: 0

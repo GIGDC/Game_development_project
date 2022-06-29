@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 8976516243385365053}
   - component: {fileID: 8976516243385365048}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: Quiz
   m_TagString: InputField
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -235,6 +235,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a68557ae1be357469ed90656980c5ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textfield: {fileID: 8976516242856984857}
+  clap: {fileID: 2079803187738280021, guid: 4771aac4f2cd4844bbbc369797f06ede, type: 3}
+  ele1: {fileID: 1819229292173890996, guid: 895e799741ef047418dfdda85718019c, type: 3}
   audio: {fileID: 0}
 --- !u!1 &8976516243588782199
 GameObject:
