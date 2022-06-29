@@ -14,7 +14,6 @@ abstract public class ActiveConversation : MonoBehaviour
     protected Image clock;
     protected Image secondHand;
     protected bool isChating;
-    public static Dictionary<int, Ghost> ghost;
     public bool ThrowKey;
 
     protected InputField ThreeMission; //3번째미션용, 없으면 null을 반납함
@@ -28,7 +27,6 @@ abstract public class ActiveConversation : MonoBehaviour
     }
     void Start()
     {
-        ghost = new Dictionary<int, Ghost>();
         ThrowKey = false;
         clock = GameObject.Find("Clock").GetComponent<Image>();
         secondHand = GameObject.Find("theMinuteHand").GetComponent<Image>();
@@ -88,14 +86,22 @@ abstract public class ActiveConversation : MonoBehaviour
     }
     protected IEnumerator Talk()
     {
-        string[] narrators = ghost[id].Talk.Split('$');
+        string[] narrators = DataController.ghosts[id].Talk.Split('$');
         foreach(string narrator in narrators)
         {
             yield return StartCoroutine(Chat("유령 " + id, narrator));
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Tab));
         }
     }
-
+    protected IEnumerator SuccessTalk()
+    {
+        string[] narrators = DataController.ghosts[id].Success.Split('$');
+        foreach (string narrator in narrators)
+        {
+            yield return StartCoroutine(Chat("유령 " + id, narrator));
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Tab));
+        }
+    }
     protected IEnumerator TextPractice()
     {
         yield return StartCoroutine(Chat("학생1", "이것은 타이핑 효과를 통해 대사창을 구현하는 연습"));

@@ -908,12 +908,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1614309741}
     - target: {fileID: 2584701934113409840, guid: 0e707d29ebe51944392b8f482374f774, type: 3}
+      propertyPath: WarningUI
+      value: 
+      objectReference: {fileID: 499520283}
+    - target: {fileID: 2584701934113409840, guid: 0e707d29ebe51944392b8f482374f774, type: 3}
+      propertyPath: isOpeningDoor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584701934113409840, guid: 0e707d29ebe51944392b8f482374f774, type: 3}
       propertyPath: teleportPosition.x
       value: 101.55
       objectReference: {fileID: 0}
     - target: {fileID: 2584701934113409840, guid: 0e707d29ebe51944392b8f482374f774, type: 3}
       propertyPath: teleportPosition.y
       value: -31.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584701934113409840, guid: 0e707d29ebe51944392b8f482374f774, type: 3}
+      propertyPath: dontCheckKeyController
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8462369979338347816, guid: 0e707d29ebe51944392b8f482374f774, type: 3}
       propertyPath: m_Name
@@ -1197,6 +1209,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3310625929180906409, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
   m_PrefabInstance: {fileID: 499520281}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &499520283 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5854011708184425463, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
+  m_PrefabInstance: {fileID: 499520281}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &587501573
 GameObject:
   m_ObjectHideFlags: 0
@@ -23075,6 +23098,7 @@ MonoBehaviour:
   Key: {fileID: 0}
   chatText: {fileID: 1228123464}
   CharacterName: {fileID: 1014097556}
+  id: 2
   ThrowKey: 0
   id: 2
 --- !u!58 &1900557572

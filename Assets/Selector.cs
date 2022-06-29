@@ -27,8 +27,9 @@ public class Selector : MonoBehaviour
             select.gameObject.SetActive(true);
             but1.gameObject.SetActive(true);
             but2.gameObject.SetActive(true);
-            but1.transform.Find("Text").GetComponent<Text>().text = text[0];
-            but2.transform.Find("Text").GetComponent<Text>().text = text[1];
+
+            but1.transform.Find("Text").GetComponent<Text>().text=text[0];
+            but2.transform.Find("Text").GetComponent<Text>().text=text[1];
 
         }
     }

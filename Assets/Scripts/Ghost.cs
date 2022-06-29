@@ -21,7 +21,21 @@ public class Ghost
         this.select2 = select2;
         this.select3 = select3;
     }
+    public string Posit
+    {
 
+        get
+        {
+            return posit;
+        }
+    }
+    public string Success
+    {
+        get
+        {
+            return select1;
+        }
+    }
     public string Talk
     {
         get
