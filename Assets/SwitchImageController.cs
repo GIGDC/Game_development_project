@@ -13,16 +13,19 @@ public class SwitchImageController : MonoBehaviour
 
     private void Start()
     {
+        int i = 0;
         inventory= GameObject.Find("UI").transform.Find("Inventory");
     }
     void Update()
     {
+
         if (ThreeConversation.GhostNum >= 3)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = img;
             isClick = true;
         }
     }
+
     private void FixedUpdate()
     {
         CastRay();
