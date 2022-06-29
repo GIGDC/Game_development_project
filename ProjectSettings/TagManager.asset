@@ -19,6 +19,7 @@ TagManager:
   - magnifiedObj
   - Item
   - InputField
+  - Audio
   layers:
   - Default
   - TransparentFX

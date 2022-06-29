@@ -56,6 +56,7 @@ public class LightController : MonoBehaviour
             print("몬스터 등장");
             sr.material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         }
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)

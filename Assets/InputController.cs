@@ -41,6 +41,7 @@ public class InputController : MonoBehaviour
                 ghost.transform.gameObject.SetActive(false); //귀신삭제
                 clap.gameObject.SetActive(true);
                 audioP.Play();
+                ThreeConversation.isSuccess = true;
                 Debug.Log("정답");
             }
             else

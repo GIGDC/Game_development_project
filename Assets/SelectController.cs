@@ -8,6 +8,8 @@ public class SelectController : MonoBehaviour
     CameraShake shake;
     Selector[] select;
     public GameObject audio;
+    public AudioClip laughter;
+    public AudioClip scream;
     public GameObject Btn;
     public bool click = false;
     // Start is called before the first frame update
@@ -38,6 +40,11 @@ public class SelectController : MonoBehaviour
                     {
                         ThreeConversation.GhostNum++;
                         Debug.Log("ÁøÇàÁß");
+                        if (ThreeConversation.GhostNum > 2)
+                            audio.GetComponent<AudioSource>().clip = scream;
+                        else
+                            audio.GetComponent<AudioSource>().clip = laughter;
+
                         audio.GetComponent<AudioSource>().Play();
                         s.setCheck(false);
                         this.gameObject.SetActive(false);

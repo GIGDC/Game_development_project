@@ -9,17 +9,16 @@ public class ClickController : MonoBehaviour
     GameObject target;
     public GameObject glass;
     bool isCollider = false;
-    Transform[] childList;
     Animator Frige;
     private void Start()
     {
-        childList = GameObject.Find("GameObject").GetComponentsInChildren<Transform>();
         Frige = EventImage.gameObject.GetComponent<Animator>();
     }
     private void FixedUpdate()
     {
+        target = null;
         CastRay();
-        if (isCollider && target.CompareTag("magnifiedObj"))
+        if (isCollider && target.CompareTag("magnifiedObj")&&target)
         {
             glass.SetActive(true);
             glass.transform.position = Input.mousePosition;
@@ -41,18 +40,20 @@ public class ClickController : MonoBehaviour
                  {
                     EventImage.gameObject.SetActive(true);
                     glass.SetActive(false);
-                    if (childList != null)
-                    {
-                    //부모 오브젝트가 0번째
-                    for (int i = 1; i < childList.Length; i++)
-                    {
-                        childList[i].gameObject.SetActive(false);
-                        Debug.Log(childList[i].name);
-                    }
                 }
-            }
+                if (target.name == "Frige")
+                    FrigeGhostAudioController.isPlaying = true;
+
             }
         }
+
+        if (EventImage.gameObject.activeSelf == true)
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                FrigeGhostAudioController.isPlaying = false;
+                EventImage.gameObject.SetActive(false);
+            }
+
     }
     public void CastRay()
     {

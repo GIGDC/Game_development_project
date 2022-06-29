@@ -93,7 +93,15 @@ abstract public class ActiveConversation : MonoBehaviour
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Tab));
         }
     }
-
+    protected IEnumerator SuccessTalk()
+    {
+        string[] narrators = DataController.ghosts[id].Success.Split('$');
+        foreach (string narrator in narrators)
+        {
+            yield return StartCoroutine(Chat("유령 " + id, narrator));
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Tab));
+        }
+    }
     protected IEnumerator TextPractice()
     {
         yield return StartCoroutine(Chat("학생1", "이것은 타이핑 효과를 통해 대사창을 구현하는 연습"));

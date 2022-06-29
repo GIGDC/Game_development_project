@@ -5,8 +5,10 @@ using UnityEngine.UI;
 public class ThreeConversation : ActiveConversation
 {
     static public int GhostNum=0;
+    public GameObject ThreeGhost;
     public InputField ThreeMission;
     bool isQize;
+    static public bool isSuccess = false;
     void Start()
     {
         ThrowKey = false;
@@ -33,13 +35,16 @@ public class ThreeConversation : ActiveConversation
                     ThreeMission.gameObject.SetActive(true);
                 }
             }
+
+            if (ThreeGhost != null && isSuccess)
+                ThreeGhost.gameObject.SetActive(false);
         }
 
     }
 
     protected IEnumerator LoadTalk()
     {
-        string narrator = "가사실로 가";
+        string narrator = "배가 고파..\n 가사실에 가서, 내가 좋아하는 떡볶이를 만들어와.";
         yield return StartCoroutine(Chat("유령 " + id, narrator));
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Tab));
 
@@ -54,29 +59,65 @@ public class ThreeConversation : ActiveConversation
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-       
+
         if (collision.gameObject.name != "Player")
             return;
 
-        if (ThreeMission.GetComponent<InputField>().gameObject.activeSelf == false)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
+        if (ThreeMission != null) {
+            if (ThreeMission.GetComponent<InputField>().gameObject.activeSelf == false)
             {
-                message.SetActive(true);
-                clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-                secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-                isChating = true;
-                if (GhostNum < 3)
+                if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    StartCoroutine(LoadTalk());
-                }
-                else
-                {
-                    isQize = true;
-                    StartCoroutine(Talk());
+                    message.SetActive(true);
+                    clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+                    secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+                    isChating = true;
+                    if (GhostNum < 3)
+                    {
+                        StartCoroutine(LoadTalk());
+                    }
+                    else
+                    {
+                        isQize = true;
+                        foreach (KeyCode key in PlayerItemInteraction.Item.Keys)
+                        {
+                            if (PlayerItemInteraction.Item[key].Name == "Tteokbokki")
+                            {
+                                PlayerItemInteraction.Item.Remove(key);
+                                PlayerItemInteraction.Inventory.transform.GetChild((int)key - 49).GetChild(0).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0f);
+                                break;
+                            }
+                        }
+                        StartCoroutine(Talk());
+                    }
                 }
             }
         }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (isSuccess)
+                {
+                    message.SetActive(true);
+                    clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+                    secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+                    isChating = true;
+                    foreach (KeyCode key in PlayerItemInteraction.Item.Keys)
+                    {
+                        if (PlayerItemInteraction.Item[key].Name == "Box")
+                        {
+                            PlayerItemInteraction.Item.Remove(key);
+                            PlayerItemInteraction.Inventory.transform.GetChild((int)key - 49).GetChild(0).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0f);
+                            break;
+                        }
+                    }
+                    StartCoroutine(SuccessTalk());
+
+                }
+            }
+        }
+
            
     }
 }
