@@ -1125,7 +1125,7 @@ GameObject:
   - component: {fileID: 346342087}
   - component: {fileID: 346342086}
   m_Layer: 0
-  m_Name: "\uCE74\uB4DC\uBAA8\uC74C"
+  m_Name: mission1_card
   m_TagString: magnifiedObj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7040,7 +7040,7 @@ GameObject:
   - component: {fileID: 1867415138}
   - component: {fileID: 1867415137}
   m_Layer: 5
-  m_Name: MissionItemUI
+  m_Name: MissionUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

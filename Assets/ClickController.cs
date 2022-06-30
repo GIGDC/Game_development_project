@@ -22,8 +22,6 @@ public class ClickController : MonoBehaviour
         {
             glass.SetActive(true);
             glass.transform.position = Input.mousePosition;
-
-            Debug.Log(target);
             isCollider = false;
         }
         else
