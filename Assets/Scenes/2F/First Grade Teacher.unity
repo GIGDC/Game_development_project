@@ -4376,7 +4376,7 @@ GameObject:
   - component: {fileID: 1150671282}
   - component: {fileID: 1150671281}
   m_Layer: 0
-  m_Name: "\uCE74\uB4DC\uBAA8\uC74C_magnified"
+  m_Name: mission1_card_magnified
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
