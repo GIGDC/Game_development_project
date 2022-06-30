@@ -29,7 +29,8 @@ public class ActivateBoardUI : MonoBehaviour
             boardUI.SetActive(true); // 칠판 이미지 띄울 시 ui도 활성화
             GameObject useCardBtn = boardUI.transform.Find("useCardBtn").gameObject;
             GameObject exitBtn = boardUI.transform.Find("exitBtn").gameObject;
-            if (player.GetComponent<PlayerMissionItem>().GetMissionItem(missionItem) != null)
+            if (missionItemUsed == false // 미션 아이템 사용 전 && 미션 아이템 소유 중
+                && player.GetComponent<PlayerMissionItem>().GetMissionItem(missionItem) != null)
             {
                 useCardBtn.GetComponent<RectTransform>().anchoredPosition
                     = new Vector3(-160, -53, 0);
