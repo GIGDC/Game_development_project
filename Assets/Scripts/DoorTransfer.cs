@@ -18,6 +18,8 @@ public class DoorTransfer : MonoBehaviour
     // Start is called before the first frame update
     //PlayerMovement player;
     CameraShake shake;
+    public Image SuccessUI;
+    GameObject key_option;
 
     public bool isOpeningDoor; // 문과 부딪혔을때에는 부적이 아닌 문을 열수 있도록 하기 위함.
 
@@ -28,7 +30,7 @@ public class DoorTransfer : MonoBehaviour
 
     void Start()
     {
-
+        key_option = GameObject.Find("잠긴자물쇠");
         start = GameObject.FindObjectOfType<StartPoint>();
         key = GameObject.FindObjectOfType<KeyController>();
         DoorAni = this.GetComponent<Animator>();
@@ -50,12 +52,18 @@ public class DoorTransfer : MonoBehaviour
 
         StartPoint.MapNum = SceneManager.GetActiveScene().buildIndex;
 
+        if (LockController.isLock)
+        {
+            key_option.gameObject.SetActive(false);
+            StartCoroutine(deleayTime());
+            SuccessUI.gameObject.SetActive(false);
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isOpeningDoor = true;
-            if (KeyController.isLock || dontCheckKeyController) // 추후 dontCheckKeyController만 조건에서 삭제
+            if (LockController.isLock) // 추후 dontCheckKeyController만 조건에서 삭제
             {
-                
                 SceneTransition();
             }
             else if(WarningUI != null)
@@ -87,5 +95,11 @@ public class DoorTransfer : MonoBehaviour
 
         StartCoroutine(gameManager.AsyncLoadMap());
         yield return null;
+    }
+    IEnumerator deleayTime()
+    {
+        SuccessUI.gameObject.SetActive(true);
+        Debug.Log("문이 열렸습니다.");
+        yield return new WaitForSeconds(5);
     }
 }

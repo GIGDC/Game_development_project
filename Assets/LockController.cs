@@ -11,11 +11,14 @@ public class LockController : MonoBehaviour
     GameObject click;
     string input = "";
     bool[] isClick;
+    public static bool isLock;
+
     // Start is called before the first frame update
     void Start()
     {
         Objects = this.gameObject.GetComponentsInChildren<Button>();
         isClick = new bool[Objects.Length+1];
+        isLock = false;
 
         for (int i = 0; i < Objects.Length + 1; i++)
             isClick[i] = false;
@@ -27,7 +30,7 @@ public class LockController : MonoBehaviour
         if (input == passwd)
         {
             this.gameObject.SetActive(false);
-
+            isLock = true;
         }
         if (input.Length >= 4 && passwd!=input)
         {

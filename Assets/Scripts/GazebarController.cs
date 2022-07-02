@@ -39,7 +39,7 @@ public class GazebarController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("스페이스 누름");
-            time += (float)5;
+            time += (float)6;
             Space.sprite = SpaceOn;
         }
         else
@@ -47,12 +47,14 @@ public class GazebarController : MonoBehaviour
             Space.sprite = SpaceOff;
         }
 
+        if(isSuccess == 0)
+        {
+            time -= (float)0.5;
+            slider.value = (float)time / maxTime;
 
-        time -= (float)0.5;
-        slider.value = (float)time / maxTime;
-
-        LimitTime -= Time.deltaTime;
-        TimerText.text = Mathf.Round(LimitTime).ToString() + "s";
+            LimitTime -= Time.deltaTime;
+            TimerText.text = Mathf.Round(LimitTime).ToString() + "s";
+        }
 
         if (time == 0 || LimitTime <= 0)
         {

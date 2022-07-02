@@ -31,7 +31,7 @@ TagManager:
   - 
   - 
   - Camera
-  - 
+  - ItemLayout
   - 
   - 
   - 
@@ -70,4 +70,7 @@ TagManager:
     locked: 0
   - name: Light
     uniqueID: 1590846969
+    locked: 0
+  - name: ItemLayout
+    uniqueID: 3644438017
     locked: 0

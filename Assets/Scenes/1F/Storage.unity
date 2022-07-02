@@ -262,6 +262,10 @@ PrefabInstance:
       value: 1F
       objectReference: {fileID: 0}
     - target: {fileID: 2584701934113409840, guid: 0e707d29ebe51944392b8f482374f774, type: 3}
+      propertyPath: WarningUI
+      value: 
+      objectReference: {fileID: 1578922722}
+    - target: {fileID: 2584701934113409840, guid: 0e707d29ebe51944392b8f482374f774, type: 3}
       propertyPath: teleportPosition.x
       value: -20.63
       objectReference: {fileID: 0}
@@ -10012,9 +10016,10 @@ GameObject:
   - component: {fileID: 610246444}
   - component: {fileID: 610246443}
   - component: {fileID: 610246442}
+  - component: {fileID: 610246445}
   m_Layer: 5
   m_Name: Button
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10121,6 +10126,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610246440}
   m_CullTransparentMesh: 1
+--- !u!114 &610246445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610246440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 499ba7f848e841c4eaab1ae7ba1edba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: changoKey
+  PlusHp: 0
+  PlusMin: 0
+  Img: {fileID: 21300000, guid: 465b51d9486c6984d90205352094bf4b, type: 3}
+  Width: 40
+  Height: 40
+  Inven_Width: 0
+  Inven_Height: 0
 --- !u!1 &613004076
 GameObject:
   m_ObjectHideFlags: 0
@@ -10195,7 +10220,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: a5026ad197a4ae74ca0500231a525f4f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -10938,6 +10963,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 4393160531049904485, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6790477649100782836, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -10949,6 +10978,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3310625929180906409, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
   m_PrefabInstance: {fileID: 1578922720}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1578922722 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5854011708184425463, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
+  m_PrefabInstance: {fileID: 1578922720}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1637927342
 GameObject:
   m_ObjectHideFlags: 0
@@ -12809,7 +12849,7 @@ GameObject:
   - component: {fileID: 1941353056}
   - component: {fileID: 1941353059}
   - component: {fileID: 1941353058}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: "\uB2EB\uD78C\uD0A4\uBCF4\uAD00\uD568"
   m_TagString: magnifiedObj
   m_Icon: {fileID: 0}
@@ -12853,8 +12893,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1590846969
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0aa1e173f39ae0549afdfc0dfa53d47c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -12908,7 +12948,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.061815023, y: 0.06521571}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -12919,7 +12959,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.81, y: 3.82}
+  m_Size: {x: 4.087481, y: 4.9939184}
   m_EdgeRadius: 0
 --- !u!1001 &1987981468
 PrefabInstance:
@@ -13473,5 +13513,6 @@ MonoBehaviour:
   GoTo: 1F
   teleportPosition: {x: 0, y: 0, z: 0}
   WarningUI: {fileID: 1280594781}
+  SuccessUI: {fileID: 0}
   isOpeningDoor: 0
   dontCheckKeyController: 0
