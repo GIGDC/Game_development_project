@@ -11,6 +11,8 @@ public class ObtainableByClick : MonoBehaviour
     public GameObject glass;
     bool isCollider = false;
     string sceneRelatedToThisKey; // 오브젝트가 key일 때 어떤 씬과 관련된 key인지
+    [Tooltip("아이템 획득 후 맵에서 아이템을 보이게 할 것인지(default: false)")]
+    public bool activeAfterObtaining = false;
 
     private void Start()
     {
@@ -23,7 +25,7 @@ public class ObtainableByClick : MonoBehaviour
         {
             if(Input.GetKey(KeyCode.Escape))
             {
-                this.gameObject.SetActive(false);
+                this.gameObject.SetActive(activeAfterObtaining);
                 EventImage.gameObject.SetActive(false);
                 player.GetComponent<PlayerMovement>().CanPlayerMove = true;
 
@@ -32,8 +34,8 @@ public class ObtainableByClick : MonoBehaviour
                     List<string> openDoorList = GameManager.openDoorList;
                     sceneRelatedToThisKey = this.gameObject.name.Split(' ')[0];
                     if (!openDoorList.Contains(sceneRelatedToThisKey))
-                    { openDoorList.Add(sceneRelatedToThisKey);
-                        Debug.Log("테스트 "  + sceneRelatedToThisKey);
+                    { 
+                        openDoorList.Add(sceneRelatedToThisKey);
                     } // 해금된 씬 목록에 해당 열쇠가 열 수 있는 씬 추가
                 }
                 else

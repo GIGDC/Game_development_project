@@ -116,9 +116,6 @@ public class GameManager : MonoBehaviour
         async.allowSceneActivation = false;
         while (!async.isDone)
         {
-
-            Debug.Log("비동기화 진행도: " + async.progress);
-
             if (async.progress >= 0.9f)
             {
                 async.allowSceneActivation = true;

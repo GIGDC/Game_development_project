@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ActivateBoardUI : MonoBehaviour
 {
-    [Tooltip("해당 ui가 어떤 칠판에 대한 것인지 지정")]
+    [Tooltip("해당 ui가 어떤 확대된 칠판(magnified)에 대한 것인지 지정")]
     public GameObject magnifiedBoard;
     [Tooltip("미션을 수행하기 위한 아이템 이름")]
     public string missionItem;
@@ -32,6 +32,7 @@ public class ActivateBoardUI : MonoBehaviour
             if (missionItemUsed == false // 미션 아이템 사용 전 && 미션 아이템 소유 중
                 && player.GetComponent<PlayerMissionItem>().GetMissionItem(missionItem) != null)
             {
+                useCardBtn.SetActive(true);
                 useCardBtn.GetComponent<RectTransform>().anchoredPosition
                     = new Vector3(-160, -53, 0);
                 exitBtn.GetComponent<RectTransform>().anchoredPosition
