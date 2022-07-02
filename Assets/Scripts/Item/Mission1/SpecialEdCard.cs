@@ -3,43 +3,55 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ObtainableByClick : MonoBehaviour
+public class SpecialEdCard : MonoBehaviour
 {
     GameObject player;
-    public Image EventImage;
+    public Image cardImage;
+    public Image knifeImage;
     GameObject target; // 마우스가 가리키는 대상
     public GameObject glass;
     bool isCollider = false;
-    string sceneRelatedToThisKey; // 오브젝트가 key일 때 어떤 씬과 관련된 key인지
     [Tooltip("아이템 획득 후 맵에서 아이템을 보이게 할 것인지(default: false)")]
     public bool activeAfterObtaining = false;
+    bool isCardCut; // 카드가 잘라진 상태인지
 
     private void Start()
     {
         player = GameObject.Find("Player").gameObject;
+        isCardCut = false;
     }
 
     private void Update()
     {
-        if(EventImage.gameObject.activeSelf)
+        if (cardImage.gameObject.activeSelf)
         {
-            if(Input.GetKey(KeyCode.Escape))
+            if(!isCardCut && player.GetComponent<PlayerMissionItem>().GetMissionItem("커터칼") != null) // 플레이어가 커터칼 소유 시 화면에 이미지 표시
             {
-                this.gameObject.SetActive(activeAfterObtaining);
-                EventImage.gameObject.SetActive(false);
-                player.GetComponent<PlayerMovement>().CanPlayerMove = true;
+                knifeImage.gameObject.SetActive(true);
+            }
+            else
+            {
+                knifeImage.gameObject.SetActive(false);
+            }
 
-                if (this.gameObject.CompareTag("Key")) // 클릭한 오브젝트가 열쇠일 때
+            if (isCardCut) // 카드가 잘라지면 잘라진 카드 이미지 표시
+            {
+                cardImage.GetComponent<Animator>().SetTrigger("isCut");
+            }
+
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                if(!isCardCut) // 카드가 잘라지지 않은 상태면 플레이어가 도움반 카드 획득 불가
                 {
-                    List<string> openDoorList = GameManager.openDoorList;
-                    sceneRelatedToThisKey = this.gameObject.name.Split(' ')[0];
-                    if (!openDoorList.Contains(sceneRelatedToThisKey))
-                    { 
-                        openDoorList.Add(sceneRelatedToThisKey);
-                    } // 해금된 씬 목록에 해당 열쇠가 열 수 있는 씬 추가
+                    this.gameObject.SetActive(true);
                 }
                 else
+                {
+                    this.gameObject.SetActive(activeAfterObtaining);
                     player.GetComponent<PlayerMissionItem>().AddMissionItem(this.gameObject.name); // 획득한 미션 아이템 리스트에 추가
+                }
+                cardImage.gameObject.SetActive(false);
+                player.GetComponent<PlayerMovement>().CanPlayerMove = true;
             }
         }
     }
@@ -47,7 +59,7 @@ public class ObtainableByClick : MonoBehaviour
     private void FixedUpdate()
     {
         CastRay();
-        if (isCollider && (target.CompareTag("magnifiedObj") || target.CompareTag("Key")))
+        if (isCollider && target.CompareTag("magnifiedObj"))
         {
             glass.SetActive(true);
             glass.transform.position = Input.mousePosition;
@@ -62,7 +74,7 @@ public class ObtainableByClick : MonoBehaviour
         {
             if (target == this.gameObject)
             {
-                EventImage.gameObject.SetActive(true);
+                cardImage.gameObject.SetActive(true);
                 glass.SetActive(false);
                 player.GetComponent<PlayerMovement>().CanPlayerMove = false;
             }
@@ -79,5 +91,11 @@ public class ObtainableByClick : MonoBehaviour
             target = hit.collider.gameObject;
             isCollider = true;
         }
+    }
+
+    public bool IsCardCut
+    {
+        get { return isCardCut; }
+        set { isCardCut = value; }
     }
 }

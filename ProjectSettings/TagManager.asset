@@ -19,6 +19,7 @@ TagManager:
   - magnifiedObj
   - Item
   - Key
+  - Ghost
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - Water
   - UI
   - Hint
-  - 
+  - Ghost
   - 
   - 
   - Camera
