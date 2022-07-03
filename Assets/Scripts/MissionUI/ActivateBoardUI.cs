@@ -50,8 +50,9 @@ public class ActivateBoardUI : MonoBehaviour
             boardUI.SetActive(false);
     }
 
-    public void SetMissionItemUsed(bool b)
+    public bool MissionItemUsed
     {
-        missionItemUsed = b;
+        get { return missionItemUsed; }
+        set { missionItemUsed = value; }
     }
 }

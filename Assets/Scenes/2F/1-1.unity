@@ -20705,6 +20705,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 915936968}
+    - target: {fileID: 1557143421400263108, guid: 7d070e51d65709b44ab21ffe4122ce9d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_MissionItemUsed
+      objectReference: {fileID: 0}
     - target: {fileID: 1966088672796378948, guid: 7d070e51d65709b44ab21ffe4122ce9d, type: 3}
       propertyPath: m_Name
       value: boardUI

@@ -13,7 +13,7 @@ public class SpecialEdGhostGirl : MonoBehaviour
     Vector3 cameraPos; // 카메라의 원래 위치
     [SerializeField][Range(0.01f, 0.5f)] float shakeRange = 0.5f;
     [SerializeField][Range(0.1f, 1f)] float duration = 1f;
-    bool isTriggered; // 점핑 스퀘어 발동 여부
+    bool isTriggered; // 점프 스케어 발동 여부
 
     // Start is called before the first frame update
     void Start()

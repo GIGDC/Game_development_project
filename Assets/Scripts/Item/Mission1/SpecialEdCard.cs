@@ -10,6 +10,10 @@ public class SpecialEdCard : MonoBehaviour
     public Image knifeImage;
     GameObject target; // 마우스가 가리키는 대상
     public GameObject glass;
+    [Tooltip("ActivateBoardUI 스크립트가 있는 GameObject(카드 클릭 시 옆의 칠판도 같이 클릭되어 ui가 나타나므로 방지 설정)")]
+    public GameObject gameObjectWithActivateBoardUI;
+    [Tooltip("ClickController 스크립트가 있는 GameObject(카드 클릭 시 옆의 칠판도 같이 클릭되어 ui가 나타나므로 방지 설정)")]
+    public GameObject gameObjectWithClickController;
     bool isCollider = false;
     [Tooltip("아이템 획득 후 맵에서 아이템을 보이게 할 것인지(default: false)")]
     public bool activeAfterObtaining = false;
@@ -25,6 +29,8 @@ public class SpecialEdCard : MonoBehaviour
     {
         if (cardImage.gameObject.activeSelf)
         {
+            gameObjectWithActivateBoardUI.GetComponent<ActivateBoardUI>().enabled = false;
+            gameObjectWithClickController.GetComponent<ClickController>().enabled = false;
             if(!isCardCut && player.GetComponent<PlayerMissionItem>().GetMissionItem("커터칼") != null) // 플레이어가 커터칼 소유 시 화면에 이미지 표시
             {
                 knifeImage.gameObject.SetActive(true);
@@ -52,6 +58,8 @@ public class SpecialEdCard : MonoBehaviour
                 }
                 cardImage.gameObject.SetActive(false);
                 player.GetComponent<PlayerMovement>().CanPlayerMove = true;
+                gameObjectWithActivateBoardUI.GetComponent<ActivateBoardUI>().enabled = true;
+                gameObjectWithClickController.GetComponent<ClickController>().enabled = true;
             }
         }
     }
