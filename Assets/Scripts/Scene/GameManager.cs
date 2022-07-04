@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     PlayerMovement player;
 
     static public List<string> openDoorList;
+    static float mission1Progress; // 미션 1 진행 퍼센트
 
     public float transitionTime = 1f;
     public string transferScene; // 이동할 씬 이름 (protected: 계단 이동의 경우 1F, 2F, 3F 등이 있으므로 unity editor에서 수정하기 어려움)
@@ -136,5 +137,11 @@ public class GameManager : MonoBehaviour
     public Animator GetTransitionAnimator()
     {
         return GameObject.Find("GameManager").GetComponent<Animator>();
+    }
+
+    public float Mission1Progress
+    {
+        get { return mission1Progress; }
+        set { mission1Progress = value; }
     }
 }

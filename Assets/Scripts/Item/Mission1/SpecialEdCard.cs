@@ -23,6 +23,8 @@ public class SpecialEdCard : MonoBehaviour
     {
         player = GameObject.Find("Player").gameObject;
         isCardCut = false;
+        if(player.GetComponent<PlayerMissionItem>().GetMissionItem(this.gameObject.name) != null)
+            this.gameObject.SetActive(false);
     }
 
     private void Update()

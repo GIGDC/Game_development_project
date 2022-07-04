@@ -13,10 +13,15 @@ public class ObtainableByClick : MonoBehaviour
     string sceneRelatedToThisKey; // 오브젝트가 key일 때 어떤 씬과 관련된 key인지
     [Tooltip("아이템 획득 후 맵에서 아이템을 보이게 할 것인지(default: false)")]
     public bool activeAfterObtaining = false;
+    [Tooltip("미션 진행 상황 설정")]
+    [SerializeField] float missionProgress;
 
     private void Start()
     {
         player = GameObject.Find("Player").gameObject;
+        string gameObjectName = this.gameObject.CompareTag("Key") ? this.gameObject.name + " 열쇠" : this.gameObject.name;
+        if (player.GetComponent<PlayerMissionItem>().GetMissionItem(gameObjectName) != null)
+            this.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -28,6 +33,7 @@ public class ObtainableByClick : MonoBehaviour
                 this.gameObject.SetActive(activeAfterObtaining);
                 EventImage.gameObject.SetActive(false);
                 player.GetComponent<PlayerMovement>().CanPlayerMove = true;
+                GameObject.FindObjectOfType<GameManager>().Mission1Progress += missionProgress; // 미션 진행도
 
                 if (this.gameObject.CompareTag("Key")) // 클릭한 오브젝트가 열쇠일 때
                 {

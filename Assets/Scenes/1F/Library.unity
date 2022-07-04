@@ -1255,7 +1255,7 @@ GameObject:
   - component: {fileID: 627726596}
   - component: {fileID: 627726599}
   m_Layer: 5
-  m_Name: "1-4 \uC5F4\uC1E0 \uCC45_magnified"
+  m_Name: "1-4 \uC5F4\uC1E0_magnified"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2046,7 +2046,7 @@ GameObject:
   - component: {fileID: 855365970}
   - component: {fileID: 855365969}
   m_Layer: 0
-  m_Name: "1-4 \uC5F4\uC1E0 \uCC45"
+  m_Name: "1-4 \uC5F4\uC1E0"
   m_TagString: Key
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
