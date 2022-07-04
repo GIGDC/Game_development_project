@@ -116,6 +116,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -125,8 +127,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -147,9 +149,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -840,6 +845,38 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Bottom_Middle_Dungeon_Door_Closed: -6085209271259904505
+      Bottom_Middle_Dungeon_Door_Opened: -6975971501963557229
+      Bottom_Right_Dungeon_Door_Opened: -7265388314283571386
+      Top_Right_Dungeon_Door_Opened: 7145941756167820797
+      Bottom_Left_Dungeon_Door_Closed: 2365339308313440513
+      Floor_Tiled_flat: 5170418447652190022
+      Top_Left_Dungeon_Door_Closed: -5225876556858284812
+      Top_Middle_Dungeon_Door_Opened: -5767162948771900228
+      Barrel: -4584001840792588798
+      Bottom_Right_Corner_Tile: -451775213456855256
+      Top_Left_Dungeon_Door_Opened: -3697355384244169913
+      Bottom_Left_Corner_Tile: -7272623609870431233
+      Left_Wall_Tile: 8925430282067451464
+      Bottom_Wall_Tile: 4768812464063954029
+      Mossy_Wall_Tile1: -1820933343298804998
+      Top_Right_Dungeon_Door_Closed: -6558360575689610975
+      Floor_Tiled_Cracked: 6961584852583578572
+      Potion: 8145951374611147372
+      Top_Left_Corner_Tile: 5288188997765318534
+      Bottom_Left_Dungeon_Door_Opened: 457820117542733627
+      Bottom_Right_Dungeon_Door_Closed: -7743214850641337493
+      Top_Middle_Dungeon_Door_Closed: -3094171731127790719
+      Right_Wall_Tile: -7920979180335983864
+      Mossy_Wall_Tile2: 3957419326524138300
+      Floor_Cracked: -9141938605990679566
+      Mossy_Wall_Tile3: 2161171272659936262
+      Top_Wall_Tile: -2672306381724259459
+      Floor_Flat: 4017470158936073506
+      Top_Right_Corner_Tile: 6764832518669002963
+      Dungeon-2D-PixelArt-Tileset_5: 2056942473736830267
+      Floor_Tiled_Cracked2: -8859803436593824983
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

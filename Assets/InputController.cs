@@ -14,6 +14,12 @@ public class InputController : MonoBehaviour
     float scaleSpeed = 1f;
     bool check = false;
     public GameObject audio;
+    public GameObject message;
+    public Image messageImg;
+    public Sprite img;
+    public AudioClip ac;
+    // Update is called once per frame
+
     //음악 웃음소리 -> 박수로 바꾸기
     static int count = 0;
     // Start is called before the first frame update
@@ -22,6 +28,8 @@ public class InputController : MonoBehaviour
         audioP = audio.GetComponent<AudioSource>();
         ghost = GameObject.FindObjectOfType<ActiveConversation>();
         shake = GameObject.FindObjectOfType<CameraShake>();
+        messageImg.sprite = img;
+        audioP.clip = ac;
     }
 
     void ScaleUP()
@@ -38,9 +46,9 @@ public class InputController : MonoBehaviour
             if (textfield.text.Contains("박수"))
             {
                 this.gameObject.SetActive(false);
-                ghost.transform.gameObject.SetActive(false); //귀신삭제
                 clap.gameObject.SetActive(true);
                 audioP.Play();
+                
                 ThreeConversation.isSuccess = true;
                 Debug.Log("정답");
             }
@@ -50,8 +58,8 @@ public class InputController : MonoBehaviour
                 count++;
                 if (count > 2)
                 {
-                   // PlayerAttacted.hp -= 90;
-
+                    // PlayerAttacted.hp -= 90;
+                    message.SetActive(true);
                     ele1.gameObject.SetActive(true);
                     Invoke("ScaleUP", 2);
 
@@ -65,6 +73,10 @@ public class InputController : MonoBehaviour
                 {
                     shake.Shake();
                 }
+                ThreeConversation.isSuccess = false;
+                ThreeConversation.isInputGame = true;
+                this.gameObject.SetActive(false);
+
             }
         }
     }

@@ -5,12 +5,11 @@ using UnityEngine.UI;
 public class KeyController : MonoBehaviour
 {
     public int SceneNum;
-    static public bool isLock;
     DoorTransfer door;
     AudioSource Openaudio;
     void Start()
     {
-        isLock = false;
+        LockController.isLock = false;
         door = GameObject.FindObjectOfType<DoorTransfer>();
         Openaudio = door.GetComponent<AudioSource>();
         
@@ -22,9 +21,8 @@ public class KeyController : MonoBehaviour
             Debug.Log("¿­¼è¾ø¾îÁü");
             door.GetComponent<Animator>().SetBool("isOpening",true);
             Openaudio.Play();
-            isLock = true;
+            LockController.isLock = true;
             this.gameObject.SetActive(false);
         }
-        
     }
 }

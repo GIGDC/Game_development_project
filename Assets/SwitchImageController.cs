@@ -18,12 +18,13 @@ public class SwitchImageController : MonoBehaviour
     }
     void Update()
     {
-
-        if (ThreeConversation.GhostNum >= 3)
-        {
-            gameObject.GetComponent<SpriteRenderer>().sprite = img;
-            isClick = true;
-        }
+        if(img)
+            if (ThreeConversation.GhostNum >= 3)
+            {
+                HandsController.isStarting = true; // 클릭으로 이동시켜야함.
+                gameObject.GetComponent<SpriteRenderer>().sprite = img;
+                isClick = true;
+            }
     }
 
     private void FixedUpdate()
@@ -50,6 +51,7 @@ public class SwitchImageController : MonoBehaviour
             {
                 glass.SetActive(false);
                 PlayerItemInteraction.Click = this.gameObject;
+                
             }
             isClick = false;
         }

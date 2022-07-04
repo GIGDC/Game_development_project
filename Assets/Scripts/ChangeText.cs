@@ -5,13 +5,14 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class ChangeText : MonoBehaviour
 {
-    PlayerMovement player;
+    GameObject player;
     public Text text;
     protected bool first; //첫번째로 true가 되면 한번만 실행을 위해서
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindObjectOfType<PlayerMovement>();
+
+        player = GameObject.FindGameObjectWithTag("Player"); 
         text = GetComponent<Text>();
         first = false;
     }
@@ -88,6 +89,24 @@ public class ChangeText : MonoBehaviour
         {
             StartCoroutine(FadeInCoroutine());
             text.text = "경비실";
+            // first = true;
+        }
+        else if (SceneName == "FirstAnnex")
+        {
+            StartCoroutine(FadeInCoroutine());
+            text.text = "별관 복도";
+            // first = true;
+        }
+        else if (SceneName == "Cooking&Technology")
+        {
+            StartCoroutine(FadeInCoroutine());
+            text.text = "가사실";
+            // first = true;
+        }
+        else if (SceneName.Contains("Men Toilet"))
+        {
+            StartCoroutine(FadeInCoroutine());
+            text.text = "남자화장실";
             // first = true;
         }
     }

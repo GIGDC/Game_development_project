@@ -13,7 +13,7 @@ public class StartPoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        KeyController.isLock = false;
+        LockController.isLock = false;
         player = GameObject.FindObjectOfType<PlayerMovement>();
 
         

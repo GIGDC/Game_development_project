@@ -11,26 +11,50 @@ public class LightController : MonoBehaviour
 
     private Quaternion rotation;  // 회전(각도)을 담당하는 Vector4
 
+    public GameObject Lightning;
+    int count = 0;
+
     public GameObject monster;
     SpriteRenderer sr;
-
     void Awake()
     {
         thePlayer = GameObject.FindGameObjectWithTag("Player");
         GameObject[] mainCameras = GameObject.FindGameObjectsWithTag("MainCamera");
         if (mainCameras.Length == 1)
         {
+            DontDestroyOnLoad(Lightning);
             DontDestroyOnLoad(gameObject);
         }
         else
         {
+
+            Destroy(Lightning);
             Destroy(gameObject);
         } // 중복된 MainCamera 오브젝트가 있을 경우 오브젝트 파괴
     }
-
+    void Light()
+    {
+        Lightning.transform.position = this.transform.position;
+        count = 0;
+        StartCoroutine(ShowReady());
+    }
+    IEnumerator ShowReady()
+    {
+        while (count < 3)
+        {
+            Lightning.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+            Lightning.SetActive(false);
+            yield return new WaitForSeconds(0.1f);
+            count++;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
+
+        Lightning.SetActive(false);
+        InvokeRepeating("Light", 97f, 100f);
         thePlayer = GameObject.FindGameObjectWithTag("Player");
 
         monster = GameObject.Find("Monster");
@@ -66,5 +90,6 @@ public class LightController : MonoBehaviour
             print("몬스터 사라짐");
             sr.material.color = Color.clear;
         }
+        
     }
 }

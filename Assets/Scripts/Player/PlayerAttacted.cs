@@ -17,7 +17,7 @@ public class PlayerAttacted : MonoBehaviour
     void Start()
     {
         player = GameObject.FindObjectOfType<PlayerMovement>();
-        hp = 80;
+        hp = 100;
         maxHP = 100;
 
         Debug.Log(hp);

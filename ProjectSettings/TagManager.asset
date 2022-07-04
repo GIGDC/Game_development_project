@@ -19,6 +19,8 @@ TagManager:
   - magnifiedObj
   - Item
   - openKey
+  - InputField
+  - Audio
   layers:
   - Default
   - TransparentFX
@@ -62,11 +64,14 @@ TagManager:
   - name: Background
     uniqueID: 212594243
     locked: 0
+  - name: Door
+    uniqueID: 608578905
+    locked: 0
   - name: Character
     uniqueID: 371074617
     locked: 0
-  - name: Door
-    uniqueID: 608578905
+  - name: FrontDoor
+    uniqueID: 2161215185
     locked: 0
   - name: Light
     uniqueID: 1590846969

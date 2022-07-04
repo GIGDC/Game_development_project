@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class ClapController : MonoBehaviour
 {
     static float time;
-    // Update is called once per frame
+
     void Update()
     {
 
@@ -13,6 +13,7 @@ public class ClapController : MonoBehaviour
 
         if (time > 3.0f)
         {
+            ThreeConversation.isInputGame = true;
             this.gameObject.SetActive(false);
             
         }
