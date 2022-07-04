@@ -563,7 +563,7 @@ GameObject:
   - component: {fileID: 458269015}
   - component: {fileID: 458269017}
   - component: {fileID: 458269014}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "Special_Ed \uC5F4\uC1E0"
   m_TagString: Key
   m_Icon: {fileID: 0}
@@ -2789,7 +2789,7 @@ GameObject:
   - component: {fileID: 1713514843}
   - component: {fileID: 1713514842}
   - component: {fileID: 1713514841}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: mission1_card
   m_TagString: magnifiedObj
   m_Icon: {fileID: 0}

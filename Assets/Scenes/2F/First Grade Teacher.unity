@@ -1124,7 +1124,7 @@ GameObject:
   - component: {fileID: 346342084}
   - component: {fileID: 346342087}
   - component: {fileID: 346342086}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: mission1_card
   m_TagString: magnifiedObj
   m_Icon: {fileID: 0}
@@ -1360,7 +1360,7 @@ GameObject:
   - component: {fileID: 444249871}
   - component: {fileID: 444249870}
   - component: {fileID: 444249869}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: lock
   m_TagString: magnifiedObj
   m_Icon: {fileID: 0}
@@ -5360,7 +5360,7 @@ GameObject:
   - component: {fileID: 1312220880}
   - component: {fileID: 1312220879}
   - component: {fileID: 1312220878}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "1-3 \uC5F4\uC1E0"
   m_TagString: Key
   m_Icon: {fileID: 0}
@@ -6065,7 +6065,7 @@ GameObject:
   - component: {fileID: 1537055610}
   - component: {fileID: 1537055613}
   - component: {fileID: 1537055612}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "1-1 \uC5F4\uC1E0"
   m_TagString: Key
   m_Icon: {fileID: 0}

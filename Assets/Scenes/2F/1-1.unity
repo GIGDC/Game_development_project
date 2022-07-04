@@ -2024,7 +2024,7 @@ GameObject:
   - component: {fileID: 1833547357}
   - component: {fileID: 1833547355}
   - component: {fileID: 1833547356}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Library Key
   m_TagString: Key
   m_Icon: {fileID: 0}
