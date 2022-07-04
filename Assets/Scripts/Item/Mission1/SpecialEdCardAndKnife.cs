@@ -13,11 +13,16 @@ public class SpecialEdCardAndKnife : MonoBehaviour
     bool isCollider = false;
     [Tooltip("커터칼 gameObject 지정")]
     [SerializeField] GameObject knife;
-    [Tooltip("아이템 획득 후 맵에서 아이템을 보이게 할 것인지(default: false)")]
-    [SerializeField] bool activeAfterObtaining = false;
     [Tooltip("PlayerMissionItem 스크립트 내 missionItem에 저장할 이름 지정")]
     [SerializeField] string missionItemName;
     bool isCardCut; // 카드가 잘라진 상태인지
+
+    [Tooltip("현재 진행하고 있는 미션 번호")]
+    [Range(1, 3)] public int mission = 1;
+    [Tooltip("미션 진행 상황이 몇 %일 때 이벤트를 active할 것인지 지정")]
+    [SerializeField] float activeByMissionProgress;
+    [Tooltip("작업 완료 시 미션 진행 상황 설정")]
+    [SerializeField] float missionProgress;
 
     private void Start()
     {
@@ -29,6 +34,9 @@ public class SpecialEdCardAndKnife : MonoBehaviour
 
     private void Update()
     {
+        if (GameObject.FindObjectOfType<GameManager>().Mission1Progress != activeByMissionProgress)
+            this.gameObject.SetActive(false);
+
         if (cardImage.gameObject.activeSelf)
         {
             if (isCardCut) // 카드가 잘라지면 잘라진 카드 이미지 표시
@@ -44,8 +52,9 @@ public class SpecialEdCardAndKnife : MonoBehaviour
                 }
                 else
                 {
-                    this.gameObject.SetActive(activeAfterObtaining);
-                    knife.SetActive(activeAfterObtaining);
+                    this.gameObject.SetActive(false);
+                    knife.SetActive(false);
+                    GameObject.FindObjectOfType<GameManager>().Mission1Progress = missionProgress;
                     player.GetComponent<PlayerMissionItem>().AddMissionItem(missionItemName); // 획득한 미션 아이템 리스트에 추가
                 }
                 cardImage.gameObject.SetActive(false);

@@ -3,37 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Mission1Book : MonoBehaviour
+public class LibraryBook : MonoBehaviour
 {
     Button obtainKeyBtn;
     Animator animator;
-    bool keyObtained;
+
 
     void Start()
     {
         obtainKeyBtn = transform.Find("obtain_key").GetComponent<Button>();
         animator = GetComponent<Animator>();
-        keyObtained = false;
+        obtainKeyBtn.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && animator.GetInteger("page") == 1)
+        if (GameObject.Find("Player").GetComponent<PlayerMissionItem>().GetMissionItem("1-4 ø≠ºË") != null) // 1-4 ø≠ºË ¿ÃπÃ »πµÊ Ω√ √•¿« ∏∂¡ˆ∏∑ ∆‰¿Ã¡ˆ ∫∏ø©¡‹
+            animator.SetInteger("page", 3);
+
+        if (Input.GetMouseButtonDown(0) && animator.GetInteger("page") == 1)
             animator.SetInteger("page", 2);
 
         if (animator.GetInteger("page") == 2) 
-            obtainKeyBtn.enabled = true;
-        else
-            obtainKeyBtn.enabled = false;
-
-        if(keyObtained)
-            animator.SetInteger("page", 3);
-    }
-
-    public bool KeyObtained
-    { 
-        get { return keyObtained; } 
-        set { keyObtained = value; }
+            obtainKeyBtn.enabled = true;  
     }
 }

@@ -190,6 +190,10 @@ PrefabInstance:
       propertyPath: glass
       value: 
       objectReference: {fileID: 809711605}
+    - target: {fileID: 2504728407010307474, guid: a8f1302d7fcb65448a5f69267cd41f23, type: 3}
+      propertyPath: EventImage
+      value: 
+      objectReference: {fileID: 1977475212}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8f1302d7fcb65448a5f69267cd41f23, type: 3}
 --- !u!1 &43876552
@@ -6070,11 +6074,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d070e51d65709b44ab21ffe4122ce9d, type: 3}
---- !u!1 &1308734948 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1966088672796378948, guid: 7d070e51d65709b44ab21ffe4122ce9d, type: 3}
-  m_PrefabInstance: {fileID: 1308734947}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1308734949 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5859161722312971493, guid: 7d070e51d65709b44ab21ffe4122ce9d, type: 3}
@@ -8611,7 +8610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cafcd49cfc2250e49b38ebfb70424a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magnifiedBoard: {fileID: 1308734948}
+  magnifiedBoard: {fileID: 1977475209}
   missionItem: "\uC798\uB9B0 \uCE74\uB4DC"
   UI: {fileID: 1696648092}
 --- !u!114 &1986350707

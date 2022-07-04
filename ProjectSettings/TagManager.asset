@@ -66,6 +66,9 @@ TagManager:
   - name: Character
     uniqueID: 371074617
     locked: 0
+  - name: BackgroundInFrontOfCharacter
+    uniqueID: 1793340661
+    locked: 0
   - name: Door
     uniqueID: 608578905
     locked: 0

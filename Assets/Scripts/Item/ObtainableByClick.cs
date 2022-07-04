@@ -13,6 +13,16 @@ public class ObtainableByClick : MonoBehaviour
     string sceneRelatedToThisKey; // 오브젝트가 key일 때 어떤 씬과 관련된 key인지
     [Tooltip("아이템 획득 후 맵에서 아이템을 보이게 할 것인지(default: false)")]
     public bool activeAfterObtaining = false;
+    /*
+    activeAfterObtaining을 
+    [Tooltip("현재 진행하고 있는 미션 번호")]
+    [Range(1, 3)] public int mission = 1;
+    [Tooltip("미션 진행 상황이 몇 %일 때 이벤트를 active할 것인지 지정")]
+    [SerializeField] float activeByMissionProgress;
+    [Tooltip("작업 완료 시 미션 진행 상황 설정")]
+    [SerializeField] float missionProgress;
+    으로 추후 변경하기
+     */
     [Tooltip("미션 진행 상황 설정")]
     [SerializeField] float missionProgress;
 
@@ -44,8 +54,8 @@ public class ObtainableByClick : MonoBehaviour
                         openDoorList.Add(sceneRelatedToThisKey);
                     } // 해금된 씬 목록에 해당 열쇠가 열 수 있는 씬 추가
                 }
-                else
-                    player.GetComponent<PlayerMissionItem>().AddMissionItem(this.gameObject.name); // 획득한 미션 아이템 리스트에 추가
+                
+                player.GetComponent<PlayerMissionItem>().AddMissionItem(this.gameObject.name); // 획득한 미션 아이템 리스트에 추가
             }
         }
     }

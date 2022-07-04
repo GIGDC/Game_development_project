@@ -16,6 +16,12 @@ public class SpecialEdGhostGirl : MonoBehaviour
     bool isTriggered; // 점프 스케어 발동 여부
     [Tooltip("도움반 카드 ui image(해당 이미지 활성화 시 유령 점프 스퀘어 발동하지 않음")]
     [SerializeField] Image specialEdCard;
+    [Tooltip("현재 진행하고 있는 미션 번호")]
+    [Range(1, 3)] public int mission = 1;
+    [Tooltip("미션 진행 상황이 몇 %일 때 이벤트를 active할 것인지 지정")]
+    [SerializeField] float activeByMissionProgress;
+    //[Tooltip("작업 완료 시 미션 진행 상황 설정")]
+    //[SerializeField] float missionProgress;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +35,10 @@ public class SpecialEdGhostGirl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isObjectTargeted)
+        if (GameObject.FindObjectOfType<GameManager>().Mission1Progress > activeByMissionProgress)
+            this.gameObject.SetActive(false);
+
+        if (isObjectTargeted)
         {
             if(Input.GetMouseButtonDown(0))
             {
