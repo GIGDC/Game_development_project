@@ -21,6 +21,8 @@ TagManager:
   - openKey
   - InputField
   - Audio
+  - Ghost
+  - Hands
   layers:
   - Default
   - TransparentFX

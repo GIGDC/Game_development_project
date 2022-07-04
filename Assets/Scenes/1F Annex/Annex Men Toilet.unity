@@ -7420,7 +7420,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2116281901}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1804454132
 MonoBehaviour:
@@ -16723,15 +16723,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3310625927208689438, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
       propertyPath: m_Text
-      value: "\uD654\uC7A5\uC2E4"
+      value: "\uB0A8\uC790 \uD654\uC7A5\uC2E4"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3310625927208689439, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 303.8698
+      objectReference: {fileID: 0}
+    - target: {fileID: 3310625927208689439, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 74.285
       objectReference: {fileID: 0}
     - target: {fileID: 3310625927208689439, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 581
+      value: 534
       objectReference: {fileID: 0}
     - target: {fileID: 3310625927208689439, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 315.81
+      value: 312
       objectReference: {fileID: 0}
     - target: {fileID: 3310625928303625106, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
       propertyPath: m_AnchorMax.x

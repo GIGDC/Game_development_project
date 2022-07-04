@@ -5,39 +5,69 @@ using UnityEngine;
 public class HandsController : MonoBehaviour
 {
     public static bool isStarting = false;
-    GameObject[] Hands;
+    public GameObject[] Hands;
+    bool count = false;
+    float elapsedTime;
     private void Start()
     {
-        Hands = this.gameObject.GetComponentsInChildren<GameObject>();
+        elapsedTime = 0.0f;
+        count = true;
+        //isStarting으로 변경
+        if (ThreeConversation.GhostNum >= 3)
+            for (int i = 0; i < Hands.Length; i++)
+                if (Hands[i])
+                    Hands[i].SetActive(true);
 
-        for (int i = 0; i < Hands.Length; i++)
-            if(Hands[i])
-                Hands[i].SetActive(true);
+        InvokeRepeating("SecUP", 1f, 1f);
+
     }
-    private void Update()
+    private void SecUP()
     {
-        if (isStarting)
+         if (ThreeConversation.GhostNum >= 3)
         {
-             StartCoroutine(lerpCoroutine(Hands[2].transform.position, new Vector2(Hands[2].transform.position.x, -1.13f), 1f));
-             StartCoroutine(lerpCoroutine(Hands[2].transform.position, new Vector2(Hands[2].transform.position.x, -5f), 1f));           
+            StartCoroutine(lerpCoroutine(Hands[0].transform.position, new Vector2(119f, Hands[0].transform.position.y), new Vector2(132.7f, Hands[0].transform.position.y), 1f,0));
+            StartCoroutine(lerpCoroutine(Hands[1].transform.position, new Vector2(Hands[1].transform.position.x, 1.5f), new Vector2(Hands[1].transform.position.x, 3f), 1f, 1));
+            StartCoroutine(lerpCoroutine(Hands[2].transform.position, new Vector2(Hands[2].transform.position.x, -1.6f), new Vector2(Hands[2].transform.position.x, -5f), 1f, 2));
         }
     }
-    IEnumerator lerpCoroutine(Vector2 current, Vector2 target, float time)
+    bool isCheck = false;
+    IEnumerator lerpCoroutine(Vector2 current, Vector2 Up, Vector2 Down, float time, int i)
     {
-        yield return new WaitForSeconds(1f);
-        float elapsedTime = 0.0f;
+        elapsedTime = 0.0f;
+        if (!isCheck) {
+            while (elapsedTime < time)
+            {
+                elapsedTime += (Time.deltaTime);
 
-        while (elapsedTime < time)
-        {
-            elapsedTime += (Time.deltaTime);
+                Hands[i].transform.position
+                    = Vector3.Lerp(current, Up, elapsedTime / time);
 
-            this.transform.position
-                = Vector3.Lerp(current, target, elapsedTime / time);
-
+                yield return null;
+            }
+            Hands[i].transform.position = Up;
+        
+            if (elapsedTime >= time) 
+                isCheck = true;
             yield return null;
         }
-       
-        this.transform.position = target;
+        if (isCheck)
+        {
+            while (elapsedTime > 0.0f)
+            {
+                elapsedTime -= (Time.deltaTime);
+
+                Hands[i].transform.position
+                    = Vector3.Lerp(current, Down, elapsedTime / time);
+
+                yield return null;
+            }
+            Hands[i].transform.position = Down;
+
+            if (elapsedTime <= 0.0f)
+                isCheck = false;
+        }
         yield return null;
     }
+
+
 }

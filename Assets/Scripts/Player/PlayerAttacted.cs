@@ -60,13 +60,20 @@ public class PlayerAttacted : MonoBehaviour
     public IEnumerator Attacked()
     {
         player.animator.SetBool("BeAttacked", true);
-        yield return null;
+        yield return new WaitForSeconds(2.0f);
         player.animator.SetBool("BeAttacked", false);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Monster")&&Monster.isCollide&&!player.isAttacking)
+        if ((collision.gameObject.CompareTag("Monster")) && Monster.isCollide&&!player.isAttacking)
+        {
+            StartCoroutine(Attacked());
+            StartCoroutine(ClockController.ChangeAttack());
+            hp = hp - (float)10f;
+            player.transform.position = new Vector3(player.transform.position.x - 2f, player.transform.position.y, 0);
+        }
+        if (collision.gameObject.CompareTag("Hands"))
         {
             StartCoroutine(Attacked());
             StartCoroutine(ClockController.ChangeAttack());

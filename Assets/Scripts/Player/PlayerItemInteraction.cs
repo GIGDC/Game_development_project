@@ -76,6 +76,7 @@ public class PlayerItemInteraction : MonoBehaviour
                     Item.Remove(key);
                     Inventory.transform.GetChild((int)key - 49).GetChild(0).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0f);
                     break;
+
                     if (monster != null)
                     {
                         if (Vector3.Distance(transform.position, monster.transform.position) < rangeOfItemUse)
@@ -101,6 +102,17 @@ public class PlayerItemInteraction : MonoBehaviour
                     if (PlayerAttacted.hp<100)
                     {
                         PlayerAttacted.hp=(PlayerAttacted.hp+Item[key].PlusHp)>100? 100: PlayerAttacted.hp + Item[key].PlusHp;
+                        Item.Remove(key);
+                        Inventory.transform.GetChild((int)key - 49).GetChild(0).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0f);
+                        break;
+                    }
+                }
+
+                if (Item[key].Name == "Eyes" && Input.GetKeyDown(key))
+                {
+                    if (PlayerAttacted.hp < 100)
+                    {
+                        PlayerAttacted.hp = 100;
                         Item.Remove(key);
                         Inventory.transform.GetChild((int)key - 49).GetChild(0).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0f);
                         break;
