@@ -63,6 +63,9 @@ TagManager:
   - name: item
     uniqueID: 2988458133
     locked: 0
+  - name: BackgroundInFrontOfItem
+    uniqueID: 609784565
+    locked: 0
   - name: Character
     uniqueID: 371074617
     locked: 0
