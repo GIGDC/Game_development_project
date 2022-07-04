@@ -14,6 +14,8 @@ public class SpecialEdGhostGirl : MonoBehaviour
     [SerializeField][Range(0.01f, 0.5f)] float shakeRange = 0.5f;
     [SerializeField][Range(0.1f, 1f)] float duration = 1f;
     bool isTriggered; // 점프 스케어 발동 여부
+    [Tooltip("도움반 카드 ui image(해당 이미지 활성화 시 유령 점프 스퀘어 발동하지 않음")]
+    [SerializeField] Image specialEdCard;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +56,9 @@ public class SpecialEdGhostGirl : MonoBehaviour
 
     public void CastRay()
     {
+        if (specialEdCard.gameObject.activeSelf) // 도움반 카드 ui image 활성화 시 점프 스퀘어 발동하지 않음
+            return;
+
         int layerMask = LayerMask.NameToLayer("Ghost");
 
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

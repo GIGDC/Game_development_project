@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Knife : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
+public class KnifeUIImage : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
 {
     RectTransform rectTransform;
     [SerializeField] Canvas canvas;
@@ -49,7 +49,7 @@ public class Knife : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEnd
                 rectTransform.anchoredPosition = new Vector2(270, -55);
             else if (rectTransform.anchoredPosition.x < 170) // 세 번째 선까지 다 자름
             {
-                specialEdCard.GetComponent<SpecialEdCard>().IsCardCut = true;
+                specialEdCard.GetComponent<SpecialEdCardAndKnife>().IsCardCut = true;
                 this.gameObject.SetActive(false);
             }
         }
