@@ -6,7 +6,7 @@ public class UpController : MonoBehaviour
 {
     private void Start()
     {
-        StartCoroutine(lerpCoroutine(this.transform.position, new Vector2(this.transform.position.x, 10), 1f));
+        StartCoroutine(lerpCoroutine(this.transform.position, new Vector2(this.transform.position.x, this.transform.position.y + 10), 1f));
     }
     IEnumerator lerpCoroutine(Vector2 current, Vector2 target, float time)
     {
