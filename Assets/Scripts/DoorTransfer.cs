@@ -104,9 +104,4 @@ public class DoorTransfer : MonoBehaviour
         Debug.Log("문이 열렸습니다.");
         yield return new WaitForSeconds(5);
     }
-    IEnumerator deleayTime()
-    {
-        Debug.Log("문이 열렸습니다.");
-        yield return new WaitForSeconds(5);
-    }
 }
