@@ -20,18 +20,15 @@ public class LightController : MonoBehaviour
     void Awake()
     {
         thePlayer = GameObject.FindGameObjectWithTag("Player");
-        GameObject[] mainCameras = GameObject.FindGameObjectsWithTag("MainCamera");
-        if (mainCameras.Length == 1)
+        GameObject[] lights = GameObject.FindGameObjectsWithTag("Light");
+        if (lights.Length == 1)
         {
-            DontDestroyOnLoad(Lightning);
             DontDestroyOnLoad(gameObject);
         }
         else
         {
-
-            Destroy(Lightning);
             Destroy(gameObject);
-        } // 중복된 MainCamera 오브젝트가 있을 경우 오브젝트 파괴
+        }
     }
     void Light()
     {
@@ -65,7 +62,7 @@ public class LightController : MonoBehaviour
             sr = monster.GetComponent<SpriteRenderer>();
             sr.material.color = Color.clear;
         }
-        if (GameObject.Find("Hands").transform != null)
+        if (GameObject.Find("Hands") != null)
             for (int i = 0; i <= Hands.Length; i++)
             {
                 GameObject.Find("Hands").transform.GetChild(i).gameObject.SetActive(true);
@@ -103,7 +100,7 @@ public class LightController : MonoBehaviour
             print("몬스터 사라짐");
             sr.material.color = Color.clear;
         }
-        if (GameObject.Find("Hands").transform != null)
+        if (GameObject.Find("Hands") != null)
             for (int i = 0; i <= Hands.Length; i++)
             {
                 GameObject.Find("Hands").transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().color = Color.clear;
