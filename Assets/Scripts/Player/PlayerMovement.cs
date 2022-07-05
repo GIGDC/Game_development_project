@@ -49,7 +49,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        //if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+       
+            //if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
             //StartCoroutine("WalkSound");
 
         if(!canPlayerMove)
@@ -66,14 +67,15 @@ public class PlayerMovement : MonoBehaviour
             direction.y = Input.GetAxisRaw("Vertical");
         }
 
-        ChangeMoveSpeed();
-        if (animator.GetFloat("MoveSpeed") > 0)
-        {
-            // 이동
-           
-            animator.SetFloat("MoveHorizontally", movement.x);
-            animator.SetFloat("MoveVertically", movement.y);
-        }
+            ChangeMoveSpeed();
+            if (animator.GetFloat("MoveSpeed") > 0)
+            {
+                // 이동
+
+                animator.SetFloat("MoveHorizontally", movement.x);
+                animator.SetFloat("MoveVertically", movement.y);
+            }
+        
     }
 
     void FixedUpdate()
@@ -82,17 +84,17 @@ public class PlayerMovement : MonoBehaviour
         rigid.MovePosition(rigid.position + movement * speed * Time.deltaTime);
     }
     IEnumerator WalkSound()
-    {
-        walkSource.clip = walkPlayer[0];
-        walkSource.Play();
-        yield return new WaitForSeconds(0.5f);
-        if (!walkSource.isPlaying)
-        {
-            walkSource.clip = walkPlayer[1];
+     {
+            walkSource.clip = walkPlayer[0];
             walkSource.Play();
-            yield return new WaitForSeconds(2.0f);
-        }
-
+            yield return new WaitForSeconds(0.5f);
+            if (!walkSource.isPlaying)
+            {
+                walkSource.clip = walkPlayer[1];
+                walkSource.Play();
+                yield return new WaitForSeconds(2.0f);
+            }
+        
     }
 
     // 키 입력에 따른 이동 속도 변경

@@ -14,6 +14,7 @@ public class PlayerItemInteraction : MonoBehaviour
     static public GameObject Inventory; 
     static public Dictionary<KeyCode, ItemInfo> Item; //Player가 가지고있는 item으로, 앞으로 이곧에 저장예정 게임이 종료전까지 저장예정.
     static public int Count; //변수이름 변경예정 1~5까지 수를 세서 keyCode설정예정.
+    static public GameObject Click; //떡볶이를 눌렀을때
     private void Start()
     {
         numOfAmulets = 0;
@@ -27,36 +28,47 @@ public class PlayerItemInteraction : MonoBehaviour
         monster = GameObject.Find("Monster");
         Inventory=GameObject.Find("Inventory");
     }
-
+    
+    void EatingGameObject(GameObject go)
+    {
+        if (Item.Count == 0)
+            Item.Add(KeyCode.Alpha1, go.gameObject.GetComponent<ItemInfo>());
+        else if (Item.Count == 1)
+            Item.Add(KeyCode.Alpha2, go.gameObject.GetComponent<ItemInfo>());
+        else if (Item.Count == 2)
+            Item.Add(KeyCode.Alpha3, go.gameObject.GetComponent<ItemInfo>());
+        else if (Item.Count == 3)
+            Item.Add(KeyCode.Alpha4, go.gameObject.GetComponent<ItemInfo>());
+        else if (Item.Count == 4)
+            Item.Add(KeyCode.Alpha5, go.gameObject.GetComponent<ItemInfo>());
+        else //5이상일시
+        {
+            Count++;
+            Item.Add(KeyCode.LeftControl, go.gameObject.GetComponent<ItemInfo>());
+        }
+        go.gameObject.SetActive(false);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Item"))
         {
-            if (Item.Count == 0)
-                Item.Add(KeyCode.Alpha1, collision.gameObject.GetComponent<ItemInfo>());
-            else if(Item.Count == 1)
-                Item.Add(KeyCode.Alpha2, collision.gameObject.GetComponent<ItemInfo>());
-            else if (Item.Count == 2)
-                Item.Add(KeyCode.Alpha3, collision.gameObject.GetComponent<ItemInfo>());
-            else if (Item.Count == 3)
-                Item.Add(KeyCode.Alpha4, collision.gameObject.GetComponent<ItemInfo>());
-            else if (Item.Count == 4)
-                Item.Add(KeyCode.Alpha5, collision.gameObject.GetComponent<ItemInfo>());
-            else //5이상일시
-            {
-                Count++;
-                Item.Add(KeyCode.LeftControl, collision.gameObject.GetComponent<ItemInfo>());
-            }
-            collision.gameObject.SetActive(false);
+            EatingGameObject(collision.gameObject);
         }
         
     }
     void Update()
     {
+        if(Click!=null)
+        {
+            EatingGameObject(Click.gameObject);
+            Click = null;
+        }
+
         if (Item != null)
         {
             foreach (KeyCode key in Item.Keys)
             {
+                Debug.Log(Item[key].Name);
                 if (Item[key].Name == "Amulet" && Input.GetKeyDown(key))
                 {
                     
@@ -64,6 +76,7 @@ public class PlayerItemInteraction : MonoBehaviour
                     Item.Remove(key);
                     Inventory.transform.GetChild((int)key - 49).GetChild(0).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0f);
                     break;
+
                     if (monster != null)
                     {
                         if (Vector3.Distance(transform.position, monster.transform.position) < rangeOfItemUse)
@@ -89,6 +102,17 @@ public class PlayerItemInteraction : MonoBehaviour
                     if (PlayerAttacted.hp<100)
                     {
                         PlayerAttacted.hp=(PlayerAttacted.hp+Item[key].PlusHp)>100? 100: PlayerAttacted.hp + Item[key].PlusHp;
+                        Item.Remove(key);
+                        Inventory.transform.GetChild((int)key - 49).GetChild(0).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0f);
+                        break;
+                    }
+                }
+
+                if (Item[key].Name == "Eyes" && Input.GetKeyDown(key))
+                {
+                    if (PlayerAttacted.hp < 100)
+                    {
+                        PlayerAttacted.hp = 100;
                         Item.Remove(key);
                         Inventory.transform.GetChild((int)key - 49).GetChild(0).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0f);
                         break;

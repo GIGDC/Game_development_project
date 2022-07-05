@@ -72,6 +72,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -496,6 +497,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      chapter1_monster_13: 4647875435932130364
+      chapter1_monster_6: 5498816735640221755
+      chapter1_monster_1: -6463082233589815914
+      chapter1_monster_5: 4557618803084953113
+      chapter1_monster_9: 1702024750038642608
+      chapter1_monster_2: 4027119771222080502
+      chapter1_monster_7: -89420199686234219
+      chapter1_monster_10: 7025665510408099280
+      chapter1_monster_11: -2347381670678251371
+      chapter1_monster_15: 87879658848442741
+      chapter1_monster_4: 2740828495726151632
+      chapter1_monster_14: -313577246951833240
+      chapter1_monster_12: -4599197576936621209
+      chapter1_monster_0: -5280376612357646256
+      chapter1_monster_8: -6320474160392322463
+      chapter1_monster_3: 4292810095578448983
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

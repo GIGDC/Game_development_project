@@ -50,19 +50,21 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (transferScene != null)
-        {
-            PlayerMovement.CurrentMapName = transferScene;
-        }
-        if (Timer_60.isStop || attack.zeroHP)
-        {
-            Debug.Log("Attack.Zero");
-            if(monster!=null)
-                monster.Hide();
-            player.Hide();
 
-            StartCoroutine(LoadMap("GameOver"));
+            if (transferScene != null)
+            {
+                PlayerMovement.CurrentMapName = transferScene;
+            }
+            if (Timer_60.isStop || attack.zeroHP)
+            {
+                Debug.Log("Attack.Zero");
+                if (monster != null)
+                    monster.Hide();
+                player.Hide();
+
+           StartCoroutine(LoadMap("GameOver"));
         }
+
     }
 
     public IEnumerator LoadMap(string transferMapName)
@@ -120,7 +122,7 @@ public class GameManager : MonoBehaviour
             if (async.progress >= 0.9f)
             {
                 async.allowSceneActivation = true;
-                
+
                 /* 
                 이 사이에 player의 position을 조정하고 싶은데 맵이 완전히 로딩되어 door을
                 찾기 위해 yield return new WaitForSeconds(0.5f)를 넣었으나, 해당 코드가 실행되고

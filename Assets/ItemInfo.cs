@@ -13,4 +13,8 @@ public class ItemInfo : MonoBehaviour
     public int Inven_Width;
     public int Inven_Height;
 
+    public void onClick()
+    {
+       
+    }
 }

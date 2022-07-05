@@ -14,10 +14,9 @@ abstract public class ActiveConversation : MonoBehaviour
     protected Image clock;
     protected Image secondHand;
     protected bool isChating;
-    public static Dictionary<int, Ghost> ghost;
     public bool ThrowKey;
-
-    protected InputField ThreeMission; //3번째미션용, 없으면 null을 반납함
+    public Image messageImg;
+    public Sprite img;
     //Image sr;
 
     //start부분을 메소드 오버라이딩 되면, 다 다시 할당해줘야하기때문에, 최상위 클래스에 배치
@@ -28,11 +27,9 @@ abstract public class ActiveConversation : MonoBehaviour
     }
     void Start()
     {
-        ghost = new Dictionary<int, Ghost>();
         ThrowKey = false;
         clock = GameObject.Find("Clock").GetComponent<Image>();
         secondHand = GameObject.Find("theMinuteHand").GetComponent<Image>();
-        ThreeMission = GameObject.Find("UI").transform.Find("InputField").gameObject.transform.GetComponent<InputField>(); //InputField겨져오기
     }
 
     void Update()
@@ -88,18 +85,52 @@ abstract public class ActiveConversation : MonoBehaviour
     }
     protected IEnumerator Talk()
     {
-        string[] narrators = ghost[id].Talk.Split('$');
+        string[] narrators = DataController.ghosts[id].Talk.Split('$');
         foreach(string narrator in narrators)
         {
             yield return StartCoroutine(Chat("유령 " + id, narrator));
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Tab));
         }
     }
-
-    protected IEnumerator TextPractice()
+    protected IEnumerator PositTalk()
     {
-        yield return StartCoroutine(Chat("학생1", "이것은 타이핑 효과를 통해 대사창을 구현하는 연습"));
-        yield return new WaitForSeconds(1f);
-        yield return StartCoroutine(Chat("학생2", "안녕하세요, 반갑습니다."));
+        string[] narrators = DataController.ghosts[id].Posit.Split('$');
+        foreach (string narrator in narrators)
+        {
+            yield return StartCoroutine(Chat("유령 " + id, narrator));
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Tab));
+        }
     }
+
+
+    protected IEnumerator QuizTalk(bool isSuccess)
+    {
+        string[] narrators = null;
+
+        if (isSuccess)
+        {
+            narrators = DataController.ghosts[id].Posit.Split('$');
+        }
+        else
+            narrators = DataController.ghosts[id].Negat.Split('$');
+
+        foreach (string narrator in narrators)
+        {
+            yield return StartCoroutine(Chat("유령 " + id, narrator));
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Tab));
+        }
+
+    }
+    protected IEnumerator SuccessTalk()
+    {
+        string[] narrators = DataController.ghosts[id].Success.Split('$');
+        foreach (string narrator in narrators)
+        {
+            yield return StartCoroutine(Chat("유령 " + id, narrator));
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Tab));
+        }
+    }
+    //
+    //위 키보드를 누르면 캐릭터 이동, SHIFT키는 달리기입니다.$위 키보드를 누르면 아이템사용, 열쇠는 아이템이 아닙니다. 즉, 먹는 즉시 문이 열립니다.$돋보기가 나올 시 마우스 사용 가능합니다.
+    
 }

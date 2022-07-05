@@ -21,12 +21,56 @@ public class Ghost
         this.select2 = select2;
         this.select3 = select3;
     }
+    public string Posit
+    {
 
+        get
+        {
+            return posit;
+        }
+    }
+
+    public string Negat
+    {
+
+        get
+        {
+            return negat;
+        }
+    }
+    public string Success
+    {
+        get
+        {
+            return select1;
+        }
+    }
     public string Talk
     {
         get
         {
             return talk;
+        }
+    }
+    public string Select1
+    {
+        get
+        {
+            return select1;
+        }
+    }
+    public string Select2
+    {
+        get
+        {
+            return select2;
+        }
+    }
+    public string Select3
+    {
+        get
+        {
+            return select3;
         }
     }
 }
