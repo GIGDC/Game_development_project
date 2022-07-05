@@ -24,8 +24,8 @@ public class DoorTransfer : MonoBehaviour
 
     static public bool CheckMonster = false;
 
-    [Tooltip("개발용 변수 (열쇠가 없어도 문을 열 수 있음)")]
-    public bool dontCheckKeyController = false; // 개발할 때 열쇠 없어도 문으로 쉽게 이동 가능하도록
+    [Tooltip("원래 열려있는 문임")]
+    public bool isOpen = false;
 
     void Start()
     {
@@ -34,9 +34,11 @@ public class DoorTransfer : MonoBehaviour
         start = GameObject.FindObjectOfType<StartPoint>();
         key = GameObject.FindObjectOfType<KeyController>();
         DoorAni = this.GetComponent<Animator>();
-        
+
         //player= GameObject.FindObjectOfType<PlayerMovement>();
         shake = GameObject.FindObjectOfType<CameraShake>();
+
+        gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
     public void OnTriggerStay2D(Collider2D collision)
@@ -52,7 +54,7 @@ public class DoorTransfer : MonoBehaviour
 
         StartPoint.MapNum = SceneManager.GetActiveScene().buildIndex;
 
-        if (LockController.isLock || dontCheckKeyController)
+        if (LockController.isLock)
         {
             if (key_option)
                 key_option.gameObject.SetActive(false);
@@ -61,13 +63,20 @@ public class DoorTransfer : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            isOpeningDoor = true;
-            if (LockController.isLock||dontCheckKeyController) // 추후 dontCheckKeyController만 조건에서 삭제
+            string sceneName = this.gameObject.name.Split(' ')[0]; // 문과 연결된 씬 이름
+            if (GameManager.openDoorList.Contains(sceneName)) // 해당 문이 열려있는지 체크
             {
+                Debug.Log(sceneName + " 문 열림");
+                isOpen = true;
+            }
+
+            if (isOpen || LockController.isLock) // 열려있을 시 트랜지션
+            {
+                isOpeningDoor = true;
                 SceneTransition();
             }
-            else if(WarningUI != null)
-            { 
+            else if (WarningUI != null) // 닫혀있을 시 경고 ui
+            {
                 WarningUI.gameObject.SetActive(true);
                 shake.Shake();
             }
@@ -75,26 +84,25 @@ public class DoorTransfer : MonoBehaviour
 
     }
 
-    public void SceneTransition()
+    private void Update()
     {
-        StartCoroutine(FadeOut());
+        if (isOpeningDoor)
+            DoorAni.SetBool("isOpening", true);
+        if (isOpen)
+            DoorAni.SetBool("isOpen", true);
     }
 
-    IEnumerator FadeOut()
+    public void SceneTransition()
     {
-        DoorAni.SetBool("isOpening", true);
         gameManager = GameObject.FindObjectOfType<GameManager>();
         gameManager.transferScene = GoTo;
         gameManager.teleportPosition = teleportPosition;
-        Debug.Log(gameManager.transferScene);
-        gameManager.GetTransitionAnimator().SetBool("FadeOut", true);
-        gameManager.GetTransitionAnimator().SetBool("FadeIn", false);
-        
-        yield return new WaitForSeconds(0.5f);
-        yield return new WaitForSeconds(gameManager.transitionTime);
-
-        StartCoroutine(gameManager.AsyncLoadMap());
-        yield return null;
+        StartCoroutine(gameManager.FadeOut());
+    }
+    IEnumerator deleayTime()
+    {
+        Debug.Log("문이 열렸습니다.");
+        yield return new WaitForSeconds(5);
     }
     IEnumerator deleayTime()
     {

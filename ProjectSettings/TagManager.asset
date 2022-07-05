@@ -18,11 +18,13 @@ TagManager:
   - Inventory
   - magnifiedObj
   - Item
-  - openKey
-  - InputField
-  - Audio
+  - Key
   - Ghost
   - Hands
+  - Light
+  - Audio
+  - openKey
+  - InputField
   layers:
   - Default
   - TransparentFX
@@ -31,11 +33,11 @@ TagManager:
   - Water
   - UI
   - Hint
-  - 
-  - 
-  - 
+  - Ghost
+  - Item
+  - ItemLayer
   - Camera
-  - ItemLayout
+  - 
   - 
   - 
   - 
@@ -60,24 +62,27 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: UI
-    uniqueID: 2924548127
-    locked: 0
   - name: Background
     uniqueID: 212594243
     locked: 0
-  - name: Door
-    uniqueID: 608578905
+  - name: item
+    uniqueID: 2988458133
+    locked: 0
+  - name: BackgroundInFrontOfItem
+    uniqueID: 609784565
     locked: 0
   - name: Character
     uniqueID: 371074617
     locked: 0
-  - name: FrontDoor
-    uniqueID: 2161215185
+  - name: BackgroundInFrontOfCharacter
+    uniqueID: 1793340661
+    locked: 0
+  - name: Door
+    uniqueID: 608578905
     locked: 0
   - name: Light
     uniqueID: 1590846969
     locked: 0
-  - name: ItemLayout
-    uniqueID: 3644438017
+  - name: UI
+    uniqueID: 2924548127
     locked: 0

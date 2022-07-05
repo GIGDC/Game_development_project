@@ -100,12 +100,12 @@ public class ThreeGhostController : ActiveConversation
         string[] narrators = null;
         if (BoxConversation.isSuccess)
         {
-            narrators = "구원해줘서 고마워.. 너를 많이 좋아했었어...$ 그건 내 마지막 선물이야 안녕..$".Split("$");
+            narrators = "구원해줘서 고마워.. 너를 많이 좋아했었어...$ 그건 내 마지막 선물이야 안녕..$".Split('$');
         }
         else
         {
             if(isSaving)
-                narrators = "화장실 귀,,귀신한테 선물을 빼앗겼어!!!$ 그걸 나한테 줘!!$".Split("$");
+                narrators = "화장실 귀,,귀신한테 선물을 빼앗겼어!!!$ 그걸 나한테 줘!!$".Split('$');
         }
 
         foreach (string narrator in narrators)

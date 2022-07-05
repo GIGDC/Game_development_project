@@ -5,10 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public int test;
+
     private PlayerAttacted attack;
 
     private Monster monster;
     PlayerMovement player;
+
+    static public List<string> openDoorList;
+    static float mission1Progress; // 미션 1 진행 퍼센트
 
     public float transitionTime = 1f;
     public string transferScene; // 이동할 씬 이름 (protected: 계단 이동의 경우 1F, 2F, 3F 등이 있으므로 unity editor에서 수정하기 어려움)
@@ -18,11 +23,11 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         GameObject[] gameManagers = GameObject.FindGameObjectsWithTag("GameManager");
-        if (gameManagers.Length == 1)
-        {
-            DontDestroyOnLoad(gameObject);
-        }
-        else
+        if (gameManagers.Length == 1) 
+        { 
+            DontDestroyOnLoad(gameObject); 
+        } 
+        else 
         {
             Destroy(gameObject);
         } // 중복된 GameMangager 오브젝트가 있을 경우 오브젝트 파괴
@@ -31,6 +36,9 @@ public class GameManager : MonoBehaviour
 
         GameObject transition = transform.Find("UI").Find("Transition").gameObject;
         transition.SetActive(true);
+
+        if (openDoorList == null)
+            openDoorList = new List<string>();
     }
 
     private void Start()
@@ -73,7 +81,6 @@ public class GameManager : MonoBehaviour
     {
         if (transferScene != null)
         {
-
             yield return new WaitForSeconds(0f);
             SceneManager.LoadScene(transferScene);
         }
@@ -91,7 +98,7 @@ public class GameManager : MonoBehaviour
 
     virtual public IEnumerator FadeIn()
     {
-        yield return new WaitForSeconds(0.5f); // 맵이 완전히 로딩되어 원하는 door을 찾을 수 있도록 0.5초 대기
+        yield return new WaitForSeconds(0.5f);
 
         if (teleportPosition != new Vector3(0, 0, 0))
             player.transform.position = teleportPosition;
@@ -112,9 +119,6 @@ public class GameManager : MonoBehaviour
         async.allowSceneActivation = false;
         while (!async.isDone)
         {
-
-            Debug.Log("비동기화 진행도: " + async.progress);
-
             if (async.progress >= 0.9f)
             {
                 async.allowSceneActivation = true;
@@ -135,5 +139,11 @@ public class GameManager : MonoBehaviour
     public Animator GetTransitionAnimator()
     {
         return GameObject.Find("GameManager").GetComponent<Animator>();
+    }
+
+    public float Mission1Progress
+    {
+        get { return mission1Progress; }
+        set { mission1Progress = value; }
     }
 }

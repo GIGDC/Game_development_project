@@ -30,7 +30,6 @@ public class Selector : MonoBehaviour
 
             but1.transform.Find("Text").GetComponent<Text>().text=text[0];
             but2.transform.Find("Text").GetComponent<Text>().text=text[1];
-
         }
     }
 }

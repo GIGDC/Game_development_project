@@ -18,12 +18,10 @@ public class ClickController : MonoBehaviour
     {
         target = null;
         CastRay();
-        if (isCollider && target.CompareTag("magnifiedObj")&&(target!=null))
+        if (isCollider && target.CompareTag("magnifiedObj") && (target != null))
         {
             glass.SetActive(true);
             glass.transform.position = Input.mousePosition;
-
-            Debug.Log(target);
             isCollider = false;
         }
         else
@@ -33,7 +31,6 @@ public class ClickController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-
             if (target == this.gameObject)
             {
                 if (EventImage != null)
@@ -61,13 +58,11 @@ public class ClickController : MonoBehaviour
         RaycastHit2D hit;
 
         RaycastHit2D[] tmphit;
-        hit = Physics2D.Raycast(pos, Vector2.zero, 0f, 1 << LayerMask.NameToLayer("ItemLayout"));
+        hit = Physics2D.Raycast(pos, Vector2.zero, 0f, 1 << LayerMask.NameToLayer("ItemLayer"));
         if (hit.collider != null)
         {
             target = hit.collider.gameObject;
             isCollider = true;
-            Debug.Log(target.name);
-
         }
     }
 }
