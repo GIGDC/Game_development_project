@@ -1,24 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Lock : MonoBehaviour
 {
-    private string password; // 입력받을 비밀번호
+    string password; // 입력받을 비밀번호
     [Tooltip("올바른 비밀번호 값")]
     public string correctPassword;
     [Tooltip("1-3 열쇠")]
     [SerializeField] GameObject key;
+    [SerializeField] InputField inputField;
 
     private void Start()
     {
         password = "";
+        inputField.onValueChange.AddListener(ValueChanged);
     }
 
-    public string Password
+    void ValueChanged(string text)
     {
-        get { return password; }
-        set { password = value; }
+        password = text;
+        Debug.Log(password);
     }
 
     private void Update()
@@ -39,6 +42,8 @@ public class Lock : MonoBehaviour
         else if(password.Length == 4)
         {
             Debug.Log("incorrect password");
+            password = "";
+            inputField.text = "";
             transform.gameObject.SetActive(false);
         }
     }
