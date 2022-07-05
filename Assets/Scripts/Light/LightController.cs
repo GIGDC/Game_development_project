@@ -15,7 +15,7 @@ public class LightController : MonoBehaviour
     int count = 0;
 
     public GameObject monster;
-    GameObject[] Hands;
+    Transform[] Hands;
     SpriteRenderer sr;
     void Awake()
     {
@@ -59,19 +59,17 @@ public class LightController : MonoBehaviour
         thePlayer = GameObject.FindGameObjectWithTag("Player");
 
         monster = GameObject.Find("Monster");
-        Hands = GameObject.FindGameObjectsWithTag("Hands");
+
         if (monster != null)
         {
             sr = monster.GetComponent<SpriteRenderer>();
             sr.material.color = Color.clear;
         }
-        if(Hands!=null)
-        {
+        if (GameObject.Find("Hands").transform != null)
             for (int i = 0; i <= Hands.Length; i++)
             {
-                Hands[i].gameObject.GetComponent<SpriteRenderer>().color=Color.clear;
+                GameObject.Find("Hands").transform.GetChild(i).gameObject.SetActive(true);
             }
-        }
     }
 
     // Update is called once per frame
@@ -90,13 +88,11 @@ public class LightController : MonoBehaviour
         }
         if (collision.tag == "Hands")
         {
-            if (Hands != null)
-            {
+            if (GameObject.Find("Hands").transform != null)
                 for (int i = 0; i <= Hands.Length; i++)
                 {
-                    Hands[i].gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                    GameObject.Find("Hands").transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 }
-            }
         }
     }
 
@@ -107,15 +103,10 @@ public class LightController : MonoBehaviour
             print("몬스터 사라짐");
             sr.material.color = Color.clear;
         }
-
-        if (collision.tag == "Hands")
-            if (Hands != null)
+        if (GameObject.Find("Hands").transform != null)
+            for (int i = 0; i <= Hands.Length; i++)
             {
-                for (int i = 0; i <= Hands.Length; i++)
-                {
-                    Hands[i].gameObject.GetComponent<SpriteRenderer>().color = Color.clear;
-                }
+                GameObject.Find("Hands").transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().color = Color.clear;
             }
-
     }
 }

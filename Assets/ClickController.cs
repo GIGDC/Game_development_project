@@ -18,7 +18,7 @@ public class ClickController : MonoBehaviour
     {
         target = null;
         CastRay();
-        if (isCollider && target.CompareTag("magnifiedObj")&&target)
+        if (isCollider && target.CompareTag("magnifiedObj")&&(target!=null))
         {
             glass.SetActive(true);
             glass.transform.position = Input.mousePosition;

@@ -132,14 +132,5 @@ abstract public class ActiveConversation : MonoBehaviour
     }
     //
     //위 키보드를 누르면 캐릭터 이동, SHIFT키는 달리기입니다.$위 키보드를 누르면 아이템사용, 열쇠는 아이템이 아닙니다. 즉, 먹는 즉시 문이 열립니다.$돋보기가 나올 시 마우스 사용 가능합니다.
-    protected IEnumerator TextPractice()
-    {
-        string[] narrators = "위 키보드를 누르면 캐릭터 이동, SHIFT키는 달리기입니다.$위 키보드를 누르면 아이템사용, 열쇠는 아이템이 아닙니다. 즉, 먹는 즉시 문이 열립니다.$돋보기가 나올 시 마우스 사용 가능합니다.".Split('$');
-        
-        foreach (string narrator in narrators)
-        {
-            yield return StartCoroutine(Chat("튜토리얼", narrator));
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Tab));
-        }
-    }
+    
 }

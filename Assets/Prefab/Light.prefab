@@ -107,6 +107,10 @@ MonoBehaviour:
   on: {fileID: 8854309252792922155}
   Lightning: {fileID: 502734969017246044}
   monster: {fileID: 5165234520126250308, guid: bdce10800a25a7c47be554f11559114a, type: 3}
+  Hands:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!58 &8854309252792922151
 CircleCollider2D:
   m_ObjectHideFlags: 0
