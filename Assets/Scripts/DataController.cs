@@ -14,12 +14,15 @@ public class DataController : MonoBehaviour
         string JsonString1 = File.ReadAllText(Application.dataPath + "/Text/Ghost1.json");
         string JsonString2 = File.ReadAllText(Application.dataPath + "/Text/Ghost2.json");
         string JsonString3 = File.ReadAllText(Application.dataPath + "/Text/Ghost3.json");
+        string JsonString11 = File.ReadAllText(Application.dataPath + "/Text/Mission1_Ghost.json");
         JsonData jsonData1 = JsonMapper.ToObject(JsonString1);
         JsonData jsonData2 = JsonMapper.ToObject(JsonString2);
         JsonData jsonData3 = JsonMapper.ToObject(JsonString3);
+        JsonData jsonData11 = JsonMapper.ToObject(JsonString11);
         ParsingJsonQuest(jsonData1, 1);
         ParsingJsonQuest(jsonData2, 2);
         ParsingJsonQuest(jsonData3, 3);
+        ParsingJsonQuest(jsonData11 , 11);
     }
     private void ParsingJsonQuest(JsonData talks, int ghostNum)
     {
