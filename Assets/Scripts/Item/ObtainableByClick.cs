@@ -38,9 +38,9 @@ public class ObtainableByClick : MonoBehaviour
     {
         if(EventImage.gameObject.activeSelf)
         {
-            if(Input.GetKey(KeyCode.Escape))
+            if(Input.GetKey(KeyCode.Escape)) // esc나 좌클릭 시 문 열림
             {
-                this.gameObject.SetActive(activeAfterObtaining);
+                this.gameObject.SetActive(activeAfterObtaining); // 획득 후 해당 오브젝트가 계속 활성화되어 있을 것인지
                 EventImage.gameObject.SetActive(false);
                 player.GetComponent<PlayerMovement>().CanPlayerMove = true;
                 GameObject.FindObjectOfType<GameManager>().Mission1Progress += missionProgress; // 미션 진행도
