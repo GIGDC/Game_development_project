@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ActivateStairMenu : MonoBehaviour
 {
-    //GameObject UI;
+    GameObject floorUI;
     GameObject stairMenu;
     private bool stairMenuReady;
     private string currentSceneName;
@@ -16,7 +16,8 @@ public class ActivateStairMenu : MonoBehaviour
     private void Start()
     {
         stairMenuReady = false;
-        stairMenu = GameObject.Find("Floor UI").transform.Find("StairMenu").gameObject;
+        floorUI = GameObject.Find("Floor UI");
+        stairMenu = floorUI.transform.Find("StairMenu").gameObject;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -42,7 +43,7 @@ public class ActivateStairMenu : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Space))
             {
                 stairMenu.SetActive(true);
-                stairMenu.GetComponent<FloorUIManager>().TeleportPosition = teleportPosition;
+                floorUI.GetComponent<FloorUIManager>().TeleportPosition = teleportPosition;
             }
             else if (Input.GetKeyDown(KeyCode.Escape))
             {
