@@ -7,56 +7,56 @@ public class LibraryBook : MonoBehaviour
 {
     Animator animator;
     Button nextPageBtn;
-    Button prevPageBtn;
+    Button keyObtainBtn;
     Text text;
+    [Tooltip("책 넘기는 소리")]
+    [SerializeField] AudioSource flipPageAudio;
+    [Tooltip("웃음 소리")]
+    [SerializeField] AudioSource gigglingAudio;
 
-    void Start()
+    void Awake()
     {
         animator = GetComponent<Animator>();
-        animator.SetInteger("page", 1);
-        //nextPageBtn = transform.Find("nextPage").GetComponent<Button>();
-        ////nextPageBtn.onClick.AddListener(NextPage);
-        //prevPageBtn = transform.Find("prevPage").GetComponent<Button>();
-        //nextPageBtn.onClick.AddListener(PrevPage);
+        nextPageBtn = transform.Find("nextPageButton").GetComponent<Button>();
+        keyObtainBtn = transform.Find("keyObtainButton").GetComponent<Button>();
+        keyObtainBtn.gameObject.SetActive(false);   
+        keyObtainBtn.onClick.AddListener(ObtainKey);
         text = transform.Find("Text").GetComponent<Text>();
     }
 
-    void Update()
+    private void OnEnable()
     {
-        if (GameObject.Find("Player").GetComponent<PlayerMissionItem>().GetMissionItem("1-4 열쇠") != null) // 1-4 열쇠 이미 획득 시 책의 마지막 페이지 보여줌
-            animator.SetBool("keyObtained", true); // 책의 마지막 페이지 보여줌
+        if (GameObject.Find("Player").GetComponent<PlayerMissionItem>().GetMissionItem("1-4 열쇠") != null)
+            animator.SetBool("keyObtained", true);
+        text.gameObject.SetActive(false);
+        animator.SetInteger("page", 1);
+        keyObtainBtn.gameObject.SetActive(false);
+        nextPageBtn.gameObject.SetActive(true);
     }
 
     public void NextPage()
     {
-        if (animator.GetInteger("page") > 7)
+        if (animator.GetInteger("page") == 7)
         {
-            if (animator.GetBool("keyObtained") == true)
-            {
-                this.gameObject.SetActive(false);
-                return;
-            }
-            
-            if(animator.GetBool("keyObtained") == false)
-                text.gameObject.SetActive(true);
-            else 
-                text.gameObject.SetActive(false);
-            animator.SetBool("keyObtained", true);
-            GameObject.Find("Player").GetComponent<PlayerMissionItem>().AddMissionItem("1-4 열쇠");
-            return;
+            keyObtainBtn.gameObject.SetActive(true);
+            nextPageBtn.gameObject.SetActive(false);
         }
+        flipPageAudio.Play();
         animator.SetInteger("page", animator.GetInteger("page") + 1);
-        Debug.Log("다음" + animator.GetInteger("page"));
     }
 
-    public void PrevPage()
+    void ObtainKey()
     {
-        if(animator.GetInteger("page") < 1)
+        if (animator.GetBool("keyObtained") == false)
         {
-            animator.SetInteger("page", 1);
-            return;
+            text.gameObject.SetActive(true);
+            gigglingAudio.Play();
+            GameObject.Find("Player").GetComponent<PlayerMissionItem>().AddMissionItem("1-4 열쇠");
+            animator.SetBool("keyObtained", true);
         }
-        animator.SetInteger("page", animator.GetInteger("page") - 1);
-        Debug.Log("이전" + animator.GetInteger("page"));
+        else
+        {
+            keyObtainBtn.gameObject.SetActive(false);
+        }
     }
 }

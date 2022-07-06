@@ -355,6 +355,10 @@ PrefabInstance:
       value: Women Toilet-2
       objectReference: {fileID: 0}
     - target: {fileID: 5988662030113600171, guid: f3f87817416efb0418ad613fd7436512, type: 3}
+      propertyPath: isOpen
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5988662030113600171, guid: f3f87817416efb0418ad613fd7436512, type: 3}
       propertyPath: WarningUI
       value: 
       objectReference: {fileID: 647055283}
@@ -29906,9 +29910,21 @@ PrefabInstance:
       value: Men Toilet-2
       objectReference: {fileID: 0}
     - target: {fileID: 2635705346695774677, guid: 97748d5522f2a6241a4a3ebc8afd05d7, type: 3}
+      propertyPath: isOpen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635705346695774677, guid: 97748d5522f2a6241a4a3ebc8afd05d7, type: 3}
       propertyPath: WarningUI
       value: 
       objectReference: {fileID: 647055283}
+    - target: {fileID: 2635705346695774677, guid: 97748d5522f2a6241a4a3ebc8afd05d7, type: 3}
+      propertyPath: teleportPosition.x
+      value: -18.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635705346695774677, guid: 97748d5522f2a6241a4a3ebc8afd05d7, type: 3}
+      propertyPath: teleportPosition.y
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5230390176842287839, guid: 97748d5522f2a6241a4a3ebc8afd05d7, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -30472,6 +30488,10 @@ PrefabInstance:
       value: Women Toilet-2
       objectReference: {fileID: 0}
     - target: {fileID: 5988662030113600171, guid: f3f87817416efb0418ad613fd7436512, type: 3}
+      propertyPath: isOpen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5988662030113600171, guid: f3f87817416efb0418ad613fd7436512, type: 3}
       propertyPath: WarningUI
       value: 
       objectReference: {fileID: 647055283}
@@ -30531,6 +30551,10 @@ PrefabInstance:
     - target: {fileID: 2635705346695774677, guid: 97748d5522f2a6241a4a3ebc8afd05d7, type: 3}
       propertyPath: GoTo
       value: Men Toilet-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635705346695774677, guid: 97748d5522f2a6241a4a3ebc8afd05d7, type: 3}
+      propertyPath: isOpen
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2635705346695774677, guid: 97748d5522f2a6241a4a3ebc8afd05d7, type: 3}
       propertyPath: WarningUI

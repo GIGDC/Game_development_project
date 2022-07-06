@@ -2184,7 +2184,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: cc819dc4b5fddbe4aaa7ef7321daa2f7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3997,6 +3997,8 @@ MonoBehaviour:
   Image: {fileID: 0}
   glass: {fileID: 486308105}
   activeAfterObtaining: 0
+  audio: {fileID: 0}
+  bgm: {fileID: 0}
   missionProgress: 0
 --- !u!61 &916327275
 BoxCollider2D:
@@ -4201,6 +4203,8 @@ MonoBehaviour:
   Image: {fileID: 0}
   glass: {fileID: 486308105}
   activeAfterObtaining: 0
+  audio: {fileID: 562786635}
+  bgm: {fileID: 8300000, guid: cc819dc4b5fddbe4aaa7ef7321daa2f7, type: 3}
   missionProgress: 0
 --- !u!61 &994791075
 BoxCollider2D:
@@ -6409,6 +6413,8 @@ MonoBehaviour:
   Image: {fileID: 0}
   glass: {fileID: 486308105}
   activeAfterObtaining: 0
+  audio: {fileID: 0}
+  bgm: {fileID: 0}
   missionProgress: 0
 --- !u!61 &1627561380
 BoxCollider2D:
