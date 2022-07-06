@@ -23,15 +23,26 @@ public class LockController : MonoBehaviour
         for (int i = 0; i < Objects.Length + 1; i++)
             isClick[i] = false;
     }
-    public void OnClick()
-    {
 
-        int index = -1;
+    private void Update()
+    { 
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            this.gameObject.SetActive(false);
+            input = "";
+        }
+
         if (input == passwd)
         {
             this.gameObject.SetActive(false);
             isLock = true;
         }
+    }
+    public void OnClick()
+    {
+
+        int index = -1;
+        
         if (input.Length >= 4 && passwd!=input)
         {
             input = "";
