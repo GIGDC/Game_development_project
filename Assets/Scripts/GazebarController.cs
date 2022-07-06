@@ -22,14 +22,16 @@ public class GazebarController : MonoBehaviour
     public Sprite SpaceOff;
     public Sprite SpaceOn;
     public GameObject Key;
+    public AudioSource Audio;
     public Image Monster;
-
+    public GameObject monster;
     // Start is called before the first frame update
     void Start()
     {
         time = 99;
         maxTime = 100;
         LimitTime = 15;
+        Audio.Play();
     }
 
     // Update is called once per frame
@@ -61,6 +63,7 @@ public class GazebarController : MonoBehaviour
             explain.text = "실패입니다.....";
             isFail = 1;
             Monster.gameObject.SetActive(true);
+            monster.gameObject.SetActive(true);
             TimerText.gameObject.SetActive(false);
             StartCoroutine(deleayTime());
         }
@@ -70,6 +73,7 @@ public class GazebarController : MonoBehaviour
             explain.text = "열쇠 보관함 문이 열립니다......";
             isSuccess = 1;
             StartCoroutine(deleayTime());
+            Audio.Stop();
             closeKeyStorage.gameObject.SetActive(false);
             glass.gameObject.SetActive(false);
             openKeyStorage.gameObject.SetActive(true);

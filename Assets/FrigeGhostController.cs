@@ -7,18 +7,34 @@ public class FrigeGhostController : MonoBehaviour
     Rigidbody2D rigid;
     GameObject trackTarget;
     bool trackControl = false;
+    public AudioSource audio;
+    public AudioClip Sliding;
+
     private void Start()
     {
         rigid = this.gameObject.GetComponent<Rigidbody2D>();
+        
     }
-    void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        trackControl = false;
+        if (collision.CompareTag("Player"))
+        {
+            trackControl = false;
+            audio.loop = false;
+            audio.Stop();
+        }
     }
     private void OnTriggerStay2D(Collider2D collision) //추격자의 zone영역의 접촉면에 닿으면 true
     {
+        if (collision.CompareTag("Player"))
+        {
+            audio.clip = Sliding;
+            audio.loop = true;
+            audio.Play();
             trackControl = true;
             trackTarget = collision.gameObject;
+        }
     }
 
     private void Update()
