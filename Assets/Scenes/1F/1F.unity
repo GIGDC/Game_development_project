@@ -2201,11 +2201,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6116867844890509100, guid: eacf79cc8370bb242bbaee0bc5f7b1ff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27
+      value: 48.66
       objectReference: {fileID: 0}
     - target: {fileID: 6116867844890509100, guid: eacf79cc8370bb242bbaee0bc5f7b1ff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -34.3
+      value: 8.85
       objectReference: {fileID: 0}
     - target: {fileID: 6116867844890509100, guid: eacf79cc8370bb242bbaee0bc5f7b1ff, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6383,6 +6383,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b715b0e801563994c8af5ecd1c0c28f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audio: {fileID: 0}
+  bgm: {fileID: 0}
   correctPassword: 1521
   key: {fileID: 0}
   inputField: {fileID: 0}
@@ -29475,6 +29477,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b715b0e801563994c8af5ecd1c0c28f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audio: {fileID: 0}
+  bgm: {fileID: 0}
   correctPassword: 0520
   key: {fileID: 0}
   inputField: {fileID: 518419968}
