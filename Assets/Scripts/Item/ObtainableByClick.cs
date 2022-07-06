@@ -42,7 +42,21 @@ public class ObtainableByClick : MonoBehaviour
             if(Input.GetKey(KeyCode.Escape)) // esc나 좌클릭 시 문 열림
             {
                 this.gameObject.SetActive(activeAfterObtaining); // 획득 후 해당 오브젝트가 계속 활성화되어 있을 것인지
-                ItemInfo go = new ItemInfo("StorageKey",Image, 40, 20);
+
+                if (EventImage.gameObject.name.Contains("GymStorage")&&Image!=null)
+                {
+                    ItemInfo go = new ItemInfo("StorageKey", Image, 40, 20);
+                    if (PlayerItemInteraction.Item.Count == 0)
+                        PlayerItemInteraction.Item.Add(KeyCode.Alpha1, go);
+                    else if (PlayerItemInteraction.Item.Count == 1)
+                        PlayerItemInteraction.Item.Add(KeyCode.Alpha2, go);
+                    else if (PlayerItemInteraction.Item.Count == 2)
+                        PlayerItemInteraction.Item.Add(KeyCode.Alpha3, go);
+                    else if (PlayerItemInteraction.Item.Count == 3)
+                        PlayerItemInteraction.Item.Add(KeyCode.Alpha4, go);
+                    else if (PlayerItemInteraction.Item.Count == 4)
+                        PlayerItemInteraction.Item.Add(KeyCode.Alpha5, go);
+                }
                 EventImage.gameObject.SetActive(false);
                 player.GetComponent<PlayerMovement>().CanPlayerMove = true;
                 GameObject.FindObjectOfType<GameManager>().Mission1Progress += missionProgress; // 미션 진행도
@@ -58,17 +72,6 @@ public class ObtainableByClick : MonoBehaviour
 
                     
                     FemaleConversation.isSuccess = true;
-                    if (PlayerItemInteraction.Item.Count == 0)
-                        PlayerItemInteraction.Item.Add(KeyCode.Alpha1, go);
-                    else if (PlayerItemInteraction.Item.Count == 1)
-                        PlayerItemInteraction.Item.Add(KeyCode.Alpha2, go);
-                    else if (PlayerItemInteraction.Item.Count == 2)
-                        PlayerItemInteraction.Item.Add(KeyCode.Alpha3, go);
-                    else if (PlayerItemInteraction.Item.Count == 3)
-                        PlayerItemInteraction.Item.Add(KeyCode.Alpha4, go);
-                    else if (PlayerItemInteraction.Item.Count == 4)
-                        PlayerItemInteraction.Item.Add(KeyCode.Alpha5, go);
-
                 }
                 
                 player.GetComponent<PlayerMissionItem>().AddMissionItem(this.gameObject.name); // 획득한 미션 아이템 리스트에 추가
