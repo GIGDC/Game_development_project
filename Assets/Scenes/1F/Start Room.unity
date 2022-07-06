@@ -16806,7 +16806,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD2B9\uC218\uBC18\uAD50\uC2E4 -> \uAC00\uC0AC\uC2E4 -> \uAD50\uBB34\uC2E4"
+  m_Text: "\uBCF8 \uAD50\uBB34\uC2E4 -> \uCCB4\uC721\uCC3D\uACE0 -> \uAC00\uC0AC\uC2E4"
 --- !u!222 &1512622605
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19622,7 +19622,7 @@ PrefabInstance:
     - target: {fileID: 8474919693781825258, guid: 3f34092fa4cbf614a87519f8571f3a67, type: 3}
       propertyPath: WarningUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1609119081}
     - target: {fileID: 8474919693781825258, guid: 3f34092fa4cbf614a87519f8571f3a67, type: 3}
       propertyPath: mainCamera
       value: 

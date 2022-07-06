@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class FloorUIManager : MonoBehaviour
 {
     GameManager gameManager;
     GameObject stairMenu;
     Animator transitionAnimator;
+    [Tooltip("씬 이동 후 플레이어 위치 설정")]
+    Vector3 teleportPosition;
 
     void Start()
     {
@@ -23,6 +26,7 @@ public class UIManager : MonoBehaviour
 
         stairMenu = transform.Find("StairMenu").gameObject;
         stairMenu.SetActive(false);
+        teleportPosition = default(Vector3);
     }
 
     void Update()
@@ -52,6 +56,7 @@ public class UIManager : MonoBehaviour
                     thirdFloorBtn.SetActive(true);
                     thirdFloorBtn.GetComponent<RectTransform>().anchoredPosition
                         = new Vector3(-260, -87, 0);
+                    thirdFloorBtn.GetComponent<Button>().enabled = false; // 현재 3층 씬 없음
                     break;
                 case "3F":
                     firstFloorBtn.gameObject.SetActive(false);
@@ -94,11 +99,17 @@ public class UIManager : MonoBehaviour
         gameManager = GameObject.FindObjectOfType<GameManager>();
         transitionAnimator = gameManager.GetTransitionAnimator();
         gameManager.transferScene = sceneName;
-        StartCoroutine(gameManager.FadeOut());
+        StartCoroutine(gameManager.FadeOut(teleportPosition));
     }
 
     public void ActivateStairMenu(bool b)
     {
         stairMenu.SetActive(b);
+    }
+
+    public Vector3 TeleportPosition
+    {
+        get { return teleportPosition; }
+        set { teleportPosition = value; }
     }
 }

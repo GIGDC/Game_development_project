@@ -878,7 +878,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 4852528062067772733}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: FloorUIManager, Assembly-CSharp
         m_MethodName: SceneTransition
         m_Mode: 5
         m_Arguments:
@@ -1103,7 +1103,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 4852528062067772733}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: FloorUIManager, Assembly-CSharp
         m_MethodName: SceneTransition
         m_Mode: 5
         m_Arguments:
@@ -1314,28 +1314,4 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3537359039962004319}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4852528062067772733}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: ActivateStairMenu
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 1F
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4852528062067772733}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SceneTransition
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 3F
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []

@@ -24,7 +24,7 @@ public class DoorTransfer : MonoBehaviour
 
     static public bool CheckMonster = false;
 
-    [Tooltip("원래 열려있는 문임")]
+    [Tooltip("열려있는 문인지")]
     public bool isOpen = false;
 
     void Start()
@@ -96,8 +96,8 @@ public class DoorTransfer : MonoBehaviour
     {
         gameManager = GameObject.FindObjectOfType<GameManager>();
         gameManager.transferScene = GoTo;
-        gameManager.teleportPosition = teleportPosition;
-        StartCoroutine(gameManager.FadeOut());
+        //gameManager.teleportPosition = teleportPosition;
+        StartCoroutine(gameManager.FadeOut(teleportPosition));
     }
     IEnumerator deleayTime()
     {

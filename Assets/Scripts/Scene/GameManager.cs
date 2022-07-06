@@ -86,8 +86,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    virtual public IEnumerator FadeOut()
+    virtual public IEnumerator FadeOut(Vector3 teleportPosition = default(Vector3))
     {
+        if(teleportPosition != default(Vector3)) // 0, 0, 0
+            this.teleportPosition = teleportPosition;
         transitionAnimator.SetBool("FadeOut", true);
         transitionAnimator.SetBool("FadeIn", false);
         yield return new WaitForSeconds(0.5f);

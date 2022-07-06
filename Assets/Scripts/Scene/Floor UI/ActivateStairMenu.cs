@@ -10,6 +10,8 @@ public class ActivateStairMenu : MonoBehaviour
     GameObject stairMenu;
     private bool stairMenuReady;
     private string currentSceneName;
+    [Tooltip("씬 이동 후 플레이어 위치 설정")]
+    [SerializeField] Vector3 teleportPosition;
 
     private void Start()
     {
@@ -37,9 +39,10 @@ public class ActivateStairMenu : MonoBehaviour
     {
         if (stairMenuReady)
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Space))
             {
                 stairMenu.SetActive(true);
+                stairMenu.GetComponent<FloorUIManager>().TeleportPosition = teleportPosition;
             }
             else if (Input.GetKeyDown(KeyCode.Escape))
             {
