@@ -1318,8 +1318,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audio: {fileID: 878579325}
   ac: {fileID: 8300000, guid: 0ebc3ea6b64bfd743bd4fae765b36020, type: 3}
-  x: 2.78
-  y: 15
 --- !u!212 &766829131
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3910,7 +3908,7 @@ MonoBehaviour:
   DeLight: {fileID: 1792680635}
   SaLight: {fileID: 32120615}
   Audio: {fileID: 878579324}
-  ac: {fileID: 8300000, guid: e727f314980a45c49bf25792ffaed372, type: 3}
+  ac: {fileID: 8300000, guid: 0ebc3ea6b64bfd743bd4fae765b36020, type: 3}
 --- !u!1 &1141710689
 GameObject:
   m_ObjectHideFlags: 0
@@ -3951,6 +3949,8 @@ MonoBehaviour:
   Height: 40
   Inven_Width: 0
   Inven_Height: 0
+  audio: {fileID: 0}
+  item: {fileID: 0}
 --- !u!61 &1141710691
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5794,7 +5794,10 @@ MonoBehaviour:
   Space: {fileID: 301645373}
   SpaceOff: {fileID: 21300000, guid: 53c64da6289e19d46b8799fcabcf7e3f, type: 3}
   SpaceOn: {fileID: 21300000, guid: 286a946e60a378540be2d5cffa07ac0d, type: 3}
+  Key: {fileID: 0}
+  Audio: {fileID: 0}
   Monster: {fileID: 2012074105}
+  monster: {fileID: 0}
 --- !u!1 &1738035200
 GameObject:
   m_ObjectHideFlags: 0
@@ -6095,8 +6098,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audio: {fileID: 878579325}
   ac: {fileID: 8300000, guid: 0ebc3ea6b64bfd743bd4fae765b36020, type: 3}
-  x: 5.06
-  y: 19.43
 --- !u!212 &1801177861
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7198,6 +7199,8 @@ MonoBehaviour:
   Height: 30
   Inven_Width: 0
   Inven_Height: 0
+  audio: {fileID: 878579325}
+  item: {fileID: 8300000, guid: cc819dc4b5fddbe4aaa7ef7321daa2f7, type: 3}
 --- !u!212 &2081417528
 SpriteRenderer:
   m_ObjectHideFlags: 0

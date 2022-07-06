@@ -869,6 +869,8 @@ MonoBehaviour:
   Height: 40
   Inven_Width: 0
   Inven_Height: 0
+  audio: {fileID: 0}
+  item: {fileID: 0}
 --- !u!1 &613004076
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,6 +1348,8 @@ MonoBehaviour:
   Image: {fileID: 21300000, guid: 465b51d9486c6984d90205352094bf4b, type: 3}
   glass: {fileID: 929394890}
   activeAfterObtaining: 0
+  audio: {fileID: 1018917965}
+  bgm: {fileID: 8300000, guid: cc819dc4b5fddbe4aaa7ef7321daa2f7, type: 3}
   missionProgress: 0
 --- !u!212 &1080108658
 SpriteRenderer:

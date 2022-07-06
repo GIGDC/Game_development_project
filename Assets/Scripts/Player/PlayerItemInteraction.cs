@@ -10,7 +10,6 @@ public class PlayerItemInteraction : MonoBehaviour
     [Header("근접 거리")]
     [SerializeField] [Range(0f, 50f)] float rangeOfItemUse;
     DoorTransfer player;
-
     static public GameObject Inventory; 
     static public Dictionary<KeyCode, ItemInfo> Item; //Player가 가지고있는 item으로, 앞으로 이곧에 저장예정 게임이 종료전까지 저장예정.
     static public int Count; //변수이름 변경예정 1~5까지 수를 세서 keyCode설정예정.
@@ -31,6 +30,7 @@ public class PlayerItemInteraction : MonoBehaviour
     
     void EatingGameObject(GameObject go)
     {
+        
         if (Item.Count == 0)
             Item.Add(KeyCode.Alpha1, go.gameObject.GetComponent<ItemInfo>());
         else if (Item.Count == 1)

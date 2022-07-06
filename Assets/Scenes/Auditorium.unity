@@ -96233,6 +96233,8 @@ MonoBehaviour:
   Height: 20
   Inven_Width: 0
   Inven_Height: 0
+  audio: {fileID: 745027114}
+  item: {fileID: 8300000, guid: cc819dc4b5fddbe4aaa7ef7321daa2f7, type: 3}
 --- !u!61 &2052686983
 BoxCollider2D:
   m_ObjectHideFlags: 0

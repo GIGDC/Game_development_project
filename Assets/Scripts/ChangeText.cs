@@ -109,6 +109,43 @@ public class ChangeText : MonoBehaviour
             text.text = "남자화장실";
             // first = true;
         }
+        else if (SceneName.Contains("1-1"))
+        {
+            StartCoroutine(FadeInCoroutine());
+            text.text = "1-1반";
+            // first = true;
+        }
+        else if (SceneName.Contains("1-2"))
+        {
+            StartCoroutine(FadeInCoroutine());
+            text.text = "1-2반";
+            // first = true;
+        }
+        else if (SceneName.Contains("1-3"))
+        {
+            StartCoroutine(FadeInCoroutine());
+            text.text = "1-3반";
+            // first = true;
+        }
+        else if (SceneName.Contains("1-4"))
+        {
+            StartCoroutine(FadeInCoroutine());
+            text.text = "1-4반";
+            // first = true;
+        }
+        else if (SceneName.Contains("1-5"))
+        {
+            StartCoroutine(FadeInCoroutine());
+            text.text = "1-5반";
+            // first = true;
+        }
+        else if (SceneName.Contains("Library"))
+        {
+            StartCoroutine(FadeInCoroutine());
+            text.text = "도서관";
+            // first = true;
+        }
+
     }
 
     protected IEnumerator FadeOutCoroutine()

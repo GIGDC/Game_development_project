@@ -7,6 +7,8 @@ public class SpecialEdGhostGirl : MonoBehaviour
 {
     Animator animator;
     public Image EventImage;
+    public AudioSource audio;
+    public AudioClip bgm;
     bool isObjectTargeted = false;
     GameObject player;
     Camera camera;
@@ -42,6 +44,7 @@ public class SpecialEdGhostGirl : MonoBehaviour
         {
             if(Input.GetMouseButtonDown(0))
             {
+                audio.clip = bgm;
                 animator.SetTrigger("isSelected");
                 player.GetComponent<PlayerMovement>().CanPlayerMove = false;
             }
@@ -51,6 +54,7 @@ public class SpecialEdGhostGirl : MonoBehaviour
             && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f
             && !isTriggered)
         {
+            audio.Play();
             EventImage.gameObject.SetActive(true);
             cameraPos = camera.transform.position;
             InvokeRepeating("StartShaking", 0f, 0.005f);

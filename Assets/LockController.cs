@@ -37,6 +37,10 @@ public class LockController : MonoBehaviour
             this.gameObject.SetActive(false);
             isLock = true;
         }
+        if (isLock)
+        {
+            Destroy(this.gameObject);
+        }
     }
     public void OnClick()
     {

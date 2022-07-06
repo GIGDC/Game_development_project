@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Lock : MonoBehaviour
 {
+    public AudioSource audio;
+    public AudioClip bgm;
     string password; // 입력받을 비밀번호
     [Tooltip("올바른 비밀번호 값")]
     public string correctPassword;
@@ -14,6 +16,7 @@ public class Lock : MonoBehaviour
 
     private void Start()
     {
+        audio.clip = bgm;
         password = "";
         inputField.onValueChange.AddListener(ValueChanged);
     }
@@ -28,6 +31,7 @@ public class Lock : MonoBehaviour
     {
         if(password == correctPassword)
         {
+            audio.Play();
             transform.gameObject.SetActive(false); // 확대된 자물쇠 숨김
             GameObject gameObject = GameObject.Find("GameObject");
             Transform[] childList = gameObject.GetComponentsInChildren<Transform>(true);
