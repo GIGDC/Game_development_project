@@ -5,27 +5,58 @@ using UnityEngine.UI;
 
 public class LibraryBook : MonoBehaviour
 {
-    Button obtainKeyBtn;
     Animator animator;
-
+    Button nextPageBtn;
+    Button prevPageBtn;
+    Text text;
 
     void Start()
     {
-        obtainKeyBtn = transform.Find("obtain_key").GetComponent<Button>();
         animator = GetComponent<Animator>();
-        obtainKeyBtn.enabled = false;
+        animator.SetInteger("page", 1);
+        //nextPageBtn = transform.Find("nextPage").GetComponent<Button>();
+        ////nextPageBtn.onClick.AddListener(NextPage);
+        //prevPageBtn = transform.Find("prevPage").GetComponent<Button>();
+        //nextPageBtn.onClick.AddListener(PrevPage);
+        text = transform.Find("Text").GetComponent<Text>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (GameObject.Find("Player").GetComponent<PlayerMissionItem>().GetMissionItem("1-4 ø≠ºË") != null) // 1-4 ø≠ºË ¿ÃπÃ »πµÊ Ω√ √•¿« ∏∂¡ˆ∏∑ ∆‰¿Ã¡ˆ ∫∏ø©¡‹
-            animator.SetInteger("page", 3);
+            animator.SetBool("keyObtained", true); // √•¿« ∏∂¡ˆ∏∑ ∆‰¿Ã¡ˆ ∫∏ø©¡‹
+    }
 
-        if (Input.GetMouseButtonDown(0) && animator.GetInteger("page") == 1)
-            animator.SetInteger("page", 2);
+    public void NextPage()
+    {
+        if (animator.GetInteger("page") > 7)
+        {
+            if (animator.GetBool("keyObtained") == true)
+            {
+                this.gameObject.SetActive(false);
+                return;
+            }
+            
+            if(animator.GetBool("keyObtained") == false)
+                text.gameObject.SetActive(true);
+            else 
+                text.gameObject.SetActive(false);
+            animator.SetBool("keyObtained", true);
+            GameObject.Find("Player").GetComponent<PlayerMissionItem>().AddMissionItem("1-4 ø≠ºË");
+            return;
+        }
+        animator.SetInteger("page", animator.GetInteger("page") + 1);
+        Debug.Log("¥Ÿ¿Ω" + animator.GetInteger("page"));
+    }
 
-        if (animator.GetInteger("page") == 2) 
-            obtainKeyBtn.enabled = true;  
+    public void PrevPage()
+    {
+        if(animator.GetInteger("page") < 1)
+        {
+            animator.SetInteger("page", 1);
+            return;
+        }
+        animator.SetInteger("page", animator.GetInteger("page") - 1);
+        Debug.Log("¿Ã¿¸" + animator.GetInteger("page"));
     }
 }
