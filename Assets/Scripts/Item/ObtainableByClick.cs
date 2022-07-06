@@ -14,6 +14,9 @@ public class ObtainableByClick : MonoBehaviour
     string sceneRelatedToThisKey; // 오브젝트가 key일 때 어떤 씬과 관련된 key인지
     [Tooltip("아이템 획득 후 맵에서 아이템을 보이게 할 것인지(default: false)")]
     public bool activeAfterObtaining = false;
+    public AudioSource audio;
+    public AudioClip bgm;
+
     /*
     activeAfterObtaining을 
     [Tooltip("현재 진행하고 있는 미션 번호")]
@@ -29,6 +32,7 @@ public class ObtainableByClick : MonoBehaviour
 
     private void Start()
     {
+        
         player = GameObject.Find("Player").gameObject;
         string gameObjectName = this.gameObject.CompareTag("Key") ? this.gameObject.name + " 열쇠" : this.gameObject.name;
         if (player.GetComponent<PlayerMissionItem>().GetMissionItem(gameObjectName) != null)
@@ -41,6 +45,8 @@ public class ObtainableByClick : MonoBehaviour
         {
             if(Input.GetKey(KeyCode.Escape)) // esc나 좌클릭 시 문 열림
             {
+                audio.clip = bgm;
+                audio.Play();
                 this.gameObject.SetActive(activeAfterObtaining); // 획득 후 해당 오브젝트가 계속 활성화되어 있을 것인지
 
                 if (EventImage.gameObject.name.Contains("GymStorage")&&Image!=null)
@@ -56,6 +62,7 @@ public class ObtainableByClick : MonoBehaviour
                         PlayerItemInteraction.Item.Add(KeyCode.Alpha4, go);
                     else if (PlayerItemInteraction.Item.Count == 4)
                         PlayerItemInteraction.Item.Add(KeyCode.Alpha5, go);
+                    FemaleConversation.isSuccess = true;
                 }
                 EventImage.gameObject.SetActive(false);
                 player.GetComponent<PlayerMovement>().CanPlayerMove = true;
@@ -63,15 +70,14 @@ public class ObtainableByClick : MonoBehaviour
 
                 if (this.gameObject.CompareTag("Key")) // 클릭한 오브젝트가 열쇠일 때
                 {
+                    
                     List<string> openDoorList = GameManager.openDoorList;
                     sceneRelatedToThisKey = this.gameObject.name.Split(' ')[0];
                     if (!openDoorList.Contains(sceneRelatedToThisKey))
                     { 
                         openDoorList.Add(sceneRelatedToThisKey);
                     } // 해금된 씬 목록에 해당 열쇠가 열 수 있는 씬 추가
-
                     
-                    FemaleConversation.isSuccess = true;
                 }
                 
                 player.GetComponent<PlayerMissionItem>().AddMissionItem(this.gameObject.name); // 획득한 미션 아이템 리스트에 추가

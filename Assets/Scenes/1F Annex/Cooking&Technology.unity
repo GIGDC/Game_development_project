@@ -3079,6 +3079,8 @@ MonoBehaviour:
   Height: 40
   Inven_Width: 0
   Inven_Height: 0
+  audio: {fileID: 1305789695}
+  item: {fileID: 8300000, guid: cc819dc4b5fddbe4aaa7ef7321daa2f7, type: 3}
 --- !u!58 &567138107
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -44934,6 +44936,8 @@ MonoBehaviour:
   Height: 40
   Inven_Width: 0
   Inven_Height: 0
+  audio: {fileID: 1305789695}
+  item: {fileID: 8300000, guid: cc819dc4b5fddbe4aaa7ef7321daa2f7, type: 3}
 --- !u!114 &1482245578
 MonoBehaviour:
   m_ObjectHideFlags: 0

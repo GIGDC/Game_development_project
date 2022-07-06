@@ -3613,6 +3613,8 @@ MonoBehaviour:
   Height: 20
   Inven_Width: 90
   Inven_Height: 80
+  audio: {fileID: 1974927901}
+  item: {fileID: 8300000, guid: cc819dc4b5fddbe4aaa7ef7321daa2f7, type: 3}
 --- !u!61 &926057665
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18416,6 +18418,68 @@ Transform:
   m_Father: {fileID: 369226939}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1974927900
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3603092603291076844, guid: 2df0e96fa6bdd944ca230885ab216ba0, type: 3}
+      propertyPath: m_Name
+      value: Audio
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862742904749019364, guid: 2df0e96fa6bdd944ca230885ab216ba0, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862742904749019364, guid: 2df0e96fa6bdd944ca230885ab216ba0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1814.784
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862742904749019364, guid: 2df0e96fa6bdd944ca230885ab216ba0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1004.20776
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862742904749019364, guid: 2df0e96fa6bdd944ca230885ab216ba0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.637165
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862742904749019364, guid: 2df0e96fa6bdd944ca230885ab216ba0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862742904749019364, guid: 2df0e96fa6bdd944ca230885ab216ba0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862742904749019364, guid: 2df0e96fa6bdd944ca230885ab216ba0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862742904749019364, guid: 2df0e96fa6bdd944ca230885ab216ba0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862742904749019364, guid: 2df0e96fa6bdd944ca230885ab216ba0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862742904749019364, guid: 2df0e96fa6bdd944ca230885ab216ba0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862742904749019364, guid: 2df0e96fa6bdd944ca230885ab216ba0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2df0e96fa6bdd944ca230885ab216ba0, type: 3}
+--- !u!82 &1974927901 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4148964423713664287, guid: 2df0e96fa6bdd944ca230885ab216ba0, type: 3}
+  m_PrefabInstance: {fileID: 1974927900}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1992144510
 GameObject:
   m_ObjectHideFlags: 0
@@ -18983,6 +19047,8 @@ MonoBehaviour:
   Height: 45
   Inven_Width: 40
   Inven_Height: 80
+  audio: {fileID: 1974927901}
+  item: {fileID: 8300000, guid: cc819dc4b5fddbe4aaa7ef7321daa2f7, type: 3}
 --- !u!212 &2052501594
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19020,8 +19086,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 212594243
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7dee7d1305097c64c95cafaf62e74f3d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

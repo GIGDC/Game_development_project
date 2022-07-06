@@ -13,11 +13,20 @@ public class MonsterJumpScare : MonoBehaviour
     [Tooltip("작업 완료 시 미션 진행 상황 설정")]
     [SerializeField] float missionProgress;
 
+    public AudioSource audio;
+    public AudioClip bgm;
+    private void Start()
+    {
+        audio.clip = bgm;
+        audio.Play();
+    }
     void Update()
     {
         // 현재는 미션 1만
         if (GameObject.FindObjectOfType<GameManager>().Mission1Progress == activeByMissionProgress)
+        {
             this.gameObject.SetActive(true);
+        }
         else
             this.gameObject.SetActive(false);
 
