@@ -6728,14 +6728,26 @@ PrefabInstance:
     - target: {fileID: 4570287896472206441, guid: dd308cd1105219947ad8b269b5240236, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: e0147908fa8e3894db626b5e9d616558, type: 3}
     - target: {fileID: 4570287896472206442, guid: dd308cd1105219947ad8b269b5240236, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 257.187
       objectReference: {fileID: 0}
     - target: {fileID: 4570287896472206442, guid: dd308cd1105219947ad8b269b5240236, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 272.475
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570287896472206442, guid: dd308cd1105219947ad8b269b5240236, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 613.506
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570287896472206442, guid: dd308cd1105219947ad8b269b5240236, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 293.169
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570287896472206443, guid: dd308cd1105219947ad8b269b5240236, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4570287897402393684, guid: dd308cd1105219947ad8b269b5240236, type: 3}
       propertyPath: m_Name

@@ -88,12 +88,9 @@ public class ObtainableByClick : MonoBehaviour
     public void CastRay()
     {
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
-
-        int layerMask = LayerMask.NameToLayer("Item");
+        RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f, 1 << LayerMask.NameToLayer("Item"));
 
         if (hit.collider != null)
-            if(hit.collider.gameObject.layer == layerMask)
         {
             target = hit.collider.gameObject;
             isCollider = true;
