@@ -9,11 +9,7 @@ public class ClickController : MonoBehaviour
     GameObject target;
     public GameObject glass;
     bool isCollider = false;
-    Animator Frige;
-    private void Start()
-    {
-        Frige = EventImage.gameObject.GetComponent<Animator>();
-    }
+
     private void FixedUpdate()
     {
         target = null;

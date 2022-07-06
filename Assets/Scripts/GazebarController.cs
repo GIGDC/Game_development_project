@@ -21,7 +21,7 @@ public class GazebarController : MonoBehaviour
     public Image Space;
     public Sprite SpaceOff;
     public Sprite SpaceOn;
-
+    public GameObject Key;
     public Image Monster;
 
     // Start is called before the first frame update
@@ -66,6 +66,7 @@ public class GazebarController : MonoBehaviour
         }
         if (time == 100)
         {
+            Key.SetActive(true);
             explain.text = "열쇠 보관함 문이 열립니다......";
             isSuccess = 1;
             StartCoroutine(deleayTime());

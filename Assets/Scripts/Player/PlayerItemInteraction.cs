@@ -41,11 +41,7 @@ public class PlayerItemInteraction : MonoBehaviour
             Item.Add(KeyCode.Alpha4, go.gameObject.GetComponent<ItemInfo>());
         else if (Item.Count == 4)
             Item.Add(KeyCode.Alpha5, go.gameObject.GetComponent<ItemInfo>());
-        else //5이상일시
-        {
-            Count++;
-            Item.Add(KeyCode.LeftControl, go.gameObject.GetComponent<ItemInfo>());
-        }
+        
         go.gameObject.SetActive(false);
     }
     private void OnTriggerEnter2D(Collider2D collision)

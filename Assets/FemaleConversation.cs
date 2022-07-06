@@ -112,7 +112,7 @@ public class FemaleConversation : ActiveConversation
         else
         {
             if (isSaving)
-                narrators = "체육관에 있는 열쇠를 찾아서 나에게 전달해줘...!$ 내꺼를 찾아줘!!!".Split('$');
+                narrators = "경비실로 가봐,$ 거기에 안좋은 추억이 있어 하지만, 기억이 잘 나지않아.. $".Split('$');
         }
 
         foreach (string narrator in narrators)

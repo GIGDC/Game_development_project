@@ -262,9 +262,17 @@ PrefabInstance:
       value: 1F
       objectReference: {fileID: 0}
     - target: {fileID: 2584701934113409840, guid: 0e707d29ebe51944392b8f482374f774, type: 3}
+      propertyPath: isOpen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584701934113409840, guid: 0e707d29ebe51944392b8f482374f774, type: 3}
       propertyPath: WarningUI
       value: 
       objectReference: {fileID: 1578922722}
+    - target: {fileID: 2584701934113409840, guid: 0e707d29ebe51944392b8f482374f774, type: 3}
+      propertyPath: isOpeningDoor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2584701934113409840, guid: 0e707d29ebe51944392b8f482374f774, type: 3}
       propertyPath: teleportPosition.x
       value: -20.63
@@ -1186,7 +1194,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1080108657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1200,6 +1208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EventImage: {fileID: 1128121665}
+  Image: {fileID: 21300000, guid: 465b51d9486c6984d90205352094bf4b, type: 3}
   glass: {fileID: 929394890}
   activeAfterObtaining: 0
   missionProgress: 0
@@ -1933,6 +1942,18 @@ PrefabInstance:
       propertyPath: m_Value
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3310625927208689438, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
+      propertyPath: m_Text
+      value: "\uACBD\uBE44\uC2E4\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3310625927208689439, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 612
+      objectReference: {fileID: 0}
+    - target: {fileID: 3310625927208689439, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 322
+      objectReference: {fileID: 0}
     - target: {fileID: 3310625927610719175, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -2340,6 +2361,7 @@ MonoBehaviour:
   Space: {fileID: 301645373}
   SpaceOff: {fileID: 21300000, guid: 53c64da6289e19d46b8799fcabcf7e3f, type: 3}
   SpaceOn: {fileID: 21300000, guid: 286a946e60a378540be2d5cffa07ac0d, type: 3}
+  Key: {fileID: 1080108656}
   Monster: {fileID: 2012074105}
 --- !u!114 &1795272589 stripped
 MonoBehaviour:
@@ -2400,13 +2422,13 @@ GameObject:
   - component: {fileID: 1941353056}
   - component: {fileID: 1941353059}
   - component: {fileID: 1941353058}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: "\uB2EB\uD78C\uD0A4\uBCF4\uAD00\uD568"
   m_TagString: magnifiedObj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1941353056
 SpriteRenderer:
   m_ObjectHideFlags: 0

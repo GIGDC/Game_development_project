@@ -61,16 +61,22 @@ public class PlayerAttacted : MonoBehaviour
         player.animator.SetBool("BeAttacked", false);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("FrigeGhost"))
+        {
+            StartCoroutine(Attacked());
+            StartCoroutine(ClockController.ChangeAttack());
+            hp = hp - (float)5f;
+        }
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("1");
-        if ((collision.gameObject.CompareTag("Monster")) &&!player.isAttacking)
+        if ((collision.gameObject.CompareTag("Monster")) && Monster.isCollide&&!player.isAttacking)
         {
             StartCoroutine(Attacked());
             StartCoroutine(ClockController.ChangeAttack());
             hp = hp - (float)10f;
-
-            Debug.Log("2");
             player.transform.position = new Vector3(player.transform.position.x - 2f, player.transform.position.y, 0);
         }
         if (collision.gameObject.CompareTag("Hands"))

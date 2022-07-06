@@ -25,6 +25,7 @@ TagManager:
   - Audio
   - openKey
   - InputField
+  - FrigeGhost
   layers:
   - Default
   - TransparentFX

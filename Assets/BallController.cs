@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
+    private void Update()
+    {
+        if (CountController.SocCount >= 4&& CountController.VolCount >= 5 && CountController.DodCount >= 7&& CountController.BasCount >= 2)
+        {
+            Destroy(this.gameObject);
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         

@@ -13,8 +13,11 @@ public class ItemInfo : MonoBehaviour
     public int Inven_Width;
     public int Inven_Height;
 
-    public void onClick()
+    public ItemInfo(string name,Sprite img,int width,int height)
     {
-       
+        Name = name;
+        Width = width;
+        height = height;
+        Img = img;
     }
 }

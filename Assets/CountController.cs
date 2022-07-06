@@ -15,6 +15,9 @@ public class CountController : MonoBehaviour
     public Image[] VolleyBall;
     public Image[] DodgeBall;
     public Image[] Basketball;
+
+    public GameObject game;
+    public Sprite img;
     // Update is called once per frame
     private void Start()
     {
@@ -22,6 +25,10 @@ public class CountController : MonoBehaviour
     }
     void Update()
     {
+        if (CountController.SocCount >= 4 && CountController.VolCount >= 5 && CountController.DodCount >= 7 && CountController.BasCount >= 2)
+        {
+            game.GetComponent<SpriteRenderer>().sprite = img;
+        }
         if (Count != null)
         {
             Count[0].text = SocCount.ToString();
