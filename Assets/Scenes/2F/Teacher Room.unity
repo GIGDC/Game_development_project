@@ -923,6 +923,10 @@ PrefabInstance:
       value: 2F
       objectReference: {fileID: 0}
     - target: {fileID: 2584701934113409840, guid: 0e707d29ebe51944392b8f482374f774, type: 3}
+      propertyPath: isOpen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584701934113409840, guid: 0e707d29ebe51944392b8f482374f774, type: 3}
       propertyPath: DoorAni
       value: 
       objectReference: {fileID: 330319495}
@@ -932,11 +936,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2584701934113409840, guid: 0e707d29ebe51944392b8f482374f774, type: 3}
       propertyPath: teleportPosition.x
-      value: 6.99
+      value: 87.37
       objectReference: {fileID: 0}
     - target: {fileID: 2584701934113409840, guid: 0e707d29ebe51944392b8f482374f774, type: 3}
       propertyPath: teleportPosition.y
-      value: 69.97
+      value: 9.18
       objectReference: {fileID: 0}
     - target: {fileID: 8462369979338347816, guid: 0e707d29ebe51944392b8f482374f774, type: 3}
       propertyPath: m_Name
@@ -2234,6 +2238,10 @@ PrefabInstance:
       value: 2F
       objectReference: {fileID: 0}
     - target: {fileID: 2584701934113409840, guid: 0e707d29ebe51944392b8f482374f774, type: 3}
+      propertyPath: isOpen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584701934113409840, guid: 0e707d29ebe51944392b8f482374f774, type: 3}
       propertyPath: DoorAni
       value: 
       objectReference: {fileID: 575579688}
@@ -2243,11 +2251,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2584701934113409840, guid: 0e707d29ebe51944392b8f482374f774, type: 3}
       propertyPath: teleportPosition.x
-      value: -10.81
+      value: 83.85
       objectReference: {fileID: 0}
     - target: {fileID: 2584701934113409840, guid: 0e707d29ebe51944392b8f482374f774, type: 3}
       propertyPath: teleportPosition.y
-      value: 69.97
+      value: 9.18
       objectReference: {fileID: 0}
     - target: {fileID: 8462369979338347816, guid: 0e707d29ebe51944392b8f482374f774, type: 3}
       propertyPath: m_Name
@@ -3957,6 +3965,18 @@ PrefabInstance:
     - target: {fileID: 1946713858800573290, guid: a77153bd5b07f3c4b9f4be1761305f27, type: 3}
       propertyPath: m_Name
       value: Ghost 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946713858800573295, guid: a77153bd5b07f3c4b9f4be1761305f27, type: 3}
+      propertyPath: m_Size.y
+      value: 2.3344607
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946713858800573295, guid: a77153bd5b07f3c4b9f4be1761305f27, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.3177697
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946713858800573295, guid: a77153bd5b07f3c4b9f4be1761305f27, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1946713859557745990, guid: a77153bd5b07f3c4b9f4be1761305f27, type: 3}
       propertyPath: m_RootOrder
