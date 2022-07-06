@@ -69,6 +69,14 @@ public class PlayerAttacted : MonoBehaviour
             StartCoroutine(ClockController.ChangeAttack());
             hp = hp - (float)5f;
         }
+
+        if ((collision.gameObject.CompareTag("Monster")) && Monster.isCollide && !player.isAttacking)
+        {
+            StartCoroutine(Attacked());
+            StartCoroutine(ClockController.ChangeAttack());
+            hp = hp - (float)10f;
+            player.transform.position = new Vector3(player.transform.position.x - 2f, player.transform.position.y, 0);
+        }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {

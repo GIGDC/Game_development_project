@@ -71,9 +71,9 @@ public class SpecialEdGhostGirl : MonoBehaviour
         int layerMask = LayerMask.NameToLayer("Ghost");
 
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
+        RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f, 1 << LayerMask.NameToLayer("Ghost"));
 
-        if (hit.collider != null && hit.collider.gameObject.layer == layerMask)
+        if (hit.collider != null)
             isObjectTargeted = true;
         else
             isObjectTargeted = false;
