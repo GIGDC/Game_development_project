@@ -15,7 +15,6 @@ public class LightController : MonoBehaviour
     int count = 0;
 
     public GameObject monster;
-    Transform[] Hands;
     SpriteRenderer sr;
     void Awake()
     {
@@ -55,18 +54,13 @@ public class LightController : MonoBehaviour
         InvokeRepeating("Light", 97f, 100f);
         thePlayer = GameObject.FindGameObjectWithTag("Player");
 
-        monster = GameObject.Find("Monster");
+        monster = GameObject.FindGameObjectWithTag("Monster");
 
         if (monster != null)
         {
             sr = monster.GetComponent<SpriteRenderer>();
             sr.material.color = Color.clear;
         }
-        if (GameObject.Find("Hands") != null)
-            for (int i = 0; i <= Hands.Length; i++)
-            {
-                GameObject.Find("Hands").transform.GetChild(i).gameObject.SetActive(true);
-            }
     }
 
     // Update is called once per frame
@@ -83,14 +77,6 @@ public class LightController : MonoBehaviour
             print("몬스터 등장");
             sr.material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         }
-        if (collision.tag == "Hands")
-        {
-            if (GameObject.Find("Hands").transform != null)
-                for (int i = 0; i <= Hands.Length; i++)
-                {
-                    GameObject.Find("Hands").transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-                }
-        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -100,10 +86,5 @@ public class LightController : MonoBehaviour
             print("몬스터 사라짐");
             sr.material.color = Color.clear;
         }
-        if (GameObject.Find("Hands") != null)
-            for (int i = 0; i <= Hands.Length; i++)
-            {
-                GameObject.Find("Hands").transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().color = Color.clear;
-            }
     }
 }

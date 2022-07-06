@@ -10,17 +10,27 @@ public class SwitchImageController : MonoBehaviour
     bool isClick = false;
     Transform inventory;
     public Sprite img;
-
+    Selector[] ghost;
+    bool isFirst = true;
+    static bool isEating = false;
     private void Start()
     {
         int i = 0;
         inventory= GameObject.Find("UI").transform.Find("Inventory");
+        ghost = FindObjectsOfType<Selector>();
     }
     void Update()
     {
         if(img)
             if (ThreeConversation.GhostNum >= 3)
             {
+                if (isFirst){
+                    for (int i = 0; i < 3; i++)
+                    {
+                        Destroy(ghost[i].gameObject);    
+                    }
+                    isFirst = false;
+                }
                 HandsController.isStarting = true; // 클릭으로 이동시켜야함.
                 gameObject.GetComponent<SpriteRenderer>().sprite = img;
                 isClick = true;
@@ -35,9 +45,13 @@ public class SwitchImageController : MonoBehaviour
         {
             glass.SetActive(true);
             glass.transform.position = Input.mousePosition;
-
             Debug.Log(target);
             isCollider = false;
+            if (!isEating)
+            {
+                Destroy(this.gameObject);
+                isEating = true;
+            }
         }
         else
         {
@@ -51,6 +65,7 @@ public class SwitchImageController : MonoBehaviour
             {
                 glass.SetActive(false);
                 PlayerItemInteraction.Click = this.gameObject;
+                MaintainController.isEating = true;
                 
             }
             isClick = false;

@@ -7,7 +7,7 @@ public class Timer_60 : MonoBehaviour
 {
 
     private float timerSpeed = 1.0f; //타이머 스피드 
-    public static float timer=3000f;
+    public static float timer=0f;
     public static bool isStop = false;
     // Update is called once per frame
     static int hours;

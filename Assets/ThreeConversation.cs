@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ThreeConversation : ActiveConversation
 {
-    static public int GhostNum=0;
+    static public int GhostNum=3;
     public InputField ThreeMission;
     bool isQize=false;
     static public bool isInputGame = false;
@@ -14,12 +14,16 @@ public class ThreeConversation : ActiveConversation
         ThrowKey = false;
         clock = GameObject.Find("Clock").GetComponent<Image>();
         secondHand = GameObject.Find("theMinuteHand").GetComponent<Image>();
-        
+
+        SliderBackground = GameObject.Find("Background").GetComponent<Image>();
+        SliderImg = GameObject.Find("Fill").GetComponent<Image>();
         Debug.Log(ThreeMission);
     }
     void Update()
     {
-        
+        if (MaintainController.isMission2[0])
+            Destroy(this);
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isChating)
@@ -29,12 +33,16 @@ public class ThreeConversation : ActiveConversation
                 message.SetActive(false);
                 clock.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 secondHand.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+                SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 if (isQize)
                 {
                     ThreeMission.gameObject.SetActive(true);
                 }
                 else
                 {
+                    MaintainController.isMission2[0] = true;
                     this.gameObject.SetActive(false);
                 }
                 isChating = false;
@@ -61,7 +69,10 @@ public class ThreeConversation : ActiveConversation
             message.SetActive(true);
                     clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
                     secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-                    isChating = true;
+
+            SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+            SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+            isChating = true;
                     isQize = true;
                     StartCoroutine(Talk());
         }

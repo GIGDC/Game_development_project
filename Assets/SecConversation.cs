@@ -17,9 +17,15 @@ public class SecConversation : ActiveConversation
         ThrowKey = false;
         clock = GameObject.Find("Clock").GetComponent<Image>();
         secondHand = GameObject.Find("theMinuteHand").GetComponent<Image>();
+
+        SliderBackground = GameObject.Find("Background").GetComponent<Image>();
+        SliderImg = GameObject.Find("Fill").GetComponent<Image>();
     }
     void Update()
     {
+        if (MaintainController.isMission3[0])
+            Destroy(this);
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isChating)
@@ -29,12 +35,16 @@ public class SecConversation : ActiveConversation
                 message.SetActive(false);
                 clock.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 secondHand.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+                SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 isChating = false;
                 if (isGaming)
                     SelectGame.SetActive(true);
                 if (!isGaming && isCheck)
                 {
                     this.gameObject.SetActive(false);
+                    MaintainController.isMission3[0] = true;
                 }
             }
         }
@@ -90,6 +100,8 @@ public class SecConversation : ActiveConversation
             message.SetActive(true);
             clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
             secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+            SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+            SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
             isChating = true;
             isGaming = true;
             StartCoroutine(Talk());

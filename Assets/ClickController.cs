@@ -58,7 +58,7 @@ public class ClickController : MonoBehaviour
         RaycastHit2D hit;
 
         RaycastHit2D[] tmphit;
-        hit = Physics2D.Raycast(pos, Vector2.zero, 0f, 1 << LayerMask.NameToLayer("ItemLayer"));
+        hit = Physics2D.Raycast(pos, Vector2.zero, 0f, 1 << LayerMask.NameToLayer("ItemLayout"));
         if (hit.collider != null)
         {
             target = hit.collider.gameObject;

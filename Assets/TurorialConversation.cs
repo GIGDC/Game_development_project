@@ -17,7 +17,12 @@ public class TurorialConversation : ActiveConversation
                 message.SetActive(false);
                 clock.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 secondHand.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+                SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 isChating = false;
+                tutorialImg[0].gameObject.SetActive(false);
+                tutorialImg[1].gameObject.SetActive(false);
                 tutorialImg[2].gameObject.SetActive(false);
                 tutorialImg[3].gameObject.SetActive(false);
                 tutorialImg[4].gameObject.SetActive(false);
@@ -37,7 +42,9 @@ public class TurorialConversation : ActiveConversation
             {
                 message.SetActive(true);
                 clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-                secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+            SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+            SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+            secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
                 isChating = true;
                 StartCoroutine(TextPractice());
             }

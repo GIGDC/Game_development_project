@@ -12,6 +12,8 @@ abstract public class ActiveConversation : MonoBehaviour
     public Text CharacterName;  // 캐릭터 이름이 나오는 텍스트
     public int id;
     protected Image clock;
+    protected Image SliderImg;
+    protected Image SliderBackground;
     protected Image secondHand;
     protected bool isChating;
     public bool ThrowKey;
@@ -30,6 +32,8 @@ abstract public class ActiveConversation : MonoBehaviour
         ThrowKey = false;
         clock = GameObject.Find("Clock").GetComponent<Image>();
         secondHand = GameObject.Find("theMinuteHand").GetComponent<Image>();
+        SliderBackground = GameObject.Find("Background").GetComponent<Image>();
+        SliderImg=GameObject.Find("Fill").GetComponent<Image>();
     }
 
     void Update()
@@ -43,6 +47,8 @@ abstract public class ActiveConversation : MonoBehaviour
                 message.SetActive(false);
                 //sr.material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 clock.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 secondHand.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 isChating = false;
                 //ThreeMission.gameObject.SetActive(true);
@@ -63,7 +69,9 @@ abstract public class ActiveConversation : MonoBehaviour
          {
              message.SetActive(true);
              clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-             secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+            SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+            SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+            secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
              isChating = true;
              StartCoroutine(Talk());
          }

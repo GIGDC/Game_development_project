@@ -27,8 +27,14 @@ EditorBuildSettings:
     path: Assets/Scenes/1F/Storage.unity
     guid: fd2a5b59cc9c7064aa572fbb485b1b38
   - enabled: 1
+    path: Assets/Scenes/GymStorage.unity
+    guid: 7a1d9cae7bb8cdc4f87eeda240761659
+  - enabled: 1
     path: Assets/Scenes/1F Annex/Cooking&Technology.unity
     guid: a824f7bd50cca6f49ac238e3ea61f2ff
+  - enabled: 1
+    path: Assets/Scenes/1F Annex/Annex Men Toilet.unity
+    guid: ab7bf0d22df5c7543a09e3a3ff369e95
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 55c30a106f069504091ac8e7b697db13
@@ -57,10 +63,10 @@ EditorBuildSettings:
     path: Assets/Scenes/2F/Teacher Room.unity
     guid: e8c66840d29bf2a4fa8ec7ef05793c0a
   - enabled: 1
-    path: Assets/Scenes/1F/Men Toilet-1.unity
-    guid: ab7bf0d22df5c7543a09e3a3ff369e95
+    path: Assets/Scenes/Auditorium.unity
+    guid: 960fe26f894bd914b90b9209e69266b4
   - enabled: 1
-    path: Assets/Scenes/1F/Women Toilet-1.unity
+    path: Assets/Scenes/1F Annex/Women Toilet-1.unity
     guid: b88a55e958fc40a45b2406fb9ba3cad4
   - enabled: 1
     path: Assets/Scenes/1F/Men Toilet-2.unity

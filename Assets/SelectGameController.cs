@@ -11,9 +11,9 @@ public class SelectGameController : MonoBehaviour
     public void OnClick()
     {
         click = EventSystem.current.currentSelectedGameObject;
-
         if (click.name.Contains("me"))
         {
+            PlayerAttacted.hp -= 5;
             FirstConversation.SelectNum = 3;
             eye.SetActive(false);
         }
@@ -23,6 +23,7 @@ public class SelectGameController : MonoBehaviour
         }
         else if (click.name.Contains("ghost"))
         {
+            PlayerAttacted.hp -= 5;
             FirstConversation.SelectNum = 1;
             eye.SetActive(false);
         }

@@ -22,6 +22,9 @@ public class ThreeGhostController : ActiveConversation
         clock = GameObject.Find("Clock").GetComponent<Image>();
         secondHand = GameObject.Find("theMinuteHand").GetComponent<Image>();
 
+        SliderBackground = GameObject.Find("Background").GetComponent<Image>();
+        SliderImg = GameObject.Find("Fill").GetComponent<Image>();
+
     }
     void Update()
     {
@@ -35,6 +38,9 @@ public class ThreeGhostController : ActiveConversation
                 message.SetActive(false);
                 clock.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 secondHand.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+                SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 isChating = false;
 
                 if (BoxConversation.isSuccess)
@@ -77,6 +83,8 @@ public class ThreeGhostController : ActiveConversation
                 message.SetActive(true);
                 clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
                 secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+                SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+                SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
                 isChating = true;
                 foreach (KeyCode key in PlayerItemInteraction.Item.Keys)
                 {

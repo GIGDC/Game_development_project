@@ -11,6 +11,8 @@ public class BoxConversation : ActiveConversation
         clock = GameObject.Find("Clock").GetComponent<Image>();
         secondHand = GameObject.Find("theMinuteHand").GetComponent<Image>();
 
+        SliderBackground = GameObject.Find("Background").GetComponent<Image>();
+        SliderImg = GameObject.Find("Fill").GetComponent<Image>();
     }
     void Update()
     {
@@ -26,7 +28,9 @@ public class BoxConversation : ActiveConversation
                 secondHand.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 isChating = false;
 
-                if(isSuccess)
+                SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                if (isSuccess)
                     this.gameObject.SetActive(false);
             }
         }
@@ -52,6 +56,8 @@ public class BoxConversation : ActiveConversation
             clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
             secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
             isChating = true;
+            SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+            SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 
             if (ThreeConversation.GhostNum < 3)
             {

@@ -5,8 +5,11 @@ using UnityEngine.UI;
 public class SliderController : MonoBehaviour
 {
 
-    public Slider slider;
-
+    static public Slider slider;
+    private void Start()
+    {
+        slider = GetComponent<Slider>();
+    }
     // Update is called once per frame
     void Update()
     {

@@ -8,7 +8,6 @@ public class PlayerAttacted : MonoBehaviour
     
     static public float hp;
     static public float maxHP;
-
     public bool zeroHP = false;
     static int Attackedcount = 0; //���Ҷ����� ��� 1���� �ൿ
     PlayerMovement player;
@@ -19,7 +18,7 @@ public class PlayerAttacted : MonoBehaviour
         player = GameObject.FindObjectOfType<PlayerMovement>();
         hp = 100;
         maxHP = 100;
-
+        
         Debug.Log(hp);
     }
 
@@ -28,6 +27,7 @@ public class PlayerAttacted : MonoBehaviour
     {
         if (hp < 0)
         {
+            
             //Debug.Log(zeroHP+" ZeroHP");
             zeroHP = true;
         }
@@ -60,7 +60,7 @@ public class PlayerAttacted : MonoBehaviour
     public IEnumerator Attacked()
     {
         player.animator.SetBool("BeAttacked", true);
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(0.5f);
         player.animator.SetBool("BeAttacked", false);
     }
 
@@ -68,6 +68,7 @@ public class PlayerAttacted : MonoBehaviour
     {
         if ((collision.gameObject.CompareTag("Monster")) && Monster.isCollide&&!player.isAttacking)
         {
+            
             StartCoroutine(Attacked());
             StartCoroutine(ClockController.ChangeAttack());
             hp = hp - (float)10f;
