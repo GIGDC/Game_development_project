@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class SliderController : MonoBehaviour
 {
 
-    static public Slider slider;
+    public Slider slider;
     private void Start()
     {
         slider = GetComponent<Slider>();

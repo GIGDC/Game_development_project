@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerAttacted : MonoBehaviour
 {
-    
-    static public float hp;
-    static public float maxHP;
+
+    static public float hp=100;
+    static public float maxHP=100;
     public bool zeroHP = false;
     static int Attackedcount = 0; //���Ҷ����� ��� 1���� �ൿ
     PlayerMovement player;
@@ -16,9 +16,6 @@ public class PlayerAttacted : MonoBehaviour
     void Start()
     {
         player = GameObject.FindObjectOfType<PlayerMovement>();
-        hp = 100;
-        maxHP = 100;
-        
         Debug.Log(hp);
     }
 
@@ -66,12 +63,14 @@ public class PlayerAttacted : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if ((collision.gameObject.CompareTag("Monster")) && Monster.isCollide&&!player.isAttacking)
+        Debug.Log("1");
+        if ((collision.gameObject.CompareTag("Monster")) &&!player.isAttacking)
         {
-            
             StartCoroutine(Attacked());
             StartCoroutine(ClockController.ChangeAttack());
             hp = hp - (float)10f;
+
+            Debug.Log("2");
             player.transform.position = new Vector3(player.transform.position.x - 2f, player.transform.position.y, 0);
         }
         if (collision.gameObject.CompareTag("Hands"))

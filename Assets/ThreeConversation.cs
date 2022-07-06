@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ThreeConversation : ActiveConversation
 {
-    static public int GhostNum=3;
+    static public int GhostNum=0;
     public InputField ThreeMission;
     bool isQize=false;
     static public bool isInputGame = false;

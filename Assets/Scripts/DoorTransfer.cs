@@ -34,7 +34,7 @@ public class DoorTransfer : MonoBehaviour
         start = GameObject.FindObjectOfType<StartPoint>();
         key = GameObject.FindObjectOfType<KeyController>();
         DoorAni = this.GetComponent<Animator>();
-
+        
         //player= GameObject.FindObjectOfType<PlayerMovement>();
         shake = GameObject.FindObjectOfType<CameraShake>();
 

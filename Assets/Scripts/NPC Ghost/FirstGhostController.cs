@@ -21,7 +21,8 @@ public class FirstGhostController : ActiveConversation
         ThrowKey = false;
         clock = GameObject.Find("Clock").GetComponent<Image>();
         secondHand = GameObject.Find("theMinuteHand").GetComponent<Image>();
-
+        SliderBackground = GameObject.Find("Background").GetComponent<Image>();
+        SliderImg = GameObject.Find("Fill").GetComponent<Image>();
     }
     void Update()
     {
@@ -36,6 +37,8 @@ public class FirstGhostController : ActiveConversation
                 clock.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 secondHand.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 isChating = false;
+                SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
                 if (GameObject.Find("Player").GetComponent<PlayerMissionItem>().GetMissionItem("½ÇÆÈÂî") != null
             && GameObject.Find("Player").GetComponent<PlayerMissionItem>().GetMissionItem("ÆíÁö") != null)
@@ -79,6 +82,8 @@ public class FirstGhostController : ActiveConversation
             {
                 message.SetActive(true);
                 clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+                SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+                SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
                 secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
                 isChating = true;
                 StartCoroutine(SelectTalk());

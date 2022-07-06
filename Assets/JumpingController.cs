@@ -29,6 +29,5 @@ public class JumpingController : MonoBehaviour
     {
         audio.Stop();
         GameObject.Find("Heads").transform.Find(rand.ToString()).gameObject.SetActive(false);
-        
     }
 }

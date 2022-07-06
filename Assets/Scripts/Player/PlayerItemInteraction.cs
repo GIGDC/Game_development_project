@@ -118,6 +118,26 @@ public class PlayerItemInteraction : MonoBehaviour
                         break;
                     }
                 }
+                if (Item[key].Name == "Drinking" && Input.GetKeyDown(key))
+                {
+                    if (PlayerAttacted.hp < 100)
+                    {
+                        PlayerAttacted.hp += Item[key].PlusHp;
+                        Item.Remove(key);
+                        Inventory.transform.GetChild((int)key - 49).GetChild(0).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0f);
+                        break;
+                    }
+                }
+                if (Item[key].Name == "Chip" && Input.GetKeyDown(key))
+                {
+                    if (PlayerAttacted.hp < 100)
+                    {
+                        PlayerAttacted.hp += Item[key].PlusHp;
+                        Item.Remove(key);
+                        Inventory.transform.GetChild((int)key - 49).GetChild(0).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0f);
+                        break;
+                    }
+                }
             }
         }
     }
