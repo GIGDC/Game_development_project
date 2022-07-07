@@ -156,7 +156,7 @@ public class Book : MonoBehaviour {
     }
     void OpeningEnd()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(1);
     }
     public void UpdateBook()
     {

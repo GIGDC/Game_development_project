@@ -14,8 +14,7 @@ public class ClickController : MonoBehaviour
     {
         target = null;
         CastRay();
-        if (target != null)
-        {
+        
             if (isCollider && target.CompareTag("magnifiedObj"))
             {
                 glass.SetActive(true);
@@ -26,7 +25,8 @@ public class ClickController : MonoBehaviour
             {
                 glass.SetActive(false);
             }
-
+        if (target != null)
+        {
             if (Input.GetMouseButtonDown(0))
             {
                 if (target == this.gameObject)

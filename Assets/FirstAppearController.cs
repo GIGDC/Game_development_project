@@ -13,7 +13,7 @@ public class FirstAppearController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ObtainableByClick.isFirst)
+        if (ObtainableByClick.isFirst&&this.gameObject.name.Contains("1-1"))
             Destroy(this.gameObject);
         
     }
