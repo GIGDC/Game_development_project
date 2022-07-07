@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Opening.unity
+    guid: bd90169d2bba75749aace26046b078da
+  - enabled: 1
+    path: Assets/Scenes/1F/Start Room.unity
+    guid: 56aaee1c742c56e42bcc46ba2be4adbc
+  - enabled: 1
+    path: Assets/Scenes/1F/1F.unity
+    guid: edcda6a727eba544287013f03a39015a
+  - enabled: 1
+    path: Assets/Scenes/1F Annex/FirstAnnex.unity
+    guid: cea9f009034b5ce49829c1ff926540b8
+  - enabled: 1
+    path: Assets/Scenes/2F/2F.unity
+    guid: c9d1ffda5b942a14bab0028ee513945e
+  - enabled: 1
+    path: Assets/Scenes/3F.unity
+    guid: 39ccb52353c2f744b9327101c78f8cc4
+  - enabled: 1
+    path: Assets/Scenes/1F/Special Ed.unity
+    guid: 4391d25277eadc948bed85cf6bc09551
+  - enabled: 1
+    path: Assets/Scenes/1F/Storage.unity
+    guid: fd2a5b59cc9c7064aa572fbb485b1b38
+  - enabled: 1
+    path: Assets/Scenes/GymStorage.unity
+    guid: 7a1d9cae7bb8cdc4f87eeda240761659
+  - enabled: 1
+    path: Assets/Scenes/1F Annex/Cooking&Technology.unity
+    guid: a824f7bd50cca6f49ac238e3ea61f2ff
+  - enabled: 1
+    path: Assets/Scenes/1F Annex/Annex Men Toilet.unity
+    guid: ab7bf0d22df5c7543a09e3a3ff369e95
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 55c30a106f069504091ac8e7b697db13
+  - enabled: 1
+    path: Assets/Scenes/2F/1-1.unity
+    guid: bc376e7e5eb2d024e917d3e4b4bff561
+  - enabled: 1
+    path: Assets/Scenes/2F/1-2.unity
+    guid: 242f6b6531913eb4da30d4bbf6580f01
+  - enabled: 1
+    path: Assets/Scenes/2F/1-3.unity
+    guid: 1f5d94a781979f6409ee7bfd1f1de32a
+  - enabled: 1
+    path: Assets/Scenes/2F/1-4.unity
+    guid: 6ba8616600d48744f907ea901b3054b0
+  - enabled: 1
+    path: Assets/Scenes/2F/1-5.unity
+    guid: 79643eee036e8da4eb7f251adb635383
+  - enabled: 1
+    path: Assets/Scenes/2F/First Grade Teacher.unity
+    guid: 0de2231d6954a1e4cb716d7e3e7d6949
+  - enabled: 1
+    path: Assets/Scenes/2F/Math Room.unity
+    guid: 828271ba78fe82b458f1e6629606561c
+  - enabled: 1
+    path: Assets/Scenes/2F/Teacher Room.unity
+    guid: e8c66840d29bf2a4fa8ec7ef05793c0a
+  - enabled: 1
+    path: Assets/Scenes/Auditorium.unity
+    guid: 960fe26f894bd914b90b9209e69266b4
+  - enabled: 1
+    path: Assets/Scenes/1F Annex/Women Toilet-1.unity
+    guid: b88a55e958fc40a45b2406fb9ba3cad4
+  - enabled: 1
+    path: Assets/Scenes/1F/Men Toilet-2.unity
+    guid: f3b0d12aa71ea9948a1f2bc340defe71
+  - enabled: 1
+    path: Assets/Scenes/1F/Women Toilet-2.unity
+    guid: 24e07c400ddc3054eaf28c043c6474b8
+  - enabled: 1
+    path: Assets/Scenes/1F/Library.unity
+    guid: 991d39dd2b3246b42b80da332c83ced0
+  m_configObjects: {}

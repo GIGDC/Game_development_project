@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Wall
+  - Amulet
+  - Monster
+  - Clock
+  - Text
+  - GameManager
+  - floorUI
+  - Door
+  - Hourglass
+  - Drink
+  - Lunch
+  - Inventory
+  - magnifiedObj
+  - Item
+  - Key
+  - Ghost
+  - Hands
+  - Light
+  - Audio
+  - openKey
+  - InputField
+  - FrigeGhost
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Platform
+  - Water
+  - UI
+  - Hint
+  - Ghost
+  - Item
+  - ItemLayout
+  - Camera
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 212594243
+    locked: 0
+  - name: item
+    uniqueID: 2988458133
+    locked: 0
+  - name: BackgroundInFrontOfItem
+    uniqueID: 609784565
+    locked: 0
+  - name: Character
+    uniqueID: 371074617
+    locked: 0
+  - name: BackgroundInFrontOfCharacter
+    uniqueID: 1793340661
+    locked: 0
+  - name: Door
+    uniqueID: 608578905
+    locked: 0
+  - name: Light
+    uniqueID: 1590846969
+    locked: 0
+  - name: UI
+    uniqueID: 2924548127
+    locked: 0
