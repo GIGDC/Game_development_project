@@ -8,6 +8,16 @@ public class SelectGameController : MonoBehaviour
 {
     GameObject click = null;
     public GameObject eye;
+    Slider slider;
+    protected void Setting()
+    {
+        slider = GameObject.Find("Hp").GetComponent<Slider>();
+        slider.value = (float)PlayerAttacted.hp / (float)PlayerAttacted.maxHP;
+    }
+    private void Start()
+    {
+        Setting();
+    }
     public void OnClick()
     {
         click = EventSystem.current.currentSelectedGameObject;

@@ -12,7 +12,7 @@ public class ActivateStairMenu : MonoBehaviour
     private string currentSceneName;
     [Tooltip("씬 이동 후 플레이어 위치 설정")]
     [SerializeField] Vector3 teleportPosition;
-
+    
     private void Start()
     {
         stairMenuReady = false;

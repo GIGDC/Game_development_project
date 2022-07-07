@@ -18,11 +18,8 @@ public class FirstGhostController : ActiveConversation
     // Start is called before the first frame update
     private void Start()
     {
+        Setting();
         ThrowKey = false;
-        clock = GameObject.Find("Clock").GetComponent<Image>();
-        secondHand = GameObject.Find("theMinuteHand").GetComponent<Image>();
-        SliderBackground = GameObject.Find("Background").GetComponent<Image>();
-        SliderImg = GameObject.Find("Fill").GetComponent<Image>();
     }
     void Update()
     {
@@ -34,11 +31,7 @@ public class FirstGhostController : ActiveConversation
                 if (Key != null)
                     Key.SetActive(true);
                 message.SetActive(false);
-                clock.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-                secondHand.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 isChating = false;
-                SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-                SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
                 if (GameObject.Find("Player").GetComponent<PlayerMissionItem>().GetMissionItem("실팔찌") != null
             && GameObject.Find("Player").GetComponent<PlayerMissionItem>().GetMissionItem("편지") != null)
@@ -81,10 +74,6 @@ public class FirstGhostController : ActiveConversation
             || isSaving)
             {
                 message.SetActive(true);
-                clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-                SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-                SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-                secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
                 isChating = true;
                 StartCoroutine(SelectTalk());
             }
@@ -100,17 +89,17 @@ public class FirstGhostController : ActiveConversation
         if (GameObject.Find("Player").GetComponent<PlayerMissionItem>().GetMissionItem("실팔찌") != null
             && GameObject.Find("Player").GetComponent<PlayerMissionItem>().GetMissionItem("편지") != null)
         {
-            StartCoroutine(Talk());
+            narrators = "사실 이건 너를 위해 내가 직접 만든 거야.$ 편지를 읽었는지는 모르겠지만 거기엔 내 진심이 담겨 있어.$ 너가 지연이에게 괴롭힘을 당할 때 처음에는 무서워서 방관해버렸었지.$하지만 이후에 너에게 도움이 되고 싶어서 용기를 내서 선생님께 그 사실을 알렸어.$ 그런데 선생님은 내 말을 무시하셨고, 지연이네의 괴롭힘은 더 심해졌었지.$ 너는 계속해서 혼자만의 고통스러운 시간을 보냈었고......$내가 좀 더 적극적으로 행동했다면 지금쯤 우리 사이는 달라졌을까?$지금와서 후회한들 이미 늦은 거 같지만......$다시 한 번 더 사과할게. 그리고 나의 이야기를 들어줘서 고마워.$".Split('$'); ;
         }
         else
         {
             if (isSaving)
-                narrators = "내 실팔찌와 편지를 잃어버렸어...! 그것들을 찾아줘!!$".Split('$');
+                narrators = "내 실팔찌와 편지를 잃어버렸어...!$ 어딘가에 있는 내 물건들을 찾아줘!!$".Split('$');
         }
 
         foreach (string narrator in narrators)
         {
-            yield return StartCoroutine(Chat("학생 3", narrator));
+            yield return StartCoroutine(Chat("학생 1", narrator));
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Tab));
         }
     }

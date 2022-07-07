@@ -24,13 +24,6 @@ public class SwitchImageController : MonoBehaviour
         if(img)
             if (ThreeConversation.GhostNum >= 3)
             {
-                if (isFirst){
-                    for (int i = 0; i < 3; i++)
-                    {
-                        Destroy(ghost[i].gameObject);    
-                    }
-                    isFirst = false;
-                }
                 HandsController.isStarting = true; // 클릭으로 이동시켜야함.
                 gameObject.GetComponent<SpriteRenderer>().sprite = img;
                 isClick = true;
@@ -39,36 +32,55 @@ public class SwitchImageController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CastRay();
-        // && target.CompareTag("magnifiedObj")
-        if (isCollider)
+        if (ThreeConversation.GhostNum >= 3)
         {
-            glass.SetActive(true);
-            glass.transform.position = Input.mousePosition;
-            Debug.Log(target);
-            isCollider = false;
-            if (!isEating)
+            CastRay();
+            if (isEating)
             {
                 Destroy(this.gameObject);
-                isEating = true;
             }
-        }
-        else
-        {
-            glass.SetActive(false);
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-
-            if (target == this.gameObject && isClick)
+            else
             {
-                glass.SetActive(false);
-                PlayerItemInteraction.Click = this.gameObject;
-                MaintainController.isEating = true;
-                
+                // && target.CompareTag("magnifiedObj")
+                if (isCollider && target.CompareTag("Item"))
+                {
+                    glass.SetActive(true);
+                    glass.transform.position = Input.mousePosition;
+                    Debug.Log(target);
+                    isCollider = false;
+                }
+                else
+                {
+                    glass.SetActive(false);
+                }
+
+                if (Input.GetMouseButtonDown(0))
+                {
+
+                    if (target == this.gameObject && isClick)
+                    {
+                        glass.SetActive(false);
+                        PlayerItemInteraction.Click = this.gameObject;
+
+                        if (target.gameObject.name.Contains("재료")&&!isEating)
+                        {
+                            ItemInfo go = new ItemInfo("Tteokbokki", img, 40, 40);
+                            if (PlayerItemInteraction.Item.Count == 0)
+                                PlayerItemInteraction.Item.Add(KeyCode.Alpha1, go);
+                            else if (PlayerItemInteraction.Item.Count == 1)
+                                PlayerItemInteraction.Item.Add(KeyCode.Alpha2, go);
+                            else if (PlayerItemInteraction.Item.Count == 2)
+                                PlayerItemInteraction.Item.Add(KeyCode.Alpha3, go);
+                            else if (PlayerItemInteraction.Item.Count == 3)
+                                PlayerItemInteraction.Item.Add(KeyCode.Alpha4, go);
+                            else if (PlayerItemInteraction.Item.Count == 4)
+                                PlayerItemInteraction.Item.Add(KeyCode.Alpha5, go);
+                            isEating = true;
+                        }
+                    }
+                    isClick = false;
+                }
             }
-            isClick = false;
         }
     }
     public void CastRay()
@@ -83,7 +95,7 @@ public class SwitchImageController : MonoBehaviour
             target = hit.collider.gameObject;
             isCollider = true;
             Debug.Log(target.name);
-
+            
         }
     }
 

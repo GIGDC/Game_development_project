@@ -11,14 +11,11 @@ public class FirstConversation : ActiveConversation
     bool isCupGaming = false;
     bool isSelectGaming = false;
     public static int SelectNum = -1;
+    
     private void Start()
     {
+        Setting();
         ThrowKey = false;
-        clock = GameObject.Find("Clock").GetComponent<Image>();
-        secondHand = GameObject.Find("theMinuteHand").GetComponent<Image>();
-
-        SliderBackground = GameObject.Find("Background").GetComponent<Image>();
-        SliderImg = GameObject.Find("Fill").GetComponent<Image>();
     }
     void Update()
     {
@@ -33,11 +30,6 @@ public class FirstConversation : ActiveConversation
                 if (Key != null)
                     Key.SetActive(true);
                 message.SetActive(false);
-                clock.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-
-                SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-                SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-                secondHand.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 isChating = false;
                 if (!isSuccess && !isSelect)
                 {
@@ -63,22 +55,12 @@ public class FirstConversation : ActiveConversation
         if (isSuccess&&isCupGaming)
         {
             message.SetActive(true);
-            clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-            secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-
-            SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-            SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
             isChating = true;
             StartCoroutine(PositTalk());
         }
         if (isSelect&&isSelectGaming)
         {
             message.SetActive(true);
-            clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-            secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-
-            SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-            SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
             isChating = true;
             StartCoroutine(SelectTalk(SelectNum));
             isSelectGaming = false;
@@ -111,11 +93,6 @@ public class FirstConversation : ActiveConversation
         {
             messageImg.sprite = img;
             message.SetActive(true);
-            clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-            secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-
-            SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-            SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
             isChating = true;
             StartCoroutine(Talk());
         }

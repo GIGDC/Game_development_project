@@ -11,10 +11,6 @@ abstract public class ActiveConversation : MonoBehaviour
     public Text chatText;  // 실제 채팅이 나오는 텍스트
     public Text CharacterName;  // 캐릭터 이름이 나오는 텍스트
     public int id;
-    protected Image clock;
-    protected Image SliderImg;
-    protected Image SliderBackground;
-    protected Image secondHand;
     protected bool isChating;
     public bool ThrowKey;
     public Image messageImg;
@@ -27,13 +23,16 @@ abstract public class ActiveConversation : MonoBehaviour
     {
         set { id = value; }
     }
+    Slider slider;
+    protected void Setting()
+    {
+        slider = GameObject.Find("Hp").GetComponent<Slider>();
+        slider.value = (float)PlayerAttacted.hp / (float)PlayerAttacted.maxHP;
+    }
     void Start()
     {
+        Setting();
         ThrowKey = false;
-        clock = GameObject.Find("Clock").GetComponent<Image>();
-        secondHand = GameObject.Find("theMinuteHand").GetComponent<Image>();
-        SliderBackground = GameObject.Find("Background").GetComponent<Image>();
-        SliderImg=GameObject.Find("Fill").GetComponent<Image>();
     }
 
     void Update()
@@ -46,10 +45,7 @@ abstract public class ActiveConversation : MonoBehaviour
                     Key.SetActive(true);
                 message.SetActive(false);
                 //sr.material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-                clock.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-                SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-                SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-                secondHand.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                Setting();
                 isChating = false;
                 //ThreeMission.gameObject.SetActive(true);
                 //this.gameObject.SetActive(false);
@@ -68,10 +64,6 @@ abstract public class ActiveConversation : MonoBehaviour
          if (Input.GetKeyDown(KeyCode.Space))
          {
              message.SetActive(true);
-             clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-            SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-            SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-            secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
              isChating = true;
              StartCoroutine(Talk());
          }

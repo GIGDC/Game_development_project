@@ -17,12 +17,8 @@ public class FemaleConversation : ActiveConversation
     // Start is called before the first frame update
     private void Start()
     {
+        Setting();
         ThrowKey = false;
-        clock = GameObject.Find("Clock").GetComponent<Image>();
-        secondHand = GameObject.Find("theMinuteHand").GetComponent<Image>();
-
-        SliderBackground = GameObject.Find("Background").GetComponent<Image>();
-        SliderImg = GameObject.Find("Fill").GetComponent<Image>();
 
     }
     void Update()
@@ -34,11 +30,8 @@ public class FemaleConversation : ActiveConversation
                 if (Key != null)
                     Key.SetActive(true);
                 message.SetActive(false);
-                clock.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-                secondHand.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-
-                SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-                SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                
+                Setting();
                 isChating = false;
 
                 if (isSuccess) //¹Ì¼Ç2 
@@ -79,10 +72,6 @@ public class FemaleConversation : ActiveConversation
             if (isSuccess || isSaving)
             {
                 message.SetActive(true);
-                clock.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-                secondHand.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-                SliderBackground.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-                SliderImg.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
                 isChating = true;
 
                 foreach (KeyCode key in PlayerItemInteraction.Item.Keys)

@@ -13,6 +13,6 @@ public class SliderController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        slider.value = (float)PlayerAttacted.hp / PlayerAttacted.maxHP;
+        slider.value = (float)PlayerAttacted.hp / (float)PlayerAttacted.maxHP;
     }
 }

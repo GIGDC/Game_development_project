@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
+    public AudioSource audio;
+    public AudioClip bgm;
     private void Update()
     {
         if (CountController.SocCount >= 4&& CountController.VolCount >= 5 && CountController.DodCount >= 7&& CountController.BasCount >= 2)
@@ -13,7 +15,9 @@ public class BallController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+
+        audio.clip = bgm;
+        audio.Play();
             if (this.name.Contains("Ãà±¸°ø"))
             {
                 CountController.SocCount++;

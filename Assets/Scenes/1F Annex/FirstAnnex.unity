@@ -7639,11 +7639,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1130589704470959417, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: isOpen
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1130589704470959417, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: isOpeningDoor
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1130589704470959417, guid: 05b79a5ede2c65b4ea8ef6700461fd1c, type: 3}
       propertyPath: teleportPosition.x
@@ -8082,11 +8082,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6116867844890509100, guid: eacf79cc8370bb242bbaee0bc5f7b1ff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 48.4
+      value: 132.85
       objectReference: {fileID: 0}
     - target: {fileID: 6116867844890509100, guid: eacf79cc8370bb242bbaee0bc5f7b1ff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2
+      value: 0.89
       objectReference: {fileID: 0}
     - target: {fileID: 6116867844890509100, guid: eacf79cc8370bb242bbaee0bc5f7b1ff, type: 3}
       propertyPath: m_LocalPosition.z
@@ -37772,9 +37772,17 @@ PrefabInstance:
       propertyPath: m_Text
       value: "\uBCC4\uAD00\n"
       objectReference: {fileID: 0}
+    - target: {fileID: 3310625927208689439, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3310625927610719175, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3310625927733940120, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3310625928303625106, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
       propertyPath: m_AnchorMax.x
@@ -37871,6 +37879,14 @@ PrefabInstance:
     - target: {fileID: 3310625929180906413, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309151926756148194, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342089566477303187, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8940731639044554316, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
       propertyPath: m_AnchorMax.x

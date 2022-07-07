@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -19,7 +20,12 @@ public class GameManager : MonoBehaviour
     public string transferScene; // 이동할 씬 이름 (protected: 계단 이동의 경우 1F, 2F, 3F 등이 있으므로 unity editor에서 수정하기 어려움)
     protected Animator transitionAnimator;
     public Vector3 teleportPosition = new Vector3(0, 0, 0); // 플레이어가 씬 이동하고나서의 위치
-
+    Slider slider;
+    protected void Setting()
+    {
+        slider = GameObject.Find("Hp").GetComponent<Slider>();
+        slider.value = (float)PlayerAttacted.hp / (float)PlayerAttacted.maxHP;
+    }
     private void Awake()
     {
         GameObject[] gameManagers = GameObject.FindGameObjectsWithTag("GameManager");
@@ -47,10 +53,10 @@ public class GameManager : MonoBehaviour
         monster = GameObject.FindObjectOfType<Monster>();
         player = GameObject.FindObjectOfType<PlayerMovement>();
     }
-
+    
     private void Update()
     {
-
+        Setting();
             if (transferScene != null)
             {
                 PlayerMovement.CurrentMapName = transferScene;

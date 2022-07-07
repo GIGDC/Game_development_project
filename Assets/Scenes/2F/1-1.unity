@@ -2530,7 +2530,7 @@ MonoBehaviour:
   glass: {fileID: 1804841553}
   activeAfterObtaining: 0
   audio: {fileID: 704781832}
-  bgm: {fileID: 0}
+  bgm: {fileID: 8300000, guid: cc819dc4b5fddbe4aaa7ef7321daa2f7, type: 3}
   missionProgress: 0
 --- !u!61 &1833547357
 BoxCollider2D:

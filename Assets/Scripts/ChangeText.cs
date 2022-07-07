@@ -145,6 +145,18 @@ public class ChangeText : MonoBehaviour
             text.text = "도서관";
             // first = true;
         }
+        else if (SceneName.Contains("Teacher Room"))
+        {
+            StartCoroutine(FadeInCoroutine());
+            text.text = "본교무실";
+            // first = true;
+        }
+        else if (SceneName.Contains("First Grade Teacher"))
+        {
+            StartCoroutine(FadeInCoroutine());
+            text.text = "1학년교무실";
+            // first = true;
+        }
 
     }
 

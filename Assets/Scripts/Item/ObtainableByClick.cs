@@ -30,6 +30,8 @@ public class ObtainableByClick : MonoBehaviour
     [Tooltip("미션 진행 상황 설정")]
     [SerializeField] float missionProgress;
 
+    //한번만 나오도록 설정
+    public static bool isFirst = false;
     private void Start()
     {
         
@@ -70,6 +72,8 @@ public class ObtainableByClick : MonoBehaviour
 
                 if (this.gameObject.CompareTag("Key")) // 클릭한 오브젝트가 열쇠일 때
                 {
+                    if (this.gameObject.name.Contains("1-1"))
+                        isFirst = true;
                     
                     List<string> openDoorList = GameManager.openDoorList;
                     sceneRelatedToThisKey = this.gameObject.name.Split(' ')[0];

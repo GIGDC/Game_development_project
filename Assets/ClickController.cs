@@ -14,42 +14,45 @@ public class ClickController : MonoBehaviour
     {
         target = null;
         CastRay();
-        if (isCollider && target.CompareTag("magnifiedObj") && (target != null))
+        if (target != null)
         {
-            glass.SetActive(true);
-            glass.transform.position = Input.mousePosition;
-            isCollider = false;
-        }
-        else
-        {
-            glass.SetActive(false);
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (target == this.gameObject)
+            if (isCollider && target.CompareTag("magnifiedObj"))
             {
-                if (EventImage != null)
+                glass.SetActive(true);
+                glass.transform.position = Input.mousePosition;
+                isCollider = false;
+            }
+            else
+            {
+                glass.SetActive(false);
+            }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (target == this.gameObject)
                 {
-                    EventImage.gameObject.SetActive(true);
-                    glass.SetActive(false);
+                    if (EventImage != null)
+                    {
+                        EventImage.gameObject.SetActive(true);
+                        glass.SetActive(false);
+                    }
+                    if (target.name == "Frige")
+                        FrigeGhostAudioController.isPlaying = true;
+
                 }
-                if (target.name == "Frige")
-                    FrigeGhostAudioController.isPlaying = true;
-
             }
-        }
-
-        if (EventImage.gameObject.activeSelf == true)
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                FrigeGhostAudioController.isPlaying = false;
-                EventImage.gameObject.SetActive(false);
-            }
-
+           }
+            if (EventImage.gameObject.activeSelf == true)
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    FrigeGhostAudioController.isPlaying = false;
+                    EventImage.gameObject.SetActive(false);
+                }
+        
     }
     public void CastRay()
     {
+        //target = null;
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit;
 

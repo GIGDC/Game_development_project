@@ -6822,6 +6822,7 @@ GameObject:
   - component: {fileID: 1537055610}
   - component: {fileID: 1537055613}
   - component: {fileID: 1537055612}
+  - component: {fileID: 1537055614}
   m_Layer: 8
   m_Name: "1-1 \uC5F4\uC1E0"
   m_TagString: Key
@@ -6939,6 +6940,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.43, y: 2.38}
   m_EdgeRadius: 0
+--- !u!114 &1537055614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537055609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1845a530a026814fa52de93c1510481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1542941202
 GameObject:
   m_ObjectHideFlags: 0
@@ -8554,6 +8567,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3310625927208689438, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
+      propertyPath: m_Text
+      value: "1\uD559\uB144 \uAD50\uBB34\uC2E4"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3310625927208689439, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 291.8867
+      objectReference: {fileID: 0}
+    - target: {fileID: 3310625927208689439, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 505
+      objectReference: {fileID: 0}
+    - target: {fileID: 3310625927208689439, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 301
+      objectReference: {fileID: 0}
     - target: {fileID: 3310625928303625106, guid: 9801381d57c46e647bc73cc19740a6db, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
